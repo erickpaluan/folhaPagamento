@@ -9,7 +9,7 @@ namespace folhaPagamento
 
         private void brnCliqueAqui_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Vocë Clicou no botão", "Botão clicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Vocë clicou no botão", "Botão clicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
