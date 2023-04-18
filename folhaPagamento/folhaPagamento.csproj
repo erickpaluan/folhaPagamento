@@ -9,7 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="imgs\icons\" />
+    <Compile Remove="aaa\**" />
+    <Compile Remove="imgs\icons\**" />
+    <EmbeddedResource Remove="aaa\**" />
+    <EmbeddedResource Remove="imgs\icons\**" />
+    <None Remove="aaa\**" />
+    <None Remove="imgs\icons\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +30,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="imgs\" />
   </ItemGroup>
 
 </Project>

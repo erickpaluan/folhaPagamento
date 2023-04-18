@@ -17,5 +17,11 @@ namespace folhaPagamento
             cadUsuario form = new cadUsuario();
             form.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ponto form = new ponto();
+            form.ShowDialog();
+        }
     }
 }

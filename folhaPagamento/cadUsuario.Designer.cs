@@ -80,7 +80,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { novoUsuárioToolStripMenuItem, editarToolStripMenuItem, excluirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(713, 24);
+            menuStrip1.Size = new Size(847, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -408,7 +408,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(713, 518);
+            ClientSize = new Size(847, 592);
             Controls.Add(textBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
