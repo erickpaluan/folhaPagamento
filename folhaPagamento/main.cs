@@ -1,8 +1,8 @@
 namespace folhaPagamento
 {
-    public partial class Form1 : Form
+    public partial class main : Form
     {
-        public Form1()
+        public main()
         {
             InitializeComponent();
         }
@@ -10,6 +10,12 @@ namespace folhaPagamento
         private void brnCliqueAqui_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Vocë clicou no botão", "Botão clicado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void novoFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cadUsuario form = new cadUsuario();
+            form.ShowDialog();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class Form1
+    partial class main
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,10 +32,10 @@
             menuStrip1 = new MenuStrip();
             arquivoToolStripMenuItem = new ToolStripMenuItem();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
+            novoFuncionárioToolStripMenuItem = new ToolStripMenuItem();
             folhaDePontoToolStripMenuItem = new ToolStripMenuItem();
             relatóriosToolStripMenuItem = new ToolStripMenuItem();
             ajudaToolStripMenuItem = new ToolStripMenuItem();
-            novoFuncionárioToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,6 +71,13 @@
             cadastrosToolStripMenuItem.Size = new Size(71, 20);
             cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
+            // novoFuncionárioToolStripMenuItem
+            // 
+            novoFuncionárioToolStripMenuItem.Name = "novoFuncionárioToolStripMenuItem";
+            novoFuncionárioToolStripMenuItem.Size = new Size(145, 22);
+            novoFuncionárioToolStripMenuItem.Text = "Novo usuário";
+            novoFuncionárioToolStripMenuItem.Click += novoFuncionárioToolStripMenuItem_Click;
+            // 
             // folhaDePontoToolStripMenuItem
             // 
             folhaDePontoToolStripMenuItem.Name = "folhaDePontoToolStripMenuItem";
@@ -89,13 +96,7 @@
             ajudaToolStripMenuItem.Size = new Size(50, 20);
             ajudaToolStripMenuItem.Text = "Ajuda";
             // 
-            // novoFuncionárioToolStripMenuItem
-            // 
-            novoFuncionárioToolStripMenuItem.Name = "novoFuncionárioToolStripMenuItem";
-            novoFuncionárioToolStripMenuItem.Size = new Size(180, 22);
-            novoFuncionárioToolStripMenuItem.Text = "Novo funcionário";
-            // 
-            // Form1
+            // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -103,8 +104,10 @@
             Controls.Add(brnCliqueAqui);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Folha Pagamento";
+            WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
