@@ -65,6 +65,9 @@
             label6 = new Label();
             numericUpDown1 = new NumericUpDown();
             textBox4 = new TextBox();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -80,7 +83,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { novoUsuárioToolStripMenuItem, editarToolStripMenuItem, excluirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(847, 24);
+            menuStrip1.Size = new Size(768, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -136,7 +139,7 @@
             groupBox2.Controls.Add(textBox5);
             groupBox2.Location = new Point(361, 371);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(340, 135);
+            groupBox2.Size = new Size(387, 135);
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
             groupBox2.Text = "Informações Profissionais";
@@ -249,7 +252,7 @@
             groupBox1.Controls.Add(textBox2);
             groupBox1.Location = new Point(361, 288);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(340, 77);
+            groupBox1.Size = new Size(387, 77);
             groupBox1.TabIndex = 19;
             groupBox1.TabStop = false;
             groupBox1.Text = "Contato e Endereço";
@@ -354,7 +357,7 @@
             groupBox3.Controls.Add(dateTimePicker1);
             groupBox3.Location = new Point(361, 27);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(340, 255);
+            groupBox3.Size = new Size(387, 255);
             groupBox3.TabIndex = 23;
             groupBox3.TabStop = false;
             groupBox3.Text = "Informações Pessoais";
@@ -404,11 +407,47 @@
             textBox4.Size = new Size(343, 23);
             textBox4.TabIndex = 24;
             // 
+            // button3
+            // 
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(514, 518);
+            button3.Name = "button3";
+            button3.Size = new Size(74, 74);
+            button3.TabIndex = 27;
+            button3.Text = "Alterar";
+            button3.TextImageRelation = TextImageRelation.ImageAboveText;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(594, 518);
+            button4.Name = "button4";
+            button4.Size = new Size(74, 74);
+            button4.TabIndex = 30;
+            button4.Text = "Excluir";
+            button4.TextImageRelation = TextImageRelation.ImageAboveText;
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(674, 518);
+            button5.Name = "button5";
+            button5.Size = new Size(74, 74);
+            button5.TabIndex = 31;
+            button5.Text = "Salvar";
+            button5.TextImageRelation = TextImageRelation.ImageAboveText;
+            button5.UseVisualStyleBackColor = true;
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 592);
+            ClientSize = new Size(768, 604);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
             Controls.Add(textBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -474,5 +513,8 @@
         private TextBox textBox6;
         private Label label7;
         private TextBox textBox5;
+        private Button button3;
+        private Button button4;
+        private Button button5;
     }
 }
