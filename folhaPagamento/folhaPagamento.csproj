@@ -36,4 +36,8 @@
     <Folder Include="imgs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="7.0.2" />
+  </ItemGroup>
+
 </Project>

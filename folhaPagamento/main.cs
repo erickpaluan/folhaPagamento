@@ -1,3 +1,5 @@
+using Npgsql;
+
 namespace folhaPagamento
 {
     public partial class main : Form
@@ -22,6 +24,12 @@ namespace folhaPagamento
         {
             cadUsuario form = new cadUsuario();
             form.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }
