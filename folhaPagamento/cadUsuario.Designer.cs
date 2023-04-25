@@ -35,7 +35,7 @@
             novoGrupoDeUsuáriosToolStripMenuItem = new ToolStripMenuItem();
             editarToolStripMenuItem = new ToolStripMenuItem();
             excluirToolStripMenuItem = new ToolStripMenuItem();
-            dataGridView1 = new DataGridView();
+            dgUsuarios = new DataGridView();
             groupBox2 = new GroupBox();
             checkBox3 = new CheckBox();
             checkBox2 = new CheckBox();
@@ -69,7 +69,7 @@
             button4 = new Button();
             button5 = new Button();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -118,14 +118,14 @@
             excluirToolStripMenuItem.Size = new Size(54, 20);
             excluirToolStripMenuItem.Text = "Excluir";
             // 
-            // dataGridView1
+            // dgUsuarios
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 56);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(343, 450);
-            dataGridView1.TabIndex = 6;
+            dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgUsuarios.Location = new Point(12, 56);
+            dgUsuarios.Name = "dgUsuarios";
+            dgUsuarios.RowTemplate.Height = 25;
+            dgUsuarios.Size = new Size(343, 450);
+            dgUsuarios.TabIndex = 6;
             // 
             // groupBox2
             // 
@@ -452,7 +452,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgUsuarios);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
@@ -462,7 +462,7 @@
             Load += cadUsuario_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -484,7 +484,7 @@
         private ToolStripMenuItem novoGrupoDeUsuáriosToolStripMenuItem;
         private ToolStripMenuItem editarToolStripMenuItem;
         private ToolStripMenuItem excluirToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView dgUsuarios;
         private GroupBox groupBox2;
         private ComboBox comboBox1;
         private PictureBox pictureBox1;
