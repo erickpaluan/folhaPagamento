@@ -53,10 +53,10 @@
             textBox3 = new TextBox();
             label3 = new Label();
             textBox2 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
+            dtpDataNasc = new DateTimePicker();
             label2 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtCPF = new TextBox();
             lblNome = new Label();
             txtNome = new TextBox();
             groupBox3 = new GroupBox();
@@ -66,8 +66,9 @@
             numericUpDown1 = new NumericUpDown();
             textBox4 = new TextBox();
             button3 = new Button();
-            button4 = new Button();
+            btnExcluir = new Button();
             button5 = new Button();
+            label10 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             groupBox2.SuspendLayout();
@@ -122,10 +123,14 @@
             // 
             dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgUsuarios.Location = new Point(12, 56);
+            dgUsuarios.MultiSelect = false;
             dgUsuarios.Name = "dgUsuarios";
+            dgUsuarios.ReadOnly = true;
             dgUsuarios.RowTemplate.Height = 25;
+            dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgUsuarios.Size = new Size(343, 450);
             dgUsuarios.TabIndex = 6;
+            dgUsuarios.CellClick += dgUsuarios_CellClick;
             // 
             // groupBox2
             // 
@@ -291,13 +296,13 @@
             textBox2.Size = new Size(119, 23);
             textBox2.TabIndex = 8;
             // 
-            // dateTimePicker1
+            // dtpDataNasc
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(6, 131);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(131, 23);
-            dateTimePicker1.TabIndex = 16;
+            dtpDataNasc.Format = DateTimePickerFormat.Short;
+            dtpDataNasc.Location = new Point(6, 131);
+            dtpDataNasc.Name = "dtpDataNasc";
+            dtpDataNasc.Size = new Size(131, 23);
+            dtpDataNasc.TabIndex = 16;
             // 
             // label2
             // 
@@ -317,13 +322,13 @@
             label1.TabIndex = 17;
             label1.Text = "CPF";
             // 
-            // textBox1
+            // txtCPF
             // 
-            textBox1.Location = new Point(97, 84);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "CPF";
-            textBox1.Size = new Size(237, 23);
-            textBox1.TabIndex = 15;
+            txtCPF.Location = new Point(97, 84);
+            txtCPF.Name = "txtCPF";
+            txtCPF.PlaceholderText = "CPF";
+            txtCPF.Size = new Size(237, 23);
+            txtCPF.TabIndex = 15;
             // 
             // lblNome
             // 
@@ -350,11 +355,11 @@
             groupBox3.Controls.Add(txtNome);
             groupBox3.Controls.Add(comboBox1);
             groupBox3.Controls.Add(lblNome);
-            groupBox3.Controls.Add(textBox1);
+            groupBox3.Controls.Add(txtCPF);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(dateTimePicker1);
+            groupBox3.Controls.Add(dtpDataNasc);
             groupBox3.Location = new Point(361, 27);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(387, 255);
@@ -418,16 +423,17 @@
             button3.TextImageRelation = TextImageRelation.ImageAboveText;
             button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnExcluir
             // 
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(594, 518);
-            button4.Name = "button4";
-            button4.Size = new Size(74, 74);
-            button4.TabIndex = 30;
-            button4.Text = "Excluir";
-            button4.TextImageRelation = TextImageRelation.ImageAboveText;
-            button4.UseVisualStyleBackColor = true;
+            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
+            btnExcluir.Location = new Point(594, 518);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(74, 74);
+            btnExcluir.TabIndex = 30;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // button5
             // 
@@ -440,13 +446,23 @@
             button5.TextImageRelation = TextImageRelation.ImageAboveText;
             button5.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(12, 534);
+            label10.Name = "label10";
+            label10.Size = new Size(44, 15);
+            label10.TabIndex = 32;
+            label10.Text = "label10";
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(768, 604);
+            Controls.Add(label10);
             Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnExcluir);
             Controls.Add(button3);
             Controls.Add(textBox4);
             Controls.Add(groupBox3);
@@ -494,10 +510,10 @@
         private TextBox textBox3;
         private Label label3;
         private TextBox textBox2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDataNasc;
         private Label label2;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtCPF;
         private Label lblNome;
         private TextBox txtNome;
         private GroupBox groupBox3;
@@ -515,7 +531,8 @@
         private Label label7;
         private TextBox textBox5;
         private Button button3;
-        private Button button4;
+        private Button btnExcluir;
         private Button button5;
+        private Label label10;
     }
 }

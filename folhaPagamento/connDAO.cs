@@ -34,11 +34,20 @@ namespace folhaPagamento
                     while (reader.Read())
                     {
                         Users funcionario = new Users();
-                        funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id"));
+                        funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
                         funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
                         funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
-                        funcionario.dt_nasc = reader.GetString(reader.GetOrdinal("dt_nasc"));
-                        funcionario.idade = reader.GetString(reader.GetOrdinal("idade"));
+                        funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc")).ToString("yyyy-MM-dd");
+                        if (!reader.IsDBNull(reader.GetOrdinal("idade")))
+                        {
+                            funcionario.idade = reader.GetString(reader.GetOrdinal("idade"));
+                        }
+                        else
+                        {
+                            funcionario.idade = "32"; // ou atribua um valor padrão
+                        }
+
+
 
                         users.Add(funcionario);
                     }
@@ -77,13 +86,13 @@ namespace folhaPagamento
             }
         }
 
-        public void DeleteFuncionario(int cpf)
+        public void DeleteFuncionario(int id_func)
         {
-            string sql = "DELETE FROM funcionario WHERE cpf = @cpf";
+            string sql = "DELETE FROM funcionario WHERE id_func = @cid_func";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@cpf", cpf);
+                cmd.Parameters.AddWithValue("@id_func", id_func);
 
                 cmd.ExecuteNonQuery();
             }
