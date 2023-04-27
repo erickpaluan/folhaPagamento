@@ -67,8 +67,9 @@
             textBox4 = new TextBox();
             button3 = new Button();
             btnExcluir = new Button();
-            button5 = new Button();
+            btnAdicionar = new Button();
             label10 = new Label();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             groupBox2.SuspendLayout();
@@ -435,16 +436,17 @@
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
-            // button5
+            // btnAdicionar
             // 
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(674, 518);
-            button5.Name = "button5";
-            button5.Size = new Size(74, 74);
-            button5.TabIndex = 31;
-            button5.Text = "Salvar";
-            button5.TextImageRelation = TextImageRelation.ImageAboveText;
-            button5.UseVisualStyleBackColor = true;
+            btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
+            btnAdicionar.Location = new Point(674, 518);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(74, 74);
+            btnAdicionar.TabIndex = 31;
+            btnAdicionar.Text = "Salvar";
+            btnAdicionar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += button5_Click;
             // 
             // label10
             // 
@@ -455,13 +457,24 @@
             label10.TabIndex = 32;
             label10.Text = "label10";
             // 
+            // button1
+            // 
+            button1.Location = new Point(281, 548);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 33;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(768, 604);
+            Controls.Add(button1);
             Controls.Add(label10);
-            Controls.Add(button5);
+            Controls.Add(btnAdicionar);
             Controls.Add(btnExcluir);
             Controls.Add(button3);
             Controls.Add(textBox4);
@@ -532,7 +545,8 @@
         private TextBox textBox5;
         private Button button3;
         private Button btnExcluir;
-        private Button button5;
+        private Button btnAdicionar;
         private Label label10;
+        private Button button1;
     }
 }

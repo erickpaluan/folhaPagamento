@@ -11,7 +11,7 @@ namespace folhaPagamento
         public int id_func { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
-        public string dt_nasc { get; set; }
-        public string idade { get; set; }
+        public DateTime dt_nasc { get; set; }
+        public int idade { get; set; }
     }
 }

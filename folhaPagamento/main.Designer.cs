@@ -33,7 +33,7 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
-            label1 = new Label();
+            lblSaudacao = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -85,15 +85,15 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // label1
+            // lblSaudacao
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(66, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(226, 45);
-            label1.TabIndex = 6;
-            label1.Text = "Bom dia, Erick.";
+            lblSaudacao.AutoSize = true;
+            lblSaudacao.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location = new Point(66, 25);
+            lblSaudacao.Name = "lblSaudacao";
+            lblSaudacao.Size = new Size(226, 45);
+            lblSaudacao.TabIndex = 6;
+            lblSaudacao.Text = "Bom dia, Erick.";
             // 
             // pictureBox1
             // 
@@ -112,7 +112,7 @@
             BackColor = Color.White;
             ClientSize = new Size(720, 391);
             Controls.Add(pictureBox1);
-            Controls.Add(label1);
+            Controls.Add(lblSaudacao);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -122,6 +122,7 @@
             Name = "main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Folha Pagamento";
+            Load += main_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -132,7 +133,7 @@
         private Button button2;
         private Button button3;
         private Button button4;
-        private Label label1;
+        private Label lblSaudacao;
         private PictureBox pictureBox1;
     }
 }

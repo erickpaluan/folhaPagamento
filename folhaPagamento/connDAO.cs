@@ -37,14 +37,14 @@ namespace folhaPagamento
                         funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
                         funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
                         funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
-                        funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc")).ToString("yyyy-MM-dd");
+                        funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
                         if (!reader.IsDBNull(reader.GetOrdinal("idade")))
                         {
-                            funcionario.idade = reader.GetString(reader.GetOrdinal("idade"));
+                            funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
                         }
                         else
                         {
-                            funcionario.idade = "32"; // ou atribua um valor padrão
+                            funcionario.idade = 32; // ou atribua um valor padrão
                         }
 
 
@@ -56,9 +56,9 @@ namespace folhaPagamento
             return users;
         }
 
-        public void AddFuncionario(string nome, string cpf, string dt_nasc, int idade)
+        public void AddFuncionario(string nome, string cpf, DateTime dt_nasc, int idade)
         {
-            string sql = "INSERT INTO funcionario (id_func, nome, cpf, dt_nasc, idade) VALUES (@id, @nome, @cpf, @dt_nasc, @idade)";
+            string sql = "INSERT INTO funcionario (nome, cpf, dt_nasc, idade) VALUES (@nome, @cpf, @dt_nasc, @idade)";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
@@ -88,7 +88,7 @@ namespace folhaPagamento
 
         public void DeleteFuncionario(int id_func)
         {
-            string sql = "DELETE FROM funcionario WHERE id_func = @cid_func";
+            string sql = "DELETE FROM funcionario WHERE id_func = @id_func";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {

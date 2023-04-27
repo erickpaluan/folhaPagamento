@@ -28,7 +28,29 @@ namespace folhaPagamento
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
+
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            login form = new login();
+            form.ShowDialog();
+
+            DateTime now = DateTime.Now;
+
+            if (now.Hour >= 5 && now.Hour < 12)
+            {
+                lblSaudacao.Text = "Bom dia";
+            }
+            else if (now.Hour >= 12 && now.Hour < 18)
+            {
+                lblSaudacao.Text = "Boa tarde";
+            }
+            else
+            {
+                lblSaudacao.Text = "Boa noite";
+            }
 
         }
     }

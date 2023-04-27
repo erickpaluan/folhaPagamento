@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace folhaPagamento
 {
@@ -42,11 +44,12 @@ namespace folhaPagamento
             if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
             {
                 DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex];
-                int id_func = Convert.ToInt32(row.Cells["id_func"].Value); // lê o valor da coluna "id_func"
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
                 label10.Text = id_func.ToString();
                 txtNome.Text = row.Cells["nome"].Value.ToString();
                 txtCPF.Text = row.Cells["cpf"].Value.ToString();
-                //dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");// atribui o valor ao Label
+                dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
+
             }
         }
 
@@ -59,17 +62,68 @@ namespace folhaPagamento
                 DialogResult result = MessageBox.Show("Você tem certeza que deseja excluir o funcionário selecionado?", "Confirmação de exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    //connDAO.DeleteFuncionario();
+                    int idFunc = Convert.ToInt32(dgUsuarios.SelectedRows[0].Cells[0].Value);
+
+                    connDAO.DeleteFuncionario(id_func);
                     MessageBox.Show("Funcionário excluído com sucesso!", "Exclusão de funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // atualiza o DataGridView
-                    //RefreshDataGridView();
+                    dgUsuarios.Refresh();
+                    AtualizaTabela();
                 }
             }
             else
             {
                 MessageBox.Show("Por favor, selecione um funcionário para excluir.", "Exclusão de funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DateTime dataNascimento = dtpDataNasc.Value;
+            int idade = DateTime.Now.Year - dataNascimento.Year;
+
+            if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
+            {
+                idade--;
+
+            }
+
+            // Criar um novo objeto Users com os valores dos campos de entrada
+            Users novoFuncionario = new Users();
+            novoFuncionario.nome = txtNome.Text;
+            novoFuncionario.cpf = txtCPF.Text;
+            //novoFuncionario.dt_nasc = dtpDataNasc.Value.ToString("yyyy-MM-dd");
+            novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            novoFuncionario.idade = idade;
+            ;
+
+            // Adicionar o novo funcionário
+            connDAO.AddFuncionario(novoFuncionario.nome, novoFuncionario.cpf, novoFuncionario.dt_nasc, novoFuncionario.idade);
+
+            // Limpar os campos de entrada
+            txtNome.Text = "";
+            txtCPF.Text = "";
+            dtpDataNasc.Value = DateTime.Now;
+
+            // Atualizar o DataGridView
+            dgUsuarios.Refresh();
+            //AtualizaTabela();
+
+
+        }
+
+        public void AtualizaTabela()
+        {
+
+            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            dgUsuarios.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AtualizaTabela();
         }
     }
 }
