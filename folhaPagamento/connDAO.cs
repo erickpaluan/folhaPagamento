@@ -71,12 +71,13 @@ namespace folhaPagamento
             }
         }
 
-        public void UpdateFuncionario(string nome, string cpf, string dt_nasc, int idade)
+        public void UpdateFuncionario(string nome, string cpf, DateTime dt_nasc, int idade, int id_func)
         {
-            string sql = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade WHERE id_func = @id";
+            string sql = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade WHERE id_func = @id_func = id_func";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
+                cmd.Parameters.AddWithValue("id_func", id_func);
                 cmd.Parameters.AddWithValue("@nome", nome);
                 cmd.Parameters.AddWithValue("@cpf", cpf);
                 cmd.Parameters.AddWithValue("@dt_nasc", dt_nasc);

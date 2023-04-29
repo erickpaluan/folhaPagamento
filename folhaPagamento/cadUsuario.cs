@@ -79,7 +79,7 @@ namespace folhaPagamento
         }
 
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Criar Funcionário
         {
             DateTime dataNascimento = dtpDataNasc.Value;
             int idade = DateTime.Now.Year - dataNascimento.Year;
@@ -134,6 +134,47 @@ namespace folhaPagamento
         private void pictureBox2_MouseHover(object sender, EventArgs e)
         {
             pictureBox2.ImageLocation = @"C:\\_dev\\pim3\\folhaPagamento\\folhaPagamento\\imgs\\icons\\arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN.png\";
+        }
+
+        private void button3_Click(object sender, EventArgs e) //Update Funcionario
+        {
+            if (dgUsuarios.SelectedRows.Count > 0)
+            {
+                // Obtém a primeira linha selecionada
+                DataGridViewRow row = dgUsuarios.SelectedRows[0];
+
+                // Obtém o valor da coluna "id_func" da linha selecionada
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+
+                DateTime dataNascimento = dtpDataNasc.Value;
+                int idade = DateTime.Now.Year - dataNascimento.Year;
+
+                if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
+                {
+                    idade--;
+
+                }
+
+                Users funcionarioEditado = new Users();
+                funcionarioEditado.nome = txtNome.Text;
+                funcionarioEditado.cpf = txtCPF.Text;
+                funcionarioEditado.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                funcionarioEditado.idade = idade;
+
+                connDAO.UpdateFuncionario(funcionarioEditado.nome, funcionarioEditado.cpf, funcionarioEditado.dt_nasc, funcionarioEditado.idade, id_func);
+
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpDataNasc.Value = DateTime.Now;
+
+                dgUsuarios.Refresh();
+
+                MessageBox.Show("Cadastro editado com sucesso!!");
+            }
+            else
+            {
+                MessageBox.Show("Erro!");
+            }
         }
     }
 }

@@ -302,6 +302,7 @@
             button3.Text = "Alterar";
             button3.TextImageRelation = TextImageRelation.ImageAboveText;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // btnExcluir
             // 
@@ -422,7 +423,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(641, 851);
+            ClientSize = new Size(641, 788);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
