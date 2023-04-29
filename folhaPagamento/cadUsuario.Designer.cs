@@ -302,6 +302,7 @@
             button3.Text = "Alterar";
             button3.TextImageRelation = TextImageRelation.ImageAboveText;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
             // 
             // btnExcluir
             // 
@@ -412,7 +413,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(613, 360);
+            tabPage2.Size = new Size(376, 285);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;

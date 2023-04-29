@@ -136,7 +136,7 @@ namespace folhaPagamento
             pictureBox2.ImageLocation = @"C:\\_dev\\pim3\\folhaPagamento\\folhaPagamento\\imgs\\icons\\arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN.png\";
         }
 
-        private void button3_Click(object sender, EventArgs e) //Update Funcionario
+        private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
         {
             if (dgUsuarios.SelectedRows.Count > 0)
             {
