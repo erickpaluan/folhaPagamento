@@ -43,9 +43,9 @@
             label5 = new Label();
             groupBox1 = new GroupBox();
             label4 = new Label();
-            textBox3 = new TextBox();
+            txtEmail = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            txtTelefone = new TextBox();
             dtpDataNasc = new DateTimePicker();
             label2 = new Label();
             label1 = new Label();
@@ -188,9 +188,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(txtTelefone);
             groupBox1.Location = new Point(22, 166);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(328, 77);
@@ -207,13 +207,13 @@
             label4.TabIndex = 11;
             label4.Text = "E-mail";
             // 
-            // textBox3
+            // txtEmail
             // 
-            textBox3.Location = new Point(131, 37);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "E-MAIL";
-            textBox3.Size = new Size(151, 23);
-            textBox3.TabIndex = 10;
+            txtEmail.Location = new Point(131, 37);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "E-MAIL";
+            txtEmail.Size = new Size(151, 23);
+            txtEmail.TabIndex = 10;
             // 
             // label3
             // 
@@ -224,13 +224,13 @@
             label3.TabIndex = 9;
             label3.Text = "Telefone";
             // 
-            // textBox2
+            // txtTelefone
             // 
-            textBox2.Location = new Point(6, 37);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "TELEFONE";
-            textBox2.Size = new Size(119, 23);
-            textBox2.TabIndex = 8;
+            txtTelefone.Location = new Point(6, 37);
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.PlaceholderText = "TELEFONE";
+            txtTelefone.Size = new Size(119, 23);
+            txtTelefone.TabIndex = 8;
             // 
             // dtpDataNasc
             // 
@@ -414,7 +414,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(376, 285);
+            tabPage2.Size = new Size(381, 285);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;
@@ -439,7 +439,7 @@
             MinimizeBox = false;
             Name = "cadUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastrar Usuário";
+            Text = "Cadastrar Funcionários";
             Load += cadUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -463,9 +463,9 @@
         private Label label5;
         private GroupBox groupBox1;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox txtEmail;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txtTelefone;
         private DateTimePicker dtpDataNasc;
         private Label label2;
         private Label label1;
