@@ -75,13 +75,13 @@
             // dgUsuarios
             // 
             dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgUsuarios.Location = new Point(12, 146);
+            dgUsuarios.Location = new Point(12, 107);
             dgUsuarios.MultiSelect = false;
             dgUsuarios.Name = "dgUsuarios";
             dgUsuarios.ReadOnly = true;
             dgUsuarios.RowTemplate.Height = 25;
             dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size = new Size(621, 219);
+            dgUsuarios.Size = new Size(368, 112);
             dgUsuarios.TabIndex = 6;
             dgUsuarios.CellClick += dgUsuarios_CellClick;
             // 
@@ -286,28 +286,27 @@
             // textBox4
             // 
             textBox4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(12, 105);
+            textBox4.Location = new Point(12, 66);
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "Pesquisar";
-            textBox4.Size = new Size(621, 35);
+            textBox4.Size = new Size(368, 35);
             textBox4.TabIndex = 24;
             // 
             // button3
             // 
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(395, 765);
+            button3.Location = new Point(398, 249);
             button3.Name = "button3";
             button3.Size = new Size(74, 74);
             button3.TabIndex = 27;
             button3.Text = "Alterar";
             button3.TextImageRelation = TextImageRelation.ImageAboveText;
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
             // 
             // btnExcluir
             // 
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.Location = new Point(475, 765);
+            btnExcluir.Location = new Point(398, 331);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(74, 74);
             btnExcluir.TabIndex = 30;
@@ -319,7 +318,7 @@
             // btnAdicionar
             // 
             btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
-            btnAdicionar.Location = new Point(555, 765);
+            btnAdicionar.Location = new Point(398, 411);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(74, 74);
             btnAdicionar.TabIndex = 31;
@@ -331,7 +330,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(493, 45);
+            label10.Location = new Point(322, 48);
             label10.Name = "label10";
             label10.Size = new Size(44, 15);
             label10.TabIndex = 32;
@@ -373,10 +372,10 @@
             // 
             tabControl1.Controls.Add(tbInfos);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 371);
+            tabControl1.Location = new Point(12, 225);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(621, 388);
+            tabControl1.Size = new Size(384, 313);
             tabControl1.TabIndex = 36;
             // 
             // tbInfos
@@ -395,7 +394,7 @@
             tbInfos.Location = new Point(4, 24);
             tbInfos.Name = "tbInfos";
             tbInfos.Padding = new Padding(3);
-            tbInfos.Size = new Size(613, 360);
+            tbInfos.Size = new Size(376, 285);
             tbInfos.TabIndex = 0;
             tbInfos.Text = "Dados Pessoais";
             tbInfos.UseVisualStyleBackColor = true;
@@ -423,7 +422,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(641, 788);
+            ClientSize = new Size(524, 574);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
@@ -433,7 +432,9 @@
             Controls.Add(button3);
             Controls.Add(textBox4);
             Controls.Add(dgUsuarios);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "cadUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Usuário";

@@ -43,9 +43,9 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(12, 150);
+            button1.Location = new Point(12, 98);
             button1.Name = "button1";
-            button1.Size = new Size(266, 162);
+            button1.Size = new Size(96, 96);
             button1.TabIndex = 2;
             button1.Text = "Marcar Ponto";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -55,9 +55,9 @@
             // button2
             // 
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(12, 359);
+            button2.Location = new Point(114, 98);
             button2.Name = "button2";
-            button2.Size = new Size(266, 162);
+            button2.Size = new Size(96, 96);
             button2.TabIndex = 3;
             button2.Text = "Holerite";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -66,9 +66,9 @@
             // button3
             // 
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(369, 198);
+            button3.Location = new Point(216, 98);
             button3.Name = "button3";
-            button3.Size = new Size(70, 70);
+            button3.Size = new Size(96, 96);
             button3.TabIndex = 4;
             button3.Text = "Usuários";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -78,9 +78,9 @@
             // button4
             // 
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(12, 560);
+            button4.Location = new Point(318, 200);
             button4.Name = "button4";
-            button4.Size = new Size(266, 162);
+            button4.Size = new Size(96, 96);
             button4.TabIndex = 5;
             button4.Text = "Configurações";
             button4.TextAlign = ContentAlignment.BottomCenter;
@@ -109,18 +109,18 @@
             // 
             // button5
             // 
-            button5.Location = new Point(369, 420);
+            button5.Location = new Point(318, 98);
             button5.Name = "button5";
-            button5.Size = new Size(75, 23);
+            button5.Size = new Size(96, 96);
             button5.TabIndex = 8;
             button5.Text = "Empresa";
             button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            button6.Location = new Point(316, 646);
+            button6.Location = new Point(12, 200);
             button6.Name = "button6";
-            button6.Size = new Size(158, 23);
+            button6.Size = new Size(96, 96);
             button6.TabIndex = 9;
             button6.Text = "Importar / exportar";
             button6.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(625, 812);
+            ClientSize = new Size(472, 360);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(pictureBox1);

@@ -34,8 +34,8 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-            login form = new login();
-            form.ShowDialog();
+            //login form = new login();
+            //form.ShowDialog();
 
             DateTime now = DateTime.Now;
 
