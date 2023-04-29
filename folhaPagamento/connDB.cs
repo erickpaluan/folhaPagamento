@@ -14,8 +14,8 @@ namespace folhaPagamento
             string server = "localhost";
             string port = "5432";
             string user = "postgres";
-            string database = "postgres";
-            string senha = "326598";
+            string database = "DB_Justax";
+            string senha = "dbadmin";
 
             string sconn = "Server=" + server +
                 ";Port=" + port +

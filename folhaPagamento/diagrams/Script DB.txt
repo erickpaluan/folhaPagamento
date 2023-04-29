@@ -1,0 +1,73 @@
+CREATE TABLE funcionario(
+	id_func SERIAL PRIMARY KEY,
+	Nome VARCHAR(100),
+	CPF VARCHAR(11),
+	Dt_Nasc DATE,
+	idade INTEGER
+);
+
+CREATE TABLE endereco(
+	id_end INTEGER,
+	FOREIGN KEY (id_end) REFERENCES funcionario (id_func),
+	logradouro TEXT,
+	num_res INTEGER,
+	cep VARCHAR(8),
+	cidade VARCHAR(30),
+	estado VARCHAR(2)
+);
+
+CREATE TABLE contato (
+	id_ctt INTEGER,
+	FOREIGN KEY (id_ctt) REFERENCES funcionario (id_func),
+	tipo VARCHAR (10),
+	ddd VARCHAR(2),
+	num_tel VARCHAR(9)
+);
+
+CREATE TABLE dependentes(
+	id_dep INTEGER,
+	FOREIGN KEY (id_dep) REFERENCES funcionario (id_func),
+	parentesco TEXT,
+	nome VARCHAR(100)
+);
+
+
+CREATE TABLE recursos_humanos(
+	id_rh INTEGER,
+	FOREIGN KEY (id_rh) REFERENCES funcionario (id_func),
+	dt_adm DATE,
+	id_conv INTEGER,
+	id_odon INTEGER,
+	cargo VARCHAR(50),
+	login VARCHAR (10),
+	senha CHAR(6)
+	
+);
+
+CREATE TABLE registro_ponto(
+	id_ponto INTEGER,
+	FOREIGN KEY (id_ponto) REFERENCES funcionario (id_func),
+	data DATE,
+	ent1 TIME,
+	ext1 TIME,
+	ent2 TIME,
+	ext2 TIME
+);
+
+CREATE TABLE folha_pagto (
+	id_pagto SERIAL PRIMARY KEY,
+	id_folha INTEGER,
+	FOREIGN KEY (id_folha) REFERENCES funcionario (id_func),
+	mes_ref VARCHAR (2),
+	sal_bruto MONEY,
+	sal_liq MONEY	
+);
+
+CREATE TABLE desconto (
+	id_desc INTEGER,
+	FOREIGN KEY (id_desc) REFERENCES folha_pagto (id_pagto),
+	inss NUMERIC(5,2),
+	ir NUMERIC(5,2),
+	conv_med MONEY,
+	conv_odon MONEY
+);
