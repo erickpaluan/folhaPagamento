@@ -8,13 +8,13 @@ using Npgsql;
 
 namespace folhaPagamento
 {
-    public class connDAO :connDB
+    public class Funcionarios :connDB
     {
         private NpgsqlConnection conn;
         private List<Users> users;
 
 
-        public connDAO()
+        public Funcionarios()
         {
             string sconn = connDB.GetConnection();
             conn = new NpgsqlConnection(sconn);

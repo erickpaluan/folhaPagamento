@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using folhaPagamento.Properties;
 using Npgsql;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -15,7 +16,7 @@ namespace folhaPagamento
 {
     public partial class cadUsuario : Form
     {
-        private connDAO connDAO { get; set; }
+        private Funcionarios connDAO { get; set; }
         public cadUsuario()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace folhaPagamento
 
             try
             {
-                connDAO = new connDAO();
+                connDAO = new Funcionarios();
                 MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -55,26 +56,35 @@ namespace folhaPagamento
 
         private void btnExcluir_Click(object sender, EventArgs e) //Excluir Funcionário
         {
-            if (dgUsuarios.SelectedRows.Count > 0)
+            if (dgUsuarios.SelectedRows.Count > 0) // verifica se uma linha foi selecionada
             {
                 DataGridViewRow row = dgUsuarios.SelectedRows[0];
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
 
-                Users funcionarioDelete = new Users();
+                DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
+                "excluir o funcionário selecionado?", "Confirmação de exclusão",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                connDAO.DeleteFuncionario(id_func);
+                if (result == DialogResult.Yes)
+                {
+                    Users funcionarioDelete = new Users();
 
-                txtNome.Text = "";
-                txtCPF.Text = "";
-                dtpDataNasc.Value = DateTime.Now;
+                    connDAO.DeleteFuncionario(id_func);
 
-                dgUsuarios.Refresh();
+                    txtNome.Text = "";
+                    txtCPF.Text = "";
+                    dtpDataNasc.Value = DateTime.Now;
 
-                MessageBox.Show("Deletado com sucesso!!");
+
+                    MessageBox.Show("Funcionário deletado com sucesso!!");
+                    dgUsuarios.Refresh();
+                }
             }
             else
             {
-                MessageBox.Show("Erro!");
+                MessageBox.Show("Por favor, selecione um funcionário para excluir.",
+                "Exclusão de funcionário", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             }
         }
         private void button5_Click(object sender, EventArgs e) //Criar Funcionário
@@ -111,11 +121,12 @@ namespace folhaPagamento
                 //AtualizaTabela();
 
                 MessageBox.Show("Cadastrado com sucesso!");
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Erro ao cadastrar");
             }
-            
+
         }
 
         public void AtualizaTabela()
@@ -137,7 +148,7 @@ namespace folhaPagamento
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
         {
-            pictureBox2.ImageLocation = @"C:\\_dev\\pim3\\folhaPagamento\\folhaPagamento\\imgs\\icons\\arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN.png\";
+            pictureBox2.Image = Resources.arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN;
         }
 
         private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
@@ -179,6 +190,11 @@ namespace folhaPagamento
             {
                 MessageBox.Show("Erro!");
             }
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
         }
     }
 }

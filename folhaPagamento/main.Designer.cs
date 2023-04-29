@@ -70,7 +70,7 @@
             button3.Name = "button3";
             button3.Size = new Size(96, 96);
             button3.TabIndex = 4;
-            button3.Text = "Usuários";
+            button3.Text = "Funcionários";
             button3.TextAlign = ContentAlignment.BottomCenter;
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;

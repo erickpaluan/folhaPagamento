@@ -81,7 +81,7 @@
             dgUsuarios.ReadOnly = true;
             dgUsuarios.RowTemplate.Height = 25;
             dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size = new Size(368, 112);
+            dgUsuarios.Size = new Size(474, 294);
             dgUsuarios.TabIndex = 6;
             dgUsuarios.CellClick += dgUsuarios_CellClick;
             // 
@@ -161,9 +161,9 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Solteiro (a)", "Casado (a)", "Viúvo (a)", "Divorciado (a)" });
-            comboBox1.Location = new Point(159, 129);
+            comboBox1.Location = new Point(234, 111);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(191, 23);
+            comboBox1.Size = new Size(116, 23);
             comboBox1.TabIndex = 21;
             // 
             // pictureBox1
@@ -289,13 +289,13 @@
             textBox4.Location = new Point(12, 66);
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "Pesquisar";
-            textBox4.Size = new Size(368, 35);
+            textBox4.Size = new Size(474, 35);
             textBox4.TabIndex = 24;
             // 
             // button3
             // 
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(398, 249);
+            button3.Location = new Point(656, 407);
             button3.Name = "button3";
             button3.Size = new Size(74, 74);
             button3.TabIndex = 27;
@@ -307,7 +307,7 @@
             // btnExcluir
             // 
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.Location = new Point(398, 331);
+            btnExcluir.Location = new Point(816, 407);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(74, 74);
             btnExcluir.TabIndex = 30;
@@ -319,7 +319,7 @@
             // btnAdicionar
             // 
             btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
-            btnAdicionar.Location = new Point(398, 411);
+            btnAdicionar.Location = new Point(736, 407);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(74, 74);
             btnAdicionar.TabIndex = 31;
@@ -349,7 +349,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
             pictureBox2.Location = new Point(12, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(48, 48);
@@ -357,6 +357,7 @@
             pictureBox2.TabIndex = 35;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
+            pictureBox2.MouseLeave += pictureBox2_MouseLeave;
             pictureBox2.MouseHover += pictureBox2_MouseHover;
             // 
             // lblSaudacao
@@ -373,10 +374,10 @@
             // 
             tabControl1.Controls.Add(tbInfos);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 225);
+            tabControl1.Location = new Point(505, 88);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(384, 313);
+            tabControl1.Size = new Size(389, 313);
             tabControl1.TabIndex = 36;
             // 
             // tbInfos
@@ -395,7 +396,7 @@
             tbInfos.Location = new Point(4, 24);
             tbInfos.Name = "tbInfos";
             tbInfos.Padding = new Padding(3);
-            tbInfos.Size = new Size(376, 285);
+            tbInfos.Size = new Size(381, 285);
             tbInfos.TabIndex = 0;
             tbInfos.Text = "Dados Pessoais";
             tbInfos.UseVisualStyleBackColor = true;
@@ -423,7 +424,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(524, 574);
+            ClientSize = new Size(906, 574);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
