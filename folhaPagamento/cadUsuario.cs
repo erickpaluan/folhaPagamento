@@ -125,5 +125,15 @@ namespace folhaPagamento
         {
             AtualizaTabela();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox2.ImageLocation = @"C:\\_dev\\pim3\\folhaPagamento\\folhaPagamento\\imgs\\icons\\arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN.png\";
+        }
     }
 }

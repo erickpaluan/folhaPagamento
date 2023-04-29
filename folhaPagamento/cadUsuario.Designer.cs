@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cadUsuario));
-            menuStrip1 = new MenuStrip();
-            novoUsuárioToolStripMenuItem = new ToolStripMenuItem();
-            novoUsuárioToolStripMenuItem1 = new ToolStripMenuItem();
-            novoGrupoDeUsuáriosToolStripMenuItem = new ToolStripMenuItem();
-            editarToolStripMenuItem = new ToolStripMenuItem();
-            excluirToolStripMenuItem = new ToolStripMenuItem();
             dgUsuarios = new DataGridView();
-            groupBox2 = new GroupBox();
             checkBox3 = new CheckBox();
             checkBox2 = new CheckBox();
             label9 = new Label();
@@ -59,101 +52,43 @@
             txtCPF = new TextBox();
             lblNome = new Label();
             txtNome = new TextBox();
-            groupBox3 = new GroupBox();
-            checkBox1 = new CheckBox();
-            groupBox4 = new GroupBox();
-            label6 = new Label();
-            numericUpDown1 = new NumericUpDown();
             textBox4 = new TextBox();
             button3 = new Button();
             btnExcluir = new Button();
             btnAdicionar = new Button();
             label10 = new Label();
-            button1 = new Button();
-            menuStrip1.SuspendLayout();
+            btnDependentes = new Button();
+            pictureBox2 = new PictureBox();
+            lblSaudacao = new Label();
+            tabControl1 = new TabControl();
+            tbInfos = new TabPage();
+            tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            tabControl1.SuspendLayout();
+            tbInfos.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { novoUsuárioToolStripMenuItem, editarToolStripMenuItem, excluirToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(768, 24);
-            menuStrip1.TabIndex = 5;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // novoUsuárioToolStripMenuItem
-            // 
-            novoUsuárioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoUsuárioToolStripMenuItem1, novoGrupoDeUsuáriosToolStripMenuItem });
-            novoUsuárioToolStripMenuItem.Name = "novoUsuárioToolStripMenuItem";
-            novoUsuárioToolStripMenuItem.Size = new Size(100, 20);
-            novoUsuárioToolStripMenuItem.Text = "Novo usuário V";
-            // 
-            // novoUsuárioToolStripMenuItem1
-            // 
-            novoUsuárioToolStripMenuItem1.Name = "novoUsuárioToolStripMenuItem1";
-            novoUsuárioToolStripMenuItem1.Size = new Size(201, 22);
-            novoUsuárioToolStripMenuItem1.Text = "Novo usuário";
-            // 
-            // novoGrupoDeUsuáriosToolStripMenuItem
-            // 
-            novoGrupoDeUsuáriosToolStripMenuItem.Name = "novoGrupoDeUsuáriosToolStripMenuItem";
-            novoGrupoDeUsuáriosToolStripMenuItem.Size = new Size(201, 22);
-            novoGrupoDeUsuáriosToolStripMenuItem.Text = "Novo grupo de usuários";
-            // 
-            // editarToolStripMenuItem
-            // 
-            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(49, 20);
-            editarToolStripMenuItem.Text = "Editar";
-            // 
-            // excluirToolStripMenuItem
-            // 
-            excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            excluirToolStripMenuItem.Size = new Size(54, 20);
-            excluirToolStripMenuItem.Text = "Excluir";
             // 
             // dgUsuarios
             // 
             dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgUsuarios.Location = new Point(12, 56);
+            dgUsuarios.Location = new Point(12, 146);
             dgUsuarios.MultiSelect = false;
             dgUsuarios.Name = "dgUsuarios";
             dgUsuarios.ReadOnly = true;
             dgUsuarios.RowTemplate.Height = 25;
             dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size = new Size(343, 450);
+            dgUsuarios.Size = new Size(621, 219);
             dgUsuarios.TabIndex = 6;
             dgUsuarios.CellClick += dgUsuarios_CellClick;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(checkBox3);
-            groupBox2.Controls.Add(checkBox2);
-            groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(dateTimePicker2);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(textBox6);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(textBox5);
-            groupBox2.Location = new Point(361, 371);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(387, 135);
-            groupBox2.TabIndex = 22;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Informações Profissionais";
             // 
             // checkBox3
             // 
             checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(203, 86);
+            checkBox3.Location = new Point(215, 80);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(102, 19);
             checkBox3.TabIndex = 27;
@@ -163,7 +98,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(143, 86);
+            checkBox2.Location = new Point(155, 80);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(54, 19);
             checkBox2.TabIndex = 25;
@@ -173,7 +108,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(6, 63);
+            label9.Location = new Point(18, 57);
             label9.Name = "label9";
             label9.Size = new Size(86, 15);
             label9.TabIndex = 26;
@@ -182,7 +117,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(6, 81);
+            dateTimePicker2.Location = new Point(18, 75);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(131, 23);
             dateTimePicker2.TabIndex = 25;
@@ -190,7 +125,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(203, 19);
+            label8.Location = new Point(215, 13);
             label8.Name = "label8";
             label8.Size = new Size(69, 15);
             label8.TabIndex = 15;
@@ -198,7 +133,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(203, 37);
+            textBox6.Location = new Point(215, 31);
             textBox6.Name = "textBox6";
             textBox6.PlaceholderText = "R$";
             textBox6.Size = new Size(131, 23);
@@ -207,7 +142,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(6, 19);
+            label7.Location = new Point(18, 13);
             label7.Name = "label7";
             label7.Size = new Size(39, 15);
             label7.TabIndex = 13;
@@ -215,7 +150,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(6, 37);
+            textBox5.Location = new Point(18, 31);
             textBox5.Name = "textBox5";
             textBox5.PlaceholderText = "CARGO";
             textBox5.Size = new Size(191, 23);
@@ -226,7 +161,7 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Solteiro (a)", "Casado (a)", "Viúvo (a)", "Divorciado (a)" });
-            comboBox1.Location = new Point(143, 131);
+            comboBox1.Location = new Point(159, 129);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(191, 23);
             comboBox1.TabIndex = 21;
@@ -234,7 +169,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 22);
+            pictureBox1.Location = new Point(22, 20);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(85, 85);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -244,7 +179,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(143, 113);
+            label5.Location = new Point(159, 111);
             label5.Name = "label5";
             label5.Size = new Size(68, 15);
             label5.TabIndex = 20;
@@ -256,9 +191,9 @@
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(textBox2);
-            groupBox1.Location = new Point(361, 288);
+            groupBox1.Location = new Point(22, 166);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(387, 77);
+            groupBox1.Size = new Size(328, 77);
             groupBox1.TabIndex = 19;
             groupBox1.TabStop = false;
             groupBox1.Text = "Contato e Endereço";
@@ -277,7 +212,7 @@
             textBox3.Location = new Point(131, 37);
             textBox3.Name = "textBox3";
             textBox3.PlaceholderText = "E-MAIL";
-            textBox3.Size = new Size(203, 23);
+            textBox3.Size = new Size(151, 23);
             textBox3.TabIndex = 10;
             // 
             // label3
@@ -300,7 +235,7 @@
             // dtpDataNasc
             // 
             dtpDataNasc.Format = DateTimePickerFormat.Short;
-            dtpDataNasc.Location = new Point(6, 131);
+            dtpDataNasc.Location = new Point(22, 129);
             dtpDataNasc.Name = "dtpDataNasc";
             dtpDataNasc.Size = new Size(131, 23);
             dtpDataNasc.TabIndex = 16;
@@ -308,7 +243,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 113);
+            label2.Location = new Point(22, 111);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 18;
@@ -317,7 +252,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(97, 66);
+            label1.Location = new Point(113, 64);
             label1.Name = "label1";
             label1.Size = new Size(28, 15);
             label1.TabIndex = 17;
@@ -325,7 +260,7 @@
             // 
             // txtCPF
             // 
-            txtCPF.Location = new Point(97, 84);
+            txtCPF.Location = new Point(113, 82);
             txtCPF.Name = "txtCPF";
             txtCPF.PlaceholderText = "CPF";
             txtCPF.Size = new Size(237, 23);
@@ -334,7 +269,7 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(97, 22);
+            lblNome.Location = new Point(113, 20);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(40, 15);
             lblNome.TabIndex = 14;
@@ -342,81 +277,25 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(97, 40);
+            txtNome.Location = new Point(113, 38);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "NOME";
             txtNome.Size = new Size(237, 23);
             txtNome.TabIndex = 13;
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(checkBox1);
-            groupBox3.Controls.Add(groupBox4);
-            groupBox3.Controls.Add(pictureBox1);
-            groupBox3.Controls.Add(txtNome);
-            groupBox3.Controls.Add(comboBox1);
-            groupBox3.Controls.Add(lblNome);
-            groupBox3.Controls.Add(txtCPF);
-            groupBox3.Controls.Add(label5);
-            groupBox3.Controls.Add(label1);
-            groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(dtpDataNasc);
-            groupBox3.Location = new Point(361, 27);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(387, 255);
-            groupBox3.TabIndex = 23;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Informações Pessoais";
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 160);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(124, 19);
-            checkBox1.TabIndex = 24;
-            checkBox1.Text = "Tem dependentes?";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(label6);
-            groupBox4.Controls.Add(numericUpDown1);
-            groupBox4.Location = new Point(6, 185);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(328, 64);
-            groupBox4.TabIndex = 23;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Dependentes";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(6, 27);
-            label6.Name = "label6";
-            label6.Size = new Size(69, 15);
-            label6.TabIndex = 25;
-            label6.Text = "Quantidade";
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(81, 25);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(50, 23);
-            numericUpDown1.TabIndex = 0;
-            // 
             // textBox4
             // 
-            textBox4.Location = new Point(12, 27);
+            textBox4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox4.Location = new Point(12, 105);
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "Pesquisar";
-            textBox4.Size = new Size(343, 23);
+            textBox4.Size = new Size(621, 35);
             textBox4.TabIndex = 24;
             // 
             // button3
             // 
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(514, 518);
+            button3.Location = new Point(395, 765);
             button3.Name = "button3";
             button3.Size = new Size(74, 74);
             button3.TabIndex = 27;
@@ -427,7 +306,7 @@
             // btnExcluir
             // 
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.Location = new Point(594, 518);
+            btnExcluir.Location = new Point(475, 765);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(74, 74);
             btnExcluir.TabIndex = 30;
@@ -439,7 +318,7 @@
             // btnAdicionar
             // 
             btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
-            btnAdicionar.Location = new Point(674, 518);
+            btnAdicionar.Location = new Point(555, 765);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(74, 74);
             btnAdicionar.TabIndex = 31;
@@ -451,68 +330,128 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(12, 534);
+            label10.Location = new Point(493, 45);
             label10.Name = "label10";
             label10.Size = new Size(44, 15);
             label10.TabIndex = 32;
             label10.Text = "label10";
             // 
-            // button1
+            // btnDependentes
             // 
-            button1.Location = new Point(281, 548);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 33;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnDependentes.Location = new Point(254, 249);
+            btnDependentes.Name = "btnDependentes";
+            btnDependentes.Size = new Size(96, 23);
+            btnDependentes.TabIndex = 33;
+            btnDependentes.Text = "Dependentes";
+            btnDependentes.UseVisualStyleBackColor = true;
+            btnDependentes.Click += button1_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 35;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            pictureBox2.MouseHover += pictureBox2_MouseHover;
+            // 
+            // lblSaudacao
+            // 
+            lblSaudacao.AutoSize = true;
+            lblSaudacao.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location = new Point(66, 13);
+            lblSaudacao.Name = "lblSaudacao";
+            lblSaudacao.Size = new Size(200, 45);
+            lblSaudacao.TabIndex = 34;
+            lblSaudacao.Text = "Funcionários";
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tbInfos);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(12, 371);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(621, 388);
+            tabControl1.TabIndex = 36;
+            // 
+            // tbInfos
+            // 
+            tbInfos.Controls.Add(pictureBox1);
+            tbInfos.Controls.Add(txtNome);
+            tbInfos.Controls.Add(dtpDataNasc);
+            tbInfos.Controls.Add(btnDependentes);
+            tbInfos.Controls.Add(comboBox1);
+            tbInfos.Controls.Add(label2);
+            tbInfos.Controls.Add(lblNome);
+            tbInfos.Controls.Add(label1);
+            tbInfos.Controls.Add(txtCPF);
+            tbInfos.Controls.Add(label5);
+            tbInfos.Controls.Add(groupBox1);
+            tbInfos.Location = new Point(4, 24);
+            tbInfos.Name = "tbInfos";
+            tbInfos.Padding = new Padding(3);
+            tbInfos.Size = new Size(613, 360);
+            tbInfos.TabIndex = 0;
+            tbInfos.Text = "Dados Pessoais";
+            tbInfos.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(checkBox3);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(checkBox2);
+            tabPage2.Controls.Add(textBox5);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(textBox6);
+            tabPage2.Controls.Add(dateTimePicker2);
+            tabPage2.Controls.Add(label8);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(613, 360);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dados Profissionais";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(768, 604);
-            Controls.Add(button1);
+            BackColor = Color.White;
+            ClientSize = new Size(641, 851);
+            Controls.Add(tabControl1);
+            Controls.Add(pictureBox2);
+            Controls.Add(lblSaudacao);
             Controls.Add(label10);
             Controls.Add(btnAdicionar);
             Controls.Add(btnExcluir);
             Controls.Add(button3);
             Controls.Add(textBox4);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
             Controls.Add(dgUsuarios);
-            Controls.Add(menuStrip1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MainMenuStrip = menuStrip1;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "cadUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Usuário";
             Load += cadUsuario_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            tabControl1.ResumeLayout(false);
+            tbInfos.ResumeLayout(false);
+            tbInfos.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem novoUsuárioToolStripMenuItem;
-        private ToolStripMenuItem novoUsuárioToolStripMenuItem1;
-        private ToolStripMenuItem novoGrupoDeUsuáriosToolStripMenuItem;
-        private ToolStripMenuItem editarToolStripMenuItem;
-        private ToolStripMenuItem excluirToolStripMenuItem;
         private DataGridView dgUsuarios;
         private GroupBox groupBox2;
         private ComboBox comboBox1;
@@ -547,6 +486,11 @@
         private Button btnExcluir;
         private Button btnAdicionar;
         private Label label10;
-        private Button button1;
+        private Button btnDependentes;
+        private PictureBox pictureBox2;
+        private Label lblSaudacao;
+        private TabControl tabControl1;
+        private TabPage tbInfos;
+        private TabPage tabPage2;
     }
 }
