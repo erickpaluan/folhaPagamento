@@ -53,32 +53,30 @@ namespace folhaPagamento
             }
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e) //Excluir Funcionário
         {
-            if (dgUsuarios.SelectedRows.Count > 0) // verifica se uma linha foi selecionada
+            if (dgUsuarios.SelectedRows.Count > 0)
             {
-                int id_func = Convert.ToInt32(dgUsuarios.SelectedRows[0].Cells["id_func"].Value);
+                DataGridViewRow row = dgUsuarios.SelectedRows[0];
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
 
-                DialogResult result = MessageBox.Show("Você tem certeza que deseja excluir o funcionário selecionado?", "Confirmação de exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    int idFunc = Convert.ToInt32(dgUsuarios.SelectedRows[0].Cells[0].Value);
+                Users funcionarioDelete = new Users();
 
-                    connDAO.DeleteFuncionario(id_func);
-                    MessageBox.Show("Funcionário excluído com sucesso!", "Exclusão de funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connDAO.DeleteFuncionario(id_func);
 
-                    // atualiza o DataGridView
-                    dgUsuarios.Refresh();
-                    AtualizaTabela();
-                }
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpDataNasc.Value = DateTime.Now;
+
+                dgUsuarios.Refresh();
+
+                MessageBox.Show("Deletado com sucesso!!");
             }
             else
             {
-                MessageBox.Show("Por favor, selecione um funcionário para excluir.", "Exclusão de funcionário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Erro!");
             }
         }
-
-
         private void button5_Click(object sender, EventArgs e) //Criar Funcionário
         {
             DateTime dataNascimento = dtpDataNasc.Value;
@@ -89,29 +87,35 @@ namespace folhaPagamento
                 idade--;
 
             }
+            try
+            {
+                // Criar um novo objeto Users com os valores dos campos de entrada
+                Users novoFuncionario = new Users();
+                novoFuncionario.nome = txtNome.Text;
+                novoFuncionario.cpf = txtCPF.Text;
+                //novoFuncionario.dt_nasc = dtpDataNasc.Value.ToString("yyyy-MM-dd");
+                novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                novoFuncionario.idade = idade;
+                ;
 
-            // Criar um novo objeto Users com os valores dos campos de entrada
-            Users novoFuncionario = new Users();
-            novoFuncionario.nome = txtNome.Text;
-            novoFuncionario.cpf = txtCPF.Text;
-            //novoFuncionario.dt_nasc = dtpDataNasc.Value.ToString("yyyy-MM-dd");
-            novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            novoFuncionario.idade = idade;
-            ;
+                // Adicionar o novo funcionário
+                connDAO.AddFuncionario(novoFuncionario.nome, novoFuncionario.cpf, novoFuncionario.dt_nasc, novoFuncionario.idade);
 
-            // Adicionar o novo funcionário
-            connDAO.AddFuncionario(novoFuncionario.nome, novoFuncionario.cpf, novoFuncionario.dt_nasc, novoFuncionario.idade);
+                // Limpar os campos de entrada
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpDataNasc.Value = DateTime.Now;
 
-            // Limpar os campos de entrada
-            txtNome.Text = "";
-            txtCPF.Text = "";
-            dtpDataNasc.Value = DateTime.Now;
+                // Atualizar o DataGridView
+                dgUsuarios.Refresh();
+                //AtualizaTabela();
 
-            // Atualizar o DataGridView
-            dgUsuarios.Refresh();
-            //AtualizaTabela();
-
-
+                MessageBox.Show("Cadastrado com sucesso!");
+            } catch
+            {
+                MessageBox.Show("Erro ao cadastrar");
+            }
+            
         }
 
         public void AtualizaTabela()
@@ -178,3 +182,5 @@ namespace folhaPagamento
         }
     }
 }
+
+

@@ -11,11 +11,11 @@ namespace folhaPagamento
     {
         public static string GetConnection()
         {
-            string server = "localhost";
+            string server = "folhadepagamento.cfxlb4p3yaj7.us-east-1.rds.amazonaws.com";
             string port = "5432";
             string user = "postgres";
-            string database = "DB_Justax";
-            string senha = "dbadmin";
+            string database = "postgres";
+            string senha = "postgres";
 
             string sconn = "Server=" + server +
                 ";Port=" + port +
