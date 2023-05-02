@@ -43,9 +43,9 @@
             label5 = new Label();
             groupBox1 = new GroupBox();
             label4 = new Label();
-            textBox3 = new TextBox();
+            txtEmail = new TextBox();
             label3 = new Label();
-            txtTel = new TextBox();
+            txtTelefone = new TextBox();
             dtpDataNasc = new DateTimePicker();
             label2 = new Label();
             label1 = new Label();
@@ -63,8 +63,6 @@
             tabControl1 = new TabControl();
             tbInfos = new TabPage();
             tabPage2 = new TabPage();
-            cbTipo = new ComboBox();
-            txtDdd = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -190,9 +188,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtTel);
+            groupBox1.Controls.Add(txtTelefone);
             groupBox1.Location = new Point(22, 166);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(328, 77);
@@ -209,13 +207,13 @@
             label4.TabIndex = 11;
             label4.Text = "E-mail";
             // 
-            // textBox3
+            // txtEmail
             // 
-            textBox3.Location = new Point(131, 37);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "E-MAIL";
-            textBox3.Size = new Size(151, 23);
-            textBox3.TabIndex = 10;
+            txtEmail.Location = new Point(131, 37);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "E-MAIL";
+            txtEmail.Size = new Size(151, 23);
+            txtEmail.TabIndex = 10;
             // 
             // label3
             // 
@@ -226,13 +224,13 @@
             label3.TabIndex = 9;
             label3.Text = "Telefone";
             // 
-            // txtTel
+            // txtTelefone
             // 
-            txtTel.Location = new Point(6, 37);
-            txtTel.Name = "txtTel";
-            txtTel.PlaceholderText = "TELEFONE";
-            txtTel.Size = new Size(119, 23);
-            txtTel.TabIndex = 8;
+            txtTelefone.Location = new Point(6, 37);
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.PlaceholderText = "TELEFONE";
+            txtTelefone.Size = new Size(119, 23);
+            txtTelefone.TabIndex = 8;
             // 
             // dtpDataNasc
             // 
@@ -421,32 +419,12 @@
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // cbTipo
-            // 
-            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTipo.FormattingEnabled = true;
-            cbTipo.Items.AddRange(new object[] { "Fixo", "Cel", "Outro" });
-            cbTipo.Location = new Point(250, 407);
-            cbTipo.Name = "cbTipo";
-            cbTipo.Size = new Size(116, 23);
-            cbTipo.TabIndex = 34;
-            // 
-            // txtDdd
-            // 
-            txtDdd.Location = new Point(250, 434);
-            txtDdd.Name = "txtDdd";
-            txtDdd.PlaceholderText = "DDD";
-            txtDdd.Size = new Size(119, 23);
-            txtDdd.TabIndex = 12;
-            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(906, 574);
-            Controls.Add(txtDdd);
-            Controls.Add(cbTipo);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
@@ -461,7 +439,7 @@
             MinimizeBox = false;
             Name = "cadUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastrar Usuário";
+            Text = "Cadastrar Funcionários";
             Load += cadUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -485,9 +463,9 @@
         private Label label5;
         private GroupBox groupBox1;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox txtEmail;
         private Label label3;
-        private TextBox txtTel;
+        private TextBox txtTelefone;
         private DateTimePicker dtpDataNasc;
         private Label label2;
         private Label label1;
@@ -518,7 +496,5 @@
         private TabControl tabControl1;
         private TabPage tbInfos;
         private TabPage tabPage2;
-        private ComboBox cbTipo;
-        private TextBox txtDdd;
     }
 }

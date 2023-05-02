@@ -9,11 +9,6 @@ namespace folhaPagamento
             InitializeComponent();
         }
 
-        private void novoFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ponto form = new ponto();
@@ -52,6 +47,12 @@ namespace folhaPagamento
                 lblSaudacao.Text = "Boa noite";
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fHolerite fHolerite = new fHolerite();
+            fHolerite.ShowDialog();
         }
     }
 }
