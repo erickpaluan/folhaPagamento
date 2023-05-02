@@ -133,17 +133,32 @@ namespace folhaPagamento
 
         public void DeleteFuncionario(int id_func)
         {
-            string sql = "BEGIN TRANSACTION;" +
-                    "DELETE FROM contato WHERE id_ctt IN (SELECT id_ctt FROM funcionario WHERE id_func = @id_func) AND id_func = @id_func;" +
-                    "DELETE FROM endereco WHERE id_end IN (SELECT id_end FROM funcionario WHERE id_func = @id_func) AND id_func = @id_func;" +
-                    "DELETE FROM funcionario WHERE id_func = @id_func;" +
-                    //"ROLLBACK TRANSACTION;" +
-                    "COMMIT";
+            NpgsqlTransaction transaction = conn.BeginTransaction();
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            try
             {
-                cmd.Parameters.AddWithValue("@id_func", id_func);
-                cmd.ExecuteNonQuery();
+                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM endereco WHERE id_end = @id_func", conn, transaction);
+                command.Parameters.AddWithValue("@id_func", id_func);
+                command.ExecuteNonQuery();
+
+                command = new NpgsqlCommand("DELETE FROM contato WHERE id_ctt = @id_func", conn, transaction);
+                command.Parameters.AddWithValue("@id_func", id_func);
+                command.ExecuteNonQuery();
+
+                command = new NpgsqlCommand("DELETE FROM funcionario WHERE id_func = @id_func", conn, transaction);
+                command.Parameters.AddWithValue("@id_func", id_func);
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }
