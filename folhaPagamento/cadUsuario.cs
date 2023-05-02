@@ -107,18 +107,18 @@ namespace folhaPagamento
                 novoFuncionario.idade = idade;
                 // Variaveis Contato
                 novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
-                novoFuncionario.ddd = txtDdd.Text;
-                novoFuncionario.num_tel = txtTel.Text;
+                novoFuncionario.ddd = txtDDD.Text;
+                novoFuncionario.num_tel = txtTelefone.Text;
                 ;
 
                 // Adicionar o novo funcionário
                 connDAO.AddFuncionarioContato(
-                    novoFuncionario.nome, 
-                    novoFuncionario.cpf, 
-                    novoFuncionario.dt_nasc, 
-                    novoFuncionario.idade, 
-                    novoFuncionario.tipo, 
-                    novoFuncionario.ddd, 
+                    novoFuncionario.nome,
+                    novoFuncionario.cpf,
+                    novoFuncionario.dt_nasc,
+                    novoFuncionario.idade,
+                    novoFuncionario.tipo,
+                    novoFuncionario.ddd,
                     novoFuncionario.num_tel);
 
                 // Limpar os campos de entrada

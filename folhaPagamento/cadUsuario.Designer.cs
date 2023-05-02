@@ -62,6 +62,8 @@
             lblSaudacao = new Label();
             tabControl1 = new TabControl();
             tbInfos = new TabPage();
+            cbTipo = new ComboBox();
+            txtDDD = new TextBox();
             tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -382,6 +384,8 @@
             // 
             // tbInfos
             // 
+            tbInfos.Controls.Add(cbTipo);
+            tbInfos.Controls.Add(txtDDD);
             tbInfos.Controls.Add(pictureBox1);
             tbInfos.Controls.Add(txtNome);
             tbInfos.Controls.Add(dtpDataNasc);
@@ -400,6 +404,24 @@
             tbInfos.TabIndex = 0;
             tbInfos.Text = "Dados Pessoais";
             tbInfos.UseVisualStyleBackColor = true;
+            // 
+            // cbTipo
+            // 
+            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTipo.FormattingEnabled = true;
+            cbTipo.Items.AddRange(new object[] { "Cel", "Fixo", "Outro" });
+            cbTipo.Location = new Point(67, 232);
+            cbTipo.Name = "cbTipo";
+            cbTipo.Size = new Size(80, 23);
+            cbTipo.TabIndex = 34;
+            // 
+            // txtDDD
+            // 
+            txtDDD.Location = new Point(28, 232);
+            txtDDD.Name = "txtDDD";
+            txtDDD.PlaceholderText = "DDD";
+            txtDDD.Size = new Size(33, 23);
+            txtDDD.TabIndex = 12;
             // 
             // tabPage2
             // 
@@ -496,5 +518,7 @@
         private TabControl tabControl1;
         private TabPage tbInfos;
         private TabPage tabPage2;
+        private ComboBox cbTipo;
+        private TextBox txtDDD;
     }
 }
