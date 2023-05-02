@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Data;
+using Microsoft.Win32;
+using System.Drawing;
+using System.Security.Cryptography;
 
 namespace folhaPagamento
 {
-    public class Funcionarios :connDB
+    public class Funcionarios : connDB
     {
         private NpgsqlConnection conn;
         private List<Users> users;
@@ -26,9 +29,12 @@ namespace folhaPagamento
         public List<Users> GetAllFuncionarios()
         {
             this.users.Clear();
-            string sql = "SELECT funcionario.id_func, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, contato.tipo, contato.ddd, contato.num_tel " +
+            string sql = "SELECT funcionario.id_func, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, " +
+                         "contato.tipo, contato.ddd, contato.num_tel, " +
+                         "endereco.logradouro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado " +
                          "FROM funcionario " +
-                         "INNER JOIN contato ON funcionario.id_func = contato.id_ctt;";
+                         "INNER JOIN contato ON funcionario.id_func = contato.id_ctt " +
+                         "INNER JOIN endereco ON funcionario.id_func = endereco.id_end;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
@@ -41,9 +47,6 @@ namespace folhaPagamento
                         funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
                         funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
                         funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
-                        funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
-                        funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
-                        funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
                         if (!reader.IsDBNull(reader.GetOrdinal("idade")))
                         {
                             funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
@@ -52,8 +55,14 @@ namespace folhaPagamento
                         {
                             funcionario.idade = 32; // ou atribua um valor padrão
                         }
-
-
+                        funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
+                        funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
+                        funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
+                        funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
+                        funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
+                        funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
+                        funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
+                        funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
 
                         users.Add(funcionario);
                     }
@@ -62,7 +71,19 @@ namespace folhaPagamento
             return users;
         }
 
-        public void AddFuncionarioContato(string nome, string cpf, DateTime dt_nasc, int idade, string tipo, string ddd, string num_tel)
+        public void AddFuncionarioContatoEndereco(
+            string nome,
+            string cpf,
+            DateTime dt_nasc,
+            int idade,
+            string tipo,
+            string ddd,
+            string num_tel,
+            string logradouro,
+            int num_res,
+            string cep,
+            string cidade,
+            string estado)
         {
             string sql = "ROLLBACK;" +
                          "BEGIN;" +
@@ -71,6 +92,8 @@ namespace folhaPagamento
                          "RETURNING id_func;" +
                          "INSERT INTO contato (id_ctt, tipo, ddd, num_tel) " +
                          "VALUES (currval('funcionario_id_func_seq'), @tipo, @ddd, @num_tel);" +
+                         "INSERT INTO endereco (id_end, logradouro, num_res, cep, cidade, estado) " +
+                         "VALUES (currval('funcionario_id_func_seq'), @logradouro, @num_res, @cep, @cidade, @estado);" +
                          "COMMIT;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
@@ -82,6 +105,11 @@ namespace folhaPagamento
                 cmd.Parameters.AddWithValue("@tipo", tipo);
                 cmd.Parameters.AddWithValue("@ddd", ddd);
                 cmd.Parameters.AddWithValue("@num_tel", num_tel);
+                cmd.Parameters.AddWithValue("@logradouro", logradouro);
+                cmd.Parameters.AddWithValue("@num_res", num_res);
+                cmd.Parameters.AddWithValue("@cep", cep);
+                cmd.Parameters.AddWithValue("@cidade", cidade);
+                cmd.Parameters.AddWithValue("@estado", estado);
 
                 cmd.ExecuteNonQuery();
             }
@@ -105,16 +133,18 @@ namespace folhaPagamento
 
         public void DeleteFuncionario(int id_func)
         {
-            string sql = "DELETE FROM funcionario WHERE id_func = @id_func";
+            string sql = "BEGIN TRANSACTION;" +
+                    "DELETE FROM contato WHERE id_ctt IN (SELECT id_ctt FROM funcionario WHERE id_func = @id_func) AND id_func = @id_func;" +
+                    "DELETE FROM endereco WHERE id_end IN (SELECT id_end FROM funcionario WHERE id_func = @id_func) AND id_func = @id_func;" +
+                    "DELETE FROM funcionario WHERE id_func = @id_func;" +
+                    //"ROLLBACK TRANSACTION;" +
+                    "COMMIT";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
                 cmd.Parameters.AddWithValue("@id_func", id_func);
-
                 cmd.ExecuteNonQuery();
             }
         }
-
-
     }
 }

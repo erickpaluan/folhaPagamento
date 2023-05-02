@@ -65,6 +65,12 @@
             cbTipo = new ComboBox();
             txtDDD = new TextBox();
             tabPage2 = new TabPage();
+            tabPage1 = new TabPage();
+            txtLogr = new TextBox();
+            txtCidade = new TextBox();
+            txtCEP = new TextBox();
+            txtNum = new TextBox();
+            cbEstado = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -72,6 +78,7 @@
             tabControl1.SuspendLayout();
             tbInfos.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // dgUsuarios
@@ -376,6 +383,7 @@
             // 
             tabControl1.Controls.Add(tbInfos);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage1);
             tabControl1.Location = new Point(505, 88);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -441,6 +449,62 @@
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(cbEstado);
+            tabPage1.Controls.Add(txtNum);
+            tabPage1.Controls.Add(txtCEP);
+            tabPage1.Controls.Add(txtCidade);
+            tabPage1.Controls.Add(txtLogr);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(381, 285);
+            tabPage1.TabIndex = 2;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtLogr
+            // 
+            txtLogr.Location = new Point(6, 6);
+            txtLogr.Name = "txtLogr";
+            txtLogr.PlaceholderText = "LOGRADOURO";
+            txtLogr.Size = new Size(100, 23);
+            txtLogr.TabIndex = 0;
+            // 
+            // txtCidade
+            // 
+            txtCidade.Location = new Point(6, 93);
+            txtCidade.Name = "txtCidade";
+            txtCidade.PlaceholderText = "CIDADE";
+            txtCidade.Size = new Size(100, 23);
+            txtCidade.TabIndex = 1;
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(6, 64);
+            txtCEP.Name = "txtCEP";
+            txtCEP.PlaceholderText = "CEP";
+            txtCEP.Size = new Size(100, 23);
+            txtCEP.TabIndex = 2;
+            // 
+            // txtNum
+            // 
+            txtNum.Location = new Point(6, 35);
+            txtNum.Name = "txtNum";
+            txtNum.PlaceholderText = "NÚMERO";
+            txtNum.Size = new Size(100, 23);
+            txtNum.TabIndex = 3;
+            // 
+            // cbEstado
+            // 
+            cbEstado.FormattingEnabled = true;
+            cbEstado.Items.AddRange(new object[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
+            cbEstado.Location = new Point(112, 93);
+            cbEstado.Name = "cbEstado";
+            cbEstado.Size = new Size(46, 23);
+            cbEstado.TabIndex = 4;
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -473,6 +537,8 @@
             tbInfos.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -520,5 +586,11 @@
         private TabPage tabPage2;
         private ComboBox cbTipo;
         private TextBox txtDDD;
+        private TabPage tabPage1;
+        private ComboBox cbEstado;
+        private TextBox txtNum;
+        private TextBox txtCEP;
+        private TextBox txtCidade;
+        private TextBox txtLogr;
     }
 }
