@@ -31,23 +31,34 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             txtSalario = new TextBox();
             txtHoraExtra = new TextBox();
             txtValorHoraExtra = new TextBox();
-            txtSalarioBruto = new TextBox();
             txtDescINSS = new TextBox();
             txtDescIR = new TextBox();
-            txtSalarioLiquido = new TextBox();
+            dgvHolerite = new DataGridView();
+            btnCalcular = new Button();
+            lblCalcularSalarioHora = new Label();
+            lblCalcularValorHoraExtra = new Label();
+            lblCalcularSalarioBruto = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            lblCalcularSalarioLiquido = new Label();
+            lblCalcularDescontoIRPF = new Label();
+            lblCalcularDescontoINSS = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvHolerite).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(105, 62);
+            label1.Location = new Point(32, 266);
             label1.Name = "label1";
             label1.Size = new Size(88, 15);
             label1.TabIndex = 0;
@@ -57,7 +68,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(118, 91);
+            label2.Location = new Point(45, 295);
             label2.Name = "label2";
             label2.Size = new Size(75, 15);
             label2.TabIndex = 1;
@@ -67,27 +78,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(85, 123);
+            label3.Location = new Point(12, 327);
             label3.Name = "label3";
             label3.Size = new Size(108, 15);
             label3.TabIndex = 2;
             label3.Text = "Valor hora extra: R$";
             label3.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(100, 152);
-            label4.Name = "label4";
-            label4.Size = new Size(93, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Salário bruto: R$";
-            label4.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(90, 186);
+            label5.Location = new Point(232, 266);
             label5.Name = "label5";
             label5.Size = new Size(103, 15);
             label5.TabIndex = 4;
@@ -97,93 +98,212 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(91, 215);
+            label6.Location = new Point(233, 295);
             label6.Name = "label6";
             label6.Size = new Size(102, 15);
             label6.TabIndex = 5;
             label6.Text = "Desconto IRPF: R$";
             label6.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(92, 239);
-            label7.Name = "label7";
-            label7.Size = new Size(101, 15);
-            label7.TabIndex = 6;
-            label7.Text = "Salário líquido: R$";
-            label7.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // txtSalario
             // 
-            txtSalario.Location = new Point(199, 59);
+            txtSalario.Location = new Point(126, 263);
             txtSalario.Name = "txtSalario";
             txtSalario.Size = new Size(100, 23);
             txtSalario.TabIndex = 7;
             // 
             // txtHoraExtra
             // 
-            txtHoraExtra.Location = new Point(199, 88);
+            txtHoraExtra.Location = new Point(126, 292);
             txtHoraExtra.Name = "txtHoraExtra";
             txtHoraExtra.Size = new Size(100, 23);
             txtHoraExtra.TabIndex = 8;
             // 
             // txtValorHoraExtra
             // 
-            txtValorHoraExtra.Location = new Point(199, 120);
+            txtValorHoraExtra.Location = new Point(126, 324);
             txtValorHoraExtra.Name = "txtValorHoraExtra";
             txtValorHoraExtra.Size = new Size(100, 23);
             txtValorHoraExtra.TabIndex = 9;
             // 
-            // txtSalarioBruto
-            // 
-            txtSalarioBruto.Location = new Point(199, 149);
-            txtSalarioBruto.Name = "txtSalarioBruto";
-            txtSalarioBruto.Size = new Size(100, 23);
-            txtSalarioBruto.TabIndex = 10;
-            // 
             // txtDescINSS
             // 
-            txtDescINSS.Location = new Point(199, 178);
+            txtDescINSS.Location = new Point(341, 258);
             txtDescINSS.Name = "txtDescINSS";
             txtDescINSS.Size = new Size(100, 23);
             txtDescINSS.TabIndex = 11;
             // 
             // txtDescIR
             // 
-            txtDescIR.Location = new Point(199, 207);
+            txtDescIR.Location = new Point(341, 287);
             txtDescIR.Name = "txtDescIR";
             txtDescIR.Size = new Size(100, 23);
             txtDescIR.TabIndex = 12;
             // 
-            // txtSalarioLiquido
+            // dgvHolerite
             // 
-            txtSalarioLiquido.Location = new Point(199, 236);
-            txtSalarioLiquido.Name = "txtSalarioLiquido";
-            txtSalarioLiquido.Size = new Size(100, 23);
-            txtSalarioLiquido.TabIndex = 13;
+            dgvHolerite.AllowUserToAddRows = false;
+            dgvHolerite.AllowUserToDeleteRows = false;
+            dgvHolerite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvHolerite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHolerite.Location = new Point(12, 12);
+            dgvHolerite.Name = "dgvHolerite";
+            dgvHolerite.ReadOnly = true;
+            dgvHolerite.RowTemplate.Height = 25;
+            dgvHolerite.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvHolerite.Size = new Size(776, 234);
+            dgvHolerite.TabIndex = 14;
+            // 
+            // btnCalcular
+            // 
+            btnCalcular.Location = new Point(290, 324);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(151, 23);
+            btnCalcular.TabIndex = 15;
+            btnCalcular.Text = "Calcular Holerite";
+            btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
+            // 
+            // lblCalcularSalarioHora
+            // 
+            lblCalcularSalarioHora.AutoSize = true;
+            lblCalcularSalarioHora.Location = new Point(97, 381);
+            lblCalcularSalarioHora.Name = "lblCalcularSalarioHora";
+            lblCalcularSalarioHora.Size = new Size(111, 15);
+            lblCalcularSalarioHora.TabIndex = 16;
+            lblCalcularSalarioHora.Text = "CalcularSalarioHora";
+            // 
+            // lblCalcularValorHoraExtra
+            // 
+            lblCalcularValorHoraExtra.AutoSize = true;
+            lblCalcularValorHoraExtra.Location = new Point(80, 396);
+            lblCalcularValorHoraExtra.Name = "lblCalcularValorHoraExtra";
+            lblCalcularValorHoraExtra.Size = new Size(128, 15);
+            lblCalcularValorHoraExtra.TabIndex = 17;
+            lblCalcularValorHoraExtra.Text = "CalcularValorHoraExtra";
+            // 
+            // lblCalcularSalarioBruto
+            // 
+            lblCalcularSalarioBruto.AutoSize = true;
+            lblCalcularSalarioBruto.Location = new Point(94, 411);
+            lblCalcularSalarioBruto.Name = "lblCalcularSalarioBruto";
+            lblCalcularSalarioBruto.Size = new Size(114, 15);
+            lblCalcularSalarioBruto.TabIndex = 18;
+            lblCalcularSalarioBruto.Text = "CalcularSalarioBruto";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(233, 381);
+            label11.Name = "label11";
+            label11.Size = new Size(44, 15);
+            label11.TabIndex = 19;
+            label11.Text = "label11";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(233, 396);
+            label12.Name = "label12";
+            label12.Size = new Size(44, 15);
+            label12.TabIndex = 20;
+            label12.Text = "label12";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(233, 411);
+            label13.Name = "label13";
+            label13.Size = new Size(44, 15);
+            label13.TabIndex = 21;
+            label13.Text = "label13";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(530, 411);
+            label14.Name = "label14";
+            label14.Size = new Size(44, 15);
+            label14.TabIndex = 27;
+            label14.Text = "label14";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(530, 396);
+            label15.Name = "label15";
+            label15.Size = new Size(44, 15);
+            label15.TabIndex = 26;
+            label15.Text = "label15";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(530, 381);
+            label16.Name = "label16";
+            label16.Size = new Size(44, 15);
+            label16.TabIndex = 25;
+            label16.Text = "label16";
+            // 
+            // lblCalcularSalarioLiquido
+            // 
+            lblCalcularSalarioLiquido.AutoSize = true;
+            lblCalcularSalarioLiquido.Location = new Point(395, 411);
+            lblCalcularSalarioLiquido.Name = "lblCalcularSalarioLiquido";
+            lblCalcularSalarioLiquido.Size = new Size(125, 15);
+            lblCalcularSalarioLiquido.TabIndex = 24;
+            lblCalcularSalarioLiquido.Text = "CalcularSalarioLiquido";
+            // 
+            // lblCalcularDescontoIRPF
+            // 
+            lblCalcularDescontoIRPF.AutoSize = true;
+            lblCalcularDescontoIRPF.Location = new Point(397, 396);
+            lblCalcularDescontoIRPF.Name = "lblCalcularDescontoIRPF";
+            lblCalcularDescontoIRPF.Size = new Size(123, 15);
+            lblCalcularDescontoIRPF.TabIndex = 23;
+            lblCalcularDescontoIRPF.Text = "CalcularDescontoIRPF";
+            // 
+            // lblCalcularDescontoINSS
+            // 
+            lblCalcularDescontoINSS.AutoSize = true;
+            lblCalcularDescontoINSS.Location = new Point(396, 381);
+            lblCalcularDescontoINSS.Name = "lblCalcularDescontoINSS";
+            lblCalcularDescontoINSS.Size = new Size(124, 15);
+            lblCalcularDescontoINSS.TabIndex = 22;
+            lblCalcularDescontoINSS.Text = "CalcularDescontoINSS";
             // 
             // fHolerite
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(txtSalarioLiquido);
+            Controls.Add(label14);
+            Controls.Add(label15);
+            Controls.Add(label16);
+            Controls.Add(lblCalcularSalarioLiquido);
+            Controls.Add(lblCalcularDescontoIRPF);
+            Controls.Add(lblCalcularDescontoINSS);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(lblCalcularSalarioBruto);
+            Controls.Add(lblCalcularValorHoraExtra);
+            Controls.Add(lblCalcularSalarioHora);
+            Controls.Add(btnCalcular);
+            Controls.Add(dgvHolerite);
             Controls.Add(txtDescIR);
             Controls.Add(txtDescINSS);
-            Controls.Add(txtSalarioBruto);
             Controls.Add(txtValorHoraExtra);
             Controls.Add(txtHoraExtra);
             Controls.Add(txtSalario);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "fHolerite";
             Text = "fHolerite";
+            ((System.ComponentModel.ISupportInitialize)dgvHolerite).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,5 +324,19 @@
         private TextBox txtDescINSS;
         private TextBox txtDescIR;
         private TextBox txtSalarioLiquido;
+        private DataGridView dgvHolerite;
+        private Button btnCalcular;
+        private Label lblCalcularSalarioHora;
+        private Label lblCalcularValorHoraExtra;
+        private Label lblCalcularSalarioBruto;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label lblCalcularSalarioLiquido;
+        private Label lblCalcularDescontoIRPF;
+        private Label lblCalcularDescontoINSS;
     }
 }

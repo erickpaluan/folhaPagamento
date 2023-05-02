@@ -62,6 +62,7 @@
             button2.Text = "Holerite";
             button2.TextAlign = ContentAlignment.BottomCenter;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
