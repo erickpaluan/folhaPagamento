@@ -87,7 +87,7 @@ namespace folhaPagamento
                 MessageBoxIcon.Information);
             }
         }
-        private void button5_Click(object sender, EventArgs e) //Criar Funcionário
+        private void button5_Click(object sender, EventArgs e) //Criar Funcionário + Contato
         {
             DateTime dataNascimento = dtpDataNasc.Value;
             int idade = DateTime.Now.Year - dataNascimento.Year;
@@ -95,7 +95,6 @@ namespace folhaPagamento
             if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
             {
                 idade--;
-
             }
             try
             {
@@ -106,10 +105,21 @@ namespace folhaPagamento
                 //novoFuncionario.dt_nasc = dtpDataNasc.Value.ToString("yyyy-MM-dd");
                 novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 novoFuncionario.idade = idade;
+                // Variaveis Contato
+                novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
+                novoFuncionario.ddd = txtDdd.Text;
+                novoFuncionario.num_tel = txtTel.Text;
                 ;
 
                 // Adicionar o novo funcionário
-                connDAO.AddFuncionario(novoFuncionario.nome, novoFuncionario.cpf, novoFuncionario.dt_nasc, novoFuncionario.idade);
+                connDAO.AddFuncionarioContato(
+                    novoFuncionario.nome, 
+                    novoFuncionario.cpf, 
+                    novoFuncionario.dt_nasc, 
+                    novoFuncionario.idade, 
+                    novoFuncionario.tipo, 
+                    novoFuncionario.ddd, 
+                    novoFuncionario.num_tel);
 
                 // Limpar os campos de entrada
                 txtNome.Text = "";
@@ -126,31 +136,7 @@ namespace folhaPagamento
             {
                 MessageBox.Show("Erro ao cadastrar");
             }
-
         }
-
-        public void AtualizaTabela()
-        {
-
-            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
-            dgUsuarios.Refresh();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AtualizaTabela();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void pictureBox2_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Resources.arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN;
-        }
-
         private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
         {
             if (dgUsuarios.SelectedRows.Count > 0)
@@ -191,7 +177,27 @@ namespace folhaPagamento
                 MessageBox.Show("Erro!");
             }
         }
+        public void AtualizaTabela()
+        {
 
+            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            dgUsuarios.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AtualizaTabela();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Resources.arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN;
+        }
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
             pictureBox2.Image = Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;

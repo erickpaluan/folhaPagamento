@@ -13,5 +13,8 @@ namespace folhaPagamento
         public string cpf { get; set; }
         public DateTime dt_nasc { get; set; }
         public int idade { get; set; }
+        public string tipo { get; set; }
+        public string ddd { get; set; }
+        public string num_tel { get; set; }        
     }
 }

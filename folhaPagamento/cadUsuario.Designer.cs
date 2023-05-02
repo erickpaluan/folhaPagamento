@@ -45,7 +45,7 @@
             label4 = new Label();
             textBox3 = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            txtTel = new TextBox();
             dtpDataNasc = new DateTimePicker();
             label2 = new Label();
             label1 = new Label();
@@ -63,6 +63,8 @@
             tabControl1 = new TabControl();
             tbInfos = new TabPage();
             tabPage2 = new TabPage();
+            cbTipo = new ComboBox();
+            txtDdd = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -190,7 +192,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(txtTel);
             groupBox1.Location = new Point(22, 166);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(328, 77);
@@ -224,13 +226,13 @@
             label3.TabIndex = 9;
             label3.Text = "Telefone";
             // 
-            // textBox2
+            // txtTel
             // 
-            textBox2.Location = new Point(6, 37);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "TELEFONE";
-            textBox2.Size = new Size(119, 23);
-            textBox2.TabIndex = 8;
+            txtTel.Location = new Point(6, 37);
+            txtTel.Name = "txtTel";
+            txtTel.PlaceholderText = "TELEFONE";
+            txtTel.Size = new Size(119, 23);
+            txtTel.TabIndex = 8;
             // 
             // dtpDataNasc
             // 
@@ -414,10 +416,28 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(376, 285);
+            tabPage2.Size = new Size(381, 285);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cbTipo
+            // 
+            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTipo.FormattingEnabled = true;
+            cbTipo.Items.AddRange(new object[] { "Fixo", "Cel", "Outro" });
+            cbTipo.Location = new Point(250, 407);
+            cbTipo.Name = "cbTipo";
+            cbTipo.Size = new Size(116, 23);
+            cbTipo.TabIndex = 34;
+            // 
+            // txtDdd
+            // 
+            txtDdd.Location = new Point(250, 434);
+            txtDdd.Name = "txtDdd";
+            txtDdd.PlaceholderText = "DDD";
+            txtDdd.Size = new Size(119, 23);
+            txtDdd.TabIndex = 12;
             // 
             // cadUsuario
             // 
@@ -425,6 +445,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(906, 574);
+            Controls.Add(txtDdd);
+            Controls.Add(cbTipo);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
@@ -465,7 +487,7 @@
         private Label label4;
         private TextBox textBox3;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txtTel;
         private DateTimePicker dtpDataNasc;
         private Label label2;
         private Label label1;
@@ -496,5 +518,7 @@
         private TabControl tabControl1;
         private TabPage tbInfos;
         private TabPage tabPage2;
+        private ComboBox cbTipo;
+        private TextBox txtDdd;
     }
 }
