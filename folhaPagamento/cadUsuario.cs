@@ -38,6 +38,16 @@ namespace folhaPagamento
         private void cadUsuario_Load(object sender, EventArgs e)
         {
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+
+            dgUsuarios.Columns["id_func"].HeaderText = "ID";
+            dgUsuarios.Columns["nome"].HeaderText = "Nome do Funcionário";
+            dgUsuarios.Columns["cpf"].HeaderText = "CPF";
+            dgUsuarios.Columns["dt_nasc"].HeaderText = "Data de Nascimento";
+            dgUsuarios.Columns["tipo"].HeaderText = "Tipo telefone";
+            dgUsuarios.Columns["ddd"].HeaderText = "DDD";
+            dgUsuarios.Columns["num_tel"].HeaderText = "Número do Telefone";
+
+
         }
 
         private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)

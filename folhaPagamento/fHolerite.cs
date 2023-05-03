@@ -18,7 +18,7 @@ namespace folhaPagamento
             InitializeComponent();
 
             // Configura as colunas do DataGridView
-            dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
+            dgvHolerite.Columns.Add("SalarioBase", "sdfdvbcb");
             dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
             dgvHolerite.Columns.Add("ValorHoraExtra", "Valor Hora Extra");
             dgvHolerite.Columns.Add("SalarioBruto", "Salário Bruto");

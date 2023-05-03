@@ -28,7 +28,7 @@ namespace folhaPagamento
             this.users.Clear();
             string sql = "SELECT funcionario.id_func, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, contato.tipo, contato.ddd, contato.num_tel " +
                          "FROM funcionario " +
-                         "INNER JOIN contato ON funcionario.id_func = contato.id_ctt;";
+                         "RIGHT JOIN contato ON funcionario.id_func = contato.id_ctt;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
@@ -106,6 +106,7 @@ namespace folhaPagamento
         public void DeleteFuncionario(int id_func)
         {
             string sql = "DELETE FROM funcionario WHERE id_func = @id_func";
+            
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
