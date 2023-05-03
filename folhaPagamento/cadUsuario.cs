@@ -232,14 +232,70 @@ namespace folhaPagamento
                     idade--;
 
                 }
-
+                // Criar um novo objeto Users com os valores dos campos de entrada
                 Users funcionarioEditado = new Users();
                 funcionarioEditado.nome = txtNome.Text;
+                funcionarioEditado.ativo = chbAtivo.Checked;
                 funcionarioEditado.cpf = txtCPF.Text;
                 funcionarioEditado.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 funcionarioEditado.idade = idade;
+                funcionarioEditado.sexo = cbSexo.SelectedItem.ToString();
+                funcionarioEditado.estado_civil = cbEstado_civil.SelectedItem.ToString();
+                funcionarioEditado.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                funcionarioEditado.cargo = txtCargo.Text;
+                funcionarioEditado.matricula = txtMatricula.Text;
+                funcionarioEditado.conv_med = chbConv_med.Checked;
+                funcionarioEditado.conv_odon = chbConv_odon.Checked;
+                funcionarioEditado.login = txtLogin.Text;
+                funcionarioEditado.senha = txtSenha.Text;
 
-                connDAO.UpdateFuncionario(funcionarioEditado.nome, funcionarioEditado.cpf, funcionarioEditado.dt_nasc, funcionarioEditado.idade, id_func);
+                // Variaveis Contato
+                funcionarioEditado.email = txtEmail.Text;
+                funcionarioEditado.tipo = cbTipo.SelectedItem.ToString();
+                funcionarioEditado.ddd = txtDDD.Text;
+                funcionarioEditado.num_tel = txtTelefone.Text;
+
+                // Variaveis Endereço
+                funcionarioEditado.logradouro = txtLogr.Text;
+                int num_res;
+                if (Int32.TryParse(txtNum.Text, out num_res))
+                {
+                    funcionarioEditado.num_res = num_res;
+                }
+                else
+                {
+                    MessageBox.Show("Impossível converter");
+                }
+                funcionarioEditado.bairro = txtBairro.Text;
+                funcionarioEditado.cep = txtCEP.Text;
+                funcionarioEditado.cidade = txtCidade.Text;
+                funcionarioEditado.estado = cbEstado.SelectedItem.ToString();
+
+                connDAO.UpdateFuncionario(
+                funcionarioEditado.ativo,
+                funcionarioEditado.nome,
+                funcionarioEditado.cpf,
+                funcionarioEditado.dt_nasc,
+                funcionarioEditado.idade,
+                funcionarioEditado.sexo,
+                funcionarioEditado.estado_civil,
+                funcionarioEditado.dt_adm,
+                funcionarioEditado.cargo,
+                funcionarioEditado.matricula,
+                funcionarioEditado.conv_med,
+                funcionarioEditado.conv_odon,
+                funcionarioEditado.login,
+                funcionarioEditado.senha,
+                funcionarioEditado.email,
+                funcionarioEditado.tipo,
+                funcionarioEditado.ddd,
+                funcionarioEditado.num_tel,
+                funcionarioEditado.logradouro,
+                funcionarioEditado.bairro,
+                funcionarioEditado.num_res,
+                funcionarioEditado.cep,
+                funcionarioEditado.cidade,
+                funcionarioEditado.estado);
 
                 txtNome.Text = "";
                 txtCPF.Text = "";
