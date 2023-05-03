@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cadUsuario));
             dgUsuarios = new DataGridView();
             checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
+            chbAtivo = new CheckBox();
             label9 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            dtpDtAdm = new DateTimePicker();
             label8 = new Label();
             textBox6 = new TextBox();
             label7 = new Label();
-            textBox5 = new TextBox();
-            comboBox1 = new ComboBox();
+            txtCargo = new TextBox();
+            cbEstado_civil = new ComboBox();
             pictureBox1 = new PictureBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
@@ -57,28 +57,35 @@
             btnExcluir = new Button();
             btnAdicionar = new Button();
             label10 = new Label();
-            btnDependentes = new Button();
             pictureBox2 = new PictureBox();
             lblSaudacao = new Label();
             tabControl1 = new TabControl();
             tbInfos = new TabPage();
+            label11 = new Label();
+            cbSexo = new ComboBox();
             cbTipo = new ComboBox();
             txtDDD = new TextBox();
-            tabPage2 = new TabPage();
             tabPage1 = new TabPage();
+            txtBairro = new TextBox();
             cbEstado = new ComboBox();
             txtNum = new TextBox();
             txtCEP = new TextBox();
             txtCidade = new TextBox();
             txtLogr = new TextBox();
+            tabPage2 = new TabPage();
+            chbConv_odon = new CheckBox();
+            chbConv_med = new CheckBox();
+            txtLogin = new TextBox();
+            txtSenha = new TextBox();
+            txtMatricula = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
             tbInfos.SuspendLayout();
-            tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // dgUsuarios
@@ -104,15 +111,15 @@
             checkBox3.Text = "Administrador";
             checkBox3.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chbAtivo
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(155, 80);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(54, 19);
-            checkBox2.TabIndex = 25;
-            checkBox2.Text = "Ativo";
-            checkBox2.UseVisualStyleBackColor = true;
+            chbAtivo.AutoSize = true;
+            chbAtivo.Location = new Point(155, 80);
+            chbAtivo.Name = "chbAtivo";
+            chbAtivo.Size = new Size(54, 19);
+            chbAtivo.TabIndex = 25;
+            chbAtivo.Text = "Ativo";
+            chbAtivo.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -123,13 +130,13 @@
             label9.TabIndex = 26;
             label9.Text = "Data Admissão";
             // 
-            // dateTimePicker2
+            // dtpDtAdm
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(18, 75);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(131, 23);
-            dateTimePicker2.TabIndex = 25;
+            dtpDtAdm.Format = DateTimePickerFormat.Short;
+            dtpDtAdm.Location = new Point(18, 75);
+            dtpDtAdm.Name = "dtpDtAdm";
+            dtpDtAdm.Size = new Size(131, 23);
+            dtpDtAdm.TabIndex = 25;
             // 
             // label8
             // 
@@ -157,23 +164,23 @@
             label7.TabIndex = 13;
             label7.Text = "Cargo";
             // 
-            // textBox5
+            // txtCargo
             // 
-            textBox5.Location = new Point(18, 31);
-            textBox5.Name = "textBox5";
-            textBox5.PlaceholderText = "CARGO";
-            textBox5.Size = new Size(191, 23);
-            textBox5.TabIndex = 12;
+            txtCargo.Location = new Point(18, 31);
+            txtCargo.Name = "txtCargo";
+            txtCargo.PlaceholderText = "CARGO";
+            txtCargo.Size = new Size(191, 23);
+            txtCargo.TabIndex = 12;
             // 
-            // comboBox1
+            // cbEstado_civil
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Solteiro (a)", "Casado (a)", "Viúvo (a)", "Divorciado (a)" });
-            comboBox1.Location = new Point(234, 111);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(116, 23);
-            comboBox1.TabIndex = 21;
+            cbEstado_civil.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEstado_civil.FormattingEnabled = true;
+            cbEstado_civil.Items.AddRange(new object[] { "Solteiro", "Casado", "Viúvo", "Divorciado" });
+            cbEstado_civil.Location = new Point(234, 111);
+            cbEstado_civil.Name = "cbEstado_civil";
+            cbEstado_civil.Size = new Size(116, 23);
+            cbEstado_civil.TabIndex = 21;
             // 
             // pictureBox1
             // 
@@ -188,7 +195,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(159, 111);
+            label5.Location = new Point(160, 119);
             label5.Name = "label5";
             label5.Size = new Size(68, 15);
             label5.TabIndex = 20;
@@ -346,16 +353,6 @@
             label10.TabIndex = 32;
             label10.Text = "label10";
             // 
-            // btnDependentes
-            // 
-            btnDependentes.Location = new Point(254, 249);
-            btnDependentes.Name = "btnDependentes";
-            btnDependentes.Size = new Size(96, 23);
-            btnDependentes.TabIndex = 33;
-            btnDependentes.Text = "Dependentes";
-            btnDependentes.UseVisualStyleBackColor = true;
-            btnDependentes.Click += button1_Click;
-            // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
@@ -392,13 +389,14 @@
             // 
             // tbInfos
             // 
+            tbInfos.Controls.Add(label11);
+            tbInfos.Controls.Add(cbSexo);
             tbInfos.Controls.Add(cbTipo);
             tbInfos.Controls.Add(txtDDD);
             tbInfos.Controls.Add(pictureBox1);
             tbInfos.Controls.Add(txtNome);
             tbInfos.Controls.Add(dtpDataNasc);
-            tbInfos.Controls.Add(btnDependentes);
-            tbInfos.Controls.Add(comboBox1);
+            tbInfos.Controls.Add(cbEstado_civil);
             tbInfos.Controls.Add(label2);
             tbInfos.Controls.Add(lblNome);
             tbInfos.Controls.Add(label1);
@@ -412,6 +410,25 @@
             tbInfos.TabIndex = 0;
             tbInfos.Text = "Dados Pessoais";
             tbInfos.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(196, 148);
+            label11.Name = "label11";
+            label11.Size = new Size(32, 15);
+            label11.TabIndex = 36;
+            label11.Text = "Sexo";
+            // 
+            // cbSexo
+            // 
+            cbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSexo.FormattingEnabled = true;
+            cbSexo.Items.AddRange(new object[] { "M", "F", "O" });
+            cbSexo.Location = new Point(234, 140);
+            cbSexo.Name = "cbSexo";
+            cbSexo.Size = new Size(116, 23);
+            cbSexo.TabIndex = 35;
             // 
             // cbTipo
             // 
@@ -431,26 +448,9 @@
             txtDDD.Size = new Size(33, 23);
             txtDDD.TabIndex = 12;
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(checkBox3);
-            tabPage2.Controls.Add(label7);
-            tabPage2.Controls.Add(checkBox2);
-            tabPage2.Controls.Add(textBox5);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Controls.Add(textBox6);
-            tabPage2.Controls.Add(dateTimePicker2);
-            tabPage2.Controls.Add(label8);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(381, 285);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Dados Profissionais";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtBairro);
             tabPage1.Controls.Add(cbEstado);
             tabPage1.Controls.Add(txtNum);
             tabPage1.Controls.Add(txtCEP);
@@ -463,6 +463,14 @@
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Informações de Contato";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtBairro
+            // 
+            txtBairro.Location = new Point(6, 122);
+            txtBairro.Name = "txtBairro";
+            txtBairro.PlaceholderText = "BAIRRO";
+            txtBairro.Size = new Size(100, 23);
+            txtBairro.TabIndex = 5;
             // 
             // cbEstado
             // 
@@ -505,6 +513,73 @@
             txtLogr.Size = new Size(100, 23);
             txtLogr.TabIndex = 0;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(chbConv_odon);
+            tabPage2.Controls.Add(chbConv_med);
+            tabPage2.Controls.Add(txtLogin);
+            tabPage2.Controls.Add(txtSenha);
+            tabPage2.Controls.Add(txtMatricula);
+            tabPage2.Controls.Add(checkBox3);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(chbAtivo);
+            tabPage2.Controls.Add(txtCargo);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(textBox6);
+            tabPage2.Controls.Add(dtpDtAdm);
+            tabPage2.Controls.Add(label8);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(381, 285);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dados Profissionais";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chbConv_odon
+            // 
+            chbConv_odon.AutoSize = true;
+            chbConv_odon.Location = new Point(18, 188);
+            chbConv_odon.Name = "chbConv_odon";
+            chbConv_odon.Size = new Size(154, 19);
+            chbConv_odon.TabIndex = 32;
+            chbConv_odon.Text = "Convênio Odontológico";
+            chbConv_odon.UseVisualStyleBackColor = true;
+            // 
+            // chbConv_med
+            // 
+            chbConv_med.AutoSize = true;
+            chbConv_med.Location = new Point(18, 163);
+            chbConv_med.Name = "chbConv_med";
+            chbConv_med.Size = new Size(120, 19);
+            chbConv_med.TabIndex = 31;
+            chbConv_med.Text = "Convênio Médico";
+            chbConv_med.UseVisualStyleBackColor = true;
+            // 
+            // txtLogin
+            // 
+            txtLogin.Location = new Point(18, 134);
+            txtLogin.Name = "txtLogin";
+            txtLogin.PlaceholderText = "LOGIN";
+            txtLogin.Size = new Size(131, 23);
+            txtLogin.TabIndex = 30;
+            // 
+            // txtSenha
+            // 
+            txtSenha.Location = new Point(155, 134);
+            txtSenha.Name = "txtSenha";
+            txtSenha.PlaceholderText = "SENHA";
+            txtSenha.Size = new Size(149, 23);
+            txtSenha.TabIndex = 29;
+            // 
+            // txtMatricula
+            // 
+            txtMatricula.Location = new Point(18, 105);
+            txtMatricula.Name = "txtMatricula";
+            txtMatricula.PlaceholderText = "MATRICULA";
+            txtMatricula.Size = new Size(191, 23);
+            txtMatricula.TabIndex = 28;
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -535,10 +610,10 @@
             tabControl1.ResumeLayout(false);
             tbInfos.ResumeLayout(false);
             tbInfos.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -546,7 +621,7 @@
         #endregion
         private DataGridView dgUsuarios;
         private GroupBox groupBox2;
-        private ComboBox comboBox1;
+        private ComboBox cbEstado_civil;
         private PictureBox pictureBox1;
         private Label label5;
         private GroupBox groupBox1;
@@ -567,18 +642,17 @@
         private NumericUpDown numericUpDown1;
         private TextBox textBox4;
         private CheckBox checkBox3;
-        private CheckBox checkBox2;
+        private CheckBox chbAtivo;
         private Label label9;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpDtAdm;
         private Label label8;
         private TextBox textBox6;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox txtCargo;
         private Button button3;
         private Button btnExcluir;
         private Button btnAdicionar;
         private Label label10;
-        private Button btnDependentes;
         private PictureBox pictureBox2;
         private Label lblSaudacao;
         private TabControl tabControl1;
@@ -592,5 +666,13 @@
         private TextBox txtCEP;
         private TextBox txtCidade;
         private TextBox txtLogr;
+        private TextBox txtBairro;
+        private TextBox txtMatricula;
+        private TextBox txtLogin;
+        private TextBox txtSenha;
+        private CheckBox chbConv_odon;
+        private CheckBox chbConv_med;
+        private Label label11;
+        private ComboBox cbSexo;
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using folhaPagamento.Properties;
+using Microsoft.VisualBasic.Logging;
 using Npgsql;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -54,20 +55,40 @@ namespace folhaPagamento
         {
             if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
             {
-                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex];
+                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
+                // Dados funcionario
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
                 label10.Text = id_func.ToString();
+                bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
+                chbAtivo.Checked = ativo;
                 txtNome.Text = row.Cells["nome"].Value.ToString();
                 txtCPF.Text = row.Cells["cpf"].Value.ToString();
                 dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
-                //cbTipo.
+                cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
+                cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
+                //dtpDtAdm.Value = DateTime.ParseExact(row.Cells["dt_adm"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                txtCargo.Text = row.Cells["cargo"].Value.ToString();
+                txtMatricula.Text = row.Cells["matricula"].Value.ToString();
+                bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
+                chbConv_med.Checked = conv_med;
+                bool conv_odon = row.Cells["conv_odon"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_odon"].Value) : false;
+                chbConv_odon.Checked = conv_odon;
+                txtLogin.Text = row.Cells["Login"].Value.ToString();
+                txtSenha.Text = row.Cells["Senha"].Value.ToString();
+
+                // Dados Contato
+                cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
+                txtEmail.Text = row.Cells["email"].Value.ToString();
                 txtDDD.Text = row.Cells["DDD"].Value.ToString();
                 txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
+
+                // Dados endereço
                 txtLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                cbEstado.Text = row.Cells["estado"].Value.ToString();
                 txtNum.Text = row.Cells["num_res"].Value.ToString();
+                txtBairro.Text = row.Cells["bairro"].Value.ToString();
                 txtCEP.Text = row.Cells["CEP"].Value.ToString();
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
-                //cdEstado.
             }
         }
 
@@ -112,14 +133,26 @@ namespace folhaPagamento
                 // Criar um novo objeto Users com os valores dos campos de entrada
                 Users novoFuncionario = new Users();
                 novoFuncionario.nome = txtNome.Text;
+                novoFuncionario.ativo = chbAtivo.Checked;
                 novoFuncionario.cpf = txtCPF.Text;
-                //novoFuncionario.dt_nasc = dtpDataNasc.Value.ToString("yyyy-MM-dd");
                 novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 novoFuncionario.idade = idade;
+                novoFuncionario.sexo = cbSexo.SelectedItem.ToString();
+                novoFuncionario.estado_civil = cbEstado_civil.SelectedItem.ToString();
+                novoFuncionario.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                novoFuncionario.cargo = txtCargo.Text;
+                novoFuncionario.matricula = txtMatricula.Text;
+                novoFuncionario.conv_med = chbConv_med.Checked;
+                novoFuncionario.conv_odon = chbConv_odon.Checked;
+                novoFuncionario.login = txtLogin.Text;
+                novoFuncionario.senha = txtSenha.Text;
+
                 // Variaveis Contato
+                novoFuncionario.email = txtEmail.Text;
                 novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
                 novoFuncionario.ddd = txtDDD.Text;
                 novoFuncionario.num_tel = txtTelefone.Text;
+
                 // Variaveis Endereço
                 novoFuncionario.logradouro = txtLogr.Text;
                 int num_res;
@@ -131,6 +164,7 @@ namespace folhaPagamento
                 {
                     MessageBox.Show("Impossível converter");
                 }
+                novoFuncionario.bairro = txtBairro.Text;
                 novoFuncionario.cep = txtCEP.Text;
                 novoFuncionario.cidade = txtCidade.Text;
                 novoFuncionario.estado = cbEstado.SelectedItem.ToString();
@@ -138,14 +172,26 @@ namespace folhaPagamento
 
                 // Adicionar o novo funcionário
                 connDAO.AddFuncionarioContatoEndereco(
+                    novoFuncionario.ativo,
                     novoFuncionario.nome,
                     novoFuncionario.cpf,
                     novoFuncionario.dt_nasc,
                     novoFuncionario.idade,
+                    novoFuncionario.sexo,
+                    novoFuncionario.estado_civil,
+                    novoFuncionario.dt_adm,
+                    novoFuncionario.cargo,
+                    novoFuncionario.matricula,
+                    novoFuncionario.conv_med,
+                    novoFuncionario.conv_odon,
+                    novoFuncionario.login,
+                    novoFuncionario.senha,
+                    novoFuncionario.email,
                     novoFuncionario.tipo,
                     novoFuncionario.ddd,
                     novoFuncionario.num_tel,
                     novoFuncionario.logradouro,
+                    novoFuncionario.bairro,
                     novoFuncionario.num_res,
                     novoFuncionario.cep,
                     novoFuncionario.cidade,
