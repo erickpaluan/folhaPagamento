@@ -50,7 +50,7 @@ namespace folhaPagamento
 
         }
 
-        private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e) //Joga dados textbox
         {
             if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
             {
@@ -60,7 +60,14 @@ namespace folhaPagamento
                 txtNome.Text = row.Cells["nome"].Value.ToString();
                 txtCPF.Text = row.Cells["cpf"].Value.ToString();
                 dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
-
+                //cbTipo.
+                txtDDD.Text = row.Cells["DDD"].Value.ToString();
+                txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
+                txtLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                txtNum.Text = row.Cells["num_res"].Value.ToString();
+                txtCEP.Text = row.Cells["CEP"].Value.ToString();
+                txtCidade.Text = row.Cells["Cidade"].Value.ToString();
+                //cdEstado.
             }
         }
 
@@ -81,13 +88,7 @@ namespace folhaPagamento
 
                     connDAO.DeleteFuncionario(id_func);
 
-                    txtNome.Text = "";
-                    txtCPF.Text = "";
-                    dtpDataNasc.Value = DateTime.Now;
-
-
                     MessageBox.Show("Funcionário deletado com sucesso!!");
-                    dgUsuarios.Refresh();
                 }
             }
             else
@@ -97,7 +98,7 @@ namespace folhaPagamento
                 MessageBoxIcon.Information);
             }
         }
-        private void button5_Click(object sender, EventArgs e) //Criar Funcionário + Contato
+        private void button5_Click(object sender, EventArgs e) //Criar Funcionário + Contato + Endereço
         {
             DateTime dataNascimento = dtpDataNasc.Value;
             int idade = DateTime.Now.Year - dataNascimento.Year;
@@ -119,17 +120,36 @@ namespace folhaPagamento
                 novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
                 novoFuncionario.ddd = txtDDD.Text;
                 novoFuncionario.num_tel = txtTelefone.Text;
-                ;
+                // Variaveis Endereço
+                novoFuncionario.logradouro = txtLogr.Text;
+                int num_res;
+                if (Int32.TryParse(txtNum.Text, out num_res))
+                {
+                    novoFuncionario.num_res = num_res;
+                }
+                else
+                {
+                    MessageBox.Show("Impossível converter");
+                }
+                novoFuncionario.cep = txtCEP.Text;
+                novoFuncionario.cidade = txtCidade.Text;
+                novoFuncionario.estado = cbEstado.SelectedItem.ToString();
+
 
                 // Adicionar o novo funcionário
-                connDAO.AddFuncionarioContato(
+                connDAO.AddFuncionarioContatoEndereco(
                     novoFuncionario.nome,
                     novoFuncionario.cpf,
                     novoFuncionario.dt_nasc,
                     novoFuncionario.idade,
                     novoFuncionario.tipo,
                     novoFuncionario.ddd,
-                    novoFuncionario.num_tel);
+                    novoFuncionario.num_tel,
+                    novoFuncionario.logradouro,
+                    novoFuncionario.num_res,
+                    novoFuncionario.cep,
+                    novoFuncionario.cidade,
+                    novoFuncionario.estado);
 
                 // Limpar os campos de entrada
                 txtNome.Text = "";
@@ -142,10 +162,10 @@ namespace folhaPagamento
 
                 MessageBox.Show("Cadastrado com sucesso!");
             }
-            catch
-            {
-                MessageBox.Show("Erro ao cadastrar");
+            catch(Exception ex) {
+                MessageBox.Show("Erro ao cadastrar" + ex.Message);
             }
+                
         }
         private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
         {
