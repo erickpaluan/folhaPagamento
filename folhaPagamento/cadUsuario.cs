@@ -162,10 +162,11 @@ namespace folhaPagamento
 
                 MessageBox.Show("Cadastrado com sucesso!");
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro ao cadastrar" + ex.Message);
             }
-                
+
         }
         private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
         {

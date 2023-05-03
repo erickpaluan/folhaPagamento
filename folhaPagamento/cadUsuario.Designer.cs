@@ -66,11 +66,11 @@
             txtDDD = new TextBox();
             tabPage2 = new TabPage();
             tabPage1 = new TabPage();
-            txtLogr = new TextBox();
-            txtCidade = new TextBox();
-            txtCEP = new TextBox();
-            txtNum = new TextBox();
             cbEstado = new ComboBox();
+            txtNum = new TextBox();
+            txtCEP = new TextBox();
+            txtCidade = new TextBox();
+            txtLogr = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -382,8 +382,8 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tbInfos);
-            tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
             tabControl1.Location = new Point(505, 88);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -461,40 +461,8 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(381, 285);
             tabPage1.TabIndex = 2;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Informações de Contato";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // txtLogr
-            // 
-            txtLogr.Location = new Point(6, 6);
-            txtLogr.Name = "txtLogr";
-            txtLogr.PlaceholderText = "LOGRADOURO";
-            txtLogr.Size = new Size(100, 23);
-            txtLogr.TabIndex = 0;
-            // 
-            // txtCidade
-            // 
-            txtCidade.Location = new Point(6, 93);
-            txtCidade.Name = "txtCidade";
-            txtCidade.PlaceholderText = "CIDADE";
-            txtCidade.Size = new Size(100, 23);
-            txtCidade.TabIndex = 1;
-            // 
-            // txtCEP
-            // 
-            txtCEP.Location = new Point(6, 64);
-            txtCEP.Name = "txtCEP";
-            txtCEP.PlaceholderText = "CEP";
-            txtCEP.Size = new Size(100, 23);
-            txtCEP.TabIndex = 2;
-            // 
-            // txtNum
-            // 
-            txtNum.Location = new Point(6, 35);
-            txtNum.Name = "txtNum";
-            txtNum.PlaceholderText = "NÚMERO";
-            txtNum.Size = new Size(100, 23);
-            txtNum.TabIndex = 3;
             // 
             // cbEstado
             // 
@@ -504,6 +472,38 @@
             cbEstado.Name = "cbEstado";
             cbEstado.Size = new Size(46, 23);
             cbEstado.TabIndex = 4;
+            // 
+            // txtNum
+            // 
+            txtNum.Location = new Point(6, 35);
+            txtNum.Name = "txtNum";
+            txtNum.PlaceholderText = "NÚMERO";
+            txtNum.Size = new Size(100, 23);
+            txtNum.TabIndex = 3;
+            // 
+            // txtCEP
+            // 
+            txtCEP.Location = new Point(6, 64);
+            txtCEP.Name = "txtCEP";
+            txtCEP.PlaceholderText = "CEP";
+            txtCEP.Size = new Size(100, 23);
+            txtCEP.TabIndex = 2;
+            // 
+            // txtCidade
+            // 
+            txtCidade.Location = new Point(6, 93);
+            txtCidade.Name = "txtCidade";
+            txtCidade.PlaceholderText = "CIDADE";
+            txtCidade.Size = new Size(100, 23);
+            txtCidade.TabIndex = 1;
+            // 
+            // txtLogr
+            // 
+            txtLogr.Location = new Point(6, 6);
+            txtLogr.Name = "txtLogr";
+            txtLogr.PlaceholderText = "LOGRADOURO";
+            txtLogr.Size = new Size(100, 23);
+            txtLogr.TabIndex = 0;
             // 
             // cadUsuario
             // 
