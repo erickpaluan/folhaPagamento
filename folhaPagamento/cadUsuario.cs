@@ -89,6 +89,11 @@ namespace folhaPagamento
                     connDAO.DeleteFuncionario(id_func);
 
                     MessageBox.Show("Funcionário deletado com sucesso!!");
+
+                    dgUsuarios.DataSource = null;
+                    dgUsuarios.Rows.Clear();
+                    dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+
                 }
             }
             else

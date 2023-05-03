@@ -33,6 +33,7 @@
             txtSenha = new TextBox();
             label2 = new Label();
             btnLogin = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -70,13 +71,23 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(184, 139);
+            btnLogin.Location = new Point(156, 139);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(103, 71);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += button1_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(50, 139);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 23);
+            button1.TabIndex = 5;
+            button1.Text = "Sair do Sistema";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // login
             // 
@@ -84,6 +95,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(332, 222);
             ControlBox = false;
+            Controls.Add(button1);
             Controls.Add(btnLogin);
             Controls.Add(txtSenha);
             Controls.Add(label2);
@@ -103,5 +115,6 @@
         private TextBox txtSenha;
         private Label label2;
         private Button btnLogin;
+        private Button button1;
     }
 }

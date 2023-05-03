@@ -137,6 +137,10 @@ namespace folhaPagamento
 
             try
             {
+                if(conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
                 NpgsqlCommand command = new NpgsqlCommand("DELETE FROM endereco WHERE id_end = @id_func", conn, transaction);
                 command.Parameters.AddWithValue("@id_func", id_func);
                 command.ExecuteNonQuery();

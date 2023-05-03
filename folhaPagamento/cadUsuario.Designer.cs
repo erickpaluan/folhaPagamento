@@ -64,21 +64,21 @@
             tbInfos = new TabPage();
             cbTipo = new ComboBox();
             txtDDD = new TextBox();
-            tabPage2 = new TabPage();
             tabPage1 = new TabPage();
             cbEstado = new ComboBox();
             txtNum = new TextBox();
             txtCEP = new TextBox();
             txtCidade = new TextBox();
             txtLogr = new TextBox();
+            tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
             tbInfos.SuspendLayout();
-            tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // dgUsuarios
@@ -322,6 +322,7 @@
             btnExcluir.TabIndex = 30;
             btnExcluir.Text = "Excluir";
             btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnExcluir.UseMnemonic = false;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
@@ -431,24 +432,6 @@
             txtDDD.Size = new Size(33, 23);
             txtDDD.TabIndex = 12;
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(checkBox3);
-            tabPage2.Controls.Add(label7);
-            tabPage2.Controls.Add(checkBox2);
-            tabPage2.Controls.Add(textBox5);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Controls.Add(textBox6);
-            tabPage2.Controls.Add(dateTimePicker2);
-            tabPage2.Controls.Add(label8);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(381, 285);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Dados Profissionais";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cbEstado);
@@ -505,6 +488,24 @@
             txtLogr.Size = new Size(100, 23);
             txtLogr.TabIndex = 0;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(checkBox3);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(checkBox2);
+            tabPage2.Controls.Add(textBox5);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(textBox6);
+            tabPage2.Controls.Add(dateTimePicker2);
+            tabPage2.Controls.Add(label8);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(381, 285);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dados Profissionais";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -526,6 +527,7 @@
             Name = "cadUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Funcionários";
+            WindowState = FormWindowState.Maximized;
             Load += cadUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -535,10 +537,10 @@
             tabControl1.ResumeLayout(false);
             tbInfos.ResumeLayout(false);
             tbInfos.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

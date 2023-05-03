@@ -31,14 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ponto));
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
+            txtCPF = new TextBox();
             groupBox2 = new GroupBox();
             lblData = new Label();
             label5 = new Label();
             lblHora = new Label();
             label2 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
+            txtNome = new TextBox();
             button1 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
@@ -47,21 +47,22 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtCPF);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(336, 73);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "ID FUNCIONARIO";
+            groupBox1.Text = "CPF";
             // 
-            // textBox1
+            // txtCPF
             // 
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(6, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(324, 33);
-            textBox1.TabIndex = 1;
+            txtCPF.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCPF.Location = new Point(6, 22);
+            txtCPF.Name = "txtCPF";
+            txtCPF.Size = new Size(324, 33);
+            txtCPF.TabIndex = 1;
+            txtCPF.TextChanged += textBox1_TextChanged;
             // 
             // groupBox2
             // 
@@ -70,7 +71,7 @@
             groupBox2.Controls.Add(lblHora);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(txtNome);
             groupBox2.Location = new Point(12, 91);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(336, 208);
@@ -125,13 +126,14 @@
             label1.TabIndex = 2;
             label1.Text = "Nome";
             // 
-            // textBox2
+            // txtNome
             // 
-            textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(6, 55);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(324, 33);
-            textBox2.TabIndex = 1;
+            txtNome.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNome.Location = new Point(6, 55);
+            txtNome.Name = "txtNome";
+            txtNome.ReadOnly = true;
+            txtNome.Size = new Size(324, 33);
+            txtNome.TabIndex = 1;
             // 
             // button1
             // 
@@ -176,14 +178,14 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox textBox1;
+        private TextBox txtCPF;
         private GroupBox groupBox2;
         private Label lblData;
         private Label label5;
         private Label lblHora;
         private Label label2;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox txtNome;
         private Button button1;
         private System.Windows.Forms.Timer timer1;
     }

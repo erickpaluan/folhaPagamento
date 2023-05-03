@@ -25,7 +25,7 @@ namespace folhaPagamento
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
+
             string login = txtUsuario.Text.Trim();
             string senha = txtSenha.Text.Trim();
 
@@ -49,6 +49,11 @@ namespace folhaPagamento
                     MessageBox.Show("Usuário ou Senha Inválido.");
                 }
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
