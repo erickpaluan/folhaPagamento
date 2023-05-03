@@ -18,7 +18,7 @@ namespace folhaPagamento
             InitializeComponent();
 
             // Configura as colunas do DataGridView
-            dgvHolerite.Columns.Add("SalarioBase", "sdfdvbcb");
+            dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
             dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
             dgvHolerite.Columns.Add("ValorHoraExtra", "Valor Hora Extra");
             dgvHolerite.Columns.Add("SalarioBruto", "Salário Bruto");
@@ -43,12 +43,17 @@ namespace folhaPagamento
             // Cria uma nova instância da classe Funcionario
             Holerite holerite = new Holerite();
 
+            double pINSS = double.Parse(txtDescINSS.Text);;
+            double pIRPF = double.Parse(txtDescINSS.Text);
+            double porcentagemINSS = pINSS / 100.0;
+            double porcentagemIRPF = pIRPF / 100.0;
+
             // Atribui os valores das propriedades do funcionário
             holerite.SalarioBase = decimal.Parse(txtSalario.Text);
             holerite.HorasExtras = decimal.Parse(txtHoraExtra.Text);
             holerite.ValorHoraExtra = decimal.Parse(txtValorHoraExtra.Text);
-            holerite.DescontoINSS = decimal.Parse(txtDescINSS.Text);
-            holerite.DescontoIRPF = decimal.Parse(txtDescIR.Text);
+            holerite.DescontoINSS = Convert.ToDecimal(porcentagemINSS);
+            holerite.DescontoIRPF = Convert.ToDecimal(porcentagemIRPF);
 
             // Adiciona uma nova linha ao DataGridView com as informações do holerite
             dgvHolerite.Rows.Add(holerite.SalarioBase.ToString("C2"),
