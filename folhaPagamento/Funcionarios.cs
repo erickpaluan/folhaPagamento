@@ -30,9 +30,11 @@ namespace folhaPagamento
         public List<Users> GetAllFuncionarios() // mostra dados datagridview
         {
             this.users.Clear();
-            string sql = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, funcionario.login, funcionario.senha, " +
+            string sql = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, " +
+                         "funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, " +
+                         "funcionario.login, funcionario.senha, funcionario.salario, funcionario.adm, " +
                          "contato.email, contato.tipo, contato.ddd, contato.num_tel, " +
-                         "endereco.logradouro, endereco.bairro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado " +
+                         "endereco.logradouro, endereco.rua, endereco.complemento, endereco.bairro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado " +
                          "FROM funcionario " +
                          "INNER JOIN contato ON funcionario.id_func = contato.id_ctt " +
                          "INNER JOIN endereco ON funcionario.id_func = endereco.id_end;";
@@ -46,88 +48,22 @@ namespace folhaPagamento
                         // Dados funcionario
                         Users funcionario = new Users();
                         funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
-                        if (!reader.IsDBNull(reader.GetOrdinal("ativo")))
-                        {
-                            funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
-                        }
-                        else
-                        {
-                            funcionario.ativo = false; // ou atribua outro valor padrão
-                        }
-
+                        funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
                         funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
                         funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
                         funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
-                        if (!reader.IsDBNull(reader.GetOrdinal("idade")))
-                        {
-                            funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
-                        }
-                        else
-                        {
-                            funcionario.idade = 32; // ou atribua um valor padrão
-                        }
-                        if (!reader.IsDBNull(reader.GetOrdinal("sexo")))
-                        {
-                            funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
-                        }
-                        else
-                        {
-                            funcionario.sexo = string.Empty; // ou atribua outro valor padrão
-                        }
-                        if (!reader.IsDBNull(reader.GetOrdinal("estado_civil")))
-                        {
-                            funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
-                        }
-                        else
-                        {
-                            funcionario.estado_civil = string.Empty; // ou atribua outro valor padrão
-                        }
-
-                        if (!reader.IsDBNull(reader.GetOrdinal("dt_adm")))
-                        {
-                            funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
-                        }
-                        else
-                        {
-                            funcionario.dt_adm = DateTime.MinValue; // ou atribua outro valor padrão
-                        }
-                        if (!reader.IsDBNull(reader.GetOrdinal("cargo")))
-                        {
-                            funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
-                        }
-                        else
-                        {
-                            funcionario.cargo= string.Empty; // ou atribua outro valor padrão
-                        }
-                        if (!reader.IsDBNull(reader.GetOrdinal("matricula")))
-                        {
-                            funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
-                        }
-                        else
-                        {
-                            funcionario.matricula = string.Empty; // ou atribua outro valor padrão
-                        }
-
-                        if (!reader.IsDBNull(reader.GetOrdinal("conv_med")))
-                        {
-                            funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
-                        }
-                        else
-                        {
-                            funcionario.conv_med = false; // ou atribua outro valor padrão
-                        }
-
-                        if (!reader.IsDBNull(reader.GetOrdinal("conv_odon")))
-                        {
-                            funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
-                        }
-                        else
-                        {
-                            funcionario.conv_odon = false; // ou atribua outro valor padrão
-                        }
-
+                        funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
+                        funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
+                        funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
+                        funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
+                        funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
+                        funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
+                        funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
+                        funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
                         funcionario.login = reader.GetString(reader.GetOrdinal("login"));
                         funcionario.senha = reader.GetString(reader.GetOrdinal("senha"));
+                        funcionario.salario = reader.GetFloat(reader.GetOrdinal("salario"));
+                        funcionario.adm = reader.GetBoolean(reader.GetOrdinal("adm"));
 
                         // Dados contato
                         funcionario.email = reader.GetString(reader.GetOrdinal("email"));
@@ -137,6 +73,8 @@ namespace folhaPagamento
 
                         // Dados endereco
                         funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
+                        funcionario.rua = reader.GetString(reader.GetOrdinal("rua"));
+                        funcionario.complemento = reader.IsDBNull(reader.GetOrdinal("complemento")) ? string.Empty : reader.GetString(reader.GetOrdinal("complemento"));
                         funcionario.bairro = reader.GetString(reader.GetOrdinal("bairro"));
                         funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
                         funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
@@ -149,6 +87,7 @@ namespace folhaPagamento
             }
             return users;
         }
+
 
         public void AddFuncionarioContatoEndereco(
             bool ativo,
@@ -165,11 +104,15 @@ namespace folhaPagamento
             bool conv_odon,
             string login,
             string senha,
+            float salario,
+            bool adm,
             string email,
             string tipo, 
             string ddd, 
             string num_tel, 
-            string logradouro, 
+            string logradouro,
+            string rua,
+            string complemento,
             string bairro,
             int num_res, 
             string cep, 
@@ -178,13 +121,13 @@ namespace folhaPagamento
         {
             string sql = "ROLLBACK;" +
                          "BEGIN;" +
-                         "INSERT INTO funcionario (ativo, nome, cpf, dt_nasc, idade, sexo, estado_civil, dt_adm, cargo, matricula, conv_med, conv_odon, login, senha) " +
-                         "VALUES (@ativo, @nome, @cpf, @dt_nasc, @idade, @sexo, @estado_civil, @dt_adm, @cargo, @matricula, @conv_med, @conv_odon, @login, @senha) " +
+                         "INSERT INTO funcionario (ativo, nome, cpf, dt_nasc, idade, sexo, estado_civil, dt_adm, cargo, matricula, conv_med, conv_odon, login, senha, salario, adm) " +
+                         "VALUES (@ativo, @nome, @cpf, @dt_nasc, @idade, @sexo, @estado_civil, @dt_adm, @cargo, @matricula, @conv_med, @conv_odon, @login, @senha, @salario, @adm) " +
                          "RETURNING id_func;" +
                          "INSERT INTO contato (id_ctt, email, tipo, ddd, num_tel) " +
                          "VALUES (currval('funcionario_id_func_seq'), @email, @tipo, @ddd, @num_tel);" +
-                         "INSERT INTO endereco (id_end, logradouro, bairro, num_res, cep, cidade, estado) " +
-                         "VALUES (currval('funcionario_id_func_seq'), @bairro, @logradouro, @num_res, @cep, @cidade, @estado);" +
+                         "INSERT INTO endereco (id_end, logradouro, rua, complemento, bairro, num_res, cep, cidade, estado) " +
+                         "VALUES (currval('funcionario_id_func_seq'), @logradouro, @rua, @complemento, @bairro, @num_res, @cep, @cidade, @estado);" +
                          "COMMIT;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
@@ -203,11 +146,15 @@ namespace folhaPagamento
                 cmd.Parameters.AddWithValue("@conv_odon", conv_odon);
                 cmd.Parameters.AddWithValue("@login", login);
                 cmd.Parameters.AddWithValue("@senha", senha);
+                cmd.Parameters.AddWithValue("@salario", salario);
+                cmd.Parameters.AddWithValue("@adm", adm);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@tipo", tipo);
                 cmd.Parameters.AddWithValue("@ddd", ddd);
                 cmd.Parameters.AddWithValue("@num_tel", num_tel);
                 cmd.Parameters.AddWithValue("@logradouro", logradouro);
+                cmd.Parameters.AddWithValue("@rua", rua);
+                cmd.Parameters.AddWithValue("@complemento", complemento);
                 cmd.Parameters.AddWithValue("@bairro", bairro);
                 cmd.Parameters.AddWithValue("@num_res", num_res);
                 cmd.Parameters.AddWithValue("@cep", cep);
@@ -234,11 +181,15 @@ namespace folhaPagamento
             bool conv_odon,
             string login,
             string senha,
+            float salario,
+            bool adm,
             string email,
             string tipo,
             string ddd,
             string num_tel,
             string logradouro,
+            string rua,
+            string complemento,
             string bairro,
             int num_res,
             string cep,
@@ -252,7 +203,7 @@ namespace folhaPagamento
                     // Inserindo na tabela funcionario
                     string sqlfuncionario = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade, ativo = @ativo, sexo = @sexo, " +
                         "estado_civil = @estado_civil, dt_adm = @dt_adm, cargo = @cargo, matricula = @matricula, conv_med = @conv_med, conv_odon = @conv_odon, " +
-                        "login = @login, senha = @senha " +
+                        "login = @login, senha = @senha, salario = @salario, adm = @adm " +
                         "WHERE id_func = @id_func";
 
                     using (NpgsqlCommand cmdFuncionario = new NpgsqlCommand(sqlfuncionario, conn))
@@ -271,18 +222,22 @@ namespace folhaPagamento
                         cmdFuncionario.Parameters.AddWithValue("@conv_odon", conv_odon);
                         cmdFuncionario.Parameters.AddWithValue("@login", login);
                         cmdFuncionario.Parameters.AddWithValue("@senha", senha);
+                        cmdFuncionario.Parameters.AddWithValue("@salario", salario);
+                        cmdFuncionario.Parameters.AddWithValue("@adm", adm);
 
                         cmdFuncionario.ExecuteNonQuery();
                     }
 
                     // Inserindo na tabela endereco
-                    string sqlendereco = "UPDATE endereco SET logradouro = @logradouro, bairro = @bairro, num_res = @num_res, cep = @cep, cidade = @cidade, estado = @estado " +
+                    string sqlendereco = "UPDATE endereco SET logradouro = @logradouro, rua = @rua, complemento = @complemento, bairro = @bairro, num_res = @num_res, cep = @cep, cidade = @cidade, estado = @estado " +
                         "WHERE id_end = @id_func";
 
                     using (NpgsqlCommand cmdEndereco = new NpgsqlCommand(sqlendereco, conn))
                     {
                         cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
                         cmdEndereco.Parameters.AddWithValue("@logradouro", logradouro);
+                        cmdEndereco.Parameters.AddWithValue("@rua", rua);
+                        cmdEndereco.Parameters.AddWithValue("@complemento", complemento);
                         cmdEndereco.Parameters.AddWithValue("@bairro", bairro);
                         cmdEndereco.Parameters.AddWithValue("@num_res", num_res);
                         cmdEndereco.Parameters.AddWithValue("@cep", cep);
