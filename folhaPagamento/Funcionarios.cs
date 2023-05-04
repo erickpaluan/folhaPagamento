@@ -219,6 +219,7 @@ namespace folhaPagamento
         }
 
         public void UpdateFuncionario(
+            int id_func,
             bool ativo,
             string nome,
             string cpf,
@@ -244,36 +245,76 @@ namespace folhaPagamento
             string cidade,
             string estado)
         {
-            string sql = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade WHERE id_func = @id_func";
-
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            using (NpgsqlTransaction transaction = conn.BeginTransaction())
             {
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@ativo", ativo);
-                cmd.Parameters.AddWithValue("@cpf", cpf);
-                cmd.Parameters.AddWithValue("@dt_nasc", dt_nasc);
-                cmd.Parameters.AddWithValue("@idade", idade);
-                cmd.Parameters.AddWithValue("@sexo", sexo);
-                cmd.Parameters.AddWithValue("@estado_civil", estado_civil);
-                cmd.Parameters.AddWithValue("@dt_adm", dt_adm);
-                cmd.Parameters.AddWithValue("@cargo", cargo);
-                cmd.Parameters.AddWithValue("@matricula", matricula);
-                cmd.Parameters.AddWithValue("@conv_med", conv_med);
-                cmd.Parameters.AddWithValue("@conv_odon", conv_odon);
-                cmd.Parameters.AddWithValue("@login", login);
-                cmd.Parameters.AddWithValue("@senha", senha);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@tipo", tipo);
-                cmd.Parameters.AddWithValue("@ddd", ddd);
-                cmd.Parameters.AddWithValue("@num_tel", num_tel);
-                cmd.Parameters.AddWithValue("@logradouro", logradouro);
-                cmd.Parameters.AddWithValue("@bairro", bairro);
-                cmd.Parameters.AddWithValue("@num_res", num_res);
-                cmd.Parameters.AddWithValue("@cep", cep);
-                cmd.Parameters.AddWithValue("@cidade", cidade);
-                cmd.Parameters.AddWithValue("@estado", estado);
+                try
+                {
+                    // Inserindo na tabela funcionario
+                    string sqlfuncionario = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade, ativo = @ativo, sexo = @sexo, " +
+                        "estado_civil = @estado_civil, dt_adm = @dt_adm, cargo = @cargo, matricula = @matricula, conv_med = @conv_med, conv_odon = @conv_odon, " +
+                        "login = @login, senha = @senha " +
+                        "WHERE id_func = @id_func";
 
-                cmd.ExecuteNonQuery();
+                    using (NpgsqlCommand cmdFuncionario = new NpgsqlCommand(sqlfuncionario, conn))
+                    {
+                        cmdFuncionario.Parameters.AddWithValue("@id_func", id_func);
+                        cmdFuncionario.Parameters.AddWithValue("@nome", nome);
+                        cmdFuncionario.Parameters.AddWithValue("@ativo", ativo);
+                        cmdFuncionario.Parameters.AddWithValue("@cpf", cpf);
+                        cmdFuncionario.Parameters.AddWithValue("@dt_nasc", dt_nasc);
+                        cmdFuncionario.Parameters.AddWithValue("@sexo", sexo);
+                        cmdFuncionario.Parameters.AddWithValue("@estado_civil", estado_civil);
+                        cmdFuncionario.Parameters.AddWithValue("@dt_adm", dt_adm);
+                        cmdFuncionario.Parameters.AddWithValue("@cargo", cargo);
+                        cmdFuncionario.Parameters.AddWithValue("@matricula", matricula);
+                        cmdFuncionario.Parameters.AddWithValue("@conv_med", conv_med);
+                        cmdFuncionario.Parameters.AddWithValue("@conv_odon", conv_odon);
+                        cmdFuncionario.Parameters.AddWithValue("@login", login);
+                        cmdFuncionario.Parameters.AddWithValue("@senha", senha);
+                    }
+
+                    // Inserindo na tabela endereco
+                    string sqlendereco = "UPDATE endereco SET logradouro = @logradouro, bairro = @bairro, num_res = @num_res, cep = @cep, cidade = @cidade, estado = @estado " +
+                        "WHERE id_end = @id_func";
+
+                    using (NpgsqlCommand cmdEndereco = new NpgsqlCommand(sqlendereco, conn))
+                    {
+                        cmdEndereco.Parameters.AddWithValue("id_func", id_func);
+                        cmdEndereco.Parameters.AddWithValue("@logradouro", logradouro);
+                        cmdEndereco.Parameters.AddWithValue("@bairro", bairro);
+                        cmdEndereco.Parameters.AddWithValue("@num_res", num_res);
+                        cmdEndereco.Parameters.AddWithValue("@cep", cep);
+                        cmdEndereco.Parameters.AddWithValue("@cidade", cidade);
+                        cmdEndereco.Parameters.AddWithValue("@estado", estado);
+
+                        cmdEndereco.ExecuteNonQuery();
+                    }
+
+                    // Inserindo na tabela contato
+                    string sqlcontato = "UPDATE contato SET email = @email, tipo = @tipo, ddd = @ddd, num_tel = @num_tel " +
+                        "WHERE id_ctt = @id_func";
+
+                    using (NpgsqlCommand cmdContato = new NpgsqlCommand(sqlcontato, conn))
+                    {
+                        cmdContato.Parameters.AddWithValue("@id_func", id_func);
+                        cmdContato.Parameters.AddWithValue("@email", email);
+                        cmdContato.Parameters.AddWithValue("@tipo", tipo);
+                        cmdContato.Parameters.AddWithValue("@ddd", ddd);
+                        cmdContato.Parameters.AddWithValue("@num_tel", num_tel);
+
+                        cmdContato.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 

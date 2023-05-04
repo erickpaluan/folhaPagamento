@@ -272,6 +272,7 @@ namespace folhaPagamento
                 funcionarioEditado.estado = cbEstado.SelectedItem.ToString();
 
                 connDAO.UpdateFuncionario(
+                funcionarioEditado.id_func,
                 funcionarioEditado.ativo,
                 funcionarioEditado.nome,
                 funcionarioEditado.cpf,
