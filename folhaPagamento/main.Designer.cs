@@ -141,6 +141,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             FormBorderStyle=FormBorderStyle.FixedSingle;
+            Icon=(Icon)resources.GetObject("$this.Icon");
             MaximizeBox=false;
             Name="main";
             StartPosition=FormStartPosition.CenterScreen;

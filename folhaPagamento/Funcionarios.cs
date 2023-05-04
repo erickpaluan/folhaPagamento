@@ -275,6 +275,7 @@ namespace folhaPagamento
             }
         }
 
+
         public void DeleteFuncionario(int id_func)
         {
             NpgsqlTransaction transaction = conn.BeginTransaction();
