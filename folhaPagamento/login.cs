@@ -35,7 +35,7 @@ namespace folhaPagamento
 
                     string login = txtUsuario.Text.Trim();
                     string senha = txtSenha.Text.Trim();
-                    string nome = Session.Username;
+                    //string nome = Session.Username;
 
                     string query = "SELECT COUNT(*) FROM funcionario WHERE login = @login AND senha = @senha";
                     string nomeQuery = "SELECT nome FROM funcionario WHERE login = @login AND senha = @senha";
@@ -43,7 +43,7 @@ namespace folhaPagamento
                     NpgsqlCommand command = new NpgsqlCommand(query, conn);
                     command.Parameters.AddWithValue("@login", login);
                     command.Parameters.AddWithValue("@senha", senha);
-                    command.Parameters.AddWithValue("@nome", nome);
+                    //command.Parameters.AddWithValue("@nome", nome);
                     long count = (long)command.ExecuteScalar();
 
                     if (count > 0)
@@ -63,7 +63,7 @@ namespace folhaPagamento
 
 
 
-                        MessageBox.Show("Bem-vindo ao Sistema" + Session.Username);
+                        MessageBox.Show("Bem-vindo ao Sistema");
                         this.Close();
                     }
 
