@@ -234,6 +234,7 @@ namespace folhaPagamento
                 }
                 // Criar um novo objeto Users com os valores dos campos de entrada
                 Users funcionarioEditado = new Users();
+                funcionarioEditado.id_func = id_func;
                 funcionarioEditado.nome = txtNome.Text;
                 funcionarioEditado.ativo = chbAtivo.Checked;
                 funcionarioEditado.cpf = txtCPF.Text;

@@ -271,6 +271,8 @@ namespace folhaPagamento
                         cmdFuncionario.Parameters.AddWithValue("@conv_odon", conv_odon);
                         cmdFuncionario.Parameters.AddWithValue("@login", login);
                         cmdFuncionario.Parameters.AddWithValue("@senha", senha);
+
+                        cmdFuncionario.ExecuteNonQuery();
                     }
 
                     // Inserindo na tabela endereco
@@ -279,7 +281,7 @@ namespace folhaPagamento
 
                     using (NpgsqlCommand cmdEndereco = new NpgsqlCommand(sqlendereco, conn))
                     {
-                        cmdEndereco.Parameters.AddWithValue("id_func", id_func);
+                        cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
                         cmdEndereco.Parameters.AddWithValue("@logradouro", logradouro);
                         cmdEndereco.Parameters.AddWithValue("@bairro", bairro);
                         cmdEndereco.Parameters.AddWithValue("@num_res", num_res);
