@@ -153,13 +153,13 @@ namespace folhaPagamento
                 novoFuncionario.login = txtLogin.Text;
                 novoFuncionario.senha = txtSenha.Text;
                 float salario;
-                if (float.TryParse(txtSalario.Text, out salario))
+                if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
                 {
                     novoFuncionario.salario = salario;
                 }
                 else
                 {
-                    MessageBox.Show("Impossível converter");
+                    MessageBox.Show("Valor de salário inválido.");
                 }
                 novoFuncionario.adm = chbAdm.Checked;
 
@@ -272,7 +272,7 @@ namespace folhaPagamento
                 funcionarioEditado.login = txtLogin.Text;
                 funcionarioEditado.senha = txtSenha.Text;
                 float salario;
-                if (float.TryParse(txtSalario.Text, out salario))
+                if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
                 {
                     funcionarioEditado.salario = salario;
                 }
