@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,7 +67,7 @@ namespace folhaPagamento
                 dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
                 cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
                 cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
-                //dtpDtAdm.Value = DateTime.ParseExact(row.Cells["dt_adm"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dtpDtAdm.Text = ((DateTime)row.Cells["dt_adm"].Value).ToString();
                 txtCargo.Text = row.Cells["cargo"].Value.ToString();
                 txtMatricula.Text = row.Cells["matricula"].Value.ToString();
                 bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
@@ -75,6 +76,9 @@ namespace folhaPagamento
                 chbConv_odon.Checked = conv_odon;
                 txtLogin.Text = row.Cells["Login"].Value.ToString();
                 txtSenha.Text = row.Cells["Senha"].Value.ToString();
+                txtSalario.Text = row.Cells["salario"].Value.ToString();
+                bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
+                chbAdm.Checked = adm;
 
                 // Dados Contato
                 cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
@@ -83,7 +87,9 @@ namespace folhaPagamento
                 txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
 
                 // Dados endereço
-                txtLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                cbLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                txtRua.Text = row.Cells["rua"].Value.ToString();
+                txtComplemento.Text = row.Cells["complemento"].Value.ToString();
                 cbEstado.Text = row.Cells["estado"].Value.ToString();
                 txtNum.Text = row.Cells["num_res"].Value.ToString();
                 txtBairro.Text = row.Cells["bairro"].Value.ToString();
@@ -146,6 +152,16 @@ namespace folhaPagamento
                 novoFuncionario.conv_odon = chbConv_odon.Checked;
                 novoFuncionario.login = txtLogin.Text;
                 novoFuncionario.senha = txtSenha.Text;
+                float salario;
+                if (float.TryParse(txtSalario.Text, out salario))
+                {
+                    novoFuncionario.salario = salario;
+                }
+                else
+                {
+                    MessageBox.Show("Impossível converter");
+                }
+                novoFuncionario.adm = chbAdm.Checked;
 
                 // Variaveis Contato
                 novoFuncionario.email = txtEmail.Text;
@@ -154,7 +170,9 @@ namespace folhaPagamento
                 novoFuncionario.num_tel = txtTelefone.Text;
 
                 // Variaveis Endereço
-                novoFuncionario.logradouro = txtLogr.Text;
+                novoFuncionario.logradouro = cbLogr.SelectedItem.ToString();
+                novoFuncionario.rua = txtRua.Text;
+                novoFuncionario.complemento = txtComplemento.Text;
                 int num_res;
                 if (Int32.TryParse(txtNum.Text, out num_res))
                 {
@@ -186,11 +204,15 @@ namespace folhaPagamento
                     novoFuncionario.conv_odon,
                     novoFuncionario.login,
                     novoFuncionario.senha,
+                    novoFuncionario.salario,
+                    novoFuncionario.adm,
                     novoFuncionario.email,
                     novoFuncionario.tipo,
                     novoFuncionario.ddd,
                     novoFuncionario.num_tel,
                     novoFuncionario.logradouro,
+                    novoFuncionario.rua,
+                    novoFuncionario.complemento,
                     novoFuncionario.bairro,
                     novoFuncionario.num_res,
                     novoFuncionario.cep,
@@ -249,6 +271,16 @@ namespace folhaPagamento
                 funcionarioEditado.conv_odon = chbConv_odon.Checked;
                 funcionarioEditado.login = txtLogin.Text;
                 funcionarioEditado.senha = txtSenha.Text;
+                float salario;
+                if (float.TryParse(txtSalario.Text, out salario))
+                {
+                    funcionarioEditado.salario = salario;
+                }
+                else
+                {
+                    MessageBox.Show("Impossível converter");
+                }
+                funcionarioEditado.adm = chbAdm.Checked;
 
                 // Variaveis Contato
                 funcionarioEditado.email = txtEmail.Text;
@@ -257,7 +289,9 @@ namespace folhaPagamento
                 funcionarioEditado.num_tel = txtTelefone.Text;
 
                 // Variaveis Endereço
-                funcionarioEditado.logradouro = txtLogr.Text;
+                funcionarioEditado.logradouro = cbLogr.SelectedItem.ToString();
+                funcionarioEditado.rua = txtRua.Text;
+                funcionarioEditado.complemento = txtComplemento.Text;
                 int num_res;
                 if (Int32.TryParse(txtNum.Text, out num_res))
                 {
@@ -288,11 +322,15 @@ namespace folhaPagamento
                 funcionarioEditado.conv_odon,
                 funcionarioEditado.login,
                 funcionarioEditado.senha,
+                funcionarioEditado.salario,
+                funcionarioEditado.adm,
                 funcionarioEditado.email,
                 funcionarioEditado.tipo,
                 funcionarioEditado.ddd,
                 funcionarioEditado.num_tel,
                 funcionarioEditado.logradouro,
+                funcionarioEditado.rua,
+                funcionarioEditado.complemento,
                 funcionarioEditado.bairro,
                 funcionarioEditado.num_res,
                 funcionarioEditado.cep,
@@ -336,6 +374,20 @@ namespace folhaPagamento
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
             pictureBox2.Image = Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtCEP_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

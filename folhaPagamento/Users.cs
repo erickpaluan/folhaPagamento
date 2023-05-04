@@ -23,6 +23,8 @@ namespace folhaPagamento
         public bool conv_odon { get; set; }
         public string login { get; set; }
         public string senha { get; set; }
+        public float salario { get; set; }
+        public bool adm { get; set; }
         
         //Variaveis Contato
         public string email { get; set; }
@@ -32,7 +34,9 @@ namespace folhaPagamento
 
         //Variaveis Endereço
         public string logradouro { get; set; }
+        public string rua { get; set; }
         public int num_res { get; set; }
+        public string complemento { get; set; }
         public string bairro { get; set; }
         public string cep { get; set; }
         public string cidade { get; set; }
