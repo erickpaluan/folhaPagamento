@@ -17,7 +17,7 @@ namespace folhaPagamento
     {
 
         private Funcionarios connDAO { get; set; }
-        public static UserSession Session { get; set; }
+        public UserSession Session { get; set; }
         private NpgsqlConnection conn;
         public login()
         {
@@ -35,42 +35,28 @@ namespace folhaPagamento
 
                     string login = txtUsuario.Text.Trim();
                     string senha = txtSenha.Text.Trim();
-                    //string nome = Session.Username;
 
-                    string query = "SELECT COUNT(*) FROM funcionario WHERE login = @login AND senha = @senha";
-                    string nomeQuery = "SELECT nome FROM funcionario WHERE login = @login AND senha = @senha";
-                    string admQuery = "SELECT adm FROM funcionario WHERE login = @login AND senha = @senha";
+                    string query = "SELECT nome, adm FROM funcionario WHERE login = @login AND senha = @senha";
                     NpgsqlCommand command = new NpgsqlCommand(query, conn);
                     command.Parameters.AddWithValue("@login", login);
                     command.Parameters.AddWithValue("@senha", senha);
-                    //command.Parameters.AddWithValue("@nome", nome);
-                    long count = (long)command.ExecuteScalar();
 
-                    if (count > 0)
+                    NpgsqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows && reader.Read())
                     {
-                        command = new NpgsqlCommand(nomeQuery, conn);
-                        command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@senha", senha);
-                        //string nome = command.ExecuteScalar().ToString();
-
-                        //Session.Username = nome;
-                        
-
-                        command = new NpgsqlCommand(admQuery, conn);
-                        command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@senha", senha);
-                        //bool isAdmin = Convert.ToBoolean(command.ExecuteScalar());
-
-
-
+                        //Session.Username = reader.GetString(1);
+                        //Session.IsAdmin = reader.GetBoolean("adm");
+                        reader.Close();
                         MessageBox.Show("Bem-vindo ao Sistema");
                         this.Close();
                     }
-
                     else
                     {
                         MessageBox.Show("Usuário ou Senha Inválido.");
                     }
+
+
                 }
                 catch (Exception ex)
                 {
