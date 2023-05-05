@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace folhaPagamento
 {
@@ -55,6 +56,17 @@ namespace folhaPagamento
 
                 // Define o nome do funcionário no TextBox correspondente
                 txtNome.Text = nome;
+            }
+        }
+
+        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                System.Windows.Forms.ToolTip tooltip = new System.Windows.Forms.ToolTip();
+                tooltip.SetToolTip(txtCPF, "Digite apenas números");
+                tooltip.Show("Digite apenas números", txtCPF, 0, txtCPF.Height, 2000);
             }
         }
     }
