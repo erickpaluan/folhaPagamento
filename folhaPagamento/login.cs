@@ -73,7 +73,7 @@ namespace folhaPagamento
                             // Redireciona o usuário para a página principal do aplicativo
                             Session.Username = nomeUsuario;
                             Session.IsAdmin = false;
-                            main_user main_user = new main_user();
+                            main_user main_user = new main_user(session);
                             main_user.Show();
                         }
                     }
