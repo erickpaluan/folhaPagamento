@@ -18,6 +18,7 @@ namespace folhaPagamento
         public ponto()
         {
             InitializeComponent();
+
         }
 
         private void ponto_Load(object sender, EventArgs e)
@@ -49,13 +50,19 @@ namespace folhaPagamento
                 // Cria um objeto NpgsqlCommand com a consulta e os parâmetros
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 command.Parameters.AddWithValue("@cpf", cpf);
-
-                // Executa a consulta e recupera o nome do funcionário correspondente
-                string nome = (string)command.ExecuteScalar();
-
-                // Define o nome do funcionário no TextBox correspondente
-                txtNome.Text = nome;
             }
+        }
+
+        public void btnSalvarPonto_Click(object sender, EventArgs e)
+        {
+            Registro novoRegistro = new Registro();
+            novoRegistro.cpf_ponto = txtCPF.Text;
+            novoRegistro.data = DateTime.Now;
+            novoRegistro.hora = DateTime.Now;
+
+            //PontoDAO.RegistrarPonto(novoRegistro.cpf_ponto, novoRegistro.data, novoRegistro.hora);
+
+            MessageBox.Show("Marcação de ponto registrada com sucesso!");
         }
     }
 }
