@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components=new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             button1=new Button();
             button2=new Button();
@@ -37,7 +38,11 @@
             pictureBox1=new PictureBox();
             button5=new Button();
             button6=new Button();
+            contextMenuStrip1=new ContextMenuStrip(components);
+            testeToolStripMenuItem=new ToolStripMenuItem();
+            sairDoSistemaToolStripMenuItem=new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -107,6 +112,7 @@
             pictureBox1.SizeMode=PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex=7;
             pictureBox1.TabStop=false;
+            pictureBox1.MouseDown+=pictureBox1_MouseDown;
             // 
             // button5
             // 
@@ -125,6 +131,24 @@
             button6.TabIndex=9;
             button6.Text="Importar / exportar";
             button6.UseVisualStyleBackColor=true;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { testeToolStripMenuItem, sairDoSistemaToolStripMenuItem });
+            contextMenuStrip1.Name="contextMenuStrip1";
+            contextMenuStrip1.Size=new Size(155, 48);
+            // 
+            // testeToolStripMenuItem
+            // 
+            testeToolStripMenuItem.Name="testeToolStripMenuItem";
+            testeToolStripMenuItem.Size=new Size(154, 22);
+            testeToolStripMenuItem.Text="Teste";
+            // 
+            // sairDoSistemaToolStripMenuItem
+            // 
+            sairDoSistemaToolStripMenuItem.Name="sairDoSistemaToolStripMenuItem";
+            sairDoSistemaToolStripMenuItem.Size=new Size(154, 22);
+            sairDoSistemaToolStripMenuItem.Text="Sair do Sistema";
             // 
             // main
             // 
@@ -148,6 +172,7 @@
             Text="Folha Pagamento";
             Load+=main_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,5 +186,8 @@
         private PictureBox pictureBox1;
         private Button button5;
         private Button button6;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem testeToolStripMenuItem;
+        private ToolStripMenuItem sairDoSistemaToolStripMenuItem;
     }
 }

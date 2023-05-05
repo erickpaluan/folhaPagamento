@@ -1,4 +1,5 @@
 using Npgsql;
+using System.Windows.Forms;
 
 namespace folhaPagamento
 {
@@ -34,7 +35,7 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-            
+
             string nome = Session.Username;
             bool isAdm = Session.IsAdmin;
 
@@ -60,6 +61,14 @@ namespace folhaPagamento
         {
             fHolerite fHolerite = new fHolerite();
             fHolerite.ShowDialog();
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
+            }
         }
     }
 }
