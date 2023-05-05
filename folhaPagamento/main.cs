@@ -6,8 +6,6 @@ namespace folhaPagamento
     {
         public UserSession Session { get; set; }
 
-
-
         public main(UserSession session)
         {
 

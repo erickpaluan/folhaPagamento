@@ -13,10 +13,13 @@ namespace folhaPagamento
     public partial class main_user : Form
     {
         public UserSession Session { get; set; }
+
         public main_user(UserSession session)
         {
+
             InitializeComponent();
             Session = session;
+
         }
 
         private void main_user_Load(object sender, EventArgs e)
