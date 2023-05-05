@@ -41,6 +41,7 @@
             txtNome = new TextBox();
             btnSalvarPonto = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            ttTxtCPF = new ToolTip(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -53,16 +54,19 @@
             groupBox1.Size = new Size(336, 73);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "ID FUNCIONARIO";
+            groupBox1.Text = "CPF FUNCIONARIO";
             // 
             // txtCPF
             // 
             txtCPF.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtCPF.Location = new Point(6, 22);
+            txtCPF.MaxLength = 11;
             txtCPF.Name = "txtCPF";
             txtCPF.Size = new Size(324, 33);
             txtCPF.TabIndex = 1;
+            txtCPF.TextAlign = HorizontalAlignment.Center;
             txtCPF.TextChanged += txtCPF_TextChanged;
+            txtCPF.KeyPress += txtCPF_KeyPress;
             // 
             // groupBox2
             // 
@@ -146,7 +150,6 @@
             btnSalvarPonto.Text = "Salvar ponto";
             btnSalvarPonto.TextAlign = ContentAlignment.MiddleRight;
             btnSalvarPonto.UseVisualStyleBackColor = true;
-            btnSalvarPonto.Click += btnSalvarPonto_Click;
             // 
             // timer1
             // 
@@ -189,5 +192,6 @@
         private TextBox txtNome;
         private Button btnSalvarPonto;
         private System.Windows.Forms.Timer timer1;
+        private ToolTip ttTxtCPF;
     }
 }

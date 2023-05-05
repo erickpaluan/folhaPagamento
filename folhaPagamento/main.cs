@@ -4,7 +4,7 @@ namespace folhaPagamento
 {
     public partial class main : Form
     {
-        public static UserSession Session { get; set; }
+        public UserSession Session { get; set; }
 
 
 
@@ -12,7 +12,8 @@ namespace folhaPagamento
         {
 
             InitializeComponent();
-
+            Session = new UserSession();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,23 +36,24 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-            Session = new UserSession();
-            login form = new login();
-            form.ShowDialog();
+            login login = new login(); 
+            login.ShowDialog();
+            string nome = Session.Username;
+            bool isAdm = Session.IsAdmin;
 
             DateTime now = DateTime.Now;
 
             if (now.Hour >= 5 && now.Hour < 12)
             {
-                lblSaudacao.Text = "Bom dia, " + Session.Username;
+                lblSaudacao.Text = "Bom dia, " + nome;
             }
             else if (now.Hour >= 12 && now.Hour < 18)
             {
-                lblSaudacao.Text = "Boa tarde, " + Session.Username;
+                lblSaudacao.Text = "Boa tarde, " + nome;
             }
             else
             {
-                lblSaudacao.Text = "Boa noite, " + Session.Username;
+                lblSaudacao.Text = "Boa noite, " + nome;
             }
 
         }

@@ -23,9 +23,17 @@ namespace folhaPagamento
         {
             InitializeComponent();
             connDAO = new Funcionarios();
+            Session = new UserSession();
+
+            
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            FazerLogin();
+        }
+
+        private void FazerLogin()
         {
             using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
             {
@@ -45,10 +53,10 @@ namespace folhaPagamento
 
                     if (reader.HasRows && reader.Read())
                     {
-                        //Session.Username = reader.GetString(1);
-                        //Session.IsAdmin = reader.GetBoolean("adm");
+                        Session.Username = reader.GetString("nome");
+                        Session.IsAdmin = reader.GetBoolean("adm");
                         reader.Close();
-                        MessageBox.Show("Bem-vindo ao Sistema");
+                        MessageBox.Show("Bem-vindo ao Sistema, " + Session.Username + ", seu status de adm é: " + Session.IsAdmin.ToString());
                         this.Close();
                     }
                     else
@@ -78,6 +86,22 @@ namespace folhaPagamento
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FazerLogin();
+            }
+        }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FazerLogin();
             }
         }
     }
