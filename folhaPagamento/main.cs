@@ -65,10 +65,16 @@ namespace folhaPagamento
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
-            }
+            //            if (e.Button == MouseButtons.Left)
+            //            {
+            //                contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
+            //            }
+        }
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
+        {
+            cadEmpresa cadEmpresa = new cadEmpresa();
+            cadEmpresa.ShowDialog();
         }
     }
 }
