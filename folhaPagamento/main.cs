@@ -1,4 +1,5 @@
 using Npgsql;
+using System.Windows.Forms;
 
 namespace folhaPagamento
 {
@@ -62,10 +63,12 @@ namespace folhaPagamento
             fHolerite.ShowDialog();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            cadEmpresa cadEmpresa = new cadEmpresa();
-            cadEmpresa.ShowDialog();
+            if (e.Button == MouseButtons.Left)
+            {
+                contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
+            }
         }
     }
 }
