@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Windows.Input;
+using static System.Collections.Specialized.BitVector32;
 
 namespace folhaPagamento
 {
@@ -35,46 +36,66 @@ namespace folhaPagamento
 
         private void FazerLogin()
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
+            string login = txtUsuario.Text;
+            string senha = txtSenha.Text;
+
+            try
             {
-                try
+                using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
                 {
                     conn.Open();
 
-                    string login = txtUsuario.Text.Trim();
-                    string senha = txtSenha.Text.Trim();
+                    // Consulta para verificar se o login e a senha são válidos
+                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm FROM funcionario WHERE login = @login AND senha = @senha", conn);
+                    comando.Parameters.AddWithValue("@Login", login);
+                    comando.Parameters.AddWithValue("@Senha", senha);
+                    UserSession session = new UserSession();
 
-                    string query = "SELECT nome, adm FROM funcionario WHERE login = @login AND senha = @senha";
-                    NpgsqlCommand command = new NpgsqlCommand(query, conn);
-                    command.Parameters.AddWithValue("@login", login);
-                    command.Parameters.AddWithValue("@senha", senha);
+                    NpgsqlDataReader leitor = comando.ExecuteReader();
 
-                    NpgsqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows && reader.Read())
+                    // Se houver uma linha na tabela com o login e a senha fornecidos
+                    if (leitor.HasRows)
                     {
-                        Session.Username = reader.GetString("nome");
-                        Session.IsAdmin = reader.GetBoolean("adm");
-                        reader.Close();
-                        MessageBox.Show("Bem-vindo ao Sistema, " + Session.Username + ", seu status de adm é: " + Session.IsAdmin.ToString());
-                        this.Close();
+                        // Armazena o tipo de usuário e o nome do usuário em variáveis
+                        leitor.Read();
+                        string nomeUsuario = leitor.GetString("nome");
+                        bool tipoUsuario = leitor.GetBoolean("adm");
+                        if (tipoUsuario == true)
+                        {
+                            // Redireciona o usuário para a página de administração
+                            MessageBox.Show($"Bem-vindo, {nomeUsuario}! Você entrou como administrador.");
+                            session.Username = nomeUsuario;
+                            session.IsAdmin = true;
+                            main main = new main(session);
+                            main.Show();
+                        }
+                        else
+                        {
+                            // Redireciona o usuário para a página principal do aplicativo
+                            MessageBox.Show($"Bem-vindo, {nomeUsuario}! Você entrou como usuário comum.");
+                            Session.Username = nomeUsuario;
+                            Session.IsAdmin = false;
+                            main_user main_user = new main_user();
+                            main_user.Show();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Usuário ou Senha Inválido.");
+                        // Exibe uma mensagem de erro se as credenciais forem inválidas
+                        MessageBox.Show("Login ou senha incorretos!");
                     }
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+              //  conn.Close();
+            }
+
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)
