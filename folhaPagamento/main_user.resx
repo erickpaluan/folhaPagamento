@@ -71,7 +71,7 @@
         +XwhFQpfc/g+i/E5u+gAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnHolerite.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAUhJREFUaEPt
         mD1uwkAQhd2mSJpcJFI4QC6BlIOkT66Rip4j0NBxDXoukbwneaQnawxevLPIMJ/0aaQxntnHj0B0SfI4
@@ -82,7 +82,7 @@
         zzCLFdxA++eghdzFndydJMkoXfcP1nU/kTRr6BUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPonto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAA2xJREFUaEPt
         2Y2NFDEMBeAtgRIogQ6gA+gAOoAOoAPoADqADqAD6AA6gA4g3+ksjXzO7GRm9kdon2Sxm8kk9vOzkz0O
