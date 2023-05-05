@@ -24,7 +24,8 @@ namespace folhaPagamento
 
         public void RegistrarPonto(string cpf_ponto, DateTime data, DateTime hora)
         {
-            string sql = "";
+            string sql = "INSERT INTO ponto (cpf_ponto, data, hora) " +
+                         "VALUES (@cpf, @data, @hora);";
             try
             {
                 using (NpgsqlCommand cmdPonto = new NpgsqlCommand(sql, conn))
@@ -41,6 +42,7 @@ namespace folhaPagamento
             }
             finally
             {
+                MessageBox.Show("Inserido com sucesso!!");
                 conn.Close();
             }
         }
