@@ -12,6 +12,5 @@ namespace folhaPagamento
         public string cpf_ponto { get; set; }
         public DateTime data { get; set; }
         public DateTime hora { get; set; }
-
     }
 }

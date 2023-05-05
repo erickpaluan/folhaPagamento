@@ -30,17 +30,17 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ponto));
-            groupBox1=new GroupBox();
-            txtCPF=new TextBox();
-            groupBox2=new GroupBox();
-            lblData=new Label();
-            label5=new Label();
-            lblHora=new Label();
-            label2=new Label();
-            label1=new Label();
-            txtNome=new TextBox();
-            btnSalvarPonto=new Button();
-            timer1=new System.Windows.Forms.Timer(components);
+            groupBox1 = new GroupBox();
+            txtCPF = new TextBox();
+            groupBox2 = new GroupBox();
+            lblData = new Label();
+            label5 = new Label();
+            lblHora = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            txtNome = new TextBox();
+            btnSalvarPonto = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -48,21 +48,21 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(txtCPF);
-            groupBox1.Location=new Point(12, 12);
-            groupBox1.Name="groupBox1";
-            groupBox1.Size=new Size(336, 73);
-            groupBox1.TabIndex=0;
-            groupBox1.TabStop=false;
-            groupBox1.Text="ID FUNCIONARIO";
+            groupBox1.Location = new Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(336, 73);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "ID FUNCIONARIO";
             // 
             // txtCPF
             // 
-            txtCPF.Font=new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCPF.Location=new Point(6, 22);
-            txtCPF.Name="txtCPF";
-            txtCPF.Size=new Size(324, 33);
-            txtCPF.TabIndex=1;
-            txtCPF.TextChanged+=txtCPF_TextChanged;
+            txtCPF.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCPF.Location = new Point(6, 22);
+            txtCPF.Name = "txtCPF";
+            txtCPF.Size = new Size(324, 33);
+            txtCPF.TabIndex = 1;
+            txtCPF.TextChanged += txtCPF_TextChanged;
             // 
             // groupBox2
             // 
@@ -137,15 +137,16 @@
             // 
             // btnSalvarPonto
             // 
-            btnSalvarPonto.Image=(Image)resources.GetObject("btnSalvarPonto.Image");
-            btnSalvarPonto.ImageAlign=ContentAlignment.MiddleLeft;
-            btnSalvarPonto.Location=new Point(211, 305);
-            btnSalvarPonto.Name="btnSalvarPonto";
-            btnSalvarPonto.Size=new Size(137, 71);
-            btnSalvarPonto.TabIndex=3;
-            btnSalvarPonto.Text="Salvar ponto";
-            btnSalvarPonto.TextAlign=ContentAlignment.MiddleRight;
-            btnSalvarPonto.UseVisualStyleBackColor=true;
+            btnSalvarPonto.Image = (Image)resources.GetObject("btnSalvarPonto.Image");
+            btnSalvarPonto.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalvarPonto.Location = new Point(211, 305);
+            btnSalvarPonto.Name = "btnSalvarPonto";
+            btnSalvarPonto.Size = new Size(137, 71);
+            btnSalvarPonto.TabIndex = 3;
+            btnSalvarPonto.Text = "Salvar ponto";
+            btnSalvarPonto.TextAlign = ContentAlignment.MiddleRight;
+            btnSalvarPonto.UseVisualStyleBackColor = true;
+            btnSalvarPonto.Click += btnSalvarPonto_Click;
             // 
             // timer1
             // 

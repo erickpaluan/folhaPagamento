@@ -25,13 +25,23 @@ namespace folhaPagamento
         public void RegistrarPonto(string cpf_ponto, DateTime data, DateTime hora)
         {
             string sql = "";
-            using (NpgsqlCommand cmdPonto = new NpgsqlCommand(sql, conn))
+            try
             {
-                cmdPonto.Parameters.AddWithValue("@cpf", cpf_ponto);
-                cmdPonto.Parameters.AddWithValue("@data", data);
-                cmdPonto.Parameters.AddWithValue("@hora", hora);
+                using (NpgsqlCommand cmdPonto = new NpgsqlCommand(sql, conn))
+                {
+                    cmdPonto.Parameters.AddWithValue("@cpf", cpf_ponto);
+                    cmdPonto.Parameters.AddWithValue("@data", data);
+                    cmdPonto.Parameters.AddWithValue("@hora", hora);
 
-                cmdPonto.ExecuteNonQuery();
+                    cmdPonto.ExecuteNonQuery();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Erro na marcação ", ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

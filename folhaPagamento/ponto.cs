@@ -69,5 +69,19 @@ namespace folhaPagamento
                 tooltip.Show("Digite apenas números", txtCPF, 0, txtCPF.Height, 2000);
             }
         }
+
+        private void btnSalvarPonto_Click(object sender, EventArgs e)
+        {
+            Registro novoRegistro = new Registro();
+            novoRegistro.cpf_ponto = txtCPF.Text;
+            novoRegistro.data = DateTime.Parse(lblData.Text);
+            novoRegistro.hora = DateTime.Parse(lblHora.Text);
+
+            PontoDAO pontoDAO = new PontoDAO();
+            pontoDAO.RegistrarPonto(
+                novoRegistro.cpf_ponto,
+                novoRegistro.data,
+                novoRegistro.hora);
+        }
     }
 }
