@@ -34,7 +34,7 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-            
+
             string nome = Session.Username;
             bool isAdm = Session.IsAdmin;
 
@@ -60,6 +60,12 @@ namespace folhaPagamento
         {
             fHolerite fHolerite = new fHolerite();
             fHolerite.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            cadEmpresa cadEmpresa = new cadEmpresa();
+            cadEmpresa.ShowDialog();
         }
     }
 }
