@@ -26,7 +26,7 @@ namespace folhaPagamento
             connDAO = new Funcionarios();
             Session = new UserSession();
 
-            
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -46,36 +46,35 @@ namespace folhaPagamento
                     conn.Open();
 
                     // Consulta para verificar se o login e a senha são válidos
-                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm FROM funcionario WHERE login = @login AND senha = @senha", conn);
+                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf FROM funcionario WHERE login = @login AND senha = @senha", conn);
                     comando.Parameters.AddWithValue("@Login", login);
                     comando.Parameters.AddWithValue("@Senha", senha);
                     UserSession session = new UserSession();
 
                     NpgsqlDataReader leitor = comando.ExecuteReader();
 
-                    // Se houver uma linha na tabela com o login e a senha fornecidos
                     if (leitor.HasRows)
                     {
-                        // Armazena o tipo de usuário e o nome do usuário em variáveis
                         leitor.Read();
                         string nomeUsuario = leitor.GetString("nome");
                         bool tipoUsuario = leitor.GetBoolean("adm");
+                        string CPF = leitor.GetString("cpf");
+                        
                         if (tipoUsuario == true)
                         {
-                            // Redireciona o usuário para a página de administração
-                            session.Username = nomeUsuario;
                             session.IsAdmin = true;
-                            main main = new main(session);
-                            main.Show();
                         }
                         else
                         {
-                            // Redireciona o usuário para a página principal do aplicativo
-                            session.Username = nomeUsuario;
+                            
                             session.IsAdmin = false;
-                            main_user main_user = new main_user(session);
-                            main_user.Show();
                         }
+
+                        session.Username = nomeUsuario;
+                        session.CPF = CPF;
+                        main main = new main(session);
+                        main.Show();
+                        this.Hide();
                     }
                     else
                     {
@@ -90,7 +89,7 @@ namespace folhaPagamento
             }
             finally
             {
-              //  conn.Close();
+                //  conn.Close();
             }
 
 

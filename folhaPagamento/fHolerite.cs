@@ -12,10 +12,12 @@ namespace folhaPagamento
 {
     public partial class fHolerite : Form
     {
+        public UserSession Session { get; set; }
         private Holerite HoleriteDAO { get; set; }
-        public fHolerite()
+        public fHolerite(UserSession session)
         {
             InitializeComponent();
+            Session = session;
 
             // Configura as colunas do DataGridView
             dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
@@ -43,7 +45,7 @@ namespace folhaPagamento
             // Cria uma nova instância da classe Funcionario
             Holerite holerite = new Holerite();
 
-            double pINSS = double.Parse(txtDescINSS.Text);;
+            double pINSS = double.Parse(txtDescINSS.Text); ;
             double pIRPF = double.Parse(txtDescINSS.Text);
             double porcentagemINSS = pINSS / 100.0;
             double porcentagemIRPF = pIRPF / 100.0;
@@ -65,9 +67,20 @@ namespace folhaPagamento
                                   holerite.CalcularSalarioLiquido().ToString("C2"));
 
             label11.Text = holerite.SalarioBase.ToString();
-            
 
 
+
+        }
+
+        private void fHolerite_Load(object sender, EventArgs e)
+        {
+            string nome = Session.Username;
+            bool isAdm = Session.IsAdmin;
+            string CPF = Session.CPF;
+
+            lblNomeUsuario.Text = nome;
+            lblAdm.Text = isAdm.ToString();
+            lblCPF.Text = CPF;
         }
     }
 }
