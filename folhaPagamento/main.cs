@@ -42,7 +42,6 @@ namespace folhaPagamento
 
             DateTime now = DateTime.Now;
 
-            MessageBox.Show($"Bem-vindo, {nome}! Você entrou como {isAdm}.");
 
             if (now.Hour >= 5 && now.Hour < 12)
             {

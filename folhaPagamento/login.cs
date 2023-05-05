@@ -63,7 +63,6 @@ namespace folhaPagamento
                         if (tipoUsuario == true)
                         {
                             // Redireciona o usuário para a página de administração
-                            MessageBox.Show($"Bem-vindo, {nomeUsuario}! Você entrou como administrador.");
                             session.Username = nomeUsuario;
                             session.IsAdmin = true;
                             main main = new main(session);
@@ -72,7 +71,6 @@ namespace folhaPagamento
                         else
                         {
                             // Redireciona o usuário para a página principal do aplicativo
-                            MessageBox.Show($"Bem-vindo, {nomeUsuario}! Você entrou como usuário comum.");
                             Session.Username = nomeUsuario;
                             Session.IsAdmin = false;
                             main_user main_user = new main_user();
