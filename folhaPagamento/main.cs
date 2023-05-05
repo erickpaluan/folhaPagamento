@@ -8,12 +8,12 @@ namespace folhaPagamento
 
 
 
-        public main()
+        public main(UserSession session)
         {
 
             InitializeComponent();
-            Session = new UserSession();
-            
+            Session = session;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,12 +36,12 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-            login login = new login(); 
-            login.ShowDialog();
+            
             string nome = Session.Username;
             bool isAdm = Session.IsAdmin;
 
             DateTime now = DateTime.Now;
+
 
             if (now.Hour >= 5 && now.Hour < 12)
             {
