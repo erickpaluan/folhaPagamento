@@ -29,64 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnMarcarPonto = new Button();
+            btnHolerite = new Button();
+            btnFuncionários = new Button();
+            btnConfig = new Button();
             lblSaudacao = new Label();
             pictureBox1 = new PictureBox();
-            button5 = new Button();
-            button6 = new Button();
+            btnSairdoSistema = new Button();
+            btnEmpresa = new Button();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnMarcarPonto
             // 
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(12, 98);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 96);
-            button1.TabIndex = 2;
-            button1.Text = "Marcar Ponto";
-            button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnMarcarPonto.Image = (Image)resources.GetObject("btnMarcarPonto.Image");
+            btnMarcarPonto.Location = new Point(12, 98);
+            btnMarcarPonto.Name = "btnMarcarPonto";
+            btnMarcarPonto.Size = new Size(96, 96);
+            btnMarcarPonto.TabIndex = 2;
+            btnMarcarPonto.Text = "Marcar Ponto";
+            btnMarcarPonto.TextAlign = ContentAlignment.BottomCenter;
+            btnMarcarPonto.UseVisualStyleBackColor = true;
+            btnMarcarPonto.Click += btnMarcarPonto_Click;
             // 
-            // button2
+            // btnHolerite
             // 
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(114, 98);
-            button2.Name = "button2";
-            button2.Size = new Size(96, 96);
-            button2.TabIndex = 3;
-            button2.Text = "Holerite";
-            button2.TextAlign = ContentAlignment.BottomCenter;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnHolerite.Image = (Image)resources.GetObject("btnHolerite.Image");
+            btnHolerite.Location = new Point(114, 98);
+            btnHolerite.Name = "btnHolerite";
+            btnHolerite.Size = new Size(96, 96);
+            btnHolerite.TabIndex = 3;
+            btnHolerite.Text = "Holerite";
+            btnHolerite.TextAlign = ContentAlignment.BottomCenter;
+            btnHolerite.UseVisualStyleBackColor = true;
+            btnHolerite.Click += btnHolerite_Click;
             // 
-            // button3
+            // btnFuncionários
             // 
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(216, 98);
-            button3.Name = "button3";
-            button3.Size = new Size(96, 96);
-            button3.TabIndex = 4;
-            button3.Text = "Funcionários";
-            button3.TextAlign = ContentAlignment.BottomCenter;
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnFuncionários.Image = (Image)resources.GetObject("btnFuncionários.Image");
+            btnFuncionários.Location = new Point(216, 98);
+            btnFuncionários.Name = "btnFuncionários";
+            btnFuncionários.Size = new Size(96, 96);
+            btnFuncionários.TabIndex = 4;
+            btnFuncionários.Text = "Funcionários";
+            btnFuncionários.TextAlign = ContentAlignment.BottomCenter;
+            btnFuncionários.UseVisualStyleBackColor = true;
+            btnFuncionários.Click += btnFuncionários_Click;
             // 
-            // button4
+            // btnConfig
             // 
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(318, 200);
-            button4.Name = "button4";
-            button4.Size = new Size(96, 96);
-            button4.TabIndex = 5;
-            button4.Text = "Configurações";
-            button4.TextAlign = ContentAlignment.BottomCenter;
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnConfig.Image = (Image)resources.GetObject("btnConfig.Image");
+            btnConfig.Location = new Point(420, 98);
+            btnConfig.Name = "btnConfig";
+            btnConfig.Size = new Size(96, 96);
+            btnConfig.TabIndex = 5;
+            btnConfig.Text = "Configurações";
+            btnConfig.TextAlign = ContentAlignment.BottomCenter;
+            btnConfig.UseVisualStyleBackColor = true;
+            btnConfig.Click += btnConfig_Click;
             // 
             // lblSaudacao
             // 
@@ -108,39 +109,59 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
-            // button5
+            // btnSairdoSistema
             // 
-            button5.Location = new Point(318, 98);
-            button5.Name = "button5";
-            button5.Size = new Size(96, 96);
-            button5.TabIndex = 8;
-            button5.Text = "Empresa";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            btnSairdoSistema.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
+            btnSairdoSistema.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSairdoSistema.Location = new Point(12, 296);
+            btnSairdoSistema.Name = "btnSairdoSistema";
+            btnSairdoSistema.Size = new Size(141, 52);
+            btnSairdoSistema.TabIndex = 9;
+            btnSairdoSistema.Text = "Sair do Sistema";
+            btnSairdoSistema.TextAlign = ContentAlignment.MiddleRight;
+            btnSairdoSistema.UseVisualStyleBackColor = true;
+            btnSairdoSistema.Click += btnSairdoSistema_Click;
             // 
-            // button6
+            // btnEmpresa
             // 
-            button6.Location = new Point(12, 200);
-            button6.Name = "button6";
-            button6.Size = new Size(198, 32);
-            button6.TabIndex = 9;
-            button6.Text = "Importar / exportar";
-            button6.UseVisualStyleBackColor = true;
+            btnEmpresa.Image = Properties.Resources.store_FILL0_wght400_GRAD0_opsz48;
+            btnEmpresa.Location = new Point(318, 98);
+            btnEmpresa.Name = "btnEmpresa";
+            btnEmpresa.Size = new Size(96, 96);
+            btnEmpresa.TabIndex = 11;
+            btnEmpresa.Text = "Empresa";
+            btnEmpresa.TextAlign = ContentAlignment.BottomCenter;
+            btnEmpresa.UseVisualStyleBackColor = true;
+            btnEmpresa.Click += btnEmpresa_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Image = Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(451, 296);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(136, 52);
+            btnLogout.TabIndex = 12;
+            btnLogout.Text = "Fazer Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleRight;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(472, 360);
-            Controls.Add(button6);
-            Controls.Add(button5);
+            ClientSize = new Size(599, 360);
+            Controls.Add(btnLogout);
+            Controls.Add(btnEmpresa);
+            Controls.Add(btnSairdoSistema);
             Controls.Add(pictureBox1);
             Controls.Add(lblSaudacao);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnConfig);
+            Controls.Add(btnFuncionários);
+            Controls.Add(btnHolerite);
+            Controls.Add(btnMarcarPonto);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
@@ -154,16 +175,18 @@
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnMarcarPonto;
+        private Button btnHolerite;
+        private Button btnFuncionários;
+        private Button btnConfig;
         private Label lblSaudacao;
         private PictureBox pictureBox1;
         private Button button5;
-        private Button button6;
+        private Button btnSairdoSistema;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem testeToolStripMenuItem;
         private ToolStripMenuItem sairDoSistemaToolStripMenuItem;
+        private Button btnEmpresa;
+        private Button btnLogout;
     }
 }

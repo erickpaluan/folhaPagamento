@@ -5,6 +5,8 @@ namespace folhaPagamento
 {
     public partial class main : Form
     {
+        private UserSession session;
+
         public UserSession Session { get; set; }
 
         public main(UserSession session)
@@ -15,22 +17,21 @@ namespace folhaPagamento
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMarcarPonto_Click(object sender, EventArgs e)
         {
-            ponto form = new ponto();
+            ponto form = new ponto(Session);
             form.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnFuncionários_Click(object sender, EventArgs e)
         {
             cadUsuario form = new cadUsuario();
             form.ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnConfig_Click(object sender, EventArgs e)
         {
-
-
+            
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -38,6 +39,13 @@ namespace folhaPagamento
 
             string nome = Session.Username;
             bool isAdm = Session.IsAdmin;
+
+            if (isAdm == false)
+            {
+                btnFuncionários.Visible = false;
+                btnEmpresa.Visible = false;
+
+            }
 
             DateTime now = DateTime.Now;
 
@@ -57,18 +65,33 @@ namespace folhaPagamento
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnHolerite_Click(object sender, EventArgs e)
         {
-            fHolerite fHolerite = new fHolerite();
+            fHolerite fHolerite = new fHolerite(Session);
             fHolerite.ShowDialog();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
-            }
+
+        }
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
+        {
+            cadEmpresa cadEmpresa = new cadEmpresa();
+            cadEmpresa.ShowDialog();
+        }
+
+        private void btnSairdoSistema_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            login login = new login();
+            login.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -43,5 +43,16 @@ namespace folhaPagamento
                 lblSaudacao.Text = "Boa noite, " + nome;
             }
         }
+
+        private void btnHolerite_Click(object sender, EventArgs e)
+        {
+            fHolerite fHolerite = new fHolerite(Session);
+            fHolerite.ShowDialog();
+        }
+
+        private void btnSairdoSistema_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -42,7 +42,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(60, 160);
+            label1.Location = new Point(57, 132);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
             label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(60, 178);
+            txtUsuario.Location = new Point(57, 150);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(209, 23);
             txtUsuario.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(60, 222);
+            txtSenha.Location = new Point(57, 194);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(209, 23);
@@ -68,7 +68,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(60, 204);
+            label2.Location = new Point(57, 176);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(194, 251);
+            btnLogin.Location = new Point(191, 240);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // btnSair
             // 
-            btnSair.Location = new Point(60, 251);
+            btnSair.Location = new Point(12, 280);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
             btnSair.TabIndex = 5;
@@ -96,11 +96,11 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.badge_FILL0_wght400_GRAD0_opsz48;
-            pictureBox1.Location = new Point(110, 23);
+            pictureBox1.Image = Properties.Resources.logo_justax;
+            pictureBox1.Location = new Point(22, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 100);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Size = new Size(288, 82);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 

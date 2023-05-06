@@ -16,15 +16,26 @@ namespace folhaPagamento
 {
     public partial class ponto : Form
     {
-        public ponto()
+        public UserSession Session { get; set; }
+        public ponto(UserSession session)
         {
             InitializeComponent();
+            Session = session;
         }
 
         private void ponto_Load(object sender, EventArgs e)
         {
             timer1.Interval = 1000;
             timer1.Start();
+            bool isAdm = Session.IsAdmin;
+
+            if (isAdm == false)
+            {
+                string CPF = Session.CPF;
+
+                txtCPF.Text = CPF;
+                txtCPF.ReadOnly = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
