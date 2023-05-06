@@ -70,5 +70,11 @@ namespace folhaPagamento
                 contextMenuStrip1.Show(pictureBox1, new Point(e.X, e.Y));
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            cadEmpresa cadEmpresa = new cadEmpresa();
+            cadEmpresa.ShowDialog();
+        }
     }
 }

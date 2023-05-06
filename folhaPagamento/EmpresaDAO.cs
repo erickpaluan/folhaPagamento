@@ -22,10 +22,10 @@ namespace folhaPagamento
             this.empresa = new List<Empresa>();
         }
 
-        public List<Empresa> GetAll()
+        public List<Empresa> GetId()
         {
             this.empresa.Clear();
-            string sqlempresa = "";
+            string sqlempresa = "SELECT * FROM empresa;";
 
             using (NpgsqlCommand cmdEmpresa = new NpgsqlCommand(sqlempresa, conn))
             {
@@ -34,6 +34,8 @@ namespace folhaPagamento
                     while (reader.Read())
                     {
                         Empresa empresa = new Empresa();
+                        empresa.id_empresa = reader.GetInt32(reader.GetOrdinal("id_empresa"));
+                        /*Empresa empresa = new Empresa();
                         empresa.RazaoSocial = reader.GetString(reader.GetOrdinal("RazaoSocial"));
                         empresa.NomeFantasia = reader.GetString(reader.GetOrdinal("Nomefantasia"));
                         empresa.CNPJ = reader.GetString(reader.GetOrdinal("CNPJ"));
@@ -46,7 +48,7 @@ namespace folhaPagamento
                         empresa.Estado = reader.GetString(reader.GetOrdinal("Estado"));
                         empresa.CEP = reader.GetString(reader.GetOrdinal("CEP"));
                         empresa.Telefone = reader.GetString(reader.GetOrdinal("Telefone"));
-                        empresa.Email = reader.GetString(reader.GetOrdinal("Email"));
+                        empresa.Email = reader.GetString(reader.GetOrdinal("Email")); */
                     }
                 }
             }
@@ -94,25 +96,29 @@ namespace folhaPagamento
         }
 
         public void UpdateEmpresa(
+            int id_empresa,
             string RazaoSocial,
-        string NomeFantasia,
-        string CNPJ,
-        string InscricaoEstadual,
-        string Endereco,
-        string Numero,
-        string Complemento,
-        string Bairro,
-        string Cidade,
-        string Estado,
-        string CEP,
-        string Telefone, 
-        string Email)
+            string NomeFantasia,
+            string CNPJ,
+            string InscricaoEstadual,
+            string Endereco,
+            string Numero,
+            string Complemento,
+            string Bairro,
+            string Cidade,
+            string Estado,
+            string CEP,
+            string Telefone, 
+            string Email)
 
         {
-            string sqlUp = "";
+            string sqlUp = "UPDATE empresa SET razaosocial = @RazaoSocial, nomefantasia = @NomeFantasia, cnpj = @CNPJ, inscricaoestadual = @InscricaoEstadual, " +
+                "endereco = @Endereco, numero = @Numero, complemento = @Complemento, bairro = @Bairro, cidade = @Cidade, estado = @Estado, cep = @CEP, telefone = @Telefone, " +
+                "email = @Email WHERE id_empresa = @id_empresa;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sqlUp, conn))
             {
+                cmd.Parameters.AddWithValue("@id_empresa", id_empresa);
                 cmd.Parameters.AddWithValue("@RazaoSocial", RazaoSocial);
                 cmd.Parameters.AddWithValue("@NomeFantasia", NomeFantasia);
                 cmd.Parameters.AddWithValue("@CNPJ", CNPJ);

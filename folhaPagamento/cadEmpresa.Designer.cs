@@ -163,6 +163,7 @@
             btnUpdateEmpresa.TabIndex = 13;
             btnUpdateEmpresa.Text = "EDITAR";
             btnUpdateEmpresa.UseVisualStyleBackColor = true;
+            btnUpdateEmpresa.Click += btnUpdateEmpresa_Click;
             // 
             // btnAddEmpresa
             // 

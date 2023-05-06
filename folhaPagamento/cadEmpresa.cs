@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -74,6 +76,49 @@ namespace folhaPagamento
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao cadastrar" + ex.Message);
+            }
+        }
+
+        private void btnUpdateEmpresa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Empresa editarEmpresa = new Empresa();
+                editarEmpresa.RazaoSocial = txtRazaoSocial.Text;
+                editarEmpresa.NomeFantasia = txtNomeFantasia.Text;
+                editarEmpresa.CNPJ = txtCNPJ.Text;
+                editarEmpresa.InscricaoEstadual = txtIncricaoEstadual.Text;
+                editarEmpresa.Endereco = txtEndereco.Text;
+                editarEmpresa.Numero = txtNumero.Text;
+                editarEmpresa.Complemento = txtComplemento.Text;
+                editarEmpresa.Bairro = txtBairro.Text;
+                editarEmpresa.Cidade = txtCidade.Text;
+                editarEmpresa.Estado = txtEstado.Text;
+                editarEmpresa.CEP = txtCEP.Text;
+                editarEmpresa.Telefone = txtTel.Text;
+                editarEmpresa.Email = txtEmail.Text;
+
+                EmpresaDAO empresadao = new EmpresaDAO();
+                empresadao.UpdateEmpresa(
+                    editarEmpresa.id_empresa,
+                    editarEmpresa.RazaoSocial,
+                    editarEmpresa.NomeFantasia,
+                    editarEmpresa.CNPJ,
+                    editarEmpresa.InscricaoEstadual,
+                    editarEmpresa.Endereco,
+                    editarEmpresa.Numero,
+                    editarEmpresa.Complemento,
+                    editarEmpresa.Bairro,
+                    editarEmpresa.Cidade,
+                    editarEmpresa.Estado,
+                    editarEmpresa.CEP,
+                    editarEmpresa.Telefone,
+                    editarEmpresa.Email
+                    );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex);
             }
         }
     }

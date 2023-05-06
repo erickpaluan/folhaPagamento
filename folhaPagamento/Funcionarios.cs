@@ -200,6 +200,7 @@ namespace folhaPagamento
             {
                 try
                 {
+
                     // Inserindo na tabela funcionario
                     string sqlfuncionario = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade, ativo = @ativo, sexo = @sexo, " +
                         "estado_civil = @estado_civil, dt_adm = @dt_adm, cargo = @cargo, matricula = @matricula, conv_med = @conv_med, conv_odon = @conv_odon, " +
