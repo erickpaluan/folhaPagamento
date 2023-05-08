@@ -26,7 +26,8 @@ namespace folhaPagamento
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-
+            configuracao config = new configuracao();
+            config.ShowDialog();
         }
 
         private void main_Load(object sender, EventArgs e)

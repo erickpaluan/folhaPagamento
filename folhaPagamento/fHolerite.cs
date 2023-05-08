@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 
 namespace folhaPagamento
 {
@@ -77,9 +78,11 @@ namespace folhaPagamento
             bool isAdm = Session.IsAdmin;
             string CPF = Session.CPF;
 
-            lblNomeUsuario.Text = nome;
-            lblAdm.Text = isAdm.ToString();
-            lblCPF.Text = CPF;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

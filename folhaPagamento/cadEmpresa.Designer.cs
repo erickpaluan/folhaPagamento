@@ -45,15 +45,16 @@
             btnUpdateEmpresa = new Button();
             btnAddEmpresa = new Button();
             btnDeleteEmpresa = new Button();
-            dataGridView1 = new DataGridView();
             connDBBindingSource = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            pictureBox2 = new PictureBox();
+            lblSaudacao = new Label();
             ((System.ComponentModel.ISupportInitialize)connDBBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // txtRazaoSocial
             // 
-            txtRazaoSocial.Location = new Point(12, 12);
+            txtRazaoSocial.Location = new Point(12, 196);
             txtRazaoSocial.Name = "txtRazaoSocial";
             txtRazaoSocial.PlaceholderText = "RAZÃO SOCIAL";
             txtRazaoSocial.Size = new Size(100, 23);
@@ -61,7 +62,7 @@
             // 
             // txtNomeFantasia
             // 
-            txtNomeFantasia.Location = new Point(12, 41);
+            txtNomeFantasia.Location = new Point(12, 225);
             txtNomeFantasia.Name = "txtNomeFantasia";
             txtNomeFantasia.PlaceholderText = "NOME FANTASIA";
             txtNomeFantasia.Size = new Size(100, 23);
@@ -69,7 +70,7 @@
             // 
             // txtCNPJ
             // 
-            txtCNPJ.Location = new Point(12, 70);
+            txtCNPJ.Location = new Point(12, 254);
             txtCNPJ.Name = "txtCNPJ";
             txtCNPJ.PlaceholderText = "CNPJ";
             txtCNPJ.Size = new Size(100, 23);
@@ -77,7 +78,7 @@
             // 
             // txtIncricaoEstadual
             // 
-            txtIncricaoEstadual.Location = new Point(12, 99);
+            txtIncricaoEstadual.Location = new Point(12, 283);
             txtIncricaoEstadual.Name = "txtIncricaoEstadual";
             txtIncricaoEstadual.PlaceholderText = "INSCRIÇÃO ESTADUAL";
             txtIncricaoEstadual.Size = new Size(100, 23);
@@ -85,7 +86,7 @@
             // 
             // txtEndereco
             // 
-            txtEndereco.Location = new Point(12, 128);
+            txtEndereco.Location = new Point(12, 312);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.PlaceholderText = "ENDERECO";
             txtEndereco.Size = new Size(100, 23);
@@ -93,7 +94,7 @@
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(12, 157);
+            txtNumero.Location = new Point(12, 341);
             txtNumero.Name = "txtNumero";
             txtNumero.PlaceholderText = "NUMERO";
             txtNumero.Size = new Size(100, 23);
@@ -101,7 +102,7 @@
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(12, 186);
+            txtComplemento.Location = new Point(12, 370);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.PlaceholderText = "COMPLEMENTO";
             txtComplemento.Size = new Size(100, 23);
@@ -109,7 +110,7 @@
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(12, 215);
+            txtBairro.Location = new Point(12, 399);
             txtBairro.Name = "txtBairro";
             txtBairro.PlaceholderText = "BAIRRO";
             txtBairro.Size = new Size(100, 23);
@@ -117,7 +118,7 @@
             // 
             // txtCidade
             // 
-            txtCidade.Location = new Point(12, 244);
+            txtCidade.Location = new Point(12, 428);
             txtCidade.Name = "txtCidade";
             txtCidade.PlaceholderText = "CIDADE";
             txtCidade.Size = new Size(100, 23);
@@ -125,7 +126,7 @@
             // 
             // txtEstado
             // 
-            txtEstado.Location = new Point(12, 270);
+            txtEstado.Location = new Point(12, 454);
             txtEstado.Name = "txtEstado";
             txtEstado.PlaceholderText = "ESTADO";
             txtEstado.Size = new Size(100, 23);
@@ -133,7 +134,7 @@
             // 
             // txtCEP
             // 
-            txtCEP.Location = new Point(12, 299);
+            txtCEP.Location = new Point(12, 483);
             txtCEP.Name = "txtCEP";
             txtCEP.PlaceholderText = "CEP";
             txtCEP.Size = new Size(100, 23);
@@ -141,7 +142,7 @@
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(12, 328);
+            txtTel.Location = new Point(12, 512);
             txtTel.Name = "txtTel";
             txtTel.PlaceholderText = "TELEFONE";
             txtTel.Size = new Size(100, 23);
@@ -149,7 +150,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(12, 357);
+            txtEmail.Location = new Point(12, 541);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "EMAIL";
             txtEmail.Size = new Size(100, 23);
@@ -157,7 +158,7 @@
             // 
             // btnUpdateEmpresa
             // 
-            btnUpdateEmpresa.Location = new Point(102, 398);
+            btnUpdateEmpresa.Location = new Point(102, 582);
             btnUpdateEmpresa.Name = "btnUpdateEmpresa";
             btnUpdateEmpresa.Size = new Size(75, 23);
             btnUpdateEmpresa.TabIndex = 13;
@@ -167,7 +168,7 @@
             // 
             // btnAddEmpresa
             // 
-            btnAddEmpresa.Location = new Point(12, 398);
+            btnAddEmpresa.Location = new Point(12, 582);
             btnAddEmpresa.Name = "btnAddEmpresa";
             btnAddEmpresa.Size = new Size(84, 23);
             btnAddEmpresa.TabIndex = 14;
@@ -177,34 +178,46 @@
             // 
             // btnDeleteEmpresa
             // 
-            btnDeleteEmpresa.Location = new Point(183, 398);
+            btnDeleteEmpresa.Location = new Point(183, 582);
             btnDeleteEmpresa.Name = "btnDeleteEmpresa";
             btnDeleteEmpresa.Size = new Size(75, 23);
             btnDeleteEmpresa.TabIndex = 15;
             btnDeleteEmpresa.Text = "EXCLUIR";
             btnDeleteEmpresa.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.DataSource = connDBBindingSource;
-            dataGridView1.Location = new Point(310, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(478, 426);
-            dataGridView1.TabIndex = 16;
-            // 
             // connDBBindingSource
             // 
             connDBBindingSource.DataSource = typeof(connDB);
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
+            pictureBox2.Location = new Point(12, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 41;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // lblSaudacao
+            // 
+            lblSaudacao.AutoSize = true;
+            lblSaudacao.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location = new Point(66, 13);
+            lblSaudacao.Name = "lblSaudacao";
+            lblSaudacao.Size = new Size(141, 45);
+            lblSaudacao.TabIndex = 40;
+            lblSaudacao.Text = "Empresa";
             // 
             // cadEmpresa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            BackColor = Color.White;
+            ClientSize = new Size(376, 680);
+            Controls.Add(pictureBox2);
+            Controls.Add(lblSaudacao);
             Controls.Add(btnDeleteEmpresa);
             Controls.Add(btnAddEmpresa);
             Controls.Add(btnUpdateEmpresa);
@@ -221,10 +234,12 @@
             Controls.Add(txtCNPJ);
             Controls.Add(txtNomeFantasia);
             Controls.Add(txtRazaoSocial);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "cadEmpresa";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "cadEmpresa";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)connDBBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,7 +262,8 @@
         private Button btnUpdateEmpresa;
         private Button btnAddEmpresa;
         private Button btnDeleteEmpresa;
-        private DataGridView dataGridView1;
         private BindingSource connDBBindingSource;
+        private PictureBox pictureBox2;
+        private Label lblSaudacao;
     }
 }

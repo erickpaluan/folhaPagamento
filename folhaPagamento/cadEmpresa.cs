@@ -23,7 +23,7 @@ namespace folhaPagamento
             try
             {
                 connDAO = new Empresa();
-                MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
@@ -120,6 +120,11 @@ namespace folhaPagamento
             {
                 MessageBox.Show("Erro: " + ex);
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
