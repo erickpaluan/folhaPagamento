@@ -94,5 +94,10 @@ namespace folhaPagamento
                 novoRegistro.data,
                 novoRegistro.hora);
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

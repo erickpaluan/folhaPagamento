@@ -39,11 +39,12 @@
             label7 = new Label();
             txtCargo = new TextBox();
             cbEstado_civil = new ComboBox();
-            pictureBox1 = new PictureBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
             label4 = new Label();
             txtEmail = new TextBox();
+            txtDDD = new TextBox();
+            cbTipo = new ComboBox();
             label3 = new Label();
             txtTelefone = new TextBox();
             dtpDataNasc = new DateTimePicker();
@@ -63,9 +64,8 @@
             tbInfos = new TabPage();
             label11 = new Label();
             cbSexo = new ComboBox();
-            cbTipo = new ComboBox();
-            txtDDD = new TextBox();
             tabPage1 = new TabPage();
+            txtComplemento = new TextBox();
             label12 = new Label();
             cbLogr = new ComboBox();
             txtBairro = new TextBox();
@@ -80,9 +80,7 @@
             txtLogin = new TextBox();
             txtSenha = new TextBox();
             txtMatricula = new TextBox();
-            txtComplemento = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tabControl1.SuspendLayout();
@@ -93,14 +91,22 @@
             // 
             // dgUsuarios
             // 
+            dgUsuarios.AllowUserToAddRows = false;
+            dgUsuarios.AllowUserToDeleteRows = false;
+            dgUsuarios.AllowUserToResizeColumns = false;
+            dgUsuarios.AllowUserToResizeRows = false;
+            dgUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgUsuarios.BackgroundColor = Color.White;
+            dgUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgUsuarios.Location = new Point(12, 107);
             dgUsuarios.MultiSelect = false;
             dgUsuarios.Name = "dgUsuarios";
             dgUsuarios.ReadOnly = true;
+            dgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgUsuarios.RowTemplate.Height = 25;
             dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size = new Size(474, 294);
+            dgUsuarios.Size = new Size(354, 184);
             dgUsuarios.TabIndex = 6;
             dgUsuarios.CellClick += dgUsuarios_CellClick;
             // 
@@ -180,25 +186,15 @@
             cbEstado_civil.DropDownStyle = ComboBoxStyle.DropDownList;
             cbEstado_civil.FormattingEnabled = true;
             cbEstado_civil.Items.AddRange(new object[] { "Solteiro", "Casado", "Viúvo", "Divorciado" });
-            cbEstado_civil.Location = new Point(234, 111);
+            cbEstado_civil.Location = new Point(217, 107);
             cbEstado_civil.Name = "cbEstado_civil";
-            cbEstado_civil.Size = new Size(116, 23);
+            cbEstado_civil.Size = new Size(97, 23);
             cbEstado_civil.TabIndex = 21;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(22, 20);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(85, 85);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 12;
-            pictureBox1.TabStop = false;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(160, 119);
+            label5.Location = new Point(143, 115);
             label5.Name = "label5";
             label5.Size = new Size(68, 15);
             label5.TabIndex = 20;
@@ -208,11 +204,13 @@
             // 
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtEmail);
+            groupBox1.Controls.Add(txtDDD);
+            groupBox1.Controls.Add(cbTipo);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtTelefone);
-            groupBox1.Location = new Point(22, 166);
+            groupBox1.Location = new Point(12, 165);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(328, 77);
+            groupBox1.Size = new Size(328, 128);
             groupBox1.TabIndex = 19;
             groupBox1.TabStop = false;
             groupBox1.Text = "Contato e Endereço";
@@ -234,6 +232,24 @@
             txtEmail.Size = new Size(151, 23);
             txtEmail.TabIndex = 10;
             // 
+            // txtDDD
+            // 
+            txtDDD.Location = new Point(6, 66);
+            txtDDD.Name = "txtDDD";
+            txtDDD.PlaceholderText = "DDD";
+            txtDDD.Size = new Size(33, 23);
+            txtDDD.TabIndex = 12;
+            // 
+            // cbTipo
+            // 
+            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTipo.FormattingEnabled = true;
+            cbTipo.Items.AddRange(new object[] { "Cel", "Fixo", "Outro" });
+            cbTipo.Location = new Point(45, 66);
+            cbTipo.Name = "cbTipo";
+            cbTipo.Size = new Size(80, 23);
+            cbTipo.TabIndex = 34;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -254,7 +270,7 @@
             // dtpDataNasc
             // 
             dtpDataNasc.Format = DateTimePickerFormat.Short;
-            dtpDataNasc.Location = new Point(22, 129);
+            dtpDataNasc.Location = new Point(6, 109);
             dtpDataNasc.Name = "dtpDataNasc";
             dtpDataNasc.Size = new Size(131, 23);
             dtpDataNasc.TabIndex = 16;
@@ -262,7 +278,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 111);
+            label2.Location = new Point(6, 91);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 18;
@@ -271,7 +287,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(113, 64);
+            label1.Location = new Point(6, 47);
             label1.Name = "label1";
             label1.Size = new Size(28, 15);
             label1.TabIndex = 17;
@@ -279,7 +295,7 @@
             // 
             // txtCPF
             // 
-            txtCPF.Location = new Point(113, 82);
+            txtCPF.Location = new Point(6, 65);
             txtCPF.Name = "txtCPF";
             txtCPF.PlaceholderText = "CPF";
             txtCPF.Size = new Size(237, 23);
@@ -288,7 +304,7 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(113, 20);
+            lblNome.Location = new Point(6, 3);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(40, 15);
             lblNome.TabIndex = 14;
@@ -296,7 +312,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(113, 38);
+            txtNome.Location = new Point(6, 21);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "NOME";
             txtNome.Size = new Size(237, 23);
@@ -308,15 +324,15 @@
             textBox4.Location = new Point(12, 66);
             textBox4.Name = "textBox4";
             textBox4.PlaceholderText = "Pesquisar";
-            textBox4.Size = new Size(474, 35);
+            textBox4.Size = new Size(354, 35);
             textBox4.TabIndex = 24;
             // 
             // button3
             // 
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(656, 407);
+            button3.Location = new Point(208, 630);
             button3.Name = "button3";
-            button3.Size = new Size(74, 74);
+            button3.Size = new Size(74, 38);
             button3.TabIndex = 27;
             button3.Text = "Alterar";
             button3.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -326,9 +342,9 @@
             // btnExcluir
             // 
             btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.Location = new Point(816, 407);
+            btnExcluir.Location = new Point(128, 630);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(74, 74);
+            btnExcluir.Size = new Size(74, 38);
             btnExcluir.TabIndex = 30;
             btnExcluir.Text = "Excluir";
             btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -338,9 +354,9 @@
             // btnAdicionar
             // 
             btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
-            btnAdicionar.Location = new Point(736, 407);
+            btnAdicionar.Location = new Point(288, 630);
             btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(74, 74);
+            btnAdicionar.Size = new Size(74, 38);
             btnAdicionar.TabIndex = 31;
             btnAdicionar.Text = "Salvar";
             btnAdicionar.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -350,7 +366,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(322, 48);
+            label10.Location = new Point(382, 37);
             label10.Name = "label10";
             label10.Size = new Size(44, 15);
             label10.TabIndex = 32;
@@ -384,10 +400,10 @@
             tabControl1.Controls.Add(tbInfos);
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(505, 88);
+            tabControl1.Location = new Point(12, 297);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(389, 313);
+            tabControl1.Size = new Size(354, 327);
             tabControl1.TabIndex = 36;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -395,9 +411,6 @@
             // 
             tbInfos.Controls.Add(label11);
             tbInfos.Controls.Add(cbSexo);
-            tbInfos.Controls.Add(cbTipo);
-            tbInfos.Controls.Add(txtDDD);
-            tbInfos.Controls.Add(pictureBox1);
             tbInfos.Controls.Add(txtNome);
             tbInfos.Controls.Add(dtpDataNasc);
             tbInfos.Controls.Add(cbEstado_civil);
@@ -410,7 +423,7 @@
             tbInfos.Location = new Point(4, 24);
             tbInfos.Name = "tbInfos";
             tbInfos.Padding = new Padding(3);
-            tbInfos.Size = new Size(381, 285);
+            tbInfos.Size = new Size(346, 299);
             tbInfos.TabIndex = 0;
             tbInfos.Text = "Dados Pessoais";
             tbInfos.UseVisualStyleBackColor = true;
@@ -418,7 +431,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(196, 148);
+            label11.Location = new Point(179, 144);
             label11.Name = "label11";
             label11.Size = new Size(32, 15);
             label11.TabIndex = 36;
@@ -429,28 +442,10 @@
             cbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSexo.FormattingEnabled = true;
             cbSexo.Items.AddRange(new object[] { "M", "F", "O" });
-            cbSexo.Location = new Point(234, 140);
+            cbSexo.Location = new Point(217, 136);
             cbSexo.Name = "cbSexo";
-            cbSexo.Size = new Size(116, 23);
+            cbSexo.Size = new Size(97, 23);
             cbSexo.TabIndex = 35;
-            // 
-            // cbTipo
-            // 
-            cbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTipo.FormattingEnabled = true;
-            cbTipo.Items.AddRange(new object[] { "Cel", "Fixo", "Outro" });
-            cbTipo.Location = new Point(67, 232);
-            cbTipo.Name = "cbTipo";
-            cbTipo.Size = new Size(80, 23);
-            cbTipo.TabIndex = 34;
-            // 
-            // txtDDD
-            // 
-            txtDDD.Location = new Point(28, 232);
-            txtDDD.Name = "txtDDD";
-            txtDDD.PlaceholderText = "DDD";
-            txtDDD.Size = new Size(33, 23);
-            txtDDD.TabIndex = 12;
             // 
             // tabPage1
             // 
@@ -466,11 +461,19 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(381, 285);
+            tabPage1.Size = new Size(346, 299);
             tabPage1.TabIndex = 2;
             tabPage1.Text = "Informações de Contato";
             tabPage1.UseVisualStyleBackColor = true;
             tabPage1.Click += tabPage1_Click;
+            // 
+            // txtComplemento
+            // 
+            txtComplemento.Location = new Point(6, 35);
+            txtComplemento.Name = "txtComplemento";
+            txtComplemento.PlaceholderText = "COMPLEMENTO";
+            txtComplemento.Size = new Size(135, 23);
+            txtComplemento.TabIndex = 38;
             // 
             // label12
             // 
@@ -559,7 +562,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(381, 285);
+            tabPage2.Size = new Size(346, 299);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Dados Profissionais";
             tabPage2.UseVisualStyleBackColor = true;
@@ -608,20 +611,12 @@
             txtMatricula.Size = new Size(191, 23);
             txtMatricula.TabIndex = 28;
             // 
-            // txtComplemento
-            // 
-            txtComplemento.Location = new Point(6, 35);
-            txtComplemento.Name = "txtComplemento";
-            txtComplemento.PlaceholderText = "COMPLEMENTO";
-            txtComplemento.Size = new Size(135, 23);
-            txtComplemento.TabIndex = 38;
-            // 
             // cadUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(906, 574);
+            ClientSize = new Size(376, 680);
             Controls.Add(tabControl1);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
@@ -631,7 +626,7 @@
             Controls.Add(button3);
             Controls.Add(textBox4);
             Controls.Add(dgUsuarios);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "cadUsuario";
@@ -639,7 +634,6 @@
             Text = "Cadastrar Funcionários";
             Load += cadUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -658,7 +652,6 @@
         private DataGridView dgUsuarios;
         private GroupBox groupBox2;
         private ComboBox cbEstado_civil;
-        private PictureBox pictureBox1;
         private Label label5;
         private GroupBox groupBox1;
         private Label label4;

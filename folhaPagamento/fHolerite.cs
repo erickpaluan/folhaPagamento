@@ -66,7 +66,6 @@ namespace folhaPagamento
                                   holerite.CalcularDescontoIRPF().ToString("C2"),
                                   holerite.CalcularSalarioLiquido().ToString("C2"));
 
-            label11.Text = holerite.SalarioBase.ToString();
 
 
 

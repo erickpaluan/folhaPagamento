@@ -59,14 +59,14 @@ namespace folhaPagamento
                         string nomeUsuario = leitor.GetString("nome");
                         bool tipoUsuario = leitor.GetBoolean("adm");
                         string CPF = leitor.GetString("cpf");
-                        
+
                         if (tipoUsuario == true)
                         {
                             session.IsAdmin = true;
                         }
                         else
                         {
-                            
+
                             session.IsAdmin = false;
                         }
 

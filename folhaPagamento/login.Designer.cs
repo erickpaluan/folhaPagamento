@@ -29,56 +29,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
-            label1 = new Label();
             txtUsuario = new TextBox();
             txtSenha = new TextBox();
-            label2 = new Label();
             btnLogin = new Button();
             btnSair = new Button();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(57, 132);
-            label1.Name = "label1";
-            label1.Size = new Size(47, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Usuário";
-            // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(57, 150);
+            txtUsuario.Font = new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Location = new Point(12, 192);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(209, 23);
+            txtUsuario.PlaceholderText = "Usuário";
+            txtUsuario.Size = new Size(336, 65);
             txtUsuario.TabIndex = 1;
             txtUsuario.KeyDown += txtUsuario_KeyDown;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(57, 194);
+            txtSenha.Font = new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.Location = new Point(12, 320);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
-            txtSenha.Size = new Size(209, 23);
+            txtSenha.PlaceholderText = "Senha";
+            txtSenha.Size = new Size(336, 65);
             txtSenha.TabIndex = 3;
             txtSenha.KeyDown += txtSenha_KeyDown;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(57, 176);
-            label2.Name = "label2";
-            label2.Size = new Size(39, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Senha";
-            // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(191, 240);
+            btnLogin.Location = new Point(56, 456);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(248, 80);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -86,9 +70,9 @@
             // 
             // btnSair
             // 
-            btnSair.Location = new Point(12, 280);
+            btnSair.Location = new Point(56, 565);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(75, 23);
+            btnSair.Size = new Size(248, 64);
             btnSair.TabIndex = 5;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -97,7 +81,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.logo_justax;
-            pictureBox1.Location = new Point(22, 12);
+            pictureBox1.Location = new Point(36, 40);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(288, 82);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -108,15 +92,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(332, 315);
+            BackColor = Color.White;
+            ClientSize = new Size(376, 680);
             ControlBox = false;
             Controls.Add(pictureBox1);
             Controls.Add(btnSair);
             Controls.Add(btnLogin);
             Controls.Add(txtSenha);
-            Controls.Add(label2);
             Controls.Add(txtUsuario);
-            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "login";
             StartPosition = FormStartPosition.CenterScreen;
@@ -127,11 +111,8 @@
         }
 
         #endregion
-
-        private Label label1;
         private TextBox txtUsuario;
         private TextBox txtSenha;
-        private Label label2;
         private Button btnLogin;
         private Button btnSair;
         private PictureBox pictureBox1;

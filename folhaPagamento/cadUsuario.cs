@@ -111,7 +111,7 @@ namespace folhaPagamento
                 bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
                 chbAdm.Checked = adm;
 
-                
+
 
                 // Dados Contato
                 cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();

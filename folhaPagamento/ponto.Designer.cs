@@ -30,69 +30,43 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ponto));
-            groupBox1 = new GroupBox();
             txtCPF = new TextBox();
-            groupBox2 = new GroupBox();
             lblData = new Label();
             label5 = new Label();
             lblHora = new Label();
             label2 = new Label();
-            label1 = new Label();
             txtNome = new TextBox();
             btnSalvarPonto = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            pictureBox2 = new PictureBox();
+            lblSaudacao = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(txtCPF);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(336, 73);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "ID FUNCIONARIO";
             // 
             // txtCPF
             // 
-            txtCPF.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCPF.Location = new Point(6, 22);
+            txtCPF.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCPF.Location = new Point(12, 108);
             txtCPF.Name = "txtCPF";
-            txtCPF.Size = new Size(324, 33);
+            txtCPF.PlaceholderText = "CPF Funcionário";
+            txtCPF.Size = new Size(352, 57);
             txtCPF.TabIndex = 1;
             txtCPF.TextChanged += txtCPF_TextChanged;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(lblData);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(lblHora);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(txtNome);
-            groupBox2.Location = new Point(12, 91);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(336, 208);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "INFORMAÇÕES";
             // 
             // lblData
             // 
             lblData.AutoSize = true;
-            lblData.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblData.Location = new Point(150, 133);
+            lblData.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblData.Location = new Point(83, 475);
             lblData.Name = "lblData";
-            lblData.Size = new Size(167, 40);
+            lblData.Size = new Size(210, 50);
             lblData.TabIndex = 6;
             lblData.Text = "31/12/2023";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(150, 118);
+            label5.Location = new Point(168, 460);
             label5.Name = "label5";
             label5.Size = new Size(31, 15);
             label5.TabIndex = 5;
@@ -101,50 +75,42 @@
             // lblHora
             // 
             lblHora.AutoSize = true;
-            lblHora.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblHora.Location = new Point(6, 133);
+            lblHora.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblHora.Location = new Point(133, 364);
             lblHora.Name = "lblHora";
-            lblHora.Size = new Size(87, 40);
+            lblHora.Size = new Size(110, 50);
             lblHora.TabIndex = 4;
             lblHora.Text = "00:00";
+            lblHora.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 118);
+            label2.Location = new Point(166, 349);
             label2.Name = "label2";
             label2.Size = new Size(33, 15);
             label2.TabIndex = 3;
             label2.Text = "Hora";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 37);
-            label1.Name = "label1";
-            label1.Size = new Size(40, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Nome";
-            // 
             // txtNome
             // 
-            txtNome.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNome.Location = new Point(6, 55);
+            txtNome.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNome.Location = new Point(12, 241);
             txtNome.Name = "txtNome";
             txtNome.ReadOnly = true;
-            txtNome.Size = new Size(324, 33);
+            txtNome.Size = new Size(352, 57);
             txtNome.TabIndex = 1;
+            txtNome.Text = "Nome Funcionário";
             // 
             // btnSalvarPonto
             // 
             btnSalvarPonto.Image = (Image)resources.GetObject("btnSalvarPonto.Image");
             btnSalvarPonto.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalvarPonto.Location = new Point(211, 305);
+            btnSalvarPonto.Location = new Point(64, 588);
             btnSalvarPonto.Name = "btnSalvarPonto";
-            btnSalvarPonto.Size = new Size(137, 71);
+            btnSalvarPonto.Size = new Size(248, 80);
             btnSalvarPonto.TabIndex = 3;
             btnSalvarPonto.Text = "Salvar ponto";
-            btnSalvarPonto.TextAlign = ContentAlignment.MiddleRight;
             btnSalvarPonto.UseVisualStyleBackColor = true;
             btnSalvarPonto.Click += btnSalvarPonto_Click;
             // 
@@ -154,14 +120,43 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
+            pictureBox2.Location = new Point(12, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 37;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // lblSaudacao
+            // 
+            lblSaudacao.AutoSize = true;
+            lblSaudacao.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location = new Point(66, 13);
+            lblSaudacao.Name = "lblSaudacao";
+            lblSaudacao.Size = new Size(211, 45);
+            lblSaudacao.TabIndex = 36;
+            lblSaudacao.Text = "Marcar Ponto";
+            // 
             // ponto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(360, 388);
+            BackColor = Color.White;
+            ClientSize = new Size(376, 680);
+            Controls.Add(txtNome);
+            Controls.Add(lblData);
+            Controls.Add(txtCPF);
+            Controls.Add(label5);
+            Controls.Add(pictureBox2);
+            Controls.Add(lblHora);
+            Controls.Add(label2);
+            Controls.Add(lblSaudacao);
             Controls.Add(btnSalvarPonto);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ponto";
@@ -169,26 +164,22 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ponto";
             Load += ponto_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
         private TextBox txtCPF;
-        private GroupBox groupBox2;
         private Label lblData;
         private Label label5;
         private Label lblHora;
         private Label label2;
-        private Label label1;
         private TextBox txtNome;
         private Button btnSalvarPonto;
         private System.Windows.Forms.Timer timer1;
         private ToolTip ttTxtCPF;
+        private PictureBox pictureBox2;
+        private Label lblSaudacao;
     }
 }

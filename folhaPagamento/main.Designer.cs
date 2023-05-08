@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            btnMarcarPonto = new Button();
-            btnHolerite = new Button();
             btnFuncionários = new Button();
             btnConfig = new Button();
             lblSaudacao = new Label();
@@ -38,37 +36,17 @@
             btnSairdoSistema = new Button();
             btnEmpresa = new Button();
             btnLogout = new Button();
+            btnMarcarPonto = new PictureBox();
+            this.btnHolerite = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.btnHolerite).BeginInit();
             SuspendLayout();
-            // 
-            // btnMarcarPonto
-            // 
-            btnMarcarPonto.Image = (Image)resources.GetObject("btnMarcarPonto.Image");
-            btnMarcarPonto.Location = new Point(12, 98);
-            btnMarcarPonto.Name = "btnMarcarPonto";
-            btnMarcarPonto.Size = new Size(96, 96);
-            btnMarcarPonto.TabIndex = 2;
-            btnMarcarPonto.Text = "Marcar Ponto";
-            btnMarcarPonto.TextAlign = ContentAlignment.BottomCenter;
-            btnMarcarPonto.UseVisualStyleBackColor = true;
-            btnMarcarPonto.Click += btnMarcarPonto_Click;
-            // 
-            // btnHolerite
-            // 
-            btnHolerite.Image = (Image)resources.GetObject("btnHolerite.Image");
-            btnHolerite.Location = new Point(114, 98);
-            btnHolerite.Name = "btnHolerite";
-            btnHolerite.Size = new Size(96, 96);
-            btnHolerite.TabIndex = 3;
-            btnHolerite.Text = "Holerite";
-            btnHolerite.TextAlign = ContentAlignment.BottomCenter;
-            btnHolerite.UseVisualStyleBackColor = true;
-            btnHolerite.Click += btnHolerite_Click;
             // 
             // btnFuncionários
             // 
             btnFuncionários.Image = (Image)resources.GetObject("btnFuncionários.Image");
-            btnFuncionários.Location = new Point(216, 98);
+            btnFuncionários.Location = new Point(94, 399);
             btnFuncionários.Name = "btnFuncionários";
             btnFuncionários.Size = new Size(96, 96);
             btnFuncionários.TabIndex = 4;
@@ -80,7 +58,7 @@
             // btnConfig
             // 
             btnConfig.Image = (Image)resources.GetObject("btnConfig.Image");
-            btnConfig.Location = new Point(420, 98);
+            btnConfig.Location = new Point(196, 501);
             btnConfig.Name = "btnConfig";
             btnConfig.Size = new Size(96, 96);
             btnConfig.TabIndex = 5;
@@ -92,17 +70,17 @@
             // lblSaudacao
             // 
             lblSaudacao.AutoSize = true;
-            lblSaudacao.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSaudacao.Location = new Point(66, 25);
+            lblSaudacao.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location = new Point(12, 63);
             lblSaudacao.Name = "lblSaudacao";
-            lblSaudacao.Size = new Size(226, 45);
+            lblSaudacao.Size = new Size(168, 32);
             lblSaudacao.TabIndex = 6;
             lblSaudacao.Text = "Bom dia, Erick.";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 22);
+            pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(48, 48);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -113,7 +91,7 @@
             // 
             btnSairdoSistema.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
             btnSairdoSistema.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSairdoSistema.Location = new Point(12, 296);
+            btnSairdoSistema.Location = new Point(12, 616);
             btnSairdoSistema.Name = "btnSairdoSistema";
             btnSairdoSistema.Size = new Size(141, 52);
             btnSairdoSistema.TabIndex = 9;
@@ -125,7 +103,7 @@
             // btnEmpresa
             // 
             btnEmpresa.Image = Properties.Resources.store_FILL0_wght400_GRAD0_opsz48;
-            btnEmpresa.Location = new Point(318, 98);
+            btnEmpresa.Location = new Point(196, 399);
             btnEmpresa.Name = "btnEmpresa";
             btnEmpresa.Size = new Size(96, 96);
             btnEmpresa.TabIndex = 11;
@@ -138,7 +116,7 @@
             // 
             btnLogout.Image = Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(451, 296);
+            btnLogout.Location = new Point(228, 616);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(136, 52);
             btnLogout.TabIndex = 12;
@@ -147,12 +125,36 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btnMarcarPonto
+            // 
+            btnMarcarPonto.Image = Properties.Resources.ponto;
+            btnMarcarPonto.Location = new Point(12, 171);
+            btnMarcarPonto.Name = "btnMarcarPonto";
+            btnMarcarPonto.Size = new Size(170, 120);
+            btnMarcarPonto.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnMarcarPonto.TabIndex = 13;
+            btnMarcarPonto.TabStop = false;
+            btnMarcarPonto.Click += btnMarcarPonto_Click_1;
+            // 
+            // btnHolerite
+            // 
+            this.btnHolerite.Image = Properties.Resources.holerite1;
+            this.btnHolerite.Location = new Point(194, 171);
+            this.btnHolerite.Name = "btnHolerite";
+            this.btnHolerite.Size = new Size(170, 120);
+            this.btnHolerite.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.btnHolerite.TabIndex = 14;
+            this.btnHolerite.TabStop = false;
+            this.btnHolerite.Click += this.btnHolerite_Click_1;
+            // 
             // main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(599, 360);
+            ClientSize = new Size(376, 680);
+            Controls.Add(this.btnHolerite);
+            Controls.Add(btnMarcarPonto);
             Controls.Add(btnLogout);
             Controls.Add(btnEmpresa);
             Controls.Add(btnSairdoSistema);
@@ -160,9 +162,7 @@
             Controls.Add(lblSaudacao);
             Controls.Add(btnConfig);
             Controls.Add(btnFuncionários);
-            Controls.Add(btnHolerite);
-            Controls.Add(btnMarcarPonto);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "main";
@@ -170,13 +170,13 @@
             Text = "Folha Pagamento";
             Load += main_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.btnHolerite).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button btnMarcarPonto;
-        private Button btnHolerite;
         private Button btnFuncionários;
         private Button btnConfig;
         private Label lblSaudacao;
@@ -188,5 +188,7 @@
         private ToolStripMenuItem sairDoSistemaToolStripMenuItem;
         private Button btnEmpresa;
         private Button btnLogout;
+        private PictureBox btnMarcarPonto;
+        private PictureBox btnHolerite;
     }
 }

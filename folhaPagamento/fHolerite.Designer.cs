@@ -40,18 +40,7 @@
             txtDescIR = new TextBox();
             dgvHolerite = new DataGridView();
             btnCalcular = new Button();
-            lblCalcularSalarioHora = new Label();
             lblusuario = new Label();
-            lblCalcularSalarioBruto = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            lblCalcularSalarioLiquido = new Label();
-            lblCalcularDescontoIRPF = new Label();
-            lblCalcularDescontoINSS = new Label();
             lblIsAdm = new Label();
             lblNomeUsuario = new Label();
             lblAdm = new Label();
@@ -169,15 +158,6 @@
             btnCalcular.UseVisualStyleBackColor = true;
             btnCalcular.Click += btnCalcular_Click;
             // 
-            // lblCalcularSalarioHora
-            // 
-            lblCalcularSalarioHora.AutoSize = true;
-            lblCalcularSalarioHora.Location = new Point(97, 381);
-            lblCalcularSalarioHora.Name = "lblCalcularSalarioHora";
-            lblCalcularSalarioHora.Size = new Size(111, 15);
-            lblCalcularSalarioHora.TabIndex = 16;
-            lblCalcularSalarioHora.Text = "CalcularSalarioHora";
-            // 
             // lblusuario
             // 
             lblusuario.AutoSize = true;
@@ -186,96 +166,6 @@
             lblusuario.Size = new Size(59, 15);
             lblusuario.TabIndex = 17;
             lblusuario.Text = "USUARIO:";
-            // 
-            // lblCalcularSalarioBruto
-            // 
-            lblCalcularSalarioBruto.AutoSize = true;
-            lblCalcularSalarioBruto.Location = new Point(94, 411);
-            lblCalcularSalarioBruto.Name = "lblCalcularSalarioBruto";
-            lblCalcularSalarioBruto.Size = new Size(114, 15);
-            lblCalcularSalarioBruto.TabIndex = 18;
-            lblCalcularSalarioBruto.Text = "CalcularSalarioBruto";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(233, 381);
-            label11.Name = "label11";
-            label11.Size = new Size(44, 15);
-            label11.TabIndex = 19;
-            label11.Text = "label11";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(233, 396);
-            label12.Name = "label12";
-            label12.Size = new Size(44, 15);
-            label12.TabIndex = 20;
-            label12.Text = "label12";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(233, 411);
-            label13.Name = "label13";
-            label13.Size = new Size(44, 15);
-            label13.TabIndex = 21;
-            label13.Text = "label13";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(530, 411);
-            label14.Name = "label14";
-            label14.Size = new Size(44, 15);
-            label14.TabIndex = 27;
-            label14.Text = "label14";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(530, 396);
-            label15.Name = "label15";
-            label15.Size = new Size(44, 15);
-            label15.TabIndex = 26;
-            label15.Text = "label15";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(530, 381);
-            label16.Name = "label16";
-            label16.Size = new Size(44, 15);
-            label16.TabIndex = 25;
-            label16.Text = "label16";
-            // 
-            // lblCalcularSalarioLiquido
-            // 
-            lblCalcularSalarioLiquido.AutoSize = true;
-            lblCalcularSalarioLiquido.Location = new Point(395, 411);
-            lblCalcularSalarioLiquido.Name = "lblCalcularSalarioLiquido";
-            lblCalcularSalarioLiquido.Size = new Size(125, 15);
-            lblCalcularSalarioLiquido.TabIndex = 24;
-            lblCalcularSalarioLiquido.Text = "CalcularSalarioLiquido";
-            // 
-            // lblCalcularDescontoIRPF
-            // 
-            lblCalcularDescontoIRPF.AutoSize = true;
-            lblCalcularDescontoIRPF.Location = new Point(397, 396);
-            lblCalcularDescontoIRPF.Name = "lblCalcularDescontoIRPF";
-            lblCalcularDescontoIRPF.Size = new Size(123, 15);
-            lblCalcularDescontoIRPF.TabIndex = 23;
-            lblCalcularDescontoIRPF.Text = "CalcularDescontoIRPF";
-            // 
-            // lblCalcularDescontoINSS
-            // 
-            lblCalcularDescontoINSS.AutoSize = true;
-            lblCalcularDescontoINSS.Location = new Point(396, 381);
-            lblCalcularDescontoINSS.Name = "lblCalcularDescontoINSS";
-            lblCalcularDescontoINSS.Size = new Size(124, 15);
-            lblCalcularDescontoINSS.TabIndex = 22;
-            lblCalcularDescontoINSS.Text = "CalcularDescontoINSS";
             // 
             // lblIsAdm
             // 
@@ -332,18 +222,7 @@
             Controls.Add(lblAdm);
             Controls.Add(lblNomeUsuario);
             Controls.Add(lblIsAdm);
-            Controls.Add(label14);
-            Controls.Add(label15);
-            Controls.Add(label16);
-            Controls.Add(lblCalcularSalarioLiquido);
-            Controls.Add(lblCalcularDescontoIRPF);
-            Controls.Add(lblCalcularDescontoINSS);
-            Controls.Add(label13);
-            Controls.Add(label12);
-            Controls.Add(label11);
-            Controls.Add(lblCalcularSalarioBruto);
             Controls.Add(lblusuario);
-            Controls.Add(lblCalcularSalarioHora);
             Controls.Add(btnCalcular);
             Controls.Add(dgvHolerite);
             Controls.Add(txtDescIR);
@@ -382,18 +261,7 @@
         private TextBox txtSalarioLiquido;
         private DataGridView dgvHolerite;
         private Button btnCalcular;
-        private Label lblCalcularSalarioHora;
         private Label lblusuario;
-        private Label lblCalcularSalarioBruto;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label lblCalcularSalarioLiquido;
-        private Label lblCalcularDescontoIRPF;
-        private Label lblCalcularDescontoINSS;
         private Label lblNomeUsuario;
         private Label label4;
         private Label lblCPF;
