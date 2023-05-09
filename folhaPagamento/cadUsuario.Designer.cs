@@ -80,6 +80,7 @@
             txtLogin=new TextBox();
             txtSenha=new TextBox();
             txtMatricula=new TextBox();
+            label13=new Label();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -186,15 +187,15 @@
             cbEstado_civil.DropDownStyle=ComboBoxStyle.DropDownList;
             cbEstado_civil.FormattingEnabled=true;
             cbEstado_civil.Items.AddRange(new object[] { "Solteiro", "Casado", "Viúvo", "Divorciado" });
-            cbEstado_civil.Location=new Point(217, 107);
+            cbEstado_civil.Location=new Point(143, 107);
             cbEstado_civil.Name="cbEstado_civil";
-            cbEstado_civil.Size=new Size(97, 23);
+            cbEstado_civil.Size=new Size(100, 23);
             cbEstado_civil.TabIndex=21;
             // 
             // label5
             // 
             label5.AutoSize=true;
-            label5.Location=new Point(143, 115);
+            label5.Location=new Point(143, 91);
             label5.Name="label5";
             label5.Size=new Size(68, 15);
             label5.TabIndex=20;
@@ -202,15 +203,16 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label13);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtDDD);
             groupBox1.Controls.Add(cbTipo);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtTelefone);
-            groupBox1.Location=new Point(6, 215);
+            groupBox1.Location=new Point(6, 182);
             groupBox1.Name="groupBox1";
-            groupBox1.Size=new Size(337, 128);
+            groupBox1.Size=new Size(334, 161);
             groupBox1.TabIndex=19;
             groupBox1.TabStop=false;
             groupBox1.Text="Contato e Endereço";
@@ -218,7 +220,7 @@
             // label4
             // 
             label4.AutoSize=true;
-            label4.Location=new Point(131, 19);
+            label4.Location=new Point(6, 63);
             label4.Name="label4";
             label4.Size=new Size(41, 15);
             label4.TabIndex=11;
@@ -226,15 +228,15 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location=new Point(131, 37);
+            txtEmail.Location=new Point(6, 81);
             txtEmail.Name="txtEmail";
             txtEmail.PlaceholderText="E-MAIL";
-            txtEmail.Size=new Size(151, 23);
+            txtEmail.Size=new Size(231, 23);
             txtEmail.TabIndex=10;
             // 
             // txtDDD
             // 
-            txtDDD.Location=new Point(6, 66);
+            txtDDD.Location=new Point(6, 37);
             txtDDD.Name="txtDDD";
             txtDDD.PlaceholderText="DDD";
             txtDDD.Size=new Size(33, 23);
@@ -245,9 +247,9 @@
             cbTipo.DropDownStyle=ComboBoxStyle.DropDownList;
             cbTipo.FormattingEnabled=true;
             cbTipo.Items.AddRange(new object[] { "Cel", "Fixo", "Outro" });
-            cbTipo.Location=new Point(45, 66);
+            cbTipo.Location=new Point(170, 37);
             cbTipo.Name="cbTipo";
-            cbTipo.Size=new Size(80, 23);
+            cbTipo.Size=new Size(67, 23);
             cbTipo.TabIndex=34;
             // 
             // label3
@@ -261,7 +263,7 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Location=new Point(6, 37);
+            txtTelefone.Location=new Point(45, 37);
             txtTelefone.Name="txtTelefone";
             txtTelefone.PlaceholderText="TELEFONE";
             txtTelefone.Size=new Size(119, 23);
@@ -287,7 +289,7 @@
             // label1
             // 
             label1.AutoSize=true;
-            label1.Location=new Point(6, 47);
+            label1.Location=new Point(3, 47);
             label1.Name="label1";
             label1.Size=new Size(28, 15);
             label1.TabIndex=17;
@@ -431,7 +433,7 @@
             // label11
             // 
             label11.AutoSize=true;
-            label11.Location=new Point(179, 144);
+            label11.Location=new Point(6, 135);
             label11.Name="label11";
             label11.Size=new Size(32, 15);
             label11.TabIndex=36;
@@ -442,9 +444,9 @@
             cbSexo.DropDownStyle=ComboBoxStyle.DropDownList;
             cbSexo.FormattingEnabled=true;
             cbSexo.Items.AddRange(new object[] { "M", "F", "O" });
-            cbSexo.Location=new Point(217, 136);
+            cbSexo.Location=new Point(6, 153);
             cbSexo.Name="cbSexo";
-            cbSexo.Size=new Size(97, 23);
+            cbSexo.Size=new Size(131, 23);
             cbSexo.TabIndex=35;
             // 
             // tabPage1
@@ -612,6 +614,15 @@
             txtMatricula.Size=new Size(191, 23);
             txtMatricula.TabIndex=28;
             // 
+            // label13
+            // 
+            label13.AutoSize=true;
+            label13.Location=new Point(170, 19);
+            label13.Name="label13";
+            label13.Size=new Size(30, 15);
+            label13.TabIndex=35;
+            label13.Text="Tipo";
+            // 
             // cadUsuario
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -707,5 +718,6 @@
         private ComboBox cbLogr;
         private Label label12;
         private TextBox txtComplemento;
+        private Label label13;
     }
 }
