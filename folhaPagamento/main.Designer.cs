@@ -148,7 +148,7 @@
             // btnFuncionarios
             // 
             btnFuncionarios.Image=Properties.Resources.funcionarios;
-            btnFuncionarios.Location=new Point(12, 325);
+            btnFuncionarios.Location=new Point(12, 297);
             btnFuncionarios.Name="btnFuncionarios";
             btnFuncionarios.Size=new Size(170, 120);
             btnFuncionarios.SizeMode=PictureBoxSizeMode.StretchImage;
@@ -159,7 +159,7 @@
             // btnEmpresa
             // 
             btnEmpresa.Image=Properties.Resources.empresa;
-            btnEmpresa.Location=new Point(194, 325);
+            btnEmpresa.Location=new Point(194, 297);
             btnEmpresa.Name="btnEmpresa";
             btnEmpresa.Size=new Size(170, 120);
             btnEmpresa.SizeMode=PictureBoxSizeMode.StretchImage;
