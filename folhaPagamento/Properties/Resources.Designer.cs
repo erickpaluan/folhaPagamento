@@ -133,6 +133,16 @@ namespace folhaPagamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fp {
+            get {
+                object obj = ResourceManager.GetObject("fp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap groups_FILL0_wght400_GRAD0_opsz48 {
             get {
                 object obj = ResourceManager.GetObject("groups_FILL0_wght400_GRAD0_opsz48", resourceCulture);
@@ -176,6 +186,16 @@ namespace folhaPagamento.Properties {
         internal static System.Drawing.Bitmap logout_FILL0_wght400_GRAD0_opsz48 {
             get {
                 object obj = ResourceManager.GetObject("logout_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_2_fill {
+            get {
+                object obj = ResourceManager.GetObject("menu-2-fill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

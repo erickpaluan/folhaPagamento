@@ -28,27 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             btnFuncionários = new Button();
             btnConfig = new Button();
             lblSaudacao = new Label();
             pictureBox1 = new PictureBox();
-            btnSairdoSistema = new Button();
             btnEmpresa = new Button();
-            btnLogout = new Button();
             btnMarcarPonto = new PictureBox();
-            this.btnHolerite = new PictureBox();
+            btnHolerite = new PictureBox();
+            contextMenuStrip2 = new ContextMenuStrip(components);
+            configuraçõesToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            fazerLogoutToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            toolStripMenuItem2 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)this.btnHolerite).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnHolerite).BeginInit();
+            contextMenuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // btnFuncionários
             // 
             btnFuncionários.Image = (Image)resources.GetObject("btnFuncionários.Image");
-            btnFuncionários.Location = new Point(94, 399);
+            btnFuncionários.Location = new Point(18, 354);
             btnFuncionários.Name = "btnFuncionários";
-            btnFuncionários.Size = new Size(96, 96);
+            btnFuncionários.Size = new Size(170, 120);
             btnFuncionários.TabIndex = 4;
             btnFuncionários.Text = "Funcionários";
             btnFuncionários.TextAlign = ContentAlignment.BottomCenter;
@@ -57,12 +63,13 @@
             // 
             // btnConfig
             // 
-            btnConfig.Image = (Image)resources.GetObject("btnConfig.Image");
-            btnConfig.Location = new Point(196, 501);
+            btnConfig.FlatAppearance.BorderSize = 0;
+            btnConfig.FlatStyle = FlatStyle.Flat;
+            btnConfig.Image = Properties.Resources.menu_2_fill;
+            btnConfig.Location = new Point(316, 12);
             btnConfig.Name = "btnConfig";
-            btnConfig.Size = new Size(96, 96);
+            btnConfig.Size = new Size(48, 48);
             btnConfig.TabIndex = 5;
-            btnConfig.Text = "Configurações";
             btnConfig.TextAlign = ContentAlignment.BottomCenter;
             btnConfig.UseVisualStyleBackColor = true;
             btnConfig.Click += btnConfig_Click;
@@ -79,51 +86,25 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.fp;
             pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(48, 48);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
-            // 
-            // btnSairdoSistema
-            // 
-            btnSairdoSistema.Image = Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
-            btnSairdoSistema.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSairdoSistema.Location = new Point(12, 616);
-            btnSairdoSistema.Name = "btnSairdoSistema";
-            btnSairdoSistema.Size = new Size(141, 52);
-            btnSairdoSistema.TabIndex = 9;
-            btnSairdoSistema.Text = "Sair do Sistema";
-            btnSairdoSistema.TextAlign = ContentAlignment.MiddleRight;
-            btnSairdoSistema.UseVisualStyleBackColor = true;
-            btnSairdoSistema.Click += btnSairdoSistema_Click;
             // 
             // btnEmpresa
             // 
             btnEmpresa.Image = Properties.Resources.store_FILL0_wght400_GRAD0_opsz48;
-            btnEmpresa.Location = new Point(196, 399);
+            btnEmpresa.Location = new Point(194, 354);
             btnEmpresa.Name = "btnEmpresa";
-            btnEmpresa.Size = new Size(96, 96);
+            btnEmpresa.Size = new Size(170, 120);
             btnEmpresa.TabIndex = 11;
             btnEmpresa.Text = "Empresa";
             btnEmpresa.TextAlign = ContentAlignment.BottomCenter;
             btnEmpresa.UseVisualStyleBackColor = true;
             btnEmpresa.Click += btnEmpresa_Click;
-            // 
-            // btnLogout
-            // 
-            btnLogout.Image = Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
-            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(228, 616);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(136, 52);
-            btnLogout.TabIndex = 12;
-            btnLogout.Text = "Fazer Logout";
-            btnLogout.TextAlign = ContentAlignment.MiddleRight;
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
             // 
             // btnMarcarPonto
             // 
@@ -138,14 +119,53 @@
             // 
             // btnHolerite
             // 
-            this.btnHolerite.Image = Properties.Resources.holerite1;
-            this.btnHolerite.Location = new Point(194, 171);
-            this.btnHolerite.Name = "btnHolerite";
-            this.btnHolerite.Size = new Size(170, 120);
-            this.btnHolerite.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.btnHolerite.TabIndex = 14;
-            this.btnHolerite.TabStop = false;
-            this.btnHolerite.Click += this.btnHolerite_Click_1;
+            btnHolerite.Image = Properties.Resources.holerite1;
+            btnHolerite.Location = new Point(194, 171);
+            btnHolerite.Name = "btnHolerite";
+            btnHolerite.Size = new Size(170, 120);
+            btnHolerite.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnHolerite.TabIndex = 14;
+            btnHolerite.TabStop = false;
+            btnHolerite.Click += btnHolerite_Click_1;
+            // 
+            // contextMenuStrip2
+            // 
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { configuraçõesToolStripMenuItem, toolStripSeparator1, fazerLogoutToolStripMenuItem, toolStripSeparator2, toolStripMenuItem2 });
+            contextMenuStrip2.Name = "contextMenuStrip2";
+            contextMenuStrip2.Size = new Size(155, 82);
+            // 
+            // configuraçõesToolStripMenuItem
+            // 
+            configuraçõesToolStripMenuItem.Image = Properties.Resources.settings_FILL0_wght400_GRAD0_opsz48;
+            configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            configuraçõesToolStripMenuItem.Size = new Size(154, 22);
+            configuraçõesToolStripMenuItem.Text = "Configurações";
+            configuraçõesToolStripMenuItem.Click += configuraçõesToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(151, 6);
+            // 
+            // fazerLogoutToolStripMenuItem
+            // 
+            fazerLogoutToolStripMenuItem.Image = Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
+            fazerLogoutToolStripMenuItem.Name = "fazerLogoutToolStripMenuItem";
+            fazerLogoutToolStripMenuItem.Size = new Size(154, 22);
+            fazerLogoutToolStripMenuItem.Text = "Fazer Logout";
+            fazerLogoutToolStripMenuItem.Click += fazerLogoutToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(151, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(154, 22);
+            toolStripMenuItem2.Text = "Sair do Sistema";
+            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // main
             // 
@@ -153,11 +173,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(376, 680);
-            Controls.Add(this.btnHolerite);
+            Controls.Add(btnHolerite);
             Controls.Add(btnMarcarPonto);
-            Controls.Add(btnLogout);
             Controls.Add(btnEmpresa);
-            Controls.Add(btnSairdoSistema);
             Controls.Add(pictureBox1);
             Controls.Add(lblSaudacao);
             Controls.Add(btnConfig);
@@ -171,7 +189,8 @@
             Load += main_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).EndInit();
-            ((System.ComponentModel.ISupportInitialize)this.btnHolerite).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnHolerite).EndInit();
+            contextMenuStrip2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,13 +201,17 @@
         private Label lblSaudacao;
         private PictureBox pictureBox1;
         private Button button5;
-        private Button btnSairdoSistema;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem testeToolStripMenuItem;
         private ToolStripMenuItem sairDoSistemaToolStripMenuItem;
         private Button btnEmpresa;
-        private Button btnLogout;
         private PictureBox btnMarcarPonto;
         private PictureBox btnHolerite;
+        private ContextMenuStrip contextMenuStrip2;
+        private ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem fazerLogoutToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem toolStripMenuItem2;
     }
 }

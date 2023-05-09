@@ -26,8 +26,7 @@ namespace folhaPagamento
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            configuracao config = new configuracao();
-            config.ShowDialog();
+            contextMenuStrip2.Show(btnConfig, new Point(0, btnConfig.Height));
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -69,28 +68,11 @@ namespace folhaPagamento
 
         private void btnSairdoSistema_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
-            "sair do sistema?", "Sair",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
-            "sair da sua conta?", "Deslogar",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                login login = new login();
-                login.Show();
-            }
 
         }
 
@@ -110,6 +92,37 @@ namespace folhaPagamento
         {
             fHolerite fHolerite = new fHolerite(Session);
             fHolerite.ShowDialog();
+        }
+
+        private void configuraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            configuracao config = new configuracao();
+            config.ShowDialog();
+        }
+
+        private void fazerLogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja sair da sua conta?", "Deslogar",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                login login = new login();
+                login.Show();
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
+            "sair do sistema?", "Sair",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
