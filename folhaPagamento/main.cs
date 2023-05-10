@@ -19,12 +19,6 @@ namespace folhaPagamento
 
         }
 
-        private void btnFuncionários_Click(object sender, EventArgs e)
-        {
-            cadUsuario form = new cadUsuario();
-            form.ShowDialog();
-        }
-
         private void btnConfig_Click(object sender, EventArgs e)
         {
             contextMenuStrip2.Show(btnConfig, new Point(0, btnConfig.Height));
@@ -35,7 +29,7 @@ namespace folhaPagamento
 
             if (Usuarios.adm == false)
             {
-                btnFuncionários.Visible = false;
+                btnFuncionarios.Visible = false;
                 btnEmpresa.Visible = false;
 
             }
@@ -59,22 +53,6 @@ namespace folhaPagamento
         }
 
         private void btnEmpresa_Click(object sender, EventArgs e)
-        {
-            cadEmpresa cadEmpresa = new cadEmpresa();
-            cadEmpresa.ShowDialog();
-        }
-
-        private void btnSairdoSistema_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
         {
             cadEmpresa cadEmpresa = new cadEmpresa();
             cadEmpresa.ShowDialog();
@@ -121,6 +99,18 @@ namespace folhaPagamento
             {
                 Application.Exit();
             }
+        }
+
+        private void btnFuncionarios_Click(object sender, EventArgs e)
+        {
+            cadUsuario form = new cadUsuario();
+            form.ShowDialog();
+        }
+
+        private void btnEmpresa_Click_1(object sender, EventArgs e)
+        {
+            cadEmpresa cadEmpresa = new cadEmpresa();
+            cadEmpresa.ShowDialog();
         }
     }
 }
