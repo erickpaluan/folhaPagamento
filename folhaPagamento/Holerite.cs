@@ -28,21 +28,25 @@ namespace folhaPagamento
             decimal salario = Convert.ToDecimal(Usuarios.salario);
 
             double DescontoINSS;
-            if (Usuarios.salario <= 3971)
+            if (Usuarios.salario <= 1320)
             {
                 DescontoINSS = Usuarios.salario * 0.075;
             }
-            else if (Usuarios.salario <= 6618)
+            else if (Usuarios.salario <= 2571.29)
             {
-                DescontoINSS = Usuarios.salario * 0.09;
+                DescontoINSS = Usuarios.salario * 0.09 - 19.8;
             }
-            else if (Usuarios.salario <= 11019)
+            else if (Usuarios.salario <= 3856.9)
             {
-                DescontoINSS = Usuarios.salario * 0.12;
+                DescontoINSS = Usuarios.salario * 0.12 - 96.94;
+            }
+            else if (Usuarios.salario <= 7507.49)
+            {
+                DescontoINSS = Usuarios.salario * 0.14 - 174.08;
             }
             else
             {
-                DescontoINSS = 1322.59;
+                DescontoINSS = 1043.77;
             }
             return Convert.ToDecimal(DescontoINSS);
         }
