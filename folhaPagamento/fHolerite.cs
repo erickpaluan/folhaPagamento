@@ -23,6 +23,7 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
 
+
             // Configura as colunas do DataGridView
             dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
             dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
@@ -65,10 +66,10 @@ namespace folhaPagamento
             dgvHolerite.Rows.Add(holerite.SalarioBase.ToString("C2"),
                                   holerite.HorasExtras,
                                   holerite.ValorHoraExtra.ToString("C2"),
-                                  holerite.CalcularSalarioBruto().ToString("C2"),
-                                  holerite.CalcularDescontoINSS().ToString("C2"),
-                                  holerite.CalcularDescontoIRPF().ToString("C2"),
-                                  holerite.CalcularSalarioLiquido().ToString("C2"));
+                                  holerite.CalcularSalarioBruto().ToString("C2"));
+                                  //holerite.CalcularDescontoINSS().ToString("C2"),
+                                  //holerite.CalcularDescontoIRPF().ToString("C2"));
+                                  //holerite.CalcularSalarioLiquido().ToString("C2"));
 
 
 
@@ -81,9 +82,14 @@ namespace folhaPagamento
             bool isAdm = Usuarios.adm;
             string CPF = Usuarios.cpf;
 
+            Holerite holerite = new Holerite();
+            decimal descontoINSS = holerite.CalcularDescontoINSS(Usuarios);
+            decimal descontoIR = holerite.CalcularDescontoIRPF(Usuarios);
+
             decimal salario = Convert.ToDecimal(Usuarios.salario);
             txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
-
+            txtDescINSS.Text = descontoINSS.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+            txtDescIR.Text = descontoIR.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
