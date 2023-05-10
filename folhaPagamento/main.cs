@@ -39,11 +39,11 @@ namespace folhaPagamento
 
             if (now.Hour >= 5 && now.Hour < 12)
             {
-                lblSaudacao.Text = $"Bom dia,\n {Usuarios.nome}";
+                lblSaudacao.Text = $"Bom dia,\n{Usuarios.nome}";
             }
             else if (now.Hour >= 12 && now.Hour < 18)
             {
-                lblSaudacao.Text = $"Boa tarde,\n {Usuarios.nome}";
+                lblSaudacao.Text = $"Boa tarde,\n{Usuarios.nome}";
             }
             else
             {

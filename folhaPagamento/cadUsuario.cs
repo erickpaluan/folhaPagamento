@@ -41,9 +41,9 @@ namespace folhaPagamento
         private void cadUsuario_Load(object sender, EventArgs e)
         {
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
-            
 
             dgUsuarios.Columns["id_func"].HeaderText = "ID";
+            dgUsuarios.Columns["ativo"].HeaderText = "Ativo";
             dgUsuarios.Columns["nome"].HeaderText = "Nome do Funcionário";
             dgUsuarios.Columns["cpf"].HeaderText = "CPF";
             dgUsuarios.Columns["dt_nasc"].HeaderText = "Data de Nascimento";
@@ -53,7 +53,7 @@ namespace folhaPagamento
 
             //Esconder Colunas da Tabela
             dgUsuarios.Columns[0].Visible = false;
-            dgUsuarios.Columns[1].Visible = false;
+            dgUsuarios.Columns[1].Visible = true;
             dgUsuarios.Columns[2].Visible = true;
             dgUsuarios.Columns[3].Visible = false;
             dgUsuarios.Columns[4].Visible = false;

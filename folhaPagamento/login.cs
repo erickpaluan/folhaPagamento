@@ -48,7 +48,7 @@ namespace folhaPagamento
                     conn.Open();
 
                     // Consulta para verificar se o login e a senha são válidos
-                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf, salario FROM funcionario WHERE login = @login AND senha = @senha", conn);
+                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf, salario, ativo FROM funcionario WHERE login = @login AND senha = @senha", conn);
                     comando.Parameters.AddWithValue("@Login", login);
                     comando.Parameters.AddWithValue("@Senha", senha);
                     Users users = new Users();
@@ -67,12 +67,20 @@ namespace folhaPagamento
                         usuarios.adm = leitor.GetBoolean("adm");
                         usuarios.cpf = leitor.GetString("cpf");
                         usuarios.salario = leitor.GetFloat("salario");
+                        usuarios.ativo = leitor.GetBoolean("ativo");
 
-                        //session.Username = nomeUsuario;
-                        //session.CPF = CPF;
-                        main main = new main(usuarios);
-                        main.Show();
-                        this.Hide();
+                        if(usuarios.ativo == true)
+                        {
+                            main main = new main(usuarios);
+                            main.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuário não ativo!\nContate o Administrador.", "Não ativo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        
+                        
                     }
                     else
                     {
