@@ -23,7 +23,6 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
 
-
             // Configura as colunas do DataGridView
             dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
             dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
@@ -57,22 +56,33 @@ namespace folhaPagamento
 
             // Cria uma nova instância da classe HoleriteDAO
             HoleriteDAO novoHolerite = new HoleriteDAO();
-            novoHolerite.SalarioBase = (decimal)Usuarios.salario;
-            novoHolerite.ValorTotal = SalarioTotal;
-            novoHolerite.DescontoINSS = descontoINSS;
-            novoHolerite.DescontoIRPF = descontoIR;
+            novoHolerite.cpf = Usuarios.cpf;
+            novoHolerite.salariobruto = SalarioTotal;
+            novoHolerite.inss = descontoINSS;
+            novoHolerite.irpf = descontoIR;
+            novoHolerite.convmed = ConvMed;
+            novoHolerite.convodonto = ConvOdon;
+            novoHolerite.totaldescontos = TotalDescontos;
+            novoHolerite.salarioliquido = SalarioTotal;
+            novoHolerite.datapagamento = DateTime.ParseExact(dtpHolerite.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
             try
             {
                 holerite.AddHolerite(
-                novoHolerite.SalarioBase,
-                novoHolerite.DescontoINSS,
-                novoHolerite.DescontoIRPF,
-                novoHolerite.ValorTotal);
+                    novoHolerite.cpf,
+                    novoHolerite.salariobruto,
+                    novoHolerite.inss,
+                    novoHolerite.irpf,
+                    novoHolerite.convmed,
+                    novoHolerite.convodonto,
+                    novoHolerite.totaldescontos,
+                    novoHolerite.salarioliquido,
+                    novoHolerite.datapagamento);
 
                 MessageBox.Show("Holerite Adicionado!");
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao Adicionar" + ex.Message);
             }
@@ -83,6 +93,7 @@ namespace folhaPagamento
             string nome = Usuarios.nome;
             bool isAdm = Usuarios.adm;
             string CPF = Usuarios.cpf;
+            int ID_FUNC = Usuarios.id_func;
 
             Holerite holerite = new Holerite();
             decimal descontoINSS = holerite.CalcularDescontoINSS(Usuarios);
@@ -91,7 +102,6 @@ namespace folhaPagamento
             decimal ConvOdon = holerite.AdicionalConvOdon(Usuarios);
             decimal TotalDescontos = descontoINSS + descontoIR + ConvMed + ConvOdon;
             decimal SalarioTotal = (decimal)Usuarios.salario - TotalDescontos;
-
 
             decimal salario = Convert.ToDecimal(Usuarios.salario);
             txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
