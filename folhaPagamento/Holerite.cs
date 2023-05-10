@@ -1,13 +1,26 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace folhaPagamento
 {
-    internal class Holerite : HoleriteDAO
+    internal class Holerite : connDB
     {
+
+        private NpgsqlConnection conn;
+
+        public Holerite()
+        {
+            string sconn = connDB.GetConnection();
+            conn = new NpgsqlConnection(sconn);
+            conn.Open();
+        }
+
+
         public decimal AdicionalConvMed(Users Usuarios)
         {
             bool ConvMed = Usuarios.conv_med;
@@ -39,9 +52,27 @@ namespace folhaPagamento
             return DescontoConvOdon;
         }
 
-        public decimal CalcularSalarioTotal(Users Usuarios)
-        { 
-            return 0;
+        public void AddHolerite(
+            decimal SalarioBase,
+            decimal DescontoINSS,
+            decimal DescontoIRPF,
+            //decimal DescontoConvMed,
+            //decimal DescontoConvOdon,
+            //decimal TotalDescontos,
+            decimal ValorTotal)
+        {
+            string sql = "INSERT INTO folha_pagto (sal_bruto, sal_liq, inss, ir) " +
+                         "VALUES (@sal_bruto, @sal_liq, @inss, @ir);";
+
+            using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, conn))
+            {
+                cmdHolerite.Parameters.AddWithValue("@sal_bruto", SalarioBase);
+                cmdHolerite.Parameters.AddWithValue("@sal_liq", ValorTotal);
+                cmdHolerite.Parameters.AddWithValue("@inss", DescontoINSS);
+                cmdHolerite.Parameters.AddWithValue("@ir", DescontoIRPF);
+
+                cmdHolerite.ExecuteNonQuery();
+            }
         }
 
         public decimal CalcularDescontoINSS(Users Usuarios)
@@ -98,12 +129,5 @@ namespace folhaPagamento
             }
             return DescontoIRPF;
         }
-
-        /*public decimal CalcularSalarioLiquido()
-        { 
-            return CalcularSalarioBruto() - CalcularDescontoINSS() - CalcularDescontoIRPF();
-        }*/
-
-
     }
 }

@@ -47,33 +47,35 @@ namespace folhaPagamento
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            // Cria uma nova instância da classe Funcionario
             Holerite holerite = new Holerite();
+            decimal descontoINSS = holerite.CalcularDescontoINSS(Usuarios);
+            decimal descontoIR = holerite.CalcularDescontoIRPF(Usuarios);
+            decimal ConvMed = holerite.AdicionalConvMed(Usuarios);
+            decimal ConvOdon = holerite.AdicionalConvOdon(Usuarios);
+            decimal TotalDescontos = descontoINSS + descontoIR + ConvMed + ConvOdon;
+            decimal SalarioTotal = (decimal)Usuarios.salario - TotalDescontos;
 
-            //double pINSS = double.Parse(txtDescINSS.Text); ;
-            //double pIRPF = double.Parse(txtDescINSS.Text);
-            //double porcentagemINSS = pINSS / 100.0;
-            //double porcentagemIRPF = pIRPF / 100.0;
+            // Cria uma nova instância da classe HoleriteDAO
+            HoleriteDAO novoHolerite = new HoleriteDAO();
+            novoHolerite.SalarioBase = (decimal)Usuarios.salario;
+            novoHolerite.ValorTotal = SalarioTotal;
+            novoHolerite.DescontoINSS = descontoINSS;
+            novoHolerite.DescontoIRPF = descontoIR;
 
-            // Atribui os valores das propriedades do funcionário
-            //holerite.SalarioBase = decimal.Parse(txtSalario.Text);
-            //holerite.DescontoConvMed = decimal.Parse(txtConvMed.Text);
-            //holerite.DescontoConvOdon = decimal.Parse(txtConvOdon.Text);
-            //holerite.DescontoINSS = decimal.Parse(txtDescINSS.Text);
-            //holerite.DescontoIRPF = decimal.Parse(txtDescIR.Text);
+            try
+            {
+                holerite.AddHolerite(
+                novoHolerite.SalarioBase,
+                novoHolerite.DescontoINSS,
+                novoHolerite.DescontoIRPF,
+                novoHolerite.ValorTotal);
 
-            // Adiciona uma nova linha ao DataGridView com as informações do holerite
-            //dgvHolerite.Rows.Add(holerite.SalarioBase.ToString("C2"),
-            //holerite.HorasExtras,
-            //holerite.ValorHoraExtra.ToString("C2"));
-            //holerite.CalcularSalarioBruto().ToString("C2"));
-            //holerite.CalcularDescontoINSS().ToString("C2"),
-            //holerite.CalcularDescontoIRPF().ToString("C2"));
-            //holerite.CalcularSalarioLiquido().ToString("C2"));
+                MessageBox.Show("Holerite Adicionado!");
 
-
-
-
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Adicionar" + ex.Message);
+            }
         }
 
         private void fHolerite_Load(object sender, EventArgs e)
