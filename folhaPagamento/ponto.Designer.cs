@@ -52,6 +52,7 @@
             txtCPF.Size = new Size(352, 57);
             txtCPF.TabIndex = 1;
             txtCPF.TextChanged += txtCPF_TextChanged;
+            txtCPF.KeyPress += txtCPF_KeyPress_1;
             // 
             // lblData
             // 

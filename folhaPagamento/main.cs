@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using System.Windows.Forms;
 
@@ -6,15 +7,15 @@ namespace folhaPagamento
 {
     public partial class main : Form
     {
-        private UserSession session;
+        private User usuarios;
+        public Users Usuarios { get; set;}
 
-        public UserSession Session { get; set; }
-
-        public main(UserSession session)
+        public main(Users usuarios)
         {
 
             InitializeComponent();
-            Session = session;
+            Usuarios = usuarios;
+
 
         }
 
@@ -32,10 +33,7 @@ namespace folhaPagamento
         private void main_Load(object sender, EventArgs e)
         {
 
-            string nome = Session.Username;
-            bool isAdm = Session.IsAdmin;
-
-            if (isAdm == false)
+            if (Usuarios.adm == false)
             {
                 btnFuncionários.Visible = false;
                 btnEmpresa.Visible = false;
@@ -47,15 +45,15 @@ namespace folhaPagamento
 
             if (now.Hour >= 5 && now.Hour < 12)
             {
-                lblSaudacao.Text = "Bom dia,\n" + nome;
+                lblSaudacao.Text = $"Bom dia,\n {Usuarios.nome}";
             }
             else if (now.Hour >= 12 && now.Hour < 18)
             {
-                lblSaudacao.Text = "Boa tarde,\n" + "<b>" + nome + "</b>";
+                lblSaudacao.Text = $"Boa tarde,\n {Usuarios.nome}";
             }
             else
             {
-                lblSaudacao.Text = $"Boa noite,\n{nome}";
+                lblSaudacao.Text = $"Boa noite,\n{Usuarios.nome}";
             }
 
         }
@@ -84,13 +82,13 @@ namespace folhaPagamento
 
         private void btnMarcarPonto_Click_1(object sender, EventArgs e)
         {
-            ponto form = new ponto(Session);
+            ponto form = new ponto(Usuarios);
             form.ShowDialog();
         }
 
         private void btnHolerite_Click_1(object sender, EventArgs e)
         {
-            fHolerite fHolerite = new fHolerite(Session);
+            fHolerite fHolerite = new fHolerite(Usuarios);
             fHolerite.ShowDialog();
         }
 

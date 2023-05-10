@@ -35,6 +35,7 @@ namespace folhaPagamento
                     {
                         Empresa empresa = new Empresa();
                         empresa.id_empresa = reader.GetInt32(reader.GetOrdinal("id_empresa"));
+                        //empresa.RazaoSocial = reader.GetString(reader.GetString("RazaoSocial"));
                         /*Empresa empresa = new Empresa();
                         empresa.RazaoSocial = reader.GetString(reader.GetOrdinal("RazaoSocial"));
                         empresa.NomeFantasia = reader.GetString(reader.GetOrdinal("Nomefantasia"));

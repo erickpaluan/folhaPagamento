@@ -7,18 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 
 namespace folhaPagamento
 {
     public partial class fHolerite : Form
     {
-        public UserSession Session { get; set; }
+        private User usuarios;
+        public Users Usuarios { get; set; }
         private Holerite HoleriteDAO { get; set; }
-        public fHolerite(UserSession session)
+        public fHolerite(Users usuarios)
         {
             InitializeComponent();
-            Session = session;
+            Usuarios = usuarios;
 
             // Configura as colunas do DataGridView
             dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
@@ -74,9 +76,9 @@ namespace folhaPagamento
 
         private void fHolerite_Load(object sender, EventArgs e)
         {
-            string nome = Session.Username;
-            bool isAdm = Session.IsAdmin;
-            string CPF = Session.CPF;
+            string nome = Usuarios.nome;
+            bool isAdm = Usuarios.adm;
+            string CPF = Usuarios.cpf;
 
         }
 

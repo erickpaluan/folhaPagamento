@@ -18,13 +18,15 @@ namespace folhaPagamento
     {
 
         private Funcionarios connDAO { get; set; }
-        public UserSession Session { get; set; }
+        public Users usuarios { get; set; }
+
         private NpgsqlConnection conn;
         public login()
         {
             InitializeComponent();
             connDAO = new Funcionarios();
-            Session = new UserSession();
+            //Session = new UserSession();
+            usuarios = new Users();
 
 
         }
@@ -49,31 +51,27 @@ namespace folhaPagamento
                     NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf FROM funcionario WHERE login = @login AND senha = @senha", conn);
                     comando.Parameters.AddWithValue("@Login", login);
                     comando.Parameters.AddWithValue("@Senha", senha);
-                    UserSession session = new UserSession();
+                    Users users = new Users();
+                    //UserSession session = new UserSession();
 
                     NpgsqlDataReader leitor = comando.ExecuteReader();
 
                     if (leitor.HasRows)
                     {
                         leitor.Read();
-                        string nomeUsuario = leitor.GetString("nome");
-                        bool tipoUsuario = leitor.GetBoolean("adm");
-                        string CPF = leitor.GetString("cpf");
+                        //string nomeUsuario = leitor.GetString("nome");
+                        //bool tipoUsuario = leitor.GetBoolean("adm");
+                        //string CPF = leitor.GetString("cpf");
 
-                        if (tipoUsuario == true)
-                        {
-                            session.IsAdmin = true;
-                        }
-                        else
-                        {
+                        usuarios.nome = leitor.GetString("nome");
+                        usuarios.adm = leitor.GetBoolean("adm");
+                        usuarios.cpf = leitor.GetString("cpf");
 
-                            session.IsAdmin = false;
-                        }
-
-                        session.Username = nomeUsuario;
-                        session.CPF = CPF;
-                        main main = new main(session);
+                        //session.Username = nomeUsuario;
+                        //session.CPF = CPF;
+                        main main = new main(usuarios);
                         main.Show();
+                        MessageBox.Show($"Usuario: {usuarios.nome}\n ADM: {usuarios.adm}\n CPF: {usuarios.cpf}");
                         this.Hide();
                     }
                     else

@@ -11,27 +11,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace folhaPagamento
 {
     public partial class ponto : Form
     {
-        public UserSession Session { get; set; }
-        public ponto(UserSession session)
+        private User usuarios;
+        public Users Usuarios { get; set; }
+
+        public ponto(Users usuarios)
         {
             InitializeComponent();
-            Session = session;
+            Usuarios = usuarios;
         }
 
         private void ponto_Load(object sender, EventArgs e)
         {
             timer1.Interval = 1000;
             timer1.Start();
-            bool isAdm = Session.IsAdmin;
+            bool isAdm = Usuarios.adm;
 
             if (isAdm == false)
             {
-                string CPF = Session.CPF;
+                string CPF = Usuarios.cpf;
 
                 txtCPF.Text = CPF;
                 txtCPF.ReadOnly = true;
@@ -70,17 +73,6 @@ namespace folhaPagamento
             }
         }
 
-        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-                System.Windows.Forms.ToolTip tooltip = new System.Windows.Forms.ToolTip();
-                tooltip.SetToolTip(txtCPF, "Digite apenas números");
-                tooltip.Show("Digite apenas números", txtCPF, 0, txtCPF.Height, 2000);
-            }
-        }
-
         private void btnSalvarPonto_Click(object sender, EventArgs e)
         {
             Registro novoRegistro = new Registro();
@@ -98,6 +90,17 @@ namespace folhaPagamento
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtCPF_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                System.Windows.Forms.ToolTip tooltip = new System.Windows.Forms.ToolTip();
+                tooltip.SetToolTip(txtCPF, "Digite apenas números");
+                tooltip.Show("Digite apenas números", txtCPF, 0, txtCPF.Height, 2000);
+            }
         }
     }
 }

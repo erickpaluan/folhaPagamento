@@ -23,7 +23,6 @@ namespace folhaPagamento
             try
             {
                 connDAO = new Empresa();
-                //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
