@@ -19,6 +19,7 @@ namespace folhaPagamento
     public partial class cadUsuario : Form
     {
         private Funcionarios connDAO { get; set; }
+        CultureInfo cultura = new CultureInfo("pt-BR");
         public cadUsuario()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace folhaPagamento
         private void cadUsuario_Load(object sender, EventArgs e)
         {
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            
 
             dgUsuarios.Columns["id_func"].HeaderText = "ID";
             dgUsuarios.Columns["nome"].HeaderText = "Nome do Funcionário";
@@ -80,6 +82,8 @@ namespace folhaPagamento
             dgUsuarios.Columns[27].Visible = false;
             dgUsuarios.Columns[28].Visible = false;
 
+            dgUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
 
         }
 
@@ -87,6 +91,7 @@ namespace folhaPagamento
         {
             if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
             {
+                CultureInfo cultura = new CultureInfo("pt-BR");
                 DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
                 // Dados funcionario
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
@@ -107,7 +112,10 @@ namespace folhaPagamento
                 chbConv_odon.Checked = conv_odon;
                 txtLogin.Text = row.Cells["Login"].Value.ToString();
                 txtSenha.Text = row.Cells["Senha"].Value.ToString();
-                txtSalario.Text = row.Cells["salario"].Value.ToString();
+
+                decimal salario = Convert.ToDecimal(row.Cells["salario"].Value);
+                txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+
                 bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
                 chbAdm.Checked = adm;
 

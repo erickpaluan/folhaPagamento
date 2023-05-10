@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,7 +81,8 @@ namespace folhaPagamento
             bool isAdm = Usuarios.adm;
             string CPF = Usuarios.cpf;
 
-            txtSalario.Text = Usuarios.salario.ToString();
+            decimal salario = Convert.ToDecimal(Usuarios.salario);
+            txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
 
         }
 
