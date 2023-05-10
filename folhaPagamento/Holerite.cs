@@ -8,19 +8,40 @@ namespace folhaPagamento
 {
     internal class Holerite : HoleriteDAO
     {
-        public decimal CalcularSalarioHora()
+        public decimal AdicionalConvMed(Users Usuarios)
         {
-            return SalarioBase / 220.0m;
+            bool ConvMed = Usuarios.conv_med;
+            decimal adicional = 0m;
+            if (ConvMed)
+            {
+                adicional += 80m;
+            } else
+            {
+                adicional += 0m;
+            }
+
+            return adicional;
         }
 
-        public decimal CalcularValorHoraExtra()
+        public decimal AdicionalConvOdon(Users Usuarios)
         {
-            return HorasExtras * ValorHoraExtra;
+            bool ConvOdon = Usuarios.conv_odon;
+            decimal adicional = 0m;
+            if (ConvOdon)
+            {
+                adicional += 20m;
+            }
+            else
+            {
+                adicional += 0m;
+            }
+
+            return adicional;
         }
 
         public decimal CalcularSalarioBruto()
         {
-            return SalarioBase + CalcularValorHoraExtra();
+            return SalarioBase;
         }
 
         public decimal CalcularDescontoINSS(Users Usuarios)

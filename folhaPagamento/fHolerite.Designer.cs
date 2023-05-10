@@ -34,8 +34,8 @@
             label5 = new Label();
             label6 = new Label();
             txtSalario = new TextBox();
-            txtHoraExtra = new TextBox();
-            txtValorHoraExtra = new TextBox();
+            txtConvMed = new TextBox();
+            txtConvOdon = new TextBox();
             txtDescINSS = new TextBox();
             txtDescIR = new TextBox();
             dgvHolerite = new DataGridView();
@@ -49,51 +49,51 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(51, 384);
+            label1.Location = new Point(70, 384);
             label1.Name = "label1";
-            label1.Size = new Size(88, 15);
+            label1.Size = new Size(69, 15);
             label1.TabIndex = 0;
-            label1.Text = "Salário base: R$";
+            label1.Text = "Salário base";
             label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(64, 413);
+            label2.Location = new Point(38, 413);
             label2.Name = "label2";
-            label2.Size = new Size(75, 15);
+            label2.Size = new Size(101, 15);
             label2.TabIndex = 1;
-            label2.Text = "Horas extras:";
+            label2.Text = "Convenio Médico";
             label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(31, 445);
+            label3.Location = new Point(4, 445);
             label3.Name = "label3";
-            label3.Size = new Size(108, 15);
+            label3.Size = new Size(135, 15);
             label3.TabIndex = 2;
-            label3.Text = "Valor hora extra: R$";
+            label3.Text = "Convenio Odontologico";
             label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(36, 479);
+            label5.Location = new Point(55, 474);
             label5.Name = "label5";
-            label5.Size = new Size(103, 15);
+            label5.Size = new Size(84, 15);
             label5.TabIndex = 4;
-            label5.Text = "Desconto INSS: R$";
+            label5.Text = "Desconto INSS";
             label5.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(37, 508);
+            label6.Location = new Point(56, 503);
             label6.Name = "label6";
-            label6.Size = new Size(102, 15);
+            label6.Size = new Size(83, 15);
             label6.TabIndex = 5;
-            label6.Text = "Desconto IRPF: R$";
+            label6.Text = "Desconto IRPF";
             label6.TextAlign = ContentAlignment.MiddleRight;
             // 
             // txtSalario
@@ -103,19 +103,19 @@
             txtSalario.Size = new Size(100, 23);
             txtSalario.TabIndex = 7;
             // 
-            // txtHoraExtra
+            // txtConvMed
             // 
-            txtHoraExtra.Location = new Point(145, 410);
-            txtHoraExtra.Name = "txtHoraExtra";
-            txtHoraExtra.Size = new Size(100, 23);
-            txtHoraExtra.TabIndex = 8;
+            txtConvMed.Location = new Point(145, 410);
+            txtConvMed.Name = "txtConvMed";
+            txtConvMed.Size = new Size(100, 23);
+            txtConvMed.TabIndex = 8;
             // 
-            // txtValorHoraExtra
+            // txtConvOdon
             // 
-            txtValorHoraExtra.Location = new Point(145, 442);
-            txtValorHoraExtra.Name = "txtValorHoraExtra";
-            txtValorHoraExtra.Size = new Size(100, 23);
-            txtValorHoraExtra.TabIndex = 9;
+            txtConvOdon.Location = new Point(145, 442);
+            txtConvOdon.Name = "txtConvOdon";
+            txtConvOdon.Size = new Size(100, 23);
+            txtConvOdon.TabIndex = 9;
             // 
             // txtDescINSS
             // 
@@ -188,8 +188,8 @@
             Controls.Add(dgvHolerite);
             Controls.Add(txtDescIR);
             Controls.Add(txtDescINSS);
-            Controls.Add(txtValorHoraExtra);
-            Controls.Add(txtHoraExtra);
+            Controls.Add(txtConvOdon);
+            Controls.Add(txtConvMed);
             Controls.Add(txtSalario);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -215,8 +215,8 @@
         private Label label5;
         private Label label6;
         private TextBox txtSalario;
-        private TextBox txtHoraExtra;
-        private TextBox txtValorHoraExtra;
+        private TextBox txtConvMed;
+        private TextBox txtConvOdon;
         private TextBox txtSalarioBruto;
         private TextBox txtDescINSS;
         private TextBox txtDescIR;

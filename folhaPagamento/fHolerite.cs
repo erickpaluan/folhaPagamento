@@ -37,8 +37,8 @@ namespace folhaPagamento
         public void ImprimirHolerite()
         {
             txtSalario.Text = HoleriteDAO.SalarioBase.ToString();
-            txtHoraExtra.Text = HoleriteDAO.HorasExtras.ToString();
-            txtValorHoraExtra.Text = HoleriteDAO.ValorHoraExtra.ToString();
+            txtConvMed.Text = HoleriteDAO.HorasExtras.ToString();
+            txtConvOdon.Text = HoleriteDAO.ValorHoraExtra.ToString();
             //txtSalarioBruto.Text = HoleriteDAO.CalcularSalarioBruto.ToString();
             //txtDescINSS.Text = HoleriteDAO.CalcularDescontoINSS.ToString();
             //txtDescIR.Text = HoleriteDAO.CalcularDescontoIRPF.ToString();
@@ -57,8 +57,8 @@ namespace folhaPagamento
 
             // Atribui os valores das propriedades do funcionário
             holerite.SalarioBase = decimal.Parse(txtSalario.Text);
-            holerite.HorasExtras = decimal.Parse(txtHoraExtra.Text);
-            holerite.ValorHoraExtra = decimal.Parse(txtValorHoraExtra.Text);
+            holerite.HorasExtras = decimal.Parse(txtConvMed.Text);
+            holerite.ValorHoraExtra = decimal.Parse(txtConvOdon.Text);
             holerite.DescontoINSS = Convert.ToDecimal(porcentagemINSS);
             holerite.DescontoIRPF = Convert.ToDecimal(porcentagemIRPF);
 
@@ -67,9 +67,9 @@ namespace folhaPagamento
                                   holerite.HorasExtras,
                                   holerite.ValorHoraExtra.ToString("C2"),
                                   holerite.CalcularSalarioBruto().ToString("C2"));
-                                  //holerite.CalcularDescontoINSS().ToString("C2"),
-                                  //holerite.CalcularDescontoIRPF().ToString("C2"));
-                                  //holerite.CalcularSalarioLiquido().ToString("C2"));
+            //holerite.CalcularDescontoINSS().ToString("C2"),
+            //holerite.CalcularDescontoIRPF().ToString("C2"));
+            //holerite.CalcularSalarioLiquido().ToString("C2"));
 
 
 
@@ -85,11 +85,15 @@ namespace folhaPagamento
             Holerite holerite = new Holerite();
             decimal descontoINSS = holerite.CalcularDescontoINSS(Usuarios);
             decimal descontoIR = holerite.CalcularDescontoIRPF(Usuarios);
+            decimal ConvMed = holerite.AdicionalConvMed(Usuarios);
+            decimal ConvOdon = holerite.AdicionalConvOdon(Usuarios);
 
             decimal salario = Convert.ToDecimal(Usuarios.salario);
             txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
             txtDescINSS.Text = descontoINSS.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
             txtDescIR.Text = descontoIR.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+            txtConvMed.Text = ConvMed.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+            txtConvOdon.Text = ConvOdon.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
