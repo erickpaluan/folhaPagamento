@@ -42,6 +42,8 @@
             btnCalcular = new Button();
             pictureBox2 = new PictureBox();
             lblSaudacao = new Label();
+            txtTotal = new TextBox();
+            Total = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvHolerite).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -49,7 +51,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(70, 384);
+            label1.Location = new Point(106, 322);
             label1.Name = "label1";
             label1.Size = new Size(69, 15);
             label1.TabIndex = 0;
@@ -59,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(38, 413);
+            label2.Location = new Point(74, 351);
             label2.Name = "label2";
             label2.Size = new Size(101, 15);
             label2.TabIndex = 1;
@@ -69,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(4, 445);
+            label3.Location = new Point(40, 383);
             label3.Name = "label3";
             label3.Size = new Size(135, 15);
             label3.TabIndex = 2;
@@ -79,7 +81,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(55, 474);
+            label5.Location = new Point(91, 412);
             label5.Name = "label5";
             label5.Size = new Size(84, 15);
             label5.TabIndex = 4;
@@ -89,7 +91,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(56, 503);
+            label6.Location = new Point(92, 441);
             label6.Name = "label6";
             label6.Size = new Size(83, 15);
             label6.TabIndex = 5;
@@ -98,35 +100,35 @@
             // 
             // txtSalario
             // 
-            txtSalario.Location = new Point(145, 381);
+            txtSalario.Location = new Point(181, 319);
             txtSalario.Name = "txtSalario";
             txtSalario.Size = new Size(100, 23);
             txtSalario.TabIndex = 7;
             // 
             // txtConvMed
             // 
-            txtConvMed.Location = new Point(145, 410);
+            txtConvMed.Location = new Point(181, 348);
             txtConvMed.Name = "txtConvMed";
             txtConvMed.Size = new Size(100, 23);
             txtConvMed.TabIndex = 8;
             // 
             // txtConvOdon
             // 
-            txtConvOdon.Location = new Point(145, 442);
+            txtConvOdon.Location = new Point(181, 380);
             txtConvOdon.Name = "txtConvOdon";
             txtConvOdon.Size = new Size(100, 23);
             txtConvOdon.TabIndex = 9;
             // 
             // txtDescINSS
             // 
-            txtDescINSS.Location = new Point(145, 471);
+            txtDescINSS.Location = new Point(181, 409);
             txtDescINSS.Name = "txtDescINSS";
             txtDescINSS.Size = new Size(100, 23);
             txtDescINSS.TabIndex = 11;
             // 
             // txtDescIR
             // 
-            txtDescIR.Location = new Point(145, 500);
+            txtDescIR.Location = new Point(181, 438);
             txtDescIR.Name = "txtDescIR";
             txtDescIR.Size = new Size(100, 23);
             txtDescIR.TabIndex = 12;
@@ -176,12 +178,30 @@
             lblSaudacao.TabIndex = 38;
             lblSaudacao.Text = "Holerite";
             // 
+            // txtTotal
+            // 
+            txtTotal.Location = new Point(181, 467);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(100, 23);
+            txtTotal.TabIndex = 40;
+            // 
+            // Total
+            // 
+            Total.AutoSize = true;
+            Total.Location = new Point(114, 470);
+            Total.Name = "Total";
+            Total.Size = new Size(61, 15);
+            Total.TabIndex = 41;
+            Total.Text = "Valor Total";
+            // 
             // fHolerite
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(376, 680);
+            Controls.Add(Total);
+            Controls.Add(txtTotal);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
             Controls.Add(btnCalcular);
@@ -225,5 +245,7 @@
         private Button btnCalcular;
         private PictureBox pictureBox2;
         private Label lblSaudacao;
+        private TextBox txtTotal;
+        private Label Total;
     }
 }

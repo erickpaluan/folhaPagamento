@@ -11,37 +11,37 @@ namespace folhaPagamento
         public decimal AdicionalConvMed(Users Usuarios)
         {
             bool ConvMed = Usuarios.conv_med;
-            decimal adicional = 0m;
+            decimal DescontoConvMed = 0m;
             if (ConvMed)
             {
-                adicional += 80m;
+                DescontoConvMed += 80m;
             } else
             {
-                adicional += 0m;
+                DescontoConvMed += 0m;
             }
 
-            return adicional;
+            return DescontoConvMed;
         }
 
         public decimal AdicionalConvOdon(Users Usuarios)
         {
             bool ConvOdon = Usuarios.conv_odon;
-            decimal adicional = 0m;
+            decimal DescontoConvOdon = 0m;
             if (ConvOdon)
             {
-                adicional += 20m;
+                DescontoConvOdon += 20m;
             }
             else
             {
-                adicional += 0m;
+                DescontoConvOdon += 0m;
             }
 
-            return adicional;
+            return DescontoConvOdon;
         }
 
-        public decimal CalcularSalarioBruto()
-        {
-            return SalarioBase;
+        public decimal CalcularSalarioTotal(Users Usuarios)
+        { 
+            return 0;
         }
 
         public decimal CalcularDescontoINSS(Users Usuarios)

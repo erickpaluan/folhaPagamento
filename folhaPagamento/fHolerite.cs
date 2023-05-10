@@ -36,9 +36,9 @@ namespace folhaPagamento
 
         public void ImprimirHolerite()
         {
-            txtSalario.Text = HoleriteDAO.SalarioBase.ToString();
-            txtConvMed.Text = HoleriteDAO.HorasExtras.ToString();
-            txtConvOdon.Text = HoleriteDAO.ValorHoraExtra.ToString();
+            //txtSalario.Text = HoleriteDAO.SalarioBase.ToString();
+            //txtConvMed.Text = HoleriteDAO.HorasExtras.ToString();
+            //txtConvOdon.Text = HoleriteDAO.ValorHoraExtra.ToString();
             //txtSalarioBruto.Text = HoleriteDAO.CalcularSalarioBruto.ToString();
             //txtDescINSS.Text = HoleriteDAO.CalcularDescontoINSS.ToString();
             //txtDescIR.Text = HoleriteDAO.CalcularDescontoIRPF.ToString();
@@ -50,23 +50,23 @@ namespace folhaPagamento
             // Cria uma nova instância da classe Funcionario
             Holerite holerite = new Holerite();
 
-            double pINSS = double.Parse(txtDescINSS.Text); ;
-            double pIRPF = double.Parse(txtDescINSS.Text);
-            double porcentagemINSS = pINSS / 100.0;
-            double porcentagemIRPF = pIRPF / 100.0;
+            //double pINSS = double.Parse(txtDescINSS.Text); ;
+            //double pIRPF = double.Parse(txtDescINSS.Text);
+            //double porcentagemINSS = pINSS / 100.0;
+            //double porcentagemIRPF = pIRPF / 100.0;
 
             // Atribui os valores das propriedades do funcionário
-            holerite.SalarioBase = decimal.Parse(txtSalario.Text);
-            holerite.HorasExtras = decimal.Parse(txtConvMed.Text);
-            holerite.ValorHoraExtra = decimal.Parse(txtConvOdon.Text);
-            holerite.DescontoINSS = Convert.ToDecimal(porcentagemINSS);
-            holerite.DescontoIRPF = Convert.ToDecimal(porcentagemIRPF);
+            //holerite.SalarioBase = decimal.Parse(txtSalario.Text);
+            //holerite.DescontoConvMed = decimal.Parse(txtConvMed.Text);
+            //holerite.DescontoConvOdon = decimal.Parse(txtConvOdon.Text);
+            //holerite.DescontoINSS = decimal.Parse(txtDescINSS.Text);
+            //holerite.DescontoIRPF = decimal.Parse(txtDescIR.Text);
 
             // Adiciona uma nova linha ao DataGridView com as informações do holerite
-            dgvHolerite.Rows.Add(holerite.SalarioBase.ToString("C2"),
-                                  holerite.HorasExtras,
-                                  holerite.ValorHoraExtra.ToString("C2"),
-                                  holerite.CalcularSalarioBruto().ToString("C2"));
+            //dgvHolerite.Rows.Add(holerite.SalarioBase.ToString("C2"),
+            //holerite.HorasExtras,
+            //holerite.ValorHoraExtra.ToString("C2"));
+            //holerite.CalcularSalarioBruto().ToString("C2"));
             //holerite.CalcularDescontoINSS().ToString("C2"),
             //holerite.CalcularDescontoIRPF().ToString("C2"));
             //holerite.CalcularSalarioLiquido().ToString("C2"));
@@ -87,6 +87,9 @@ namespace folhaPagamento
             decimal descontoIR = holerite.CalcularDescontoIRPF(Usuarios);
             decimal ConvMed = holerite.AdicionalConvMed(Usuarios);
             decimal ConvOdon = holerite.AdicionalConvOdon(Usuarios);
+            decimal TotalDescontos = descontoINSS + descontoIR + ConvMed + ConvOdon;
+            decimal SalarioTotal = (decimal)Usuarios.salario - TotalDescontos;
+
 
             decimal salario = Convert.ToDecimal(Usuarios.salario);
             txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
@@ -94,6 +97,7 @@ namespace folhaPagamento
             txtDescIR.Text = descontoIR.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
             txtConvMed.Text = ConvMed.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
             txtConvOdon.Text = ConvOdon.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+            txtTotal.Text = SalarioTotal.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
