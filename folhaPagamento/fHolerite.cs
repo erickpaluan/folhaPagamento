@@ -80,6 +80,8 @@ namespace folhaPagamento
             bool isAdm = Usuarios.adm;
             string CPF = Usuarios.cpf;
 
+            txtSalario.Text = Usuarios.salario.ToString();
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

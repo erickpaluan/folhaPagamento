@@ -48,7 +48,7 @@ namespace folhaPagamento
                     conn.Open();
 
                     // Consulta para verificar se o login e a senha são válidos
-                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf FROM funcionario WHERE login = @login AND senha = @senha", conn);
+                    NpgsqlCommand comando = new NpgsqlCommand("SELECT nome, adm, cpf, salario FROM funcionario WHERE login = @login AND senha = @senha", conn);
                     comando.Parameters.AddWithValue("@Login", login);
                     comando.Parameters.AddWithValue("@Senha", senha);
                     Users users = new Users();
@@ -66,12 +66,12 @@ namespace folhaPagamento
                         usuarios.nome = leitor.GetString("nome");
                         usuarios.adm = leitor.GetBoolean("adm");
                         usuarios.cpf = leitor.GetString("cpf");
+                        usuarios.salario = leitor.GetFloat("salario");
 
                         //session.Username = nomeUsuario;
                         //session.CPF = CPF;
                         main main = new main(usuarios);
                         main.Show();
-                        MessageBox.Show($"Usuario: {usuarios.nome}\n ADM: {usuarios.adm}\n CPF: {usuarios.cpf}");
                         this.Hide();
                     }
                     else
