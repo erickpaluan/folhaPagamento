@@ -27,6 +27,16 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
 
+            try
+            {
+                HoleriteDAO = new Holerite();
+                //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             // Configura as colunas do DataGridView
             //dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
             //dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");

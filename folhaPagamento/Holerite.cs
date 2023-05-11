@@ -26,7 +26,7 @@ namespace folhaPagamento
         public List<HoleriteDAO> CarregaHolerite()
         {
             this.folhapagamento.Clear();
-            string sql = "SELECT COUNT (*) FROM folha_pagto";
+            string sql = "SELECT * FROM folha_pagto";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
