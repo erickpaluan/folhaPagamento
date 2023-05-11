@@ -8,7 +8,7 @@ namespace folhaPagamento
     public partial class main : Form
     {
         private User usuarios;
-        public Users Usuarios { get; set;}
+        public Users Usuarios { get; set; }
 
         public main(Users usuarios)
         {

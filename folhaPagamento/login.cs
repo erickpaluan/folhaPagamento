@@ -82,8 +82,8 @@ namespace folhaPagamento
                         {
                             MessageBox.Show("Usuário não ativo!\nContate o Administrador.", "Não ativo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        
-                        
+
+
                     }
                     else
                     {

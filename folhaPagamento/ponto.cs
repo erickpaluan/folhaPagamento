@@ -43,7 +43,7 @@ namespace folhaPagamento
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblHora.Text = DateTime.Now.ToString("HH:mm");
             lblData.Text = DateTime.Now.ToShortDateString();
         }
 
@@ -75,16 +75,25 @@ namespace folhaPagamento
 
         private void btnSalvarPonto_Click(object sender, EventArgs e)
         {
-            Registro novoRegistro = new Registro();
-            novoRegistro.cpf_ponto = txtCPF.Text;
-            novoRegistro.data = DateTime.Parse(lblData.Text);
-            novoRegistro.hora = DateTime.Parse(lblHora.Text);
 
-            PontoDAO pontoDAO = new PontoDAO();
-            pontoDAO.RegistrarPonto(
-                novoRegistro.cpf_ponto,
-                novoRegistro.data,
-                novoRegistro.hora);
+            if(txtCPF.Text != "")
+            {
+                Registro novoRegistro = new Registro();
+                novoRegistro.cpf_ponto = txtCPF.Text;
+                novoRegistro.data = DateTime.Parse(lblData.Text);
+                novoRegistro.hora = DateTime.Parse(lblHora.Text);
+
+                PontoDAO pontoDAO = new PontoDAO();
+                pontoDAO.RegistrarPonto(
+                    novoRegistro.cpf_ponto,
+                    novoRegistro.data,
+                    novoRegistro.hora);
+            }
+            else
+            {
+                MessageBox.Show("Informe um CPF para ragistrar o ponto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -101,6 +110,14 @@ namespace folhaPagamento
                 tooltip.SetToolTip(txtCPF, "Digite apenas números");
                 tooltip.Show("Digite apenas números", txtCPF, 0, txtCPF.Height, 2000);
             }
+        }
+
+        private void btnEU_Click(object sender, EventArgs e)
+        {
+            string CPF = Usuarios.cpf;
+
+            txtCPF.Text = CPF;
+            txtCPF.ReadOnly = true;
         }
     }
 }

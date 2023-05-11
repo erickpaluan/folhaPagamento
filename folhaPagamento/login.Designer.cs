@@ -39,40 +39,46 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Font=new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUsuario.Location=new Point(12, 192);
+            txtUsuario.Font=new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Location=new Point(66, 395);
             txtUsuario.Name="txtUsuario";
             txtUsuario.PlaceholderText="Usuário";
-            txtUsuario.Size=new Size(336, 65);
+            txtUsuario.Size=new Size(589, 57);
             txtUsuario.TabIndex=1;
             txtUsuario.KeyDown+=txtUsuario_KeyDown;
             // 
             // txtSenha
             // 
-            txtSenha.Font=new Font("Segoe UI", 32.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSenha.Location=new Point(12, 320);
+            txtSenha.Font=new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.Location=new Point(66, 541);
             txtSenha.Name="txtSenha";
             txtSenha.PasswordChar='•';
             txtSenha.PlaceholderText="Senha";
-            txtSenha.Size=new Size(336, 65);
+            txtSenha.Size=new Size(589, 57);
             txtSenha.TabIndex=3;
             txtSenha.KeyDown+=txtSenha_KeyDown;
             // 
             // btnLogin
             // 
-            btnLogin.Location=new Point(56, 456);
+            btnLogin.FlatStyle=FlatStyle.Flat;
+            btnLogin.Font=new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogin.ForeColor=SystemColors.MenuHighlight;
+            btnLogin.Location=new Point(160, 826);
             btnLogin.Name="btnLogin";
-            btnLogin.Size=new Size(248, 80);
+            btnLogin.Size=new Size(400, 128);
             btnLogin.TabIndex=4;
-            btnLogin.Text="login";
+            btnLogin.Text="Entrar no sistema";
             btnLogin.UseVisualStyleBackColor=true;
             btnLogin.Click+=btnLogin_Click;
             // 
             // btnSair
             // 
-            btnSair.Location=new Point(56, 565);
+            btnSair.FlatStyle=FlatStyle.Flat;
+            btnSair.Font=new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSair.ForeColor=Color.IndianRed;
+            btnSair.Location=new Point(160, 979);
             btnSair.Name="btnSair";
-            btnSair.Size=new Size(248, 64);
+            btnSair.Size=new Size(400, 64);
             btnSair.TabIndex=5;
             btnSair.Text="Sair";
             btnSair.UseVisualStyleBackColor=true;
@@ -81,7 +87,7 @@
             // pictureBox1
             // 
             pictureBox1.Image=Properties.Resources.logo_justax;
-            pictureBox1.Location=new Point(36, 40);
+            pictureBox1.Location=new Point(216, 129);
             pictureBox1.Name="pictureBox1";
             pictureBox1.Size=new Size(288, 82);
             pictureBox1.SizeMode=PictureBoxSizeMode.AutoSize;
@@ -93,7 +99,7 @@
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             BackColor=Color.White;
-            ClientSize=new Size(376, 680);
+            ClientSize=new Size(720, 1080);
             ControlBox=false;
             Controls.Add(pictureBox1);
             Controls.Add(btnSair);
