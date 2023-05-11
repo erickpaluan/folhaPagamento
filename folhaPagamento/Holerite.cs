@@ -53,7 +53,20 @@ namespace folhaPagamento
             return folhapagamento;
         }
 
+        public static DataTable ExecutarConsulta(string consulta)
+        {
 
+            string connectionString = connDB.GetConnection();
+            using (NpgsqlConnection conexao = new NpgsqlConnection(connectionString))
+            {
+                DataTable dataTable = new DataTable();
+                conexao.Open();
+                NpgsqlCommand comando = new NpgsqlCommand(consulta, conexao);
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(comando);
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
         public decimal AdicionalConvMed(Users Usuarios)
         {
             bool ConvMed = Usuarios.conv_med;

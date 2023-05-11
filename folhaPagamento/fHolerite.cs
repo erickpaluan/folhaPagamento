@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace folhaPagamento
 {
@@ -37,25 +38,11 @@ namespace folhaPagamento
                 MessageBox.Show(e.Message);
             }
 
-            // Configura as colunas do DataGridView
-            //dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
-            //dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
-            //dgvHolerite.Columns.Add("ValorHoraExtra", "Valor Hora Extra");
-            //dgvHolerite.Columns.Add("SalarioBruto", "Salário Bruto");
-            //dgvHolerite.Columns.Add("DescontoINSS", "Desconto INSS");
-            //dgvHolerite.Columns.Add("DescontoIRPF", "Desconto IRPF");
-            //dgvHolerite.Columns.Add("SalarioLiquido", "Salário Líquido");
         }
 
         public void ImprimirHolerite()
         {
-            //txtSalario.Text = HoleriteDAO.SalarioBase.ToString();
-            //txtConvMed.Text = HoleriteDAO.HorasExtras.ToString();
-            //txtConvOdon.Text = HoleriteDAO.ValorHoraExtra.ToString();
-            //txtSalarioBruto.Text = HoleriteDAO.CalcularSalarioBruto.ToString();
-            //txtDescINSS.Text = HoleriteDAO.CalcularDescontoINSS.ToString();
-            //txtDescIR.Text = HoleriteDAO.CalcularDescontoIRPF.ToString();
-            //txtSalarioLiquido.Text = HoleriteDAO.CalcularSalarioLiquido.ToString();
+
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -107,14 +94,21 @@ namespace folhaPagamento
             try
             {
                 dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
+                if (Usuarios.adm == false)
+                {
+                    FiltrarDados(Usuarios.cpf);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
 
-
-
+        private void FiltrarDados(string filtro)
+        {
+            string consulta = "SELECT * FROM folha_pagto WHERE cpf LIKE '%" + filtro + "%'";
+            dgvHolerite.DataSource = Holerite.ExecutarConsulta(consulta);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
