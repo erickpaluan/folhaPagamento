@@ -239,6 +239,7 @@
             Name = "cadEmpresa";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "cadEmpresa";
+            Load += cadEmpresa_Load;
             ((System.ComponentModel.ISupportInitialize)connDBBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
