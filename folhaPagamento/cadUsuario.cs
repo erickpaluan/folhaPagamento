@@ -43,6 +43,7 @@ namespace folhaPagamento
             PopularDataGrid();
             btnExcluir.Visible = false;
             btnAlterar.Visible = false;
+            txtMatricula.Visible = false;
         }
 
         private void PopularDataGrid()
@@ -141,9 +142,8 @@ namespace folhaPagamento
                 txtCEP.Text = row.Cells["CEP"].Value.ToString();
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
 
-                btnAdicionar.Enabled = true;
-                btnAlterar.Enabled = true;
-                btnExcluir.Enabled = true;
+                btnExcluir.Visible = true;
+                btnAlterar.Visible = true;
             }
         }
 
@@ -327,7 +327,7 @@ namespace folhaPagamento
                 }
                 else
                 {
-                    MessageBox.Show("Impossível converter");
+                    MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 funcionarioEditado.adm = chbAdm.Checked;
 
@@ -348,7 +348,7 @@ namespace folhaPagamento
                 }
                 else
                 {
-                    MessageBox.Show("Impossível converter");
+                    MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 funcionarioEditado.bairro = txtBairro.Text;
                 funcionarioEditado.cep = txtCEP.Text;
@@ -392,7 +392,7 @@ namespace folhaPagamento
 
                 dgUsuarios.Refresh();
 
-                MessageBox.Show("Cadastro editado com sucesso!!");
+                MessageBox.Show("Cadastro editado com sucesso!!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {

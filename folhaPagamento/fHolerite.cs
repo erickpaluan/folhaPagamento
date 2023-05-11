@@ -57,7 +57,7 @@ namespace folhaPagamento
             // Cria uma nova instância da classe HoleriteDAO
             HoleriteDAO novoHolerite = new HoleriteDAO();
             novoHolerite.cpf = Usuarios.cpf;
-            novoHolerite.salariobruto = SalarioTotal;
+            novoHolerite.salariobruto = (decimal)Usuarios.salario;
             novoHolerite.inss = descontoINSS;
             novoHolerite.irpf = descontoIR;
             novoHolerite.convmed = ConvMed;

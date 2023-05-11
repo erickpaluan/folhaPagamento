@@ -56,9 +56,9 @@
             btnConfig.FlatAppearance.BorderSize=0;
             btnConfig.FlatStyle=FlatStyle.Flat;
             btnConfig.Image=Properties.Resources.menu_2_fill;
-            btnConfig.Location=new Point(316, 12);
+            btnConfig.Location=new Point(584, 38);
             btnConfig.Name="btnConfig";
-            btnConfig.Size=new Size(48, 48);
+            btnConfig.Size=new Size(85, 85);
             btnConfig.TabIndex=5;
             btnConfig.TextAlign=ContentAlignment.BottomCenter;
             btnConfig.UseVisualStyleBackColor=true;
@@ -67,19 +67,19 @@
             // lblSaudacao
             // 
             lblSaudacao.AutoSize=true;
-            lblSaudacao.Font=new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSaudacao.Location=new Point(12, 63);
+            lblSaudacao.Font=new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location=new Point(52, 137);
             lblSaudacao.Name="lblSaudacao";
-            lblSaudacao.Size=new Size(168, 32);
+            lblSaudacao.Size=new Size(226, 45);
             lblSaudacao.TabIndex=6;
             lblSaudacao.Text="Bom dia, Erick.";
             // 
             // pictureBox1
             // 
             pictureBox1.Image=Properties.Resources.fp;
-            pictureBox1.Location=new Point(12, 12);
+            pictureBox1.Location=new Point(52, 38);
             pictureBox1.Name="pictureBox1";
-            pictureBox1.Size=new Size(48, 48);
+            pictureBox1.Size=new Size(85, 85);
             pictureBox1.SizeMode=PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex=7;
             pictureBox1.TabStop=false;
@@ -87,10 +87,10 @@
             // btnMarcarPonto
             // 
             btnMarcarPonto.Image=Properties.Resources.ponto;
-            btnMarcarPonto.Location=new Point(12, 171);
+            btnMarcarPonto.Location=new Point(52, 315);
             btnMarcarPonto.Name="btnMarcarPonto";
-            btnMarcarPonto.Size=new Size(170, 120);
-            btnMarcarPonto.SizeMode=PictureBoxSizeMode.StretchImage;
+            btnMarcarPonto.Size=new Size(301, 217);
+            btnMarcarPonto.SizeMode=PictureBoxSizeMode.AutoSize;
             btnMarcarPonto.TabIndex=13;
             btnMarcarPonto.TabStop=false;
             btnMarcarPonto.Click+=btnMarcarPonto_Click_1;
@@ -98,10 +98,10 @@
             // btnHolerite
             // 
             btnHolerite.Image=Properties.Resources.holerite1;
-            btnHolerite.Location=new Point(194, 171);
+            btnHolerite.Location=new Point(368, 315);
             btnHolerite.Name="btnHolerite";
-            btnHolerite.Size=new Size(170, 120);
-            btnHolerite.SizeMode=PictureBoxSizeMode.StretchImage;
+            btnHolerite.Size=new Size(301, 217);
+            btnHolerite.SizeMode=PictureBoxSizeMode.AutoSize;
             btnHolerite.TabIndex=14;
             btnHolerite.TabStop=false;
             btnHolerite.Click+=btnHolerite_Click_1;
@@ -110,48 +110,49 @@
             // 
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { configuraçõesToolStripMenuItem, toolStripSeparator1, fazerLogoutToolStripMenuItem, toolStripSeparator2, toolStripMenuItem2 });
             contextMenuStrip2.Name="contextMenuStrip2";
-            contextMenuStrip2.Size=new Size(155, 82);
+            contextMenuStrip2.Size=new Size(181, 104);
             // 
             // configuraçõesToolStripMenuItem
             // 
+            configuraçõesToolStripMenuItem.Enabled=false;
             configuraçõesToolStripMenuItem.Image=Properties.Resources.settings_FILL0_wght400_GRAD0_opsz48;
             configuraçõesToolStripMenuItem.Name="configuraçõesToolStripMenuItem";
-            configuraçõesToolStripMenuItem.Size=new Size(154, 22);
+            configuraçõesToolStripMenuItem.Size=new Size(180, 22);
             configuraçõesToolStripMenuItem.Text="Configurações";
             configuraçõesToolStripMenuItem.Click+=configuraçõesToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name="toolStripSeparator1";
-            toolStripSeparator1.Size=new Size(151, 6);
+            toolStripSeparator1.Size=new Size(177, 6);
             // 
             // fazerLogoutToolStripMenuItem
             // 
             fazerLogoutToolStripMenuItem.Image=Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
             fazerLogoutToolStripMenuItem.Name="fazerLogoutToolStripMenuItem";
-            fazerLogoutToolStripMenuItem.Size=new Size(154, 22);
+            fazerLogoutToolStripMenuItem.Size=new Size(180, 22);
             fazerLogoutToolStripMenuItem.Text="Fazer Logout";
             fazerLogoutToolStripMenuItem.Click+=fazerLogoutToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name="toolStripSeparator2";
-            toolStripSeparator2.Size=new Size(151, 6);
+            toolStripSeparator2.Size=new Size(177, 6);
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name="toolStripMenuItem2";
-            toolStripMenuItem2.Size=new Size(154, 22);
+            toolStripMenuItem2.Size=new Size(180, 22);
             toolStripMenuItem2.Text="Sair do Sistema";
             toolStripMenuItem2.Click+=toolStripMenuItem2_Click;
             // 
             // btnFuncionarios
             // 
             btnFuncionarios.Image=Properties.Resources.funcionarios;
-            btnFuncionarios.Location=new Point(12, 297);
+            btnFuncionarios.Location=new Point(52, 548);
             btnFuncionarios.Name="btnFuncionarios";
-            btnFuncionarios.Size=new Size(170, 120);
-            btnFuncionarios.SizeMode=PictureBoxSizeMode.StretchImage;
+            btnFuncionarios.Size=new Size(301, 217);
+            btnFuncionarios.SizeMode=PictureBoxSizeMode.AutoSize;
             btnFuncionarios.TabIndex=15;
             btnFuncionarios.TabStop=false;
             btnFuncionarios.Click+=btnFuncionarios_Click;
@@ -159,10 +160,10 @@
             // btnEmpresa
             // 
             btnEmpresa.Image=Properties.Resources.empresa;
-            btnEmpresa.Location=new Point(194, 297);
+            btnEmpresa.Location=new Point(368, 548);
             btnEmpresa.Name="btnEmpresa";
-            btnEmpresa.Size=new Size(170, 120);
-            btnEmpresa.SizeMode=PictureBoxSizeMode.StretchImage;
+            btnEmpresa.Size=new Size(301, 217);
+            btnEmpresa.SizeMode=PictureBoxSizeMode.AutoSize;
             btnEmpresa.TabIndex=16;
             btnEmpresa.TabStop=false;
             btnEmpresa.Click+=btnEmpresa_Click_1;
@@ -172,7 +173,7 @@
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             BackColor=Color.White;
-            ClientSize=new Size(376, 680);
+            ClientSize=new Size(720, 1080);
             Controls.Add(btnEmpresa);
             Controls.Add(btnFuncionarios);
             Controls.Add(btnHolerite);
