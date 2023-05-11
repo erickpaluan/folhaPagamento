@@ -112,12 +112,33 @@ namespace folhaPagamento
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
+
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvHolerite_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
+            {
+                CultureInfo cultura = new CultureInfo("pt-BR");
+                DataGridViewRow row = this.dgvHolerite.Rows[e.RowIndex]; // define a linha
+                // Dados funcionario
+                txtSalario.Text = row.Cells["salariobruto"].Value.ToString();
+                txtConvMed.Text = row.Cells["convmed"].Value.ToString();
+                txtConvOdon.Text = row.Cells["convodonto"].Value.ToString();
+                txtDescINSS.Text = row.Cells["inss"].Value.ToString();
+                txtDescIR.Text = row.Cells["irpf"].Value.ToString();
+                txtTotal.Text = row.Cells["salarioliquido"].Value.ToString();
+                dtpHolerite.Text = ((DateTime)row.Cells["datapagamento"].Value).ToString("dd/MM/yyyy");
+                txtCPF.Text = row.Cells["cpf"].Value.ToString();
+
+            }
         }
     }
 }
