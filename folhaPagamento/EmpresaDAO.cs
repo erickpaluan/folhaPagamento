@@ -115,11 +115,10 @@ namespace folhaPagamento
         {
             string sqlUp = "UPDATE empresa SET razaosocial = @RazaoSocial, nomefantasia = @NomeFantasia, cnpj = @CNPJ, inscricaoestadual = @InscricaoEstadual, " +
                 "endereco = @Endereco, numero = @Numero, complemento = @Complemento, bairro = @Bairro, cidade = @Cidade, estado = @Estado, cep = @CEP, telefone = @Telefone, " +
-                "email = @Email WHERE id_empresa = @id_empresa;";
+                "email = @Email WHERE id_empresa = 1;";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sqlUp, conn))
             {
-                cmd.Parameters.AddWithValue("@id_empresa", id_empresa);
                 cmd.Parameters.AddWithValue("@RazaoSocial", RazaoSocial);
                 cmd.Parameters.AddWithValue("@NomeFantasia", NomeFantasia);
                 cmd.Parameters.AddWithValue("@CNPJ", CNPJ);
@@ -135,6 +134,16 @@ namespace folhaPagamento
                 cmd.Parameters.AddWithValue("@Email", Email);
 
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteEmpresa()
+        {
+            string sqldelete = "DELETE FROM empresa WHERE id_empresa = 1";
+
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sqldelete, conn))
+            {
+
             }
         }
     }

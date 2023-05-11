@@ -184,6 +184,7 @@
             btnDeleteEmpresa.TabIndex = 15;
             btnDeleteEmpresa.Text = "EXCLUIR";
             btnDeleteEmpresa.UseVisualStyleBackColor = true;
+            btnDeleteEmpresa.Click += btnDeleteEmpresa_Click;
             // 
             // connDBBindingSource
             // 

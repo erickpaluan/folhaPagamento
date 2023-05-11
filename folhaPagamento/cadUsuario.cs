@@ -43,7 +43,7 @@ namespace folhaPagamento
             PopularDataGrid();
             btnAdicionar.Enabled = false;
             btnExcluir.Enabled = false;
-            btnAlterar.Enabled = false;
+            //btnAlterar.Enabled = false;
         }
 
         private void PopularDataGrid()
@@ -143,7 +143,7 @@ namespace folhaPagamento
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
 
                 btnAdicionar.Enabled = true;
-                btnAlterar.Enabled = true;
+                //btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
             }
         }

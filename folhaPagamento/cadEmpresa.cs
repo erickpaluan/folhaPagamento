@@ -125,5 +125,20 @@ namespace folhaPagamento
         {
             this.Close();
         }
+
+        private void btnDeleteEmpresa_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
+            "excluir a empresa?", "Confirmação de exclusão",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                EmpresaDAO empresadao = new EmpresaDAO();
+                empresadao.DeleteEmpresa();
+
+                MessageBox.Show("Empresa deletada com sucesso!!");
+            }
+        }
     }
 }
