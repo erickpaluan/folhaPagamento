@@ -41,9 +41,8 @@ namespace folhaPagamento
         private void cadUsuario_Load(object sender, EventArgs e)
         {
             PopularDataGrid();
-            btnAdicionar.Enabled = false;
-            btnExcluir.Enabled = false;
-            btnAlterar.Enabled = false;
+            btnExcluir.Visible = false;
+            btnAlterar.Visible = false;
         }
 
         private void PopularDataGrid()
@@ -143,8 +142,8 @@ namespace folhaPagamento
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
 
                 btnAdicionar.Enabled = true;
-                btnAlterar.Enabled = true;
-                btnExcluir.Enabled = true;
+                btnAlterar.Visible = true;
+                btnExcluir.Visible = true;
             }
         }
 
