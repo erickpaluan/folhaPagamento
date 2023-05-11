@@ -140,5 +140,48 @@ namespace folhaPagamento
                 MessageBox.Show("Empresa deletada com sucesso!!");
             }
         }
+
+        private void cadEmpresa_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
+                {
+                    conn.Open();
+
+                    // Criar um objeto NpgsqlDataAdapter para buscar os dados da tabela empresa
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM empresa", conn);
+
+                    // Criar um objeto DataTable para armazenar os dados da tabela
+                    DataTable dt = new DataTable();
+
+                    // Preencher o DataTable com os dados da tabela empresa
+                    da.Fill(dt);
+
+                    // Verificar se há registros no DataTable
+                    if (dt.Rows.Count > 0)
+                    {
+                        // Preencher os campos do formulário com os valores do registro selecionado
+                        txtRazaoSocial.Text = dt.Rows[0]["razaosocial"].ToString();
+                        txtNomeFantasia.Text = dt.Rows[0]["nomefantasia"].ToString();
+                        txtCNPJ.Text = dt.Rows[0]["CNPJ"].ToString();
+                        txtIncricaoEstadual.Text = dt.Rows[0]["inscricaoestadual"].ToString();
+                        txtEndereco.Text = dt.Rows[0]["endereco"].ToString();
+                        txtNumero.Text = dt.Rows[0]["numero"].ToString();
+                        txtComplemento.Text = dt.Rows[0]["complemento"].ToString();
+                        txtBairro.Text = dt.Rows[0]["bairro"].ToString();
+                        txtCidade.Text = dt.Rows[0]["cidade"].ToString();
+                        txtEstado.Text = dt.Rows[0]["estado"].ToString();
+                        txtCEP.Text = dt.Rows[0]["cep"].ToString();
+                        txtTel.Text = dt.Rows[0]["telefone"].ToString();
+                        txtEmail.Text = dt.Rows[0]["email"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
     }
 }
