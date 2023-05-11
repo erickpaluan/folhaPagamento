@@ -8,12 +8,14 @@ namespace folhaPagamento
 {
     public class HoleriteDAO
     {
-        public decimal SalarioBase { get; set; }
-        public decimal DescontoINSS { get; set; }
-        public decimal DescontoIRPF { get; set; }
-        public decimal DescontoConvMed { get; set; }
-        public decimal DescontoConvOdon { get; set; }
-        public decimal TotalDescontos { get; set; }
-        public decimal ValorTotal { get; set; }
+        public string cpf { get; set; }
+        public decimal salariobruto { get; set; }
+        public decimal inss { get; set; }
+        public decimal irpf { get; set; }
+        public decimal convmed { get; set; }
+        public decimal convodonto { get; set; }
+        public decimal totaldescontos { get; set; }
+        public decimal salarioliquido { get; set; }
+        public DateTime datapagamento { get; set; }
     }
 }

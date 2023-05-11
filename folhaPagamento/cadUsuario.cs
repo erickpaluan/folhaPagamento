@@ -142,8 +142,8 @@ namespace folhaPagamento
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
 
                 btnAdicionar.Enabled = true;
-                btnAlterar.Visible = true;
-                btnExcluir.Visible = true;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
             }
         }
 

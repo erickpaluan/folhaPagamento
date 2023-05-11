@@ -53,23 +53,32 @@ namespace folhaPagamento
         }
 
         public void AddHolerite(
-            decimal SalarioBase,
-            decimal DescontoINSS,
-            decimal DescontoIRPF,
-            //decimal DescontoConvMed,
-            //decimal DescontoConvOdon,
-            //decimal TotalDescontos,
-            decimal ValorTotal)
+            string cpf,
+            decimal salariobruto,
+            decimal inss,
+            decimal irpf,
+            decimal convmed,
+            decimal convodonto,
+            decimal totaldescontos,
+            decimal salarioliquido,
+            DateTime datapagamento)
+
         {
-            string sql = "INSERT INTO folha_pagto (sal_bruto, sal_liq, inss, ir) " +
-                         "VALUES (@sal_bruto, @sal_liq, @inss, @ir);";
+            string sql = "INSERT INTO folha_pagto (cpf, salariobruto, inss, irpf, convmed, " +
+                         "convodonto, totaldescontos, salarioliquido, datapagamento)" +
+                         "VALUES (@cpf, @salariobruto, @inss, @irpf, @convmed, @convodonto, @totaldescontos, @salarioliquido, @datapagamento);";
 
             using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, conn))
             {
-                cmdHolerite.Parameters.AddWithValue("@sal_bruto", SalarioBase);
-                cmdHolerite.Parameters.AddWithValue("@sal_liq", ValorTotal);
-                cmdHolerite.Parameters.AddWithValue("@inss", DescontoINSS);
-                cmdHolerite.Parameters.AddWithValue("@ir", DescontoIRPF);
+                cmdHolerite.Parameters.AddWithValue("@cpf", cpf);
+                cmdHolerite.Parameters.AddWithValue("@salariobruto", salariobruto);
+                cmdHolerite.Parameters.AddWithValue("@inss", inss);
+                cmdHolerite.Parameters.AddWithValue("@irpf", irpf);
+                cmdHolerite.Parameters.AddWithValue("@convmed", convmed);
+                cmdHolerite.Parameters.AddWithValue("@convodonto", convodonto);
+                cmdHolerite.Parameters.AddWithValue("@totaldescontos", totaldescontos);
+                cmdHolerite.Parameters.AddWithValue("@salarioliquido", salarioliquido);
+                cmdHolerite.Parameters.AddWithValue("@datapagamento", datapagamento);
 
                 cmdHolerite.ExecuteNonQuery();
             }
