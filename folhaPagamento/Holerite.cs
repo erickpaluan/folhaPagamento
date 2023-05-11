@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,12 +13,44 @@ namespace folhaPagamento
     {
 
         private NpgsqlConnection conn;
+        private List<HoleriteDAO> folhapagamento;
 
         public Holerite()
         {
             string sconn = connDB.GetConnection();
             conn = new NpgsqlConnection(sconn);
             conn.Open();
+            this.folhapagamento = new List<HoleriteDAO>();
+        }
+
+        public List<HoleriteDAO> CarregaHolerite()
+        {
+            this.folhapagamento.Clear();
+            string sql = "SELECT COUNT (*) FROM folha_pagto";
+
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            {
+                using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Dados holerite
+                        HoleriteDAO holerite = new HoleriteDAO();
+                        holerite.cpf = reader.GetString(reader.GetOrdinal("cpf"));
+                        holerite.salariobruto = reader.GetDecimal(reader.GetOrdinal("salariobruto"));
+                        holerite.inss = reader.GetDecimal(reader.GetOrdinal("inss"));
+                        holerite.irpf =reader.GetDecimal(reader.GetOrdinal("irpf"));
+                        holerite.convmed =reader.GetDecimal(reader.GetOrdinal("convmed"));
+                        holerite.convodonto =reader.GetDecimal(reader.GetOrdinal("convodonto"));
+                        holerite.totaldescontos =reader.GetDecimal(reader.GetOrdinal("totaldescontos"));
+                        holerite.salarioliquido =reader.GetDecimal(reader.GetOrdinal("salarioliquido"));
+                        holerite.datapagamento = reader.GetDateTime("datapagamento");
+
+                        folhapagamento.Add(holerite);
+                    }
+                }
+            }
+            return folhapagamento;
         }
 
 
