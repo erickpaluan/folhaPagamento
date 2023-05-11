@@ -18,19 +18,21 @@ namespace folhaPagamento
         private User usuarios;
         public Users Usuarios { get; set; }
         private Holerite HoleriteDAO { get; set; }
+
+        private NpgsqlConnection conn;
         public fHolerite(Users usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;
 
             // Configura as colunas do DataGridView
-            dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
-            dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
-            dgvHolerite.Columns.Add("ValorHoraExtra", "Valor Hora Extra");
-            dgvHolerite.Columns.Add("SalarioBruto", "Salário Bruto");
-            dgvHolerite.Columns.Add("DescontoINSS", "Desconto INSS");
-            dgvHolerite.Columns.Add("DescontoIRPF", "Desconto IRPF");
-            dgvHolerite.Columns.Add("SalarioLiquido", "Salário Líquido");
+            //dgvHolerite.Columns.Add("SalarioBase", "Salário Base");
+            //dgvHolerite.Columns.Add("HorasExtras", "Horas Extras");
+            //dgvHolerite.Columns.Add("ValorHoraExtra", "Valor Hora Extra");
+            //dgvHolerite.Columns.Add("SalarioBruto", "Salário Bruto");
+            //dgvHolerite.Columns.Add("DescontoINSS", "Desconto INSS");
+            //dgvHolerite.Columns.Add("DescontoIRPF", "Desconto IRPF");
+            //dgvHolerite.Columns.Add("SalarioLiquido", "Salário Líquido");
         }
 
         public void ImprimirHolerite()
@@ -57,7 +59,7 @@ namespace folhaPagamento
             // Cria uma nova instância da classe HoleriteDAO
             HoleriteDAO novoHolerite = new HoleriteDAO();
             novoHolerite.cpf = Usuarios.cpf;
-            novoHolerite.salariobruto = SalarioTotal;
+            novoHolerite.salariobruto = (decimal)Usuarios.salario;
             novoHolerite.inss = descontoINSS;
             novoHolerite.irpf = descontoIR;
             novoHolerite.convmed = ConvMed;
@@ -90,6 +92,32 @@ namespace folhaPagamento
 
         private void fHolerite_Load(object sender, EventArgs e)
         {
+
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
+                {
+                    conn.Open();
+
+                    // Criar um objeto NpgsqlDataAdapter para buscar os dados da tabela folha_pagto
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM folha_pagto", conn);
+
+                    // Criar um objeto DataTable para armazenar os dados da tabela
+                    DataTable dt = new DataTable();
+
+                    // Preencher o DataTable com os dados da tabela folha_pagto
+                    da.Fill(dt);
+
+                    // Atribuir o DataTable ao DataSource do DataGridView
+                    dgvHolerite.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+
+
             string nome = Usuarios.nome;
             bool isAdm = Usuarios.adm;
             string CPF = Usuarios.cpf;
