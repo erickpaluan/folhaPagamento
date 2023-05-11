@@ -40,6 +40,14 @@ namespace folhaPagamento
 
         private void cadUsuario_Load(object sender, EventArgs e)
         {
+            PopularDataGrid();
+            btnAdicionar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnAlterar.Enabled = false;
+        }
+
+        private void PopularDataGrid()
+        {
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
 
             dgUsuarios.Columns["id_func"].HeaderText = "ID";
@@ -83,8 +91,6 @@ namespace folhaPagamento
             dgUsuarios.Columns[28].Visible = false;
 
             dgUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-
         }
 
         private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e) //Joga dados textbox
@@ -95,7 +101,6 @@ namespace folhaPagamento
                 DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
                 // Dados funcionario
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
-                label10.Text = id_func.ToString();
                 bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
                 chbAtivo.Checked = ativo;
                 txtNome.Text = row.Cells["nome"].Value.ToString();
@@ -136,6 +141,10 @@ namespace folhaPagamento
                 txtBairro.Text = row.Cells["bairro"].Value.ToString();
                 txtCEP.Text = row.Cells["CEP"].Value.ToString();
                 txtCidade.Text = row.Cells["Cidade"].Value.ToString();
+
+                btnAdicionar.Enabled = true;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
             }
         }
 
@@ -277,7 +286,7 @@ namespace folhaPagamento
             }
 
         }
-        private void button3_Click_1(object sender, EventArgs e) //Update Funcionario
+        private void btnAlterar_Click_1(object sender, EventArgs e) //Update Funcionario
         {
             if (dgUsuarios.SelectedRows.Count > 0)
             {
