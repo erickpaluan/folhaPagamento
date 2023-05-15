@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using folhaPagamento._DAO;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace folhaPagamento
+namespace folhaPagamento._Classes
 {
     internal class Holerite : connDB
     {
@@ -17,15 +18,15 @@ namespace folhaPagamento
 
         public Holerite()
         {
-            string sconn = connDB.GetConnection();
+            string sconn = GetConnection();
             conn = new NpgsqlConnection(sconn);
             conn.Open();
-            this.folhapagamento = new List<HoleriteDAO>();
+            folhapagamento = new List<HoleriteDAO>();
         }
 
         public List<HoleriteDAO> CarregaHolerite()
         {
-            this.folhapagamento.Clear();
+            folhapagamento.Clear();
             string sql = "SELECT * FROM folha_pagto";
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
@@ -39,11 +40,11 @@ namespace folhaPagamento
                         holerite.cpf = reader.GetString(reader.GetOrdinal("cpf"));
                         holerite.salariobruto = reader.GetDecimal(reader.GetOrdinal("salariobruto"));
                         holerite.inss = reader.GetDecimal(reader.GetOrdinal("inss"));
-                        holerite.irpf =reader.GetDecimal(reader.GetOrdinal("irpf"));
-                        holerite.convmed =reader.GetDecimal(reader.GetOrdinal("convmed"));
-                        holerite.convodonto =reader.GetDecimal(reader.GetOrdinal("convodonto"));
-                        holerite.totaldescontos =reader.GetDecimal(reader.GetOrdinal("totaldescontos"));
-                        holerite.salarioliquido =reader.GetDecimal(reader.GetOrdinal("salarioliquido"));
+                        holerite.irpf = reader.GetDecimal(reader.GetOrdinal("irpf"));
+                        holerite.convmed = reader.GetDecimal(reader.GetOrdinal("convmed"));
+                        holerite.convodonto = reader.GetDecimal(reader.GetOrdinal("convodonto"));
+                        holerite.totaldescontos = reader.GetDecimal(reader.GetOrdinal("totaldescontos"));
+                        holerite.salarioliquido = reader.GetDecimal(reader.GetOrdinal("salarioliquido"));
                         holerite.datapagamento = reader.GetDateTime("datapagamento");
 
                         folhapagamento.Add(holerite);
@@ -56,7 +57,7 @@ namespace folhaPagamento
         public static DataTable ExecutarConsulta(string consulta)
         {
 
-            string connectionString = connDB.GetConnection();
+            string connectionString = GetConnection();
             using (NpgsqlConnection conexao = new NpgsqlConnection(connectionString))
             {
                 DataTable dataTable = new DataTable();
@@ -67,14 +68,15 @@ namespace folhaPagamento
                 return dataTable;
             }
         }
-        public decimal AdicionalConvMed(Users Usuarios)
+        public decimal AdicionalConvMed(Funcionario Usuarios)
         {
             bool ConvMed = Usuarios.conv_med;
             decimal DescontoConvMed = 0m;
             if (ConvMed)
             {
                 DescontoConvMed += 80m;
-            } else
+            }
+            else
             {
                 DescontoConvMed += 0m;
             }
@@ -82,7 +84,7 @@ namespace folhaPagamento
             return DescontoConvMed;
         }
 
-        public decimal AdicionalConvOdon(Users Usuarios)
+        public decimal AdicionalConvOdon(Funcionario Usuarios)
         {
             bool ConvOdon = Usuarios.conv_odon;
             decimal DescontoConvOdon = 0m;
@@ -130,7 +132,7 @@ namespace folhaPagamento
             }
         }
 
-        public decimal CalcularDescontoINSS(Users Usuarios)
+        public decimal CalcularDescontoINSS(Funcionario Usuarios)
         {
             decimal salario = Convert.ToDecimal(Usuarios.salario);
 
@@ -158,7 +160,7 @@ namespace folhaPagamento
             return Convert.ToDecimal(DescontoINSS);
         }
 
-        public decimal CalcularDescontoIRPF(Users Usuarios)
+        public decimal CalcularDescontoIRPF(Funcionario Usuarios)
         {
             decimal salario = Convert.ToDecimal(Usuarios.salario);
             decimal DescontoIRPF = 0m;
@@ -168,19 +170,19 @@ namespace folhaPagamento
             }
             else if (salario <= 2826.65m)
             {
-                DescontoIRPF = (salario * 0.075m) - 142.80m;
+                DescontoIRPF = salario * 0.075m - 142.80m;
             }
             else if (salario <= 3751.05m)
             {
-                DescontoIRPF = (salario * 0.15m) - 354.80m;
+                DescontoIRPF = salario * 0.15m - 354.80m;
             }
             else if (salario <= 4664.68m)
             {
-                DescontoIRPF = (salario * 0.225m) - 636.13m;
+                DescontoIRPF = salario * 0.225m - 636.13m;
             }
             else
             {
-                DescontoIRPF = (salario * 0.275m) - 869.36m;
+                DescontoIRPF = salario * 0.275m - 869.36m;
             }
             return DescontoIRPF;
         }

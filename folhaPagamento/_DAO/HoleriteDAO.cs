@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace folhaPagamento
+namespace folhaPagamento._DAO
 {
     public class HoleriteDAO
     {

@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class main
+    partial class MainWF
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWF));
             btnConfig = new Button();
             lblSaudacao = new Label();
             pictureBox1 = new PictureBox();

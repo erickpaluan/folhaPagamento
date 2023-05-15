@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class cadUsuario
+    partial class FuncionarioWF
     {
         /// <summary>
         /// Required designer variable.

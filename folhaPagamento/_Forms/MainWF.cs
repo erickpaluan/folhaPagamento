@@ -1,3 +1,4 @@
+using folhaPagamento._Classes;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using System.Windows.Forms;
@@ -5,12 +6,12 @@ using System.Windows.Forms;
 
 namespace folhaPagamento
 {
-    public partial class main : Form
+    public partial class MainWF : Form
     {
         private User usuarios;
-        public Users Usuarios { get; set; }
+        public Funcionario Usuarios { get; set; }
 
-        public main(Users usuarios)
+        public MainWF(Funcionario usuarios)
         {
 
             InitializeComponent();
@@ -54,25 +55,25 @@ namespace folhaPagamento
 
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
-            cadEmpresa cadEmpresa = new cadEmpresa();
+            EmpresaWF cadEmpresa = new EmpresaWF();
             cadEmpresa.ShowDialog();
         }
 
         private void btnMarcarPonto_Click_1(object sender, EventArgs e)
         {
-            ponto form = new ponto(Usuarios);
+            PontoWF form = new PontoWF(Usuarios);
             form.ShowDialog();
         }
 
         private void btnHolerite_Click_1(object sender, EventArgs e)
         {
-            fHolerite fHolerite = new fHolerite(Usuarios);
+            HoleriteWF fHolerite = new HoleriteWF(Usuarios);
             fHolerite.ShowDialog();
         }
 
         private void configuraçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            configuracao config = new configuracao();
+            ConfigWF config = new ConfigWF();
             config.ShowDialog();
         }
 
@@ -84,7 +85,7 @@ namespace folhaPagamento
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                login login = new login();
+                LoginWF login = new LoginWF();
                 login.Show();
             }
         }
@@ -103,13 +104,13 @@ namespace folhaPagamento
 
         private void btnFuncionarios_Click(object sender, EventArgs e)
         {
-            cadUsuario form = new cadUsuario();
+            FuncionarioWF form = new FuncionarioWF();
             form.ShowDialog();
         }
 
         private void btnEmpresa_Click_1(object sender, EventArgs e)
         {
-            cadEmpresa cadEmpresa = new cadEmpresa();
+            EmpresaWF cadEmpresa = new EmpresaWF();
             cadEmpresa.ShowDialog();
         }
     }

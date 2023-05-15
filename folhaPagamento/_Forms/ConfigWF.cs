@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace folhaPagamento
 {
-    public partial class configuracao : Form
+    public partial class ConfigWF : Form
     {
-        public configuracao()
+        public ConfigWF()
         {
             InitializeComponent();
         }

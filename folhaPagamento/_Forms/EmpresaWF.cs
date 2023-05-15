@@ -1,4 +1,6 @@
-﻿using Npgsql;
+﻿using folhaPagamento._Classes;
+using folhaPagamento._DAO;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +14,10 @@ using System.Windows.Forms;
 
 namespace folhaPagamento
 {
-    public partial class cadEmpresa : Form
+    public partial class EmpresaWF : Form
     {
         private Empresa connDAO { get; set; }
-        public cadEmpresa()
+        public EmpresaWF()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class configuracao
+    partial class ConfigWF
     {
         /// <summary>
         /// Required designer variable.

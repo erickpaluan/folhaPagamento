@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using folhaPagamento._Classes;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace folhaPagamento
+namespace folhaPagamento._DAO
 {
     internal class PontoDAO : connDB
     {
@@ -16,10 +17,10 @@ namespace folhaPagamento
 
         public PontoDAO()
         {
-            string sconn = connDB.GetConnection();
+            string sconn = GetConnection();
             conn = new NpgsqlConnection(sconn);
             conn.Open();
-            this.registro = new List<Registro>();
+            registro = new List<Registro>();
         }
 
         public void RegistrarPonto(string cpf_ponto, DateTime data, DateTime hora)
@@ -36,7 +37,8 @@ namespace folhaPagamento
 
                     cmdPonto.ExecuteNonQuery();
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro na marcação ", ex.ToString());
             }

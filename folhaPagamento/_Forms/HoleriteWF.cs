@@ -8,22 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using folhaPagamento._Classes;
+using folhaPagamento._DAO;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace folhaPagamento
 {
-    public partial class fHolerite : Form
+    public partial class HoleriteWF : Form
     {
         private User usuarios;
-        public Users Usuarios { get; set; }
+        public Funcionario Usuarios { get; set; }
         private Holerite HoleriteDAO { get; set; }
 
         private HoleriteDAO holerite;
 
         private NpgsqlConnection conn;
-        public fHolerite(Users usuarios)
+        public HoleriteWF(Funcionario usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;

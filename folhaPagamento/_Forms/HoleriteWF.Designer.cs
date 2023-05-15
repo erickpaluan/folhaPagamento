@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class fHolerite
+    partial class HoleriteWF
     {
         /// <summary>
         /// Required designer variable.

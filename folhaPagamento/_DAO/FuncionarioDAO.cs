@@ -10,26 +10,27 @@ using Microsoft.Win32;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Diagnostics.Eventing.Reader;
+using folhaPagamento._Classes;
 
-namespace folhaPagamento
+namespace folhaPagamento._DAO
 {
-    public class Funcionarios : connDB
+    public class FuncionarioDAO : connDB
     {
         private NpgsqlConnection conn;
-        private List<Users> users;
+        private List<Funcionario> users;
 
 
-        public Funcionarios()
+        public FuncionarioDAO()
         {
-            string sconn = connDB.GetConnection();
+            string sconn = GetConnection();
             conn = new NpgsqlConnection(sconn);
             conn.Open();
-            this.users = new List<Users>();
+            users = new List<Funcionario>();
         }
 
-        public List<Users> GetAllFuncionarios() // mostra dados datagridview
+        public List<Funcionario> GetAllFuncionarios() // mostra dados datagridview
         {
-            this.users.Clear();
+            users.Clear();
             string sql = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, " +
                          "funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, " +
                          "funcionario.login, funcionario.senha, funcionario.salario, funcionario.adm, " +
@@ -46,7 +47,7 @@ namespace folhaPagamento
                     while (reader.Read())
                     {
                         // Dados funcionario
-                        Users funcionario = new Users();
+                        Funcionario funcionario = new Funcionario();
                         funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
                         funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
                         funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
@@ -91,9 +92,9 @@ namespace folhaPagamento
 
         public void AddFuncionarioContatoEndereco(
             bool ativo,
-            string nome, 
-            string cpf, 
-            DateTime dt_nasc, 
+            string nome,
+            string cpf,
+            DateTime dt_nasc,
             int idade,
             string sexo,
             string estado_civil,
@@ -107,16 +108,16 @@ namespace folhaPagamento
             float salario,
             bool adm,
             string email,
-            string tipo, 
-            string ddd, 
-            string num_tel, 
+            string tipo,
+            string ddd,
+            string num_tel,
             string logradouro,
             string rua,
             string complemento,
             string bairro,
-            int num_res, 
-            string cep, 
-            string cidade, 
+            int num_res,
+            string cep,
+            string cidade,
             string estado)
         {
             string sql = "ROLLBACK;" +

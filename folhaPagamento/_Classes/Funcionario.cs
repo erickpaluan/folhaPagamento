@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace folhaPagamento
+namespace folhaPagamento._Classes
 {
-    public class Users
+    public class Funcionario
     {
         public int id_func { get; set; }
         public bool ativo { get; set; }
@@ -25,12 +25,12 @@ namespace folhaPagamento
         public string senha { get; set; }
         public float salario { get; set; }
         public bool adm { get; set; }
-        
+
         //Variaveis Contato
         public string email { get; set; }
         public string tipo { get; set; }
         public string ddd { get; set; }
-        public string num_tel { get; set; }   
+        public string num_tel { get; set; }
 
         //Variaveis Endereço
         public string logradouro { get; set; }
@@ -41,5 +41,14 @@ namespace folhaPagamento
         public string cep { get; set; }
         public string cidade { get; set; }
         public string estado { get; set; }
+    }
+
+    public static class FuncionarioSQL
+    {
+        public const string CarregarFuncionario = "SELECT * FROM empresa;";
+        public const string AdicionarFuncionario = "INSERT INTO empresa (razaosocial, nomefantasia, cnpj, inscricaoestadual, endereco, numero, complemento, bairro, cidade, estado, cep, telefone, email) VALUES (@RazaoSocial, @NomeFantasia, @CNPJ, @InscricaoEstadual, @Endereco, @Numero, @Complemento, @Bairro, @Cidade, @Estado, @CEP, @Telefone, @Email);";
+        public const string AtualizarFuncionario = "UPDATE empresa SET razaosocial = @RazaoSocial, nomefantasia = @NomeFantasia, cnpj = @CNPJ, inscricaoestadual = @InscricaoEstadual, endereco = @Endereco, numero = @Numero, complemento = @Complemento, bairro = @Bairro, cidade = @Cidade, estado = @Estado, cep = @CEP, telefone = @Telefone, email = @Email WHERE id_empresa = @IdEmpresa;";
+        public const string DeletarFuncionario = "DELETE FROM empresa WHERE id_empresa = @IdEmpresa;";
+        public const string FazerLoginFuncionario = "SELECT id_func, nome, adm, cpf, salario, ativo, conv_med, conv_odon FROM funcionario WHERE login = @login AND senha = @senha";
     }
 }

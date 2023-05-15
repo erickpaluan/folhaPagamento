@@ -9,6 +9,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using folhaPagamento._Classes;
+using folhaPagamento._DAO;
 using folhaPagamento.Properties;
 using Microsoft.VisualBasic.Logging;
 using Npgsql;
@@ -16,18 +18,18 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace folhaPagamento
 {
-    public partial class cadUsuario : Form
+    public partial class FuncionarioWF : Form
     {
-        private Funcionarios connDAO { get; set; }
+        private FuncionarioDAO connDAO { get; set; }
         CultureInfo cultura = new CultureInfo("pt-BR");
-        public cadUsuario()
+        public FuncionarioWF()
         {
             InitializeComponent();
 
 
             try
             {
-                connDAO = new Funcionarios();
+                connDAO = new FuncionarioDAO();
                 //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -160,7 +162,7 @@ namespace folhaPagamento
 
                 if (result == DialogResult.Yes)
                 {
-                    Users funcionarioDelete = new Users();
+                    Funcionario funcionarioDelete = new Funcionario();
 
                     connDAO.DeleteFuncionario(id_func);
 
@@ -186,7 +188,7 @@ namespace folhaPagamento
             try
             {
                 // Criar um novo objeto Users com os valores dos campos de entrada
-                Users novoFuncionario = new Users();
+                Funcionario novoFuncionario = new Funcionario();
                 novoFuncionario.nome = txtNome.Text;
                 novoFuncionario.ativo = chbAtivo.Checked;
                 novoFuncionario.cpf = txtCPF.Text;
@@ -304,7 +306,7 @@ namespace folhaPagamento
 
                 }
                 // Criar um novo objeto Users com os valores dos campos de entrada
-                Users funcionarioEditado = new Users();
+                Funcionario funcionarioEditado = new Funcionario();
                 funcionarioEditado.id_func = id_func;
                 funcionarioEditado.nome = txtNome.Text;
                 funcionarioEditado.ativo = chbAtivo.Checked;

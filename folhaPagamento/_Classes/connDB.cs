@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 
-namespace folhaPagamento
+namespace folhaPagamento._Classes
 {
     public class connDB
     {

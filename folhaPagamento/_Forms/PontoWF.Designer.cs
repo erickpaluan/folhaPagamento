@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class ponto
+    partial class PontoWF
     {
         /// <summary>
         /// Required designer variable.

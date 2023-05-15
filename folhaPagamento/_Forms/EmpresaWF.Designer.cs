@@ -1,6 +1,8 @@
-﻿namespace folhaPagamento
+﻿using folhaPagamento._Classes;
+
+namespace folhaPagamento
 {
-    partial class cadEmpresa
+    partial class EmpresaWF
     {
         /// <summary>
         /// Required designer variable.

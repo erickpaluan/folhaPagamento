@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using folhaPagamento._Classes;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace folhaPagamento
+namespace folhaPagamento._DAO
 {
     internal class EmpresaDAO : connDB
     {
@@ -16,15 +17,15 @@ namespace folhaPagamento
 
         public EmpresaDAO()
         {
-            string sconn = connDB.GetConnection();
+            string sconn = GetConnection();
             conn = new NpgsqlConnection(sconn);
             conn.Open();
-            this.empresa = new List<Empresa>();
+            empresa = new List<Empresa>();
         }
 
         public List<Empresa> GetId()
         {
-            this.empresa.Clear();
+            empresa.Clear();
             string sqlempresa = "SELECT * FROM empresa;";
 
             using (NpgsqlCommand cmdEmpresa = new NpgsqlCommand(sqlempresa, conn))
@@ -109,7 +110,7 @@ namespace folhaPagamento
             string Cidade,
             string Estado,
             string CEP,
-            string Telefone, 
+            string Telefone,
             string Email)
 
         {
@@ -126,7 +127,7 @@ namespace folhaPagamento
                 cmd.Parameters.AddWithValue("@Endereco", Endereco);
                 cmd.Parameters.AddWithValue("@Numero", Numero);
                 cmd.Parameters.AddWithValue("@Complemento", Complemento);
-                cmd.Parameters.AddWithValue("@Bairro", Bairro);   
+                cmd.Parameters.AddWithValue("@Bairro", Bairro);
                 cmd.Parameters.AddWithValue("@Cidade", Cidade);
                 cmd.Parameters.AddWithValue("@Estado", Estado);
                 cmd.Parameters.AddWithValue("@CEP", CEP);

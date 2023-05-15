@@ -1,6 +1,6 @@
 ﻿namespace folhaPagamento
 {
-    partial class login
+    partial class LoginWF
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWF));
             txtUsuario = new TextBox();
             txtSenha = new TextBox();
             btnLogin = new Button();

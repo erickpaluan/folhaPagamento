@@ -12,15 +12,17 @@ using System.Windows.Forms;
 using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.ApplicationServices;
+using folhaPagamento._DAO;
+using folhaPagamento._Classes;
 
 namespace folhaPagamento
 {
-    public partial class ponto : Form
+    public partial class PontoWF : Form
     {
         private User usuarios;
-        public Users Usuarios { get; set; }
+        public Funcionario Usuarios { get; set; }
 
-        public ponto(Users usuarios)
+        public PontoWF(Funcionario usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;
