@@ -46,9 +46,9 @@ namespace folhaPagamento._Classes
     public static class FuncionarioSQL
     {
         public const string CarregarFuncionario = "SELECT * FROM empresa;";
-        public const string AdicionarFuncionario = "INSERT INTO empresa (razaosocial, nomefantasia, cnpj, inscricaoestadual, endereco, numero, complemento, bairro, cidade, estado, cep, telefone, email) VALUES (@RazaoSocial, @NomeFantasia, @CNPJ, @InscricaoEstadual, @Endereco, @Numero, @Complemento, @Bairro, @Cidade, @Estado, @CEP, @Telefone, @Email);";
-        public const string AtualizarFuncionario = "UPDATE empresa SET razaosocial = @RazaoSocial, nomefantasia = @NomeFantasia, cnpj = @CNPJ, inscricaoestadual = @InscricaoEstadual, endereco = @Endereco, numero = @Numero, complemento = @Complemento, bairro = @Bairro, cidade = @Cidade, estado = @Estado, cep = @CEP, telefone = @Telefone, email = @Email WHERE id_empresa = @IdEmpresa;";
-        public const string DeletarFuncionario = "DELETE FROM empresa WHERE id_empresa = @IdEmpresa;";
+        public const string AdicionarFuncionario = "";
+        public const string AtualizarFuncionario = "";
+        public const string DeletarFuncionario = "";
         public const string FazerLoginFuncionario = "SELECT id_func, nome, adm, cpf, salario, ativo, conv_med, conv_odon FROM funcionario WHERE login = @login AND senha = @senha";
     }
 }

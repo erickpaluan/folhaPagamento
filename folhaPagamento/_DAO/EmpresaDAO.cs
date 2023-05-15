@@ -25,37 +25,25 @@ namespace folhaPagamento._DAO
 
         public List<Empresa> GetId()
         {
-            empresa.Clear();
-            string sqlempresa = "SELECT * FROM empresa;";
+            List<Empresa> empresas = new List<Empresa>();
+            string sql = EmpresaSQL.CarregaEmpresa;
 
-            using (NpgsqlCommand cmdEmpresa = new NpgsqlCommand(sqlempresa, conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
-                using (NpgsqlDataReader reader = cmdEmpresa.ExecuteReader())
+                using (NpgsqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         Empresa empresa = new Empresa();
                         empresa.id_empresa = reader.GetInt32(reader.GetOrdinal("id_empresa"));
-                        //empresa.RazaoSocial = reader.GetString(reader.GetString("RazaoSocial"));
-                        /*Empresa empresa = new Empresa();
-                        empresa.RazaoSocial = reader.GetString(reader.GetOrdinal("RazaoSocial"));
-                        empresa.NomeFantasia = reader.GetString(reader.GetOrdinal("Nomefantasia"));
-                        empresa.CNPJ = reader.GetString(reader.GetOrdinal("CNPJ"));
-                        empresa.InscricaoEstadual = reader.GetString(reader.GetOrdinal("InscricaoEstadual"));
-                        empresa.Endereco = reader.GetString(reader.GetOrdinal("Endereco"));
-                        empresa.Numero = reader.GetString(reader.GetOrdinal("Numero"));
-                        empresa.Complemento = reader.GetString(reader.GetOrdinal("Complemento"));
-                        empresa.Bairro = reader.GetString(reader.GetOrdinal("Bairro"));
-                        empresa.Cidade = reader.GetString(reader.GetOrdinal("Cidade"));
-                        empresa.Estado = reader.GetString(reader.GetOrdinal("Estado"));
-                        empresa.CEP = reader.GetString(reader.GetOrdinal("CEP"));
-                        empresa.Telefone = reader.GetString(reader.GetOrdinal("Telefone"));
-                        empresa.Email = reader.GetString(reader.GetOrdinal("Email")); */
+                        empresas.Add(empresa);
                     }
                 }
             }
-            return empresa;
+
+            return empresas;
         }
+
 
         public void AddEmpresa(
         string RazaoSocial,
@@ -72,9 +60,7 @@ namespace folhaPagamento._DAO
         string Telefone,
         string Email)
         {
-            string sqlAdd = "INSERT INTO empresa (razaosocial, nomefantasia, cnpj, inscricaoestadual, " +
-                "endereco, numero, complemento, bairro, cidade, estado, cep, telefone, email) " +
-                "VALUES (@RazaoSocial, @NomeFantasia, @CNPJ, @InscricaoEstadual, @Endereco, @Numero, @Complemento, @Bairro, @Cidade, @Estado, @CEP, @Telefone, @Email);";
+            string sqlAdd = EmpresaSQL.AdicionaEmpresa;
             ;
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sqlAdd, conn))
@@ -114,9 +100,7 @@ namespace folhaPagamento._DAO
             string Email)
 
         {
-            string sqlUp = "UPDATE empresa SET razaosocial = @RazaoSocial, nomefantasia = @NomeFantasia, cnpj = @CNPJ, inscricaoestadual = @InscricaoEstadual, " +
-                "endereco = @Endereco, numero = @Numero, complemento = @Complemento, bairro = @Bairro, cidade = @Cidade, estado = @Estado, cep = @CEP, telefone = @Telefone, " +
-                "email = @Email WHERE id_empresa = 1;";
+            string sqlUp = EmpresaSQL.AtualizaEmpresa;
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sqlUp, conn))
             {
@@ -140,7 +124,7 @@ namespace folhaPagamento._DAO
 
         public void DeleteEmpresa()
         {
-            string sqldelete = "DELETE FROM empresa WHERE id_empresa = 1";
+            string sqldelete = EmpresaSQL.DeletaEmpresa;
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sqldelete, conn))
             {
