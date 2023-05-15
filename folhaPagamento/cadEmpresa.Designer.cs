@@ -54,136 +54,152 @@
             // 
             // txtRazaoSocial
             // 
-            txtRazaoSocial.Location = new Point(12, 196);
+            txtRazaoSocial.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRazaoSocial.Location = new Point(12, 90);
             txtRazaoSocial.Name = "txtRazaoSocial";
             txtRazaoSocial.PlaceholderText = "RAZÃO SOCIAL";
-            txtRazaoSocial.Size = new Size(100, 23);
+            txtRazaoSocial.Size = new Size(696, 35);
             txtRazaoSocial.TabIndex = 0;
             // 
             // txtNomeFantasia
             // 
-            txtNomeFantasia.Location = new Point(12, 225);
+            txtNomeFantasia.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNomeFantasia.Location = new Point(12, 131);
             txtNomeFantasia.Name = "txtNomeFantasia";
             txtNomeFantasia.PlaceholderText = "NOME FANTASIA";
-            txtNomeFantasia.Size = new Size(100, 23);
+            txtNomeFantasia.Size = new Size(696, 35);
             txtNomeFantasia.TabIndex = 1;
             // 
             // txtCNPJ
             // 
-            txtCNPJ.Location = new Point(12, 254);
+            txtCNPJ.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCNPJ.Location = new Point(12, 172);
             txtCNPJ.Name = "txtCNPJ";
             txtCNPJ.PlaceholderText = "CNPJ";
-            txtCNPJ.Size = new Size(100, 23);
+            txtCNPJ.Size = new Size(274, 35);
             txtCNPJ.TabIndex = 2;
             // 
             // txtIncricaoEstadual
             // 
-            txtIncricaoEstadual.Location = new Point(12, 283);
+            txtIncricaoEstadual.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtIncricaoEstadual.Location = new Point(292, 172);
             txtIncricaoEstadual.Name = "txtIncricaoEstadual";
             txtIncricaoEstadual.PlaceholderText = "INSCRIÇÃO ESTADUAL";
-            txtIncricaoEstadual.Size = new Size(100, 23);
+            txtIncricaoEstadual.Size = new Size(274, 35);
             txtIncricaoEstadual.TabIndex = 3;
             // 
             // txtEndereco
             // 
-            txtEndereco.Location = new Point(12, 312);
+            txtEndereco.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEndereco.Location = new Point(12, 276);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.PlaceholderText = "ENDERECO";
-            txtEndereco.Size = new Size(100, 23);
+            txtEndereco.Size = new Size(499, 35);
             txtEndereco.TabIndex = 4;
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(12, 341);
+            txtNumero.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNumero.Location = new Point(517, 276);
             txtNumero.Name = "txtNumero";
             txtNumero.PlaceholderText = "NUMERO";
-            txtNumero.Size = new Size(100, 23);
+            txtNumero.Size = new Size(191, 35);
             txtNumero.TabIndex = 5;
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(12, 370);
+            txtComplemento.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtComplemento.Location = new Point(12, 317);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.PlaceholderText = "COMPLEMENTO";
-            txtComplemento.Size = new Size(100, 23);
+            txtComplemento.Size = new Size(195, 35);
             txtComplemento.TabIndex = 6;
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(12, 399);
+            txtBairro.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBairro.Location = new Point(213, 317);
             txtBairro.Name = "txtBairro";
             txtBairro.PlaceholderText = "BAIRRO";
-            txtBairro.Size = new Size(100, 23);
+            txtBairro.Size = new Size(495, 35);
             txtBairro.TabIndex = 7;
             // 
             // txtCidade
             // 
-            txtCidade.Location = new Point(12, 428);
+            txtCidade.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCidade.Location = new Point(12, 358);
             txtCidade.Name = "txtCidade";
             txtCidade.PlaceholderText = "CIDADE";
-            txtCidade.Size = new Size(100, 23);
+            txtCidade.Size = new Size(499, 35);
             txtCidade.TabIndex = 8;
             // 
             // txtEstado
             // 
-            txtEstado.Location = new Point(12, 454);
+            txtEstado.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEstado.Location = new Point(517, 358);
             txtEstado.Name = "txtEstado";
             txtEstado.PlaceholderText = "ESTADO";
-            txtEstado.Size = new Size(100, 23);
+            txtEstado.Size = new Size(191, 35);
             txtEstado.TabIndex = 9;
             // 
             // txtCEP
             // 
-            txtCEP.Location = new Point(12, 483);
+            txtCEP.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCEP.Location = new Point(12, 399);
             txtCEP.Name = "txtCEP";
             txtCEP.PlaceholderText = "CEP";
-            txtCEP.Size = new Size(100, 23);
+            txtCEP.Size = new Size(499, 35);
             txtCEP.TabIndex = 10;
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(12, 512);
+            txtTel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTel.Location = new Point(12, 473);
             txtTel.Name = "txtTel";
             txtTel.PlaceholderText = "TELEFONE";
-            txtTel.Size = new Size(100, 23);
+            txtTel.Size = new Size(289, 35);
             txtTel.TabIndex = 11;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(12, 541);
+            txtEmail.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Location = new Point(307, 473);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "EMAIL";
-            txtEmail.Size = new Size(100, 23);
+            txtEmail.Size = new Size(401, 35);
             txtEmail.TabIndex = 12;
             // 
             // btnUpdateEmpresa
             // 
-            btnUpdateEmpresa.Location = new Point(102, 582);
+            btnUpdateEmpresa.Location = new Point(531, 23);
             btnUpdateEmpresa.Name = "btnUpdateEmpresa";
             btnUpdateEmpresa.Size = new Size(75, 23);
             btnUpdateEmpresa.TabIndex = 13;
             btnUpdateEmpresa.Text = "EDITAR";
             btnUpdateEmpresa.UseVisualStyleBackColor = true;
+            btnUpdateEmpresa.Visible = false;
             btnUpdateEmpresa.Click += btnUpdateEmpresa_Click;
             // 
             // btnAddEmpresa
             // 
-            btnAddEmpresa.Location = new Point(12, 582);
+            btnAddEmpresa.Location = new Point(441, 23);
             btnAddEmpresa.Name = "btnAddEmpresa";
             btnAddEmpresa.Size = new Size(84, 23);
             btnAddEmpresa.TabIndex = 14;
             btnAddEmpresa.Text = "ADICIONAR";
             btnAddEmpresa.UseVisualStyleBackColor = true;
+            btnAddEmpresa.Visible = false;
             btnAddEmpresa.Click += btnAddEmpresa_Click;
             // 
             // btnDeleteEmpresa
             // 
-            btnDeleteEmpresa.Location = new Point(183, 582);
+            btnDeleteEmpresa.Location = new Point(612, 23);
             btnDeleteEmpresa.Name = "btnDeleteEmpresa";
             btnDeleteEmpresa.Size = new Size(75, 23);
             btnDeleteEmpresa.TabIndex = 15;
             btnDeleteEmpresa.Text = "EXCLUIR";
             btnDeleteEmpresa.UseVisualStyleBackColor = true;
+            btnDeleteEmpresa.Visible = false;
             btnDeleteEmpresa.Click += btnDeleteEmpresa_Click;
             // 
             // connDBBindingSource
@@ -216,7 +232,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(376, 680);
+            ClientSize = new Size(720, 539);
             Controls.Add(pictureBox2);
             Controls.Add(lblSaudacao);
             Controls.Add(btnDeleteEmpresa);
@@ -235,7 +251,7 @@
             Controls.Add(txtCNPJ);
             Controls.Add(txtNomeFantasia);
             Controls.Add(txtRazaoSocial);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "cadEmpresa";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "cadEmpresa";

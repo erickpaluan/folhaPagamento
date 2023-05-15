@@ -31,6 +31,7 @@ namespace folhaPagamento
             timer1.Interval = 1000;
             timer1.Start();
             bool isAdm = Usuarios.adm;
+            txtCPF.Focus();
 
             if (isAdm == false)
             {
@@ -76,7 +77,7 @@ namespace folhaPagamento
         private void btnSalvarPonto_Click(object sender, EventArgs e)
         {
 
-            if(txtCPF.Text != "")
+            if (txtCPF.Text != "")
             {
                 Registro novoRegistro = new Registro();
                 novoRegistro.cpf_ponto = txtCPF.Text;
