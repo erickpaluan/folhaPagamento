@@ -45,7 +45,7 @@ namespace folhaPagamento._Classes
 
     public static class FuncionarioSQL
     {
-        public const string CarregarFuncionario = "SELECT * FROM empresa;";
+        public const string CarregarFuncionario = "SELECT nome FROM funcionario WHERE cpf = @cpf";
         public const string AdicionarFuncionario = "";
         public const string AtualizarFuncionario = "";
         public const string DeletarFuncionario = "";

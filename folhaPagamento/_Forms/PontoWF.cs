@@ -35,7 +35,7 @@ namespace folhaPagamento
             bool isAdm = Usuarios.adm;
             txtCPF.Focus();
 
-            if (isAdm == false)
+            if (!isAdm)
             {
                 string CPF = Usuarios.cpf;
 
@@ -46,8 +46,9 @@ namespace folhaPagamento
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblHora.Text = DateTime.Now.ToString("HH:mm");
-            lblData.Text = DateTime.Now.ToShortDateString();
+            //lblHora.Text = DateTime.Now.ToString("HH:mm");
+            lblHora.Text = DateTime.Now.ToString();
+            //lblData.Text = DateTime.Now.ToShortDateString();
         }
 
         private void txtCPF_TextChanged(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace folhaPagamento
                 connection.Open();
 
                 // Define a consulta SQL
-                string query = "SELECT nome FROM funcionario WHERE cpf = @cpf";
+                string query = FuncionarioSQL.CarregarFuncionario;
 
                 // Cria um objeto NpgsqlCommand com a consulta e os parâmetros
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
@@ -78,23 +79,27 @@ namespace folhaPagamento
 
         private void btnSalvarPonto_Click(object sender, EventArgs e)
         {
-
-            if (txtCPF.Text != "")
+            string cpf = txtCPF.Text.Trim();
+            if (string.IsNullOrEmpty(cpf))
             {
-                Registro novoRegistro = new Registro();
-                novoRegistro.cpf_ponto = txtCPF.Text;
-                novoRegistro.data = DateTime.Parse(lblData.Text);
-                novoRegistro.hora = DateTime.Parse(lblHora.Text);
-
-                PontoDAO pontoDAO = new PontoDAO();
-                pontoDAO.RegistrarPonto(
-                    novoRegistro.cpf_ponto,
-                    novoRegistro.data,
-                    novoRegistro.hora);
+                MessageBox.Show("Informe um CPF para registrar o ponto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
             }
-            else
+
+            Registro novoRegistro = new Registro()
             {
-                MessageBox.Show("Informe um CPF para ragistrar o ponto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                cpf_ponto = cpf,
+                data = DateTime.Parse(lblData.Text),
+                hora = DateTime.Parse(lblHora.Text)
+            };
+
+            string mensagemConfirmacao = $"Deseja registrar o ponto para o CPF: {novoRegistro.cpf_ponto}?\nData: {novoRegistro.data}\nHora: {novoRegistro.hora}";
+            DialogResult resultado = MessageBox.Show(mensagemConfirmacao, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                PontoDAO pontoDAO = new PontoDAO();
+                pontoDAO.RegistrarPonto(novoRegistro.cpf_ponto, novoRegistro.data, novoRegistro.hora);
             }
 
         }

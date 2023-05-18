@@ -28,11 +28,10 @@ namespace folhaPagamento
         private void main_Load(object sender, EventArgs e)
         {
 
-            if (Usuarios.adm == false)
+            if (!Usuarios.adm)
             {
                 btnFuncionarios.Visible = false;
                 btnEmpresa.Visible = false;
-
             }
 
             DateTime now = DateTime.Now;
