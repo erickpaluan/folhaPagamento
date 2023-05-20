@@ -28,66 +28,77 @@ namespace folhaPagamento._DAO
             users = new List<Funcionario>();
         }
 
-        public List<Funcionario> GetAllFuncionarios() // mostra dados datagridview
+        public List<Funcionario> GetAllFuncionarios()
         {
             users.Clear();
-            string sql = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, " +
-                         "funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, " +
-                         "funcionario.login, funcionario.senha, funcionario.salario, funcionario.adm, " +
-                         "contato.email, contato.tipo, contato.ddd, contato.num_tel, " +
-                         "endereco.logradouro, endereco.rua, endereco.complemento, endereco.bairro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado " +
-                         "FROM funcionario " +
-                         "INNER JOIN contato ON funcionario.id_func = contato.id_ctt " +
-                         "INNER JOIN endereco ON funcionario.id_func = endereco.id_end;";
+            string sql = FuncionarioSQL.CarregarFuncionario;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            try
             {
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
-                    while (reader.Read())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
                     {
-                        // Dados funcionario
-                        Funcionario funcionario = new Funcionario();
-                        funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
-                        funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
-                        funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
-                        funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
-                        funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
-                        funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
-                        funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
-                        funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
-                        funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
-                        funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
-                        funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
-                        funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
-                        funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
-                        funcionario.login = reader.GetString(reader.GetOrdinal("login"));
-                        funcionario.senha = reader.GetString(reader.GetOrdinal("senha"));
-                        funcionario.salario = reader.GetFloat(reader.GetOrdinal("salario"));
-                        funcionario.adm = reader.GetBoolean(reader.GetOrdinal("adm"));
+                        while (reader.Read())
+                        {
+                            // Dados funcionario
+                            Funcionario funcionario = new Funcionario();
+                            try
+                            {
+                                funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
+                                funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
+                                funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
+                                funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
+                                funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
+                                funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
+                                funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
+                                funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
+                                funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
+                                funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
+                                funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
+                                funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
+                                funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
+                                funcionario.login = reader.GetString(reader.GetOrdinal("login"));
+                                funcionario.senha = reader.GetString(reader.GetOrdinal("senha"));
+                                funcionario.salario = reader.GetFloat(reader.GetOrdinal("salario"));
+                                funcionario.adm = reader.GetBoolean(reader.GetOrdinal("adm"));
 
-                        // Dados contato
-                        funcionario.email = reader.GetString(reader.GetOrdinal("email"));
-                        funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
-                        funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
-                        funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
+                                // Dados contato
+                                funcionario.email = reader.GetString(reader.GetOrdinal("email"));
+                                funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
+                                funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
+                                funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
 
-                        // Dados endereco
-                        funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
-                        funcionario.rua = reader.GetString(reader.GetOrdinal("rua"));
-                        funcionario.complemento = reader.IsDBNull(reader.GetOrdinal("complemento")) ? string.Empty : reader.GetString(reader.GetOrdinal("complemento"));
-                        funcionario.bairro = reader.GetString(reader.GetOrdinal("bairro"));
-                        funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
-                        funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
-                        funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
-                        funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
+                                // Dados endereco
+                                funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
+                                funcionario.rua = reader.GetString(reader.GetOrdinal("rua"));
+                                funcionario.complemento = reader.IsDBNull(reader.GetOrdinal("complemento")) ? string.Empty : reader.GetString(reader.GetOrdinal("complemento"));
+                                funcionario.bairro = reader.GetString(reader.GetOrdinal("bairro"));
+                                funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
+                                funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
+                                funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
+                                funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
 
-                        users.Add(funcionario);
+                                users.Add(funcionario);
+                            }
+                            catch (Exception ex)
+                            {
+                                // Lógica para lidar com a exceção durante a leitura dos dados do funcionário
+                                MessageBox.Show("Erro ao ler dados do funcionário: " + ex.Message);
+                            }
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                // Lógica para lidar com a exceção durante a execução da consulta SQL
+                MessageBox.Show("Erro ao executar consulta SQL: " + ex.Message);
+            }
+
             return users;
         }
+
 
 
         public void AddFuncionarioContatoEndereco(
@@ -120,16 +131,7 @@ namespace folhaPagamento._DAO
             string cidade,
             string estado)
         {
-            string sql = "ROLLBACK;" +
-                         "BEGIN;" +
-                         "INSERT INTO funcionario (ativo, nome, cpf, dt_nasc, idade, sexo, estado_civil, dt_adm, cargo, matricula, conv_med, conv_odon, login, senha, salario, adm) " +
-                         "VALUES (@ativo, @nome, @cpf, @dt_nasc, @idade, @sexo, @estado_civil, @dt_adm, @cargo, @matricula, @conv_med, @conv_odon, @login, @senha, @salario, @adm) " +
-                         "RETURNING id_func;" +
-                         "INSERT INTO contato (id_ctt, email, tipo, ddd, num_tel) " +
-                         "VALUES (currval('funcionario_id_func_seq'), @email, @tipo, @ddd, @num_tel);" +
-                         "INSERT INTO endereco (id_end, logradouro, rua, complemento, bairro, num_res, cep, cidade, estado) " +
-                         "VALUES (currval('funcionario_id_func_seq'), @logradouro, @rua, @complemento, @bairro, @num_res, @cep, @cidade, @estado);" +
-                         "COMMIT;";
+            string sql = FuncionarioSQL.AdicionarFuncionario;
 
             using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
             {
