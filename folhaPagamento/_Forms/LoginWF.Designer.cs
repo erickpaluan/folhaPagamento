@@ -41,7 +41,7 @@
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUsuario.Location = new Point(380, 165);
+            txtUsuario.Location = new Point(398, 128);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Digite seu usuário";
             txtUsuario.Size = new Size(317, 21);
@@ -51,7 +51,7 @@
             // txtSenha
             // 
             txtSenha.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSenha.Location = new Point(380, 209);
+            txtSenha.Location = new Point(398, 182);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '•';
             txtSenha.PlaceholderText = "Digite sua senha";
@@ -61,11 +61,11 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = SystemColors.MenuHighlight;
+            btnLogin.BackColor = Color.FromArgb(11, 116, 184);
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogin.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(565, 323);
+            btnLogin.Location = new Point(565, 322);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(150, 36);
             btnLogin.TabIndex = 4;
@@ -78,7 +78,7 @@
             btnSair.FlatStyle = FlatStyle.System;
             btnSair.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSair.ForeColor = Color.IndianRed;
-            btnSair.Location = new Point(365, 323);
+            btnSair.Location = new Point(398, 322);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(100, 36);
             btnSair.TabIndex = 5;
@@ -90,7 +90,7 @@
             // 
             lblSaudacao.AutoSize = true;
             lblSaudacao.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSaudacao.Location = new Point(386, 37);
+            lblSaudacao.Location = new Point(398, 43);
             lblSaudacao.Name = "lblSaudacao";
             lblSaudacao.Size = new Size(101, 30);
             lblSaudacao.TabIndex = 6;
@@ -99,9 +99,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.meditating;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(347, 347);
+            pictureBox1.Size = new Size(370, 370);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -111,7 +111,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(727, 371);
+            ClientSize = new Size(727, 370);
             ControlBox = false;
             Controls.Add(pictureBox1);
             Controls.Add(lblSaudacao);
@@ -119,7 +119,7 @@
             Controls.Add(btnLogin);
             Controls.Add(txtSenha);
             Controls.Add(txtUsuario);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginWF";
             StartPosition = FormStartPosition.CenterScreen;

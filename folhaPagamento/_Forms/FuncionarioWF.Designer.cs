@@ -109,7 +109,7 @@
             dgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -122,7 +122,7 @@
             dgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgUsuarios.RowTemplate.Height = 25;
             dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size = new Size(694, 271);
+            dgUsuarios.Size = new Size(694, 190);
             dgUsuarios.TabIndex = 6;
             dgUsuarios.CellClick += dgUsuarios_CellClick;
             // 
@@ -322,7 +322,7 @@
             // 
             // btnAlterar
             // 
-            btnAlterar.Location = new Point(552, 689);
+            btnAlterar.Location = new Point(552, 607);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(74, 38);
             btnAlterar.TabIndex = 27;
@@ -333,7 +333,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(472, 689);
+            btnExcluir.Location = new Point(472, 607);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(74, 38);
             btnExcluir.TabIndex = 30;
@@ -344,7 +344,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(632, 689);
+            btnAdicionar.Location = new Point(632, 607);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(74, 38);
             btnAdicionar.TabIndex = 31;
@@ -413,7 +413,7 @@
             groupBox2.Controls.Add(cbLogr);
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(txtComplemento);
-            groupBox2.Location = new Point(288, 343);
+            groupBox2.Location = new Point(288, 261);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(418, 165);
             groupBox2.TabIndex = 47;
@@ -568,7 +568,7 @@
             groupBox1.Controls.Add(txtDDD);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtEmail);
-            groupBox1.Location = new Point(12, 514);
+            groupBox1.Location = new Point(12, 432);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(270, 124);
             groupBox1.TabIndex = 46;
@@ -584,7 +584,7 @@
             groupBox8.Controls.Add(txtSalario);
             groupBox8.Controls.Add(txtCargo);
             groupBox8.Controls.Add(label9);
-            groupBox8.Location = new Point(288, 514);
+            groupBox8.Location = new Point(288, 432);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(301, 124);
             groupBox8.TabIndex = 35;
@@ -595,7 +595,7 @@
             // 
             groupBox7.Controls.Add(chbConv_odon);
             groupBox7.Controls.Add(chbConv_med);
-            groupBox7.Location = new Point(595, 525);
+            groupBox7.Location = new Point(595, 443);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(111, 113);
             groupBox7.TabIndex = 34;
@@ -627,7 +627,7 @@
             groupBox6.Controls.Add(txtLogin);
             groupBox6.Controls.Add(txtSenha);
             groupBox6.Controls.Add(chbAdm);
-            groupBox6.Location = new Point(12, 644);
+            groupBox6.Location = new Point(12, 562);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(270, 83);
             groupBox6.TabIndex = 33;
@@ -653,7 +653,7 @@
             // 
             // txtMatricula
             // 
-            txtMatricula.Location = new Point(306, 666);
+            txtMatricula.Location = new Point(306, 584);
             txtMatricula.Name = "txtMatricula";
             txtMatricula.PlaceholderText = "MATRICULA";
             txtMatricula.Size = new Size(83, 23);
@@ -678,19 +678,19 @@
             groupBox9.Controls.Add(cbSexo);
             groupBox9.Controls.Add(label5);
             groupBox9.Controls.Add(label11);
-            groupBox9.Location = new Point(12, 344);
+            groupBox9.Location = new Point(12, 262);
             groupBox9.Name = "groupBox9";
             groupBox9.Size = new Size(270, 164);
             groupBox9.TabIndex = 38;
             groupBox9.TabStop = false;
             groupBox9.Text = "Informações Pessoais";
             // 
-            // cadUsuario
+            // FuncionarioWF
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(720, 749);
+            ClientSize = new Size(720, 660);
             ControlBox = false;
             Controls.Add(groupBox7);
             Controls.Add(groupBox8);
@@ -708,7 +708,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "cadUsuario";
+            Name = "FuncionarioWF";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Funcionários";
             Load += cadUsuario_Load;
