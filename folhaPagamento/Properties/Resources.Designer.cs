@@ -213,6 +213,16 @@ namespace folhaPagamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap meditating {
+            get {
+                object obj = ResourceManager.GetObject("meditating", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap menu_2_fill {
             get {
                 object obj = ResourceManager.GetObject("menu-2-fill", resourceCulture);

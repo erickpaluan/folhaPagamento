@@ -21,7 +21,6 @@ namespace folhaPagamento
 
         private FuncionarioDAO connDAO { get; set; }
         public Funcionario funcionario { get; set; }
-        
 
         private NpgsqlConnection conn;
         public LoginWF()
@@ -124,18 +123,9 @@ namespace folhaPagamento
             MessageBox.Show($"Erro: {mensagem}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-
-
         private void btnSair_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
-                "sair do sistema?", "Sair",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            SairDoSistema();
         }
 
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)
@@ -144,13 +134,48 @@ namespace folhaPagamento
             {
                 FazerLogin();
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                SairDoSistema();
+            }
         }
-
         private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 FazerLogin();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                SairDoSistema();
+            }
+        }
+        private void SairDoSistema()
+        {
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja" + "sair do sistema?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void LoginWF_Load(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+
+
+            if (now.Hour >= 5 && now.Hour < 12)
+            {
+                lblSaudacao.Text = $"Bom dia!";
+            }
+            else if (now.Hour >= 12 && now.Hour < 18)
+            {
+                lblSaudacao.Text = $"Boa tarde!";
+            }
+            else
+            {
+                lblSaudacao.Text = $"Boa noite!";
             }
         }
     }

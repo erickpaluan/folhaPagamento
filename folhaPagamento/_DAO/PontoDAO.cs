@@ -25,8 +25,7 @@ namespace folhaPagamento._DAO
 
         public void RegistrarPonto(string cpf_ponto, DateTime data, DateTime hora)
         {
-            string sql = "INSERT INTO ponto (cpf_ponto, data, hora) " +
-                         "VALUES (@cpf, @data, @hora);";
+            string sql = RegistroSQL.adicionaRegistro;
             try
             {
                 using (NpgsqlCommand cmdPonto = new NpgsqlCommand(sql, conn))
