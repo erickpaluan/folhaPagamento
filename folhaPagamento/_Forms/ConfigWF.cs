@@ -21,5 +21,10 @@ namespace folhaPagamento
         {
             this.Close();
         }
+
+        private void ConfigWF_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

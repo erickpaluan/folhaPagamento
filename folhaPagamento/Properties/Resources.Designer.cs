@@ -63,6 +63,16 @@ namespace folhaPagamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3d_construction_abstract_composition_with_lego_bricks {
+            get {
+                object obj = ResourceManager.GetObject("3d-construction-abstract-composition-with-lego-bricks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_FILL0_wght400_GRAD0_opsz48 {
             get {
                 object obj = ResourceManager.GetObject("add_FILL0_wght400_GRAD0_opsz48", resourceCulture);
@@ -126,6 +136,26 @@ namespace folhaPagamento.Properties {
         internal static System.Drawing.Bitmap empresa {
             get {
                 object obj = ResourceManager.GetObject("empresa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_close {
+            get {
+                object obj = ResourceManager.GetObject("eye_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_open {
+            get {
+                object obj = ResourceManager.GetObject("eye_open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +256,26 @@ namespace folhaPagamento.Properties {
         internal static System.Drawing.Bitmap menu_2_fill {
             get {
                 object obj = ResourceManager.GetObject("menu-2-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap original_748ee27f4db4329a85a8fc2690403eed {
+            get {
+                object obj = ResourceManager.GetObject("original-748ee27f4db4329a85a8fc2690403eed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap original_748ee27f4db4329a85a8fc2690403eed1 {
+            get {
+                object obj = ResourceManager.GetObject("original-748ee27f4db4329a85a8fc2690403eed1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

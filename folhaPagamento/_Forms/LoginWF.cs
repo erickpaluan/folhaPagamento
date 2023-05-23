@@ -13,6 +13,7 @@ using System.Windows.Input;
 using static System.Collections.Specialized.BitVector32;
 using folhaPagamento._DAO;
 using folhaPagamento._Classes;
+using folhaPagamento.Properties;
 
 namespace folhaPagamento
 {
@@ -23,11 +24,16 @@ namespace folhaPagamento
         public Funcionario funcionario { get; set; }
 
         private NpgsqlConnection conn;
+
+        private bool isPassword;
+        private bool isPasswordVisible;
         public LoginWF()
         {
             InitializeComponent();
             connDAO = new FuncionarioDAO();
             funcionario = new Funcionario();
+            isPassword = false;
+            isPasswordVisible = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -123,10 +129,6 @@ namespace folhaPagamento
             MessageBox.Show($"Erro: {mensagem}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            SairDoSistema();
-        }
 
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)
         {
@@ -160,8 +162,19 @@ namespace folhaPagamento
             }
         }
 
+        public bool IsPassword
+        {
+            get { return isPassword; }
+            set
+            {
+                isPassword = value;
+                Refresh();
+            }
+        }
+
         private void LoginWF_Load(object sender, EventArgs e)
         {
+            txtSenha.UseSystemPasswordChar = true;
             DateTime now = DateTime.Now;
 
 
@@ -177,6 +190,22 @@ namespace folhaPagamento
             {
                 lblSaudacao.Text = $"Boa noite!";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SairDoSistema();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            txtSenha.UseSystemPasswordChar = !isPasswordVisible;
         }
     }
 }
