@@ -63,7 +63,7 @@ namespace folhaPagamento
                 connection.Open();
 
                 // Define a consulta SQL
-                string query = FuncionarioSQL.CarregarFuncionario;
+                string query = RegistroSQL.carregaRegistro;
 
                 // Cria um objeto NpgsqlCommand com a consulta e os parâmetros
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
