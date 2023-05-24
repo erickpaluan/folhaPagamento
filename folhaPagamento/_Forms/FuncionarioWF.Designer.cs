@@ -86,6 +86,9 @@
             txtCPF=new TextBox();
             groupBox9=new GroupBox();
             dgUsuarios=new DataGridView();
+            pbImagemFuncionario=new PictureBox();
+            lblImagemFuncionario=new LinkLabel();
+            openFileDialog1=new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -94,6 +97,7 @@
             groupBox6.SuspendLayout();
             groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbImagemFuncionario).BeginInit();
             SuspendLayout();
             // 
             // chbAdm
@@ -538,7 +542,7 @@
             groupBox1.Controls.Add(txtDDD);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtEmail);
-            groupBox1.Location=new Point(12, 514);
+            groupBox1.Location=new Point(369, 220);
             groupBox1.Name="groupBox1";
             groupBox1.Size=new Size(270, 124);
             groupBox1.TabIndex=46;
@@ -648,7 +652,7 @@
             groupBox9.Controls.Add(cbSexo);
             groupBox9.Controls.Add(label5);
             groupBox9.Controls.Add(label11);
-            groupBox9.Location=new Point(12, 344);
+            groupBox9.Location=new Point(369, 50);
             groupBox9.Name="groupBox9";
             groupBox9.Size=new Size(270, 164);
             groupBox9.TabIndex=38;
@@ -662,16 +666,42 @@
             dgUsuarios.Name="dgUsuarios";
             dgUsuarios.ReadOnly=true;
             dgUsuarios.RowTemplate.Height=25;
-            dgUsuarios.Size=new Size(694, 150);
+            dgUsuarios.Size=new Size(351, 287);
             dgUsuarios.TabIndex=48;
+            // 
+            // pbImagemFuncionario
+            // 
+            pbImagemFuncionario.Location=new Point(646, 50);
+            pbImagemFuncionario.Name="pbImagemFuncionario";
+            pbImagemFuncionario.Size=new Size(100, 100);
+            pbImagemFuncionario.SizeMode=PictureBoxSizeMode.StretchImage;
+            pbImagemFuncionario.TabIndex=49;
+            pbImagemFuncionario.TabStop=false;
+            // 
+            // lblImagemFuncionario
+            // 
+            lblImagemFuncionario.AutoSize=true;
+            lblImagemFuncionario.Location=new Point(646, 157);
+            lblImagemFuncionario.Name="lblImagemFuncionario";
+            lblImagemFuncionario.Size=new Size(86, 15);
+            lblImagemFuncionario.TabIndex=50;
+            lblImagemFuncionario.TabStop=true;
+            lblImagemFuncionario.Text="Selecionar foto";
+            lblImagemFuncionario.LinkClicked+=lblImagemFuncionario_LinkClicked;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName="openFileDialog1";
             // 
             // FuncionarioWF
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             BackColor=Color.White;
-            ClientSize=new Size(720, 749);
+            ClientSize=new Size(953, 749);
             ControlBox=false;
+            Controls.Add(lblImagemFuncionario);
+            Controls.Add(pbImagemFuncionario);
             Controls.Add(dgUsuarios);
             Controls.Add(groupBox7);
             Controls.Add(groupBox8);
@@ -706,6 +736,7 @@
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbImagemFuncionario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -774,5 +805,8 @@
         private TextBox txtCPF;
         private GroupBox groupBox9;
         private DataGridView dgUsuarios;
+        private PictureBox pbImagemFuncionario;
+        private LinkLabel lblImagemFuncionario;
+        private OpenFileDialog openFileDialog1;
     }
 }

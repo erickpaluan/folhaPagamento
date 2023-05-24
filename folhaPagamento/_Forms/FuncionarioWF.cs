@@ -440,6 +440,20 @@ namespace folhaPagamento
         {
 
         }
+
+        private void lblImagemFuncionario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Arquivos de Imagem (*.jpg, *.png)|*.jpg;*.png";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    pbImagemFuncionario.Image = System.Drawing.Image.FromFile(imagePath);
+                    pbImagemFuncionario.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+            }
+        }
     }
 }
 
