@@ -4,6 +4,7 @@ using Npgsql;
 using System.Windows.Forms;
 
 
+
 namespace folhaPagamento
 {
     public partial class MainWF : Form
@@ -16,6 +17,7 @@ namespace folhaPagamento
 
             InitializeComponent();
             Usuarios = usuarios;
+
 
 
         }
@@ -34,22 +36,28 @@ namespace folhaPagamento
                 btnEmpresa.Visible = false;
             }
 
-            DateTime now = DateTime.Now;
+            lblSaudacao.Text = Saudacao(Usuarios.nome);
 
 
+
+
+        }
+
+        string Saudacao(string nome)
+        {
+            DateTimeOffset now = DateTimeOffset.Now;
             if (now.Hour >= 5 && now.Hour < 12)
             {
-                lblSaudacao.Text = $"Bom dia,\n{Usuarios.nome}";
+                return $"Bom dia, {nome}.";
             }
             else if (now.Hour >= 12 && now.Hour < 18)
             {
-                lblSaudacao.Text = $"Boa tarde,\n{Usuarios.nome}";
+                return $"Boa tarde, {nome}.";
             }
             else
             {
-                lblSaudacao.Text = $"Boa noite,\n{Usuarios.nome}";
+                return $"Boa noite, {nome}.";
             }
-
         }
 
         private void btnEmpresa_Click(object sender, EventArgs e)
@@ -60,8 +68,7 @@ namespace folhaPagamento
 
         private void btnMarcarPonto_Click_1(object sender, EventArgs e)
         {
-            PontoWF form = new PontoWF(Usuarios);
-            form.ShowDialog();
+
         }
 
         private void btnHolerite_Click_1(object sender, EventArgs e)
@@ -111,6 +118,12 @@ namespace folhaPagamento
         {
             EmpresaWF cadEmpresa = new EmpresaWF();
             cadEmpresa.ShowDialog();
+        }
+
+        private void llblRegistros_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            PontoWF form = new PontoWF(Usuarios);
+            form.ShowDialog();
         }
     }
 }

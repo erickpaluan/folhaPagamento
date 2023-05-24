@@ -33,7 +33,6 @@
             btnConfig=new Button();
             lblSaudacao=new Label();
             pictureBox1=new PictureBox();
-            btnMarcarPonto=new PictureBox();
             btnHolerite=new PictureBox();
             contextMenuStrip2=new ContextMenuStrip(components);
             configuraçõesToolStripMenuItem=new ToolStripMenuItem();
@@ -43,12 +42,22 @@
             toolStripMenuItem2=new ToolStripMenuItem();
             btnFuncionarios=new PictureBox();
             btnEmpresa=new PictureBox();
+            panel1=new Panel();
+            btnMinhasConfig=new Button();
+            btnMeuPerfil=new Button();
+            label1=new Label();
+            pictureBox2=new PictureBox();
+            panel2=new Panel();
+            label2=new Label();
+            llblRegistros=new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnHolerite).BeginInit();
             contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnFuncionarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnEmpresa).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // btnConfig
@@ -56,7 +65,7 @@
             btnConfig.FlatAppearance.BorderSize=0;
             btnConfig.FlatStyle=FlatStyle.Flat;
             btnConfig.Image=Properties.Resources.menu_2_fill;
-            btnConfig.Location=new Point(351, 393);
+            btnConfig.Location=new Point(623, 351);
             btnConfig.Name="btnConfig";
             btnConfig.Size=new Size(48, 48);
             btnConfig.TabIndex=5;
@@ -68,7 +77,7 @@
             // 
             lblSaudacao.AutoSize=true;
             lblSaudacao.Font=new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSaudacao.Location=new Point(66, 21);
+            lblSaudacao.Location=new Point(69, 16);
             lblSaudacao.Name="lblSaudacao";
             lblSaudacao.Size=new Size(148, 30);
             lblSaudacao.TabIndex=6;
@@ -76,31 +85,20 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image=Properties.Resources.fp;
-            pictureBox1.Location=new Point(12, 12);
+            pictureBox1.Image=Properties.Resources.person_FILL0_wght400_GRAD0_opsz48;
+            pictureBox1.Location=new Point(15, 16);
             pictureBox1.Name="pictureBox1";
             pictureBox1.Size=new Size(48, 48);
             pictureBox1.SizeMode=PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex=7;
             pictureBox1.TabStop=false;
             // 
-            // btnMarcarPonto
-            // 
-            btnMarcarPonto.Image=Properties.Resources.ponto;
-            btnMarcarPonto.Location=new Point(12, 100);
-            btnMarcarPonto.Name="btnMarcarPonto";
-            btnMarcarPonto.Size=new Size(188, 128);
-            btnMarcarPonto.SizeMode=PictureBoxSizeMode.StretchImage;
-            btnMarcarPonto.TabIndex=13;
-            btnMarcarPonto.TabStop=false;
-            btnMarcarPonto.Click+=btnMarcarPonto_Click_1;
-            // 
             // btnHolerite
             // 
             btnHolerite.Image=Properties.Resources.holerite1;
-            btnHolerite.Location=new Point(211, 100);
+            btnHolerite.Location=new Point(350, 438);
             btnHolerite.Name="btnHolerite";
-            btnHolerite.Size=new Size(188, 128);
+            btnHolerite.Size=new Size(133, 78);
             btnHolerite.SizeMode=PictureBoxSizeMode.StretchImage;
             btnHolerite.TabIndex=14;
             btnHolerite.TabStop=false;
@@ -110,47 +108,47 @@
             // 
             contextMenuStrip2.Items.AddRange(new ToolStripItem[] { configuraçõesToolStripMenuItem, toolStripSeparator1, fazerLogoutToolStripMenuItem, toolStripSeparator2, toolStripMenuItem2 });
             contextMenuStrip2.Name="contextMenuStrip2";
-            contextMenuStrip2.Size=new Size(181, 104);
+            contextMenuStrip2.Size=new Size(155, 82);
             // 
             // configuraçõesToolStripMenuItem
             // 
             configuraçõesToolStripMenuItem.Image=Properties.Resources.settings_FILL0_wght400_GRAD0_opsz48;
             configuraçõesToolStripMenuItem.Name="configuraçõesToolStripMenuItem";
-            configuraçõesToolStripMenuItem.Size=new Size(180, 22);
+            configuraçõesToolStripMenuItem.Size=new Size(154, 22);
             configuraçõesToolStripMenuItem.Text="Configurações";
             configuraçõesToolStripMenuItem.Click+=configuraçõesToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name="toolStripSeparator1";
-            toolStripSeparator1.Size=new Size(177, 6);
+            toolStripSeparator1.Size=new Size(151, 6);
             // 
             // fazerLogoutToolStripMenuItem
             // 
             fazerLogoutToolStripMenuItem.Image=Properties.Resources.logout_FILL0_wght400_GRAD0_opsz48;
             fazerLogoutToolStripMenuItem.Name="fazerLogoutToolStripMenuItem";
-            fazerLogoutToolStripMenuItem.Size=new Size(180, 22);
+            fazerLogoutToolStripMenuItem.Size=new Size(154, 22);
             fazerLogoutToolStripMenuItem.Text="Fazer Logout";
             fazerLogoutToolStripMenuItem.Click+=fazerLogoutToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name="toolStripSeparator2";
-            toolStripSeparator2.Size=new Size(177, 6);
+            toolStripSeparator2.Size=new Size(151, 6);
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name="toolStripMenuItem2";
-            toolStripMenuItem2.Size=new Size(180, 22);
+            toolStripMenuItem2.Size=new Size(154, 22);
             toolStripMenuItem2.Text="Sair do Sistema";
             toolStripMenuItem2.Click+=toolStripMenuItem2_Click;
             // 
             // btnFuncionarios
             // 
             btnFuncionarios.Image=Properties.Resources.funcionarios;
-            btnFuncionarios.Location=new Point(12, 234);
+            btnFuncionarios.Location=new Point(12, 438);
             btnFuncionarios.Name="btnFuncionarios";
-            btnFuncionarios.Size=new Size(188, 128);
+            btnFuncionarios.Size=new Size(133, 78);
             btnFuncionarios.SizeMode=PictureBoxSizeMode.StretchImage;
             btnFuncionarios.TabIndex=15;
             btnFuncionarios.TabStop=false;
@@ -159,27 +157,124 @@
             // btnEmpresa
             // 
             btnEmpresa.Image=Properties.Resources.empresa;
-            btnEmpresa.Location=new Point(211, 234);
+            btnEmpresa.Location=new Point(211, 438);
             btnEmpresa.Name="btnEmpresa";
-            btnEmpresa.Size=new Size(188, 128);
+            btnEmpresa.Size=new Size(133, 78);
             btnEmpresa.SizeMode=PictureBoxSizeMode.StretchImage;
             btnEmpresa.TabIndex=16;
             btnEmpresa.TabStop=false;
             btnEmpresa.Click+=btnEmpresa_Click_1;
             // 
+            // panel1
+            // 
+            panel1.BackColor=Color.FromArgb(213, 228, 254);
+            panel1.Controls.Add(btnMinhasConfig);
+            panel1.Controls.Add(lblSaudacao);
+            panel1.Controls.Add(btnMeuPerfil);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location=new Point(12, 12);
+            panel1.Name="panel1";
+            panel1.Size=new Size(688, 80);
+            panel1.TabIndex=17;
+            // 
+            // btnMinhasConfig
+            // 
+            btnMinhasConfig.BackColor=Color.White;
+            btnMinhasConfig.FlatStyle=FlatStyle.Flat;
+            btnMinhasConfig.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMinhasConfig.ForeColor=Color.FromArgb(62, 122, 232);
+            btnMinhasConfig.ImageAlign=ContentAlignment.MiddleLeft;
+            btnMinhasConfig.Location=new Point(534, 26);
+            btnMinhasConfig.Name="btnMinhasConfig";
+            btnMinhasConfig.Size=new Size(139, 29);
+            btnMinhasConfig.TabIndex=19;
+            btnMinhasConfig.Text="Minhas configurações";
+            btnMinhasConfig.TextImageRelation=TextImageRelation.ImageBeforeText;
+            btnMinhasConfig.UseVisualStyleBackColor=false;
+            // 
+            // btnMeuPerfil
+            // 
+            btnMeuPerfil.BackColor=Color.FromArgb(62, 122, 232);
+            btnMeuPerfil.FlatStyle=FlatStyle.Flat;
+            btnMeuPerfil.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMeuPerfil.ForeColor=Color.White;
+            btnMeuPerfil.ImageAlign=ContentAlignment.MiddleLeft;
+            btnMeuPerfil.Location=new Point(402, 26);
+            btnMeuPerfil.Name="btnMeuPerfil";
+            btnMeuPerfil.Size=new Size(126, 29);
+            btnMeuPerfil.TabIndex=18;
+            btnMeuPerfil.Text="Meu perfil";
+            btnMeuPerfil.TextImageRelation=TextImageRelation.ImageBeforeText;
+            btnMeuPerfil.UseVisualStyleBackColor=false;
+            // 
+            // label1
+            // 
+            label1.AutoSize=true;
+            label1.Font=new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location=new Point(50, 104);
+            label1.Name="label1";
+            label1.Size=new Size(119, 21);
+            label1.TabIndex=18;
+            label1.Text="Meus registros";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image=Properties.Resources.badge_FILL0_wght400_GRAD0_opsz48;
+            pictureBox2.Location=new Point(12, 98);
+            pictureBox2.Name="pictureBox2";
+            pictureBox2.Size=new Size(32, 32);
+            pictureBox2.SizeMode=PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex=20;
+            pictureBox2.TabStop=false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor=Color.White;
+            panel2.Controls.Add(label2);
+            panel2.Location=new Point(12, 136);
+            panel2.Name="panel2";
+            panel2.Size=new Size(688, 162);
+            panel2.TabIndex=21;
+            // 
+            // label2
+            // 
+            label2.AutoSize=true;
+            label2.Font=new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location=new Point(7, 6);
+            label2.Name="label2";
+            label2.Size=new Size(158, 21);
+            label2.TabIndex=23;
+            label2.Text="Meu horário semanal";
+            // 
+            // llblRegistros
+            // 
+            llblRegistros.AutoSize=true;
+            llblRegistros.Font=new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            llblRegistros.LinkBehavior=LinkBehavior.HoverUnderline;
+            llblRegistros.LinkColor=Color.FromArgb(62, 122, 232);
+            llblRegistros.Location=new Point(584, 107);
+            llblRegistros.Name="llblRegistros";
+            llblRegistros.Size=new Size(116, 19);
+            llblRegistros.TabIndex=22;
+            llblRegistros.TabStop=true;
+            llblRegistros.Text="Mostrar registros";
+            llblRegistros.LinkClicked+=llblRegistros_LinkClicked;
+            // 
             // MainWF
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
-            BackColor=Color.White;
-            ClientSize=new Size(411, 453);
+            BackColor=Color.FromArgb(243, 245, 247);
+            ClientSize=new Size(712, 560);
             ControlBox=false;
+            Controls.Add(llblRegistros);
+            Controls.Add(panel2);
+            Controls.Add(pictureBox2);
+            Controls.Add(label1);
+            Controls.Add(panel1);
             Controls.Add(btnEmpresa);
             Controls.Add(btnFuncionarios);
             Controls.Add(btnHolerite);
-            Controls.Add(btnMarcarPonto);
-            Controls.Add(pictureBox1);
-            Controls.Add(lblSaudacao);
             Controls.Add(btnConfig);
             FormBorderStyle=FormBorderStyle.FixedSingle;
             Icon=(Icon)resources.GetObject("$this.Icon");
@@ -189,11 +284,15 @@
             Text="Folha Pagamento";
             Load+=main_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btnMarcarPonto).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnHolerite).EndInit();
             contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnFuncionarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnEmpresa).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,7 +305,6 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem testeToolStripMenuItem;
         private ToolStripMenuItem sairDoSistemaToolStripMenuItem;
-        private PictureBox btnMarcarPonto;
         private PictureBox btnHolerite;
         private ContextMenuStrip contextMenuStrip2;
         private ToolStripMenuItem configuraçõesToolStripMenuItem;
@@ -216,5 +314,13 @@
         private ToolStripMenuItem toolStripMenuItem2;
         private PictureBox btnFuncionarios;
         private PictureBox btnEmpresa;
+        private Panel panel1;
+        private Button btnMeuPerfil;
+        private Button btnMinhasConfig;
+        private Label label1;
+        private PictureBox pictureBox2;
+        private Panel panel2;
+        private LinkLabel llblRegistros;
+        private Label label2;
     }
 }
