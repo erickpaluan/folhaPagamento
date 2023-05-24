@@ -76,10 +76,10 @@
             // lblSaudacao
             // 
             lblSaudacao.AutoSize=true;
-            lblSaudacao.Font=new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Font=new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             lblSaudacao.Location=new Point(69, 16);
             lblSaudacao.Name="lblSaudacao";
-            lblSaudacao.Size=new Size(148, 30);
+            lblSaudacao.Size=new Size(134, 25);
             lblSaudacao.TabIndex=6;
             lblSaudacao.Text="Bom dia, Erick.";
             // 

@@ -18,8 +18,6 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
 
-
-
         }
 
         private void btnConfig_Click(object sender, EventArgs e)

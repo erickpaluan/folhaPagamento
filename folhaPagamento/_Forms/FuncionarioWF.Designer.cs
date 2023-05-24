@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            dgUsuarios=new DataGridView();
             chbAdm=new CheckBox();
             chbAtivo=new CheckBox();
             label9=new Label();
@@ -89,7 +85,7 @@
             txtMatricula=new TextBox();
             txtCPF=new TextBox();
             groupBox9=new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
+            dgUsuarios=new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -97,46 +93,8 @@
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgUsuarios).BeginInit();
             SuspendLayout();
-            // 
-            // dgUsuarios
-            // 
-            dgUsuarios.AllowUserToAddRows=false;
-            dgUsuarios.AllowUserToDeleteRows=false;
-            dgUsuarios.AllowUserToResizeColumns=false;
-            dgUsuarios.AllowUserToResizeRows=false;
-            dataGridViewCellStyle1.Font=new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dgUsuarios.AlternatingRowsDefaultCellStyle=dataGridViewCellStyle1;
-            dgUsuarios.AutoSizeRowsMode=DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dgUsuarios.BackgroundColor=Color.White;
-            dgUsuarios.CellBorderStyle=DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment=DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor=SystemColors.Control;
-            dataGridViewCellStyle2.Font=new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor=SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor=SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor=SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode=DataGridViewTriState.True;
-            dgUsuarios.ColumnHeadersDefaultCellStyle=dataGridViewCellStyle2;
-            dgUsuarios.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment=DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor=SystemColors.Window;
-            dataGridViewCellStyle3.Font=new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor=SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor=SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor=SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode=DataGridViewTriState.False;
-            dgUsuarios.DefaultCellStyle=dataGridViewCellStyle3;
-            dgUsuarios.Location=new Point(12, 66);
-            dgUsuarios.MultiSelect=false;
-            dgUsuarios.Name="dgUsuarios";
-            dgUsuarios.ReadOnly=true;
-            dgUsuarios.RowHeadersWidthSizeMode=DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgUsuarios.RowTemplate.Height=25;
-            dgUsuarios.SelectionMode=DataGridViewSelectionMode.FullRowSelect;
-            dgUsuarios.Size=new Size(694, 271);
-            dgUsuarios.TabIndex=6;
-            dgUsuarios.CellClick+=dgUsuarios_CellClick;
             // 
             // chbAdm
             // 
@@ -370,8 +328,8 @@
             pictureBox2.Image=Properties.Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
             pictureBox2.Location=new Point(12, 12);
             pictureBox2.Name="pictureBox2";
-            pictureBox2.Size=new Size(48, 48);
-            pictureBox2.SizeMode=PictureBoxSizeMode.AutoSize;
+            pictureBox2.Size=new Size(32, 32);
+            pictureBox2.SizeMode=PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex=35;
             pictureBox2.TabStop=false;
             pictureBox2.Click+=pictureBox2_Click;
@@ -381,10 +339,10 @@
             // lblSaudacao
             // 
             lblSaudacao.AutoSize=true;
-            lblSaudacao.Font=new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSaudacao.Location=new Point(66, 13);
+            lblSaudacao.Font=new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSaudacao.Location=new Point(50, 19);
             lblSaudacao.Name="lblSaudacao";
-            lblSaudacao.Size=new Size(200, 45);
+            lblSaudacao.Size=new Size(120, 25);
             lblSaudacao.TabIndex=34;
             lblSaudacao.Text="Funcionários";
             // 
@@ -697,6 +655,16 @@
             groupBox9.TabStop=false;
             groupBox9.Text="Informações Pessoais";
             // 
+            // dgUsuarios
+            // 
+            dgUsuarios.ColumnHeadersHeightSizeMode=DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgUsuarios.Location=new Point(12, 50);
+            dgUsuarios.Name="dgUsuarios";
+            dgUsuarios.ReadOnly=true;
+            dgUsuarios.RowTemplate.Height=25;
+            dgUsuarios.Size=new Size(694, 150);
+            dgUsuarios.TabIndex=48;
+            // 
             // FuncionarioWF
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
@@ -704,6 +672,7 @@
             BackColor=Color.White;
             ClientSize=new Size(720, 749);
             ControlBox=false;
+            Controls.Add(dgUsuarios);
             Controls.Add(groupBox7);
             Controls.Add(groupBox8);
             Controls.Add(groupBox6);
@@ -716,7 +685,6 @@
             Controls.Add(btnAdicionar);
             Controls.Add(btnExcluir);
             Controls.Add(btnAlterar);
-            Controls.Add(dgUsuarios);
             FormBorderStyle=FormBorderStyle.FixedSingle;
             MaximizeBox=false;
             MinimizeBox=false;
@@ -724,7 +692,6 @@
             StartPosition=FormStartPosition.CenterScreen;
             Text="Cadastrar Funcionários";
             Load+=cadUsuario_Load;
-            ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
@@ -738,12 +705,12 @@
             groupBox6.PerformLayout();
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgUsuarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private DataGridView dgUsuarios;
         private GroupBox groupBox2;
         private ComboBox cbEstado_civil;
         private Label label5;
@@ -806,5 +773,6 @@
         private TextBox txtCEP;
         private TextBox txtCPF;
         private GroupBox groupBox9;
+        private DataGridView dgUsuarios;
     }
 }
