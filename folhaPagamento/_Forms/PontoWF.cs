@@ -90,7 +90,7 @@ namespace folhaPagamento
             {
                 cpf_ponto = cpf,
                 data = DateTime.Parse(lblData.Text),
-                hora = DateTime.Parse(lblHora.Text)
+                hora = DateTime.Parse(lblHora.Text),
             };
 
             string mensagemConfirmacao = $"Deseja registrar o ponto para o CPF: {novoRegistro.cpf_ponto}?\nData: {novoRegistro.data}\nHora: {novoRegistro.hora}";

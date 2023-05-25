@@ -31,7 +31,7 @@ namespace folhaPagamento._DAO
             {
                 using (NpgsqlCommand cmdPonto = new NpgsqlCommand(sql, conn))
                 {
-                    cmdPonto.Parameters.AddWithValue("@cpf", cpf_ponto);
+                    cmdPonto.Parameters.AddWithValue("@cpf_ponto", cpf_ponto);
                     cmdPonto.Parameters.AddWithValue("@data", data);
                     cmdPonto.Parameters.AddWithValue("@hora", hora);
 

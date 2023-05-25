@@ -51,9 +51,12 @@ namespace folhaPagamento._Classes
         public const string AdicionarContatoFuncionario = "";
         public const string AdicionarEnderecoFuncionario = "";
 
-        public const string AtualizarFuncionario = "";
+        public const string AtualizarFuncionario = "UPDATE funcionario SET ativo = @ativo, nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, sexo = @sexo, " +
+                                                   "estado_civil = @estado_civil, dt_adm = @dt_adm, cargo = @cargo, matricula = @matricula, conv_med = @conv_med, " +
+                                                   "conv_odon = @conv_odon, login = @login, senha = @senha, salario = @salario, adm = @adm WHERE id_func = @id_func;";
         public const string AtualizarContatoFuncionario = "UPDATE contato SET email = @email, tipo = @tipo, ddd = @ddd, num_tel = @num_tel WHERE id_ctt = @id_func";
-        public const string AtualizarEnderecoFuncionario = "";
+        public const string AtualizarEnderecoFuncionario = "UPDATE endereco SET logradouro = @logradouro, rua = @rua, num_res = @num_res, complemento = @complemento, " +
+                                                           "bairro = @bairro, cep = @cep, cidade = @cidade, estado = @estado;";
 
         public const string DeletarFuncionario = "DELETE FROM funcionario WHERE id_func = @id_func";
         public const string DeletarContatoFuncionario = "DELETE FROM contato WHERE id_ctt = @id_func";

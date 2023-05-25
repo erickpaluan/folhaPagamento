@@ -227,6 +227,21 @@ namespace folhaPagamento._DAO
                         {
                             cmdFuncionario.Transaction = transaction;
                             cmdFuncionario.Parameters.AddWithValue("@id_func", id_func);
+                            cmdFuncionario.Parameters.AddWithValue("@ativo", ativo);
+                            cmdFuncionario.Parameters.AddWithValue("@nome", nome);
+                            cmdFuncionario.Parameters.AddWithValue("@cpf", cpf);
+                            cmdFuncionario.Parameters.AddWithValue("@dt_nasc", dt_nasc);
+                            cmdFuncionario.Parameters.AddWithValue("sexo", sexo);
+                            cmdFuncionario.Parameters.AddWithValue("@estado_civil", estado_civil);
+                            cmdFuncionario.Parameters.AddWithValue("@dt_adm", dt_adm);
+                            cmdFuncionario.Parameters.AddWithValue("@cargo", cargo);
+                            cmdFuncionario.Parameters.AddWithValue("@matricula", matricula);
+                            cmdFuncionario.Parameters.AddWithValue("@conv_med", conv_med);
+                            cmdFuncionario.Parameters.AddWithValue("@conv_odon", conv_odon);
+                            cmdFuncionario.Parameters.AddWithValue("@login", login);
+                            cmdFuncionario.Parameters.AddWithValue("@senha", senha);
+                            cmdFuncionario.Parameters.AddWithValue("salario", salario);
+                            cmdFuncionario.Parameters.AddWithValue("@adm", adm);
                             // Definir outros parâmetros...
 
                             cmdFuncionario.ExecuteNonQuery();
@@ -239,6 +254,14 @@ namespace folhaPagamento._DAO
                         {
                             cmdEndereco.Transaction = transaction;
                             cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
+                            cmdEndereco.Parameters.AddWithValue("@logradouro", logradouro);
+                            cmdEndereco.Parameters.AddWithValue("@rua", rua);
+                            cmdEndereco.Parameters.AddWithValue("@num_res", num_res);
+                            cmdEndereco.Parameters.AddWithValue("@complemento", complemento);
+                            cmdEndereco.Parameters.AddWithValue("@bairro", bairro);
+                            cmdEndereco.Parameters.AddWithValue("@cep", cep);
+                            cmdEndereco.Parameters.AddWithValue("@cidade", cidade);
+                            cmdEndereco.Parameters.AddWithValue("@estado", estado);
                             // Definir outros parâmetros...
 
                             cmdEndereco.ExecuteNonQuery();
@@ -251,6 +274,10 @@ namespace folhaPagamento._DAO
                         {
                             cmdContato.Transaction = transaction;
                             cmdContato.Parameters.AddWithValue("@id_func", id_func);
+                            cmdContato.Parameters.AddWithValue("@email", email);
+                            cmdContato.Parameters.AddWithValue("@tipo", tipo);
+                            cmdContato.Parameters.AddWithValue("@ddd", ddd);
+                            cmdContato.Parameters.AddWithValue("@num_tel", num_tel);
                             // Definir outros parâmetros...
 
                             cmdContato.ExecuteNonQuery();

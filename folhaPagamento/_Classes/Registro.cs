@@ -17,6 +17,6 @@ namespace folhaPagamento._Classes
     internal static class RegistroSQL
     {
         public const string carregaRegistro = "SELECT nome FROM funcionario WHERE cpf = @cpf;";
-        public const string adicionaRegistro = "INSERT INTO ponto (cpf_ponto, data, hora) VALUES (@cpf, @data, @hora);";
+        public const string adicionaRegistro = "INSERT INTO ponto (cpf_ponto, data, hora) VALUES (@cpf_ponto, @data, @hora);";
     }
 }
