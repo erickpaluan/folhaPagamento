@@ -147,12 +147,12 @@ namespace folhaPagamento
         {
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
+                using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
                 {
                     conn.Open();
 
                     // Criar um objeto NpgsqlDataAdapter para buscar os dados da tabela empresa
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter("SELECT * FROM empresa", conn);
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(EmpresaSQL.CarregaEmpresa, conn);
 
                     // Criar um objeto DataTable para armazenar os dados da tabela
                     DataTable dt = new DataTable();

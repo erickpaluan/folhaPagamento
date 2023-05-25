@@ -57,7 +57,7 @@ namespace folhaPagamento
             string cpf = txtCPF.Text.Trim();
 
             // Cria a conexão com o banco de dados
-            using (NpgsqlConnection connection = new NpgsqlConnection(connDB.GetConnection()))
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
                 // Abre a conexão
                 connection.Open();

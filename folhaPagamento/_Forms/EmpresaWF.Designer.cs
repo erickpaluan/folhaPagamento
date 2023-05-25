@@ -206,7 +206,7 @@ namespace folhaPagamento
             // 
             // connDBBindingSource
             // 
-            connDBBindingSource.DataSource = typeof(connDB);
+            connDBBindingSource.DataSource = typeof(ConexaoDB);
             // 
             // pictureBox2
             // 

@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 
 namespace folhaPagamento._DAO
 {
-    internal class PontoDAO : connDB
+    internal class PontoDAO : ConexaoDB
     {
         private NpgsqlConnection conn;
         private List<Registro> registro;
 
         public PontoDAO()
         {
-            string sconn = GetConnection();
-            conn = new NpgsqlConnection(sconn);
-            conn.Open();
+            //string sconn = GetConnection();
+            //conn = new NpgsqlConnection(sconn);
+            GetConnection();
+            AbrirConexao(ConexaoDB.stringConexao());
             registro = new List<Registro>();
         }
 

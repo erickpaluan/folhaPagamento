@@ -48,7 +48,7 @@ namespace folhaPagamento
 
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(connDB.GetConnection()))
+                using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
                 {
                     conn.Open();
 

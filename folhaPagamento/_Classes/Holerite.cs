@@ -10,54 +10,56 @@ using System.Threading.Tasks;
 
 namespace folhaPagamento._Classes
 {
-    internal class Holerite : connDB
+    internal class Holerite : ConexaoDB
     {
-
-        private NpgsqlConnection conn;
         private List<HoleriteDAO> folhapagamento;
 
         public Holerite()
         {
-            string sconn = GetConnection();
-            conn = new NpgsqlConnection(sconn);
-            conn.Open();
             folhapagamento = new List<HoleriteDAO>();
         }
 
         public List<HoleriteDAO> CarregaHolerite()
         {
             folhapagamento.Clear();
-            string sql = "SELECT * FROM folha_pagto";
+            string sql = HoleriteSQL.CarregaHolerite;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
-                using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        // Dados holerite
-                        HoleriteDAO holerite = new HoleriteDAO();
-                        holerite.cpf = reader.GetString(reader.GetOrdinal("cpf"));
-                        holerite.salariobruto = reader.GetDecimal(reader.GetOrdinal("salariobruto"));
-                        holerite.inss = reader.GetDecimal(reader.GetOrdinal("inss"));
-                        holerite.irpf = reader.GetDecimal(reader.GetOrdinal("irpf"));
-                        holerite.convmed = reader.GetDecimal(reader.GetOrdinal("convmed"));
-                        holerite.convodonto = reader.GetDecimal(reader.GetOrdinal("convodonto"));
-                        holerite.totaldescontos = reader.GetDecimal(reader.GetOrdinal("totaldescontos"));
-                        holerite.salarioliquido = reader.GetDecimal(reader.GetOrdinal("salarioliquido"));
-                        holerite.datapagamento = reader.GetDateTime("datapagamento");
+                conn.Open();
 
-                        folhapagamento.Add(holerite);
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+                {
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Dados holerite
+                            HoleriteDAO holerite = new HoleriteDAO();
+                            holerite.cpf = reader.GetString(reader.GetOrdinal("cpf"));
+                            holerite.salariobruto = reader.GetDecimal(reader.GetOrdinal("salariobruto"));
+                            holerite.inss = reader.GetDecimal(reader.GetOrdinal("inss"));
+                            holerite.irpf = reader.GetDecimal(reader.GetOrdinal("irpf"));
+                            holerite.convmed = reader.GetDecimal(reader.GetOrdinal("convmed"));
+                            holerite.convodonto = reader.GetDecimal(reader.GetOrdinal("convodonto"));
+                            holerite.totaldescontos = reader.GetDecimal(reader.GetOrdinal("totaldescontos"));
+                            holerite.salarioliquido = reader.GetDecimal(reader.GetOrdinal("salarioliquido"));
+                            holerite.datapagamento = reader.GetDateTime(reader.GetOrdinal("datapagamento"));
+
+                            folhapagamento.Add(holerite);
+                        }
                     }
                 }
             }
+
             return folhapagamento;
         }
+
 
         public static DataTable ExecutarConsulta(string consulta)
         {
 
-            string connectionString = GetConnection();
+            string connectionString = ConexaoDB.stringConexao();
             using (NpgsqlConnection conexao = new NpgsqlConnection(connectionString))
             {
                 DataTable dataTable = new DataTable();
@@ -116,7 +118,7 @@ namespace folhaPagamento._Classes
                          "convodonto, totaldescontos, salarioliquido, datapagamento)" +
                          "VALUES (@cpf, @salariobruto, @inss, @irpf, @convmed, @convodonto, @totaldescontos, @salarioliquido, @datapagamento);";
 
-            using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, conn))
+            using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, GetConnection()))
             {
                 cmdHolerite.Parameters.AddWithValue("@cpf", cpf);
                 cmdHolerite.Parameters.AddWithValue("@salariobruto", salariobruto);

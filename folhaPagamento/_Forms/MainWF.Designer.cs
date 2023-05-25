@@ -65,7 +65,7 @@
             btnConfig.FlatAppearance.BorderSize=0;
             btnConfig.FlatStyle=FlatStyle.Flat;
             btnConfig.Image=Properties.Resources.menu_2_fill;
-            btnConfig.Location=new Point(623, 351);
+            btnConfig.Location=new Point(819, 304);
             btnConfig.Name="btnConfig";
             btnConfig.Size=new Size(48, 48);
             btnConfig.TabIndex=5;
@@ -96,9 +96,9 @@
             // btnHolerite
             // 
             btnHolerite.Image=Properties.Resources.holerite1;
-            btnHolerite.Location=new Point(350, 438);
+            btnHolerite.Location=new Point(12, 304);
             btnHolerite.Name="btnHolerite";
-            btnHolerite.Size=new Size(133, 78);
+            btnHolerite.Size=new Size(219, 132);
             btnHolerite.SizeMode=PictureBoxSizeMode.StretchImage;
             btnHolerite.TabIndex=14;
             btnHolerite.TabStop=false;
@@ -146,9 +146,9 @@
             // btnFuncionarios
             // 
             btnFuncionarios.Image=Properties.Resources.funcionarios;
-            btnFuncionarios.Location=new Point(12, 438);
+            btnFuncionarios.Location=new Point(462, 304);
             btnFuncionarios.Name="btnFuncionarios";
-            btnFuncionarios.Size=new Size(133, 78);
+            btnFuncionarios.Size=new Size(219, 132);
             btnFuncionarios.SizeMode=PictureBoxSizeMode.StretchImage;
             btnFuncionarios.TabIndex=15;
             btnFuncionarios.TabStop=false;
@@ -157,9 +157,9 @@
             // btnEmpresa
             // 
             btnEmpresa.Image=Properties.Resources.empresa;
-            btnEmpresa.Location=new Point(211, 438);
+            btnEmpresa.Location=new Point(237, 304);
             btnEmpresa.Name="btnEmpresa";
-            btnEmpresa.Size=new Size(133, 78);
+            btnEmpresa.Size=new Size(219, 132);
             btnEmpresa.SizeMode=PictureBoxSizeMode.StretchImage;
             btnEmpresa.TabIndex=16;
             btnEmpresa.TabStop=false;
@@ -167,6 +167,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor=AnchorStyles.Top|AnchorStyles.Left|AnchorStyles.Right;
             panel1.BackColor=Color.FromArgb(213, 228, 254);
             panel1.Controls.Add(btnMinhasConfig);
             panel1.Controls.Add(lblSaudacao);
@@ -174,17 +175,18 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Location=new Point(12, 12);
             panel1.Name="panel1";
-            panel1.Size=new Size(688, 80);
+            panel1.Size=new Size(858, 80);
             panel1.TabIndex=17;
             // 
             // btnMinhasConfig
             // 
+            btnMinhasConfig.Anchor=AnchorStyles.Right;
             btnMinhasConfig.BackColor=Color.White;
             btnMinhasConfig.FlatStyle=FlatStyle.Flat;
             btnMinhasConfig.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMinhasConfig.ForeColor=Color.FromArgb(62, 122, 232);
             btnMinhasConfig.ImageAlign=ContentAlignment.MiddleLeft;
-            btnMinhasConfig.Location=new Point(534, 26);
+            btnMinhasConfig.Location=new Point(704, 26);
             btnMinhasConfig.Name="btnMinhasConfig";
             btnMinhasConfig.Size=new Size(139, 29);
             btnMinhasConfig.TabIndex=19;
@@ -194,12 +196,13 @@
             // 
             // btnMeuPerfil
             // 
+            btnMeuPerfil.Anchor=AnchorStyles.Right;
             btnMeuPerfil.BackColor=Color.FromArgb(62, 122, 232);
             btnMeuPerfil.FlatStyle=FlatStyle.Flat;
             btnMeuPerfil.Font=new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMeuPerfil.ForeColor=Color.White;
             btnMeuPerfil.ImageAlign=ContentAlignment.MiddleLeft;
-            btnMeuPerfil.Location=new Point(402, 26);
+            btnMeuPerfil.Location=new Point(572, 26);
             btnMeuPerfil.Name="btnMeuPerfil";
             btnMeuPerfil.Size=new Size(126, 29);
             btnMeuPerfil.TabIndex=18;
@@ -229,11 +232,12 @@
             // 
             // panel2
             // 
+            panel2.Anchor=AnchorStyles.Top|AnchorStyles.Left|AnchorStyles.Right;
             panel2.BackColor=Color.White;
             panel2.Controls.Add(label2);
             panel2.Location=new Point(12, 136);
             panel2.Name="panel2";
-            panel2.Size=new Size(688, 162);
+            panel2.Size=new Size(858, 162);
             panel2.TabIndex=21;
             // 
             // label2
@@ -248,11 +252,12 @@
             // 
             // llblRegistros
             // 
+            llblRegistros.Anchor=AnchorStyles.Top|AnchorStyles.Right;
             llblRegistros.AutoSize=true;
             llblRegistros.Font=new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             llblRegistros.LinkBehavior=LinkBehavior.HoverUnderline;
             llblRegistros.LinkColor=Color.FromArgb(62, 122, 232);
-            llblRegistros.Location=new Point(584, 107);
+            llblRegistros.Location=new Point(754, 107);
             llblRegistros.Name="llblRegistros";
             llblRegistros.Size=new Size(116, 19);
             llblRegistros.TabIndex=22;
@@ -265,8 +270,7 @@
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             BackColor=Color.FromArgb(243, 245, 247);
-            ClientSize=new Size(712, 560);
-            ControlBox=false;
+            ClientSize=new Size(882, 474);
             Controls.Add(llblRegistros);
             Controls.Add(panel2);
             Controls.Add(pictureBox2);
@@ -276,7 +280,6 @@
             Controls.Add(btnFuncionarios);
             Controls.Add(btnHolerite);
             Controls.Add(btnConfig);
-            FormBorderStyle=FormBorderStyle.FixedSingle;
             Icon=(Icon)resources.GetObject("$this.Icon");
             MaximizeBox=false;
             Name="MainWF";

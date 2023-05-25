@@ -14,37 +14,35 @@ using folhaPagamento._Classes;
 
 namespace folhaPagamento._DAO
 {
-    public class FuncionarioDAO : connDB
+    public class FuncionarioDAO : ConexaoDB
     {
-        private NpgsqlConnection conn;
-        private List<Funcionario> users;
+        private List<Funcionario> funcionarios;
 
 
         public FuncionarioDAO()
         {
-            string sconn = GetConnection();
-            conn = new NpgsqlConnection(sconn);
-            conn.Open();
-            users = new List<Funcionario>();
+            funcionarios = new List<Funcionario>();
         }
 
         public List<Funcionario> GetAllFuncionarios()
         {
-            users.Clear();
+            funcionarios.Clear();
             string sql = FuncionarioSQL.CarregarFuncionario;
 
-            try
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
+                conn.Open();
+
                 using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
-                            // Dados funcionario
-                            Funcionario funcionario = new Funcionario();
-                            try
+                            while (reader.Read())
                             {
+                                // Dados funcionario
+                                Funcionario funcionario = new Funcionario();
                                 funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
                                 funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
                                 funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
@@ -79,27 +77,25 @@ namespace folhaPagamento._DAO
                                 funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
                                 funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
 
-                                users.Add(funcionario);
-                            }
-                            catch (Exception ex)
-                            {
-                                // Lógica para lidar com a exceção durante a leitura dos dados do funcionário
-                                MessageBox.Show("Erro ao ler dados do funcionário: " + ex.Message);
+                                funcionarios.Add(funcionario);
                             }
                         }
+
                     }
+                    catch (NpgsqlException ex)
+                    {
+                        MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro: " + ex.Message);
+                    }
+
                 }
             }
-            catch (Exception ex)
-            {
-                // Lógica para lidar com a exceção durante a execução da consulta SQL
-                MessageBox.Show("Erro ao executar consulta SQL: " + ex.Message);
-            }
 
-            return users;
+            return funcionarios;
         }
-
-
 
         public void AddFuncionarioContatoEndereco(
             bool ativo,
@@ -133,38 +129,55 @@ namespace folhaPagamento._DAO
         {
             string sql = FuncionarioSQL.AdicionarFuncionario;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@ativo", ativo);
-                cmd.Parameters.AddWithValue("@cpf", cpf);
-                cmd.Parameters.AddWithValue("@dt_nasc", dt_nasc);
-                cmd.Parameters.AddWithValue("@idade", idade);
-                cmd.Parameters.AddWithValue("@sexo", sexo);
-                cmd.Parameters.AddWithValue("@estado_civil", estado_civil);
-                cmd.Parameters.AddWithValue("@dt_adm", dt_adm);
-                cmd.Parameters.AddWithValue("@cargo", cargo);
-                cmd.Parameters.AddWithValue("@matricula", matricula);
-                cmd.Parameters.AddWithValue("@conv_med", conv_med);
-                cmd.Parameters.AddWithValue("@conv_odon", conv_odon);
-                cmd.Parameters.AddWithValue("@login", login);
-                cmd.Parameters.AddWithValue("@senha", senha);
-                cmd.Parameters.AddWithValue("@salario", salario);
-                cmd.Parameters.AddWithValue("@adm", adm);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@tipo", tipo);
-                cmd.Parameters.AddWithValue("@ddd", ddd);
-                cmd.Parameters.AddWithValue("@num_tel", num_tel);
-                cmd.Parameters.AddWithValue("@logradouro", logradouro);
-                cmd.Parameters.AddWithValue("@rua", rua);
-                cmd.Parameters.AddWithValue("@complemento", complemento);
-                cmd.Parameters.AddWithValue("@bairro", bairro);
-                cmd.Parameters.AddWithValue("@num_res", num_res);
-                cmd.Parameters.AddWithValue("@cep", cep);
-                cmd.Parameters.AddWithValue("@cidade", cidade);
-                cmd.Parameters.AddWithValue("@estado", estado);
+                conn.Open();
 
-                cmd.ExecuteNonQuery();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@ativo", ativo);
+                        cmd.Parameters.AddWithValue("@cpf", cpf);
+                        cmd.Parameters.AddWithValue("@dt_nasc", dt_nasc);
+                        cmd.Parameters.AddWithValue("@idade", idade);
+                        cmd.Parameters.AddWithValue("@sexo", sexo);
+                        cmd.Parameters.AddWithValue("@estado_civil", estado_civil);
+                        cmd.Parameters.AddWithValue("@dt_adm", dt_adm);
+                        cmd.Parameters.AddWithValue("@cargo", cargo);
+                        cmd.Parameters.AddWithValue("@matricula", matricula);
+                        cmd.Parameters.AddWithValue("@conv_med", conv_med);
+                        cmd.Parameters.AddWithValue("@conv_odon", conv_odon);
+                        cmd.Parameters.AddWithValue("@login", login);
+                        cmd.Parameters.AddWithValue("@senha", senha);
+                        cmd.Parameters.AddWithValue("@salario", salario);
+                        cmd.Parameters.AddWithValue("@adm", adm);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@tipo", tipo);
+                        cmd.Parameters.AddWithValue("@ddd", ddd);
+                        cmd.Parameters.AddWithValue("@num_tel", num_tel);
+                        cmd.Parameters.AddWithValue("@logradouro", logradouro);
+                        cmd.Parameters.AddWithValue("@rua", rua);
+                        cmd.Parameters.AddWithValue("@complemento", complemento);
+                        cmd.Parameters.AddWithValue("@bairro", bairro);
+                        cmd.Parameters.AddWithValue("@num_res", num_res);
+                        cmd.Parameters.AddWithValue("@cep", cep);
+                        cmd.Parameters.AddWithValue("@cidade", cidade);
+                        cmd.Parameters.AddWithValue("@estado", estado);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro: " + ex.Message);
+                    }
+
+                }
             }
         }
 
@@ -199,82 +212,62 @@ namespace folhaPagamento._DAO
             string cidade,
             string estado)
         {
-            using (NpgsqlTransaction transaction = conn.BeginTransaction())
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
-                try
+                conn.Open();
+
+                using (NpgsqlTransaction transaction = conn.BeginTransaction())
                 {
-
-                    // Inserindo na tabela funcionario
-                    string sqlfuncionario = "UPDATE funcionario SET nome = @nome, cpf = @cpf, dt_nasc = @dt_nasc, idade = @idade, ativo = @ativo, sexo = @sexo, " +
-                        "estado_civil = @estado_civil, dt_adm = @dt_adm, cargo = @cargo, matricula = @matricula, conv_med = @conv_med, conv_odon = @conv_odon, " +
-                        "login = @login, senha = @senha, salario = @salario, adm = @adm " +
-                        "WHERE id_func = @id_func";
-
-                    using (NpgsqlCommand cmdFuncionario = new NpgsqlCommand(sqlfuncionario, conn))
+                    try
                     {
-                        cmdFuncionario.Parameters.AddWithValue("@id_func", id_func);
-                        cmdFuncionario.Parameters.AddWithValue("@nome", nome);
-                        cmdFuncionario.Parameters.AddWithValue("@ativo", ativo);
-                        cmdFuncionario.Parameters.AddWithValue("@cpf", cpf);
-                        cmdFuncionario.Parameters.AddWithValue("@dt_nasc", dt_nasc);
-                        cmdFuncionario.Parameters.AddWithValue("@sexo", sexo);
-                        cmdFuncionario.Parameters.AddWithValue("@estado_civil", estado_civil);
-                        cmdFuncionario.Parameters.AddWithValue("@dt_adm", dt_adm);
-                        cmdFuncionario.Parameters.AddWithValue("@cargo", cargo);
-                        cmdFuncionario.Parameters.AddWithValue("@matricula", matricula);
-                        cmdFuncionario.Parameters.AddWithValue("@conv_med", conv_med);
-                        cmdFuncionario.Parameters.AddWithValue("@conv_odon", conv_odon);
-                        cmdFuncionario.Parameters.AddWithValue("@login", login);
-                        cmdFuncionario.Parameters.AddWithValue("@senha", senha);
-                        cmdFuncionario.Parameters.AddWithValue("@salario", salario);
-                        cmdFuncionario.Parameters.AddWithValue("@adm", adm);
+                        // Atualizando tabela funcionario
+                        string sqlFuncionario = FuncionarioSQL.AtualizarFuncionario;
 
-                        cmdFuncionario.ExecuteNonQuery();
-                    }
+                        using (NpgsqlCommand cmdFuncionario = new NpgsqlCommand(sqlFuncionario, conn))
+                        {
+                            cmdFuncionario.Transaction = transaction;
+                            cmdFuncionario.Parameters.AddWithValue("@id_func", id_func);
+                            // Definir outros parâmetros...
 
-                    // Inserindo na tabela endereco
-                    string sqlendereco = "UPDATE endereco SET logradouro = @logradouro, rua = @rua, complemento = @complemento, bairro = @bairro, num_res = @num_res, cep = @cep, cidade = @cidade, estado = @estado " +
-                        "WHERE id_end = @id_func";
+                            cmdFuncionario.ExecuteNonQuery();
+                        }
 
-                    using (NpgsqlCommand cmdEndereco = new NpgsqlCommand(sqlendereco, conn))
-                    {
-                        cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
-                        cmdEndereco.Parameters.AddWithValue("@logradouro", logradouro);
-                        cmdEndereco.Parameters.AddWithValue("@rua", rua);
-                        cmdEndereco.Parameters.AddWithValue("@complemento", complemento);
-                        cmdEndereco.Parameters.AddWithValue("@bairro", bairro);
-                        cmdEndereco.Parameters.AddWithValue("@num_res", num_res);
-                        cmdEndereco.Parameters.AddWithValue("@cep", cep);
-                        cmdEndereco.Parameters.AddWithValue("@cidade", cidade);
-                        cmdEndereco.Parameters.AddWithValue("@estado", estado);
+                        // Atualizando tabela endereco
+                        string sqlEndereco = FuncionarioSQL.AtualizarEnderecoFuncionario;
 
-                        cmdEndereco.ExecuteNonQuery();
-                    }
+                        using (NpgsqlCommand cmdEndereco = new NpgsqlCommand(sqlEndereco, conn))
+                        {
+                            cmdEndereco.Transaction = transaction;
+                            cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
+                            // Definir outros parâmetros...
 
-                    // Inserindo na tabela contato
-                    string sqlcontato = "UPDATE contato SET email = @email, tipo = @tipo, ddd = @ddd, num_tel = @num_tel " +
-                        "WHERE id_ctt = @id_func";
+                            cmdEndereco.ExecuteNonQuery();
+                        }
 
-                    using (NpgsqlCommand cmdContato = new NpgsqlCommand(sqlcontato, conn))
-                    {
-                        cmdContato.Parameters.AddWithValue("@id_func", id_func);
-                        cmdContato.Parameters.AddWithValue("@email", email);
-                        cmdContato.Parameters.AddWithValue("@tipo", tipo);
-                        cmdContato.Parameters.AddWithValue("@ddd", ddd);
-                        cmdContato.Parameters.AddWithValue("@num_tel", num_tel);
+                        // Atualizando tabela contato
+                        string sqlContato = FuncionarioSQL.AtualizarContatoFuncionario;
 
-                        cmdContato.ExecuteNonQuery();
+                        using (NpgsqlCommand cmdContato = new NpgsqlCommand(sqlContato, conn))
+                        {
+                            cmdContato.Transaction = transaction;
+                            cmdContato.Parameters.AddWithValue("@id_func", id_func);
+                            // Definir outros parâmetros...
+
+                            cmdContato.ExecuteNonQuery();
+                        }
+
                         transaction.Commit();
                     }
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw ex;
-                }
-                finally
-                {
-                    conn.Close();
+                    catch (NpgsqlException ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Ocorreu um erro: " + ex.Message);
+                    }
                 }
             }
         }
@@ -282,33 +275,41 @@ namespace folhaPagamento._DAO
 
         public void DeleteFuncionario(int id_func)
         {
-            NpgsqlTransaction transaction = conn.BeginTransaction();
-
-            try
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
-                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM endereco WHERE id_end = @id_func", conn, transaction);
-                command.Parameters.AddWithValue("@id_func", id_func);
-                command.ExecuteNonQuery();
+                conn.Open();
 
-                command = new NpgsqlCommand("DELETE FROM contato WHERE id_ctt = @id_func", conn, transaction);
-                command.Parameters.AddWithValue("@id_func", id_func);
-                command.ExecuteNonQuery();
+                using (NpgsqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        NpgsqlCommand command = new NpgsqlCommand(FuncionarioSQL.DeletarEnderecoFuncionario, conn, transaction);
+                        command.Parameters.AddWithValue("@id_func", id_func);
+                        command.ExecuteNonQuery();
 
-                command = new NpgsqlCommand("DELETE FROM funcionario WHERE id_func = @id_func", conn, transaction);
-                command.Parameters.AddWithValue("@id_func", id_func);
-                command.ExecuteNonQuery();
+                        command = new NpgsqlCommand(FuncionarioSQL.DeletarContatoFuncionario, conn, transaction);
+                        command.Parameters.AddWithValue("@id_func", id_func);
+                        command.ExecuteNonQuery();
 
-                transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
+                        command = new NpgsqlCommand(FuncionarioSQL.DeletarFuncionario, conn, transaction);
+                        command.Parameters.AddWithValue("@id_func", id_func);
+                        command.ExecuteNonQuery();
+
+                        transaction.Commit();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Ocorreu um erro: " + ex.Message);
+                    }
+                }
             }
         }
+
     }
 }

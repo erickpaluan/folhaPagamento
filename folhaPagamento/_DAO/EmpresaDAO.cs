@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 
 namespace folhaPagamento._DAO
 {
-    internal class EmpresaDAO : connDB
+    internal class EmpresaDAO : ConexaoDB
     {
-        private NpgsqlConnection conn;
         private List<Empresa> empresa;
 
 
         public EmpresaDAO()
         {
-            string sconn = GetConnection();
-            conn = new NpgsqlConnection(sconn);
-            conn.Open();
+            GetConnection();
+            AbrirConexao(ConexaoDB.stringConexao());
             empresa = new List<Empresa>();
         }
 
@@ -28,7 +26,7 @@ namespace folhaPagamento._DAO
             List<Empresa> empresas = new List<Empresa>();
             string sql = EmpresaSQL.CarregaEmpresa;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sql, GetConnection()))
             {
                 using (NpgsqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -63,7 +61,7 @@ namespace folhaPagamento._DAO
             string sqlAdd = EmpresaSQL.AdicionaEmpresa;
             ;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sqlAdd, conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sqlAdd, GetConnection()))
             {
                 cmd.Parameters.AddWithValue("@RazaoSocial", RazaoSocial);
                 cmd.Parameters.AddWithValue("@NomeFantasia", NomeFantasia);
@@ -102,7 +100,7 @@ namespace folhaPagamento._DAO
         {
             string sqlUp = EmpresaSQL.AtualizaEmpresa;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sqlUp, conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sqlUp, GetConnection()))
             {
                 cmd.Parameters.AddWithValue("@RazaoSocial", RazaoSocial);
                 cmd.Parameters.AddWithValue("@NomeFantasia", NomeFantasia);
@@ -126,7 +124,7 @@ namespace folhaPagamento._DAO
         {
             string sqldelete = EmpresaSQL.DeletaEmpresa;
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand(sqldelete, conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(sqldelete, GetConnection()))
             {
 
             }

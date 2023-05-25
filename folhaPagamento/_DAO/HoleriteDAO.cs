@@ -18,4 +18,10 @@ namespace folhaPagamento._DAO
         public decimal salarioliquido { get; set; }
         public DateTime datapagamento { get; set; }
     }
+
+    public static class HoleriteSQL
+    {
+        public const string CarregaHolerite = "SELECT * FROM folha_pagto";
+        public const string AdicionaHolerite = "";
+    }
 }

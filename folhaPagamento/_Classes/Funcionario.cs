@@ -46,9 +46,19 @@ namespace folhaPagamento._Classes
     public static class FuncionarioSQL
     {
         public const string CarregarFuncionario = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, funcionario.login, funcionario.senha, funcionario.salario, funcionario.adm, contato.email, contato.tipo, contato.ddd, contato.num_tel, endereco.logradouro, endereco.rua, endereco.complemento, endereco.bairro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado FROM funcionario INNER JOIN contato ON funcionario.id_func = contato.id_ctt INNER JOIN endereco ON funcionario.id_func = endereco.id_end;";
+        
         public const string AdicionarFuncionario = "ROLLBACK; BEGIN; INSERT INTO funcionario (ativo, nome, cpf, dt_nasc, idade, sexo, estado_civil, dt_adm, cargo, matricula, conv_med, conv_odon, login, senha, salario, adm) VALUES (@ativo, @nome, @cpf, @dt_nasc, @idade, @sexo, @estado_civil, @dt_adm, @cargo, @matricula, @conv_med, @conv_odon, @login, @senha, @salario, @adm) RETURNING id_func; INSERT INTO contato (id_ctt, email, tipo, ddd, num_tel) VALUES (currval('funcionario_id_func_seq'), @email, @tipo, @ddd, @num_tel); INSERT INTO endereco (id_end, logradouro, rua, complemento, bairro, num_res, cep, cidade, estado) VALUES (currval('funcionario_id_func_seq'), @logradouro, @rua, @complemento, @bairro, @num_res, @cep, @cidade, @estado); COMMIT;";
+        public const string AdicionarContatoFuncionario = "";
+        public const string AdicionarEnderecoFuncionario = "";
+
         public const string AtualizarFuncionario = "";
-        public const string DeletarFuncionario = "";
+        public const string AtualizarContatoFuncionario = "UPDATE contato SET email = @email, tipo = @tipo, ddd = @ddd, num_tel = @num_tel WHERE id_ctt = @id_func";
+        public const string AtualizarEnderecoFuncionario = "";
+
+        public const string DeletarFuncionario = "DELETE FROM funcionario WHERE id_func = @id_func";
+        public const string DeletarContatoFuncionario = "DELETE FROM contato WHERE id_ctt = @id_func";
+        public const string DeletarEnderecoFuncionario = "DELETE FROM endereco WHERE id_end = @id_func";
+
         public const string FazerLoginFuncionario = "SELECT id_func, nome, adm, cpf, salario, ativo, conv_med, conv_odon FROM funcionario WHERE login = @login AND senha = @senha";
     }
 }

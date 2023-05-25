@@ -30,7 +30,6 @@ namespace folhaPagamento
             try
             {
                 connDAO = new FuncionarioDAO();
-                //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
@@ -97,56 +96,7 @@ namespace folhaPagamento
 
         private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e) //Joga dados textbox
         {
-            if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
-            {
-                CultureInfo cultura = new CultureInfo("pt-BR");
-                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
-                // Dados funcionario
-                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
-                bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
-                chbAtivo.Checked = ativo;
-                txtNome.Text = row.Cells["nome"].Value.ToString();
-                txtCPF.Text = row.Cells["cpf"].Value.ToString();
-                dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
-                cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
-                cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
-                dtpDtAdm.Text = ((DateTime)row.Cells["dt_adm"].Value).ToString();
-                txtCargo.Text = row.Cells["cargo"].Value.ToString();
-                txtMatricula.Text = row.Cells["matricula"].Value.ToString();
-                bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
-                chbConv_med.Checked = conv_med;
-                bool conv_odon = row.Cells["conv_odon"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_odon"].Value) : false;
-                chbConv_odon.Checked = conv_odon;
-                txtLogin.Text = row.Cells["Login"].Value.ToString();
-                txtSenha.Text = row.Cells["Senha"].Value.ToString();
 
-                decimal salario = Convert.ToDecimal(row.Cells["salario"].Value);
-                txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
-
-                bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
-                chbAdm.Checked = adm;
-
-
-
-                // Dados Contato
-                cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
-                txtEmail.Text = row.Cells["email"].Value.ToString();
-                txtDDD.Text = row.Cells["DDD"].Value.ToString();
-                txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
-
-                // Dados endereço
-                cbLogr.Text = row.Cells["Logradouro"].Value.ToString();
-                txtRua.Text = row.Cells["rua"].Value.ToString();
-                txtComplemento.Text = row.Cells["complemento"].Value.ToString();
-                cbEstado.Text = row.Cells["estado"].Value.ToString();
-                txtNum.Text = row.Cells["num_res"].Value.ToString();
-                txtBairro.Text = row.Cells["bairro"].Value.ToString();
-                txtCEP.Text = row.Cells["CEP"].Value.ToString();
-                txtCidade.Text = row.Cells["Cidade"].Value.ToString();
-
-                btnExcluir.Visible = true;
-                btnAlterar.Visible = true;
-            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e) //Excluir Funcionário
@@ -452,6 +402,60 @@ namespace folhaPagamento
                     pbImagemFuncionario.Image = System.Drawing.Image.FromFile(imagePath);
                     pbImagemFuncionario.BackgroundImageLayout = ImageLayout.Stretch;
                 }
+            }
+        }
+
+        private void dgUsuarios_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
+            {
+                CultureInfo cultura = new CultureInfo("pt-BR");
+                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
+                // Dados funcionario
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+                bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
+                chbAtivo.Checked = ativo;
+                txtNome.Text = row.Cells["nome"].Value.ToString();
+                txtCPF.Text = row.Cells["cpf"].Value.ToString();
+                dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
+                cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
+                cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
+                dtpDtAdm.Text = ((DateTime)row.Cells["dt_adm"].Value).ToString();
+                txtCargo.Text = row.Cells["cargo"].Value.ToString();
+                txtMatricula.Text = row.Cells["matricula"].Value.ToString();
+                bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
+                chbConv_med.Checked = conv_med;
+                bool conv_odon = row.Cells["conv_odon"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_odon"].Value) : false;
+                chbConv_odon.Checked = conv_odon;
+                txtLogin.Text = row.Cells["Login"].Value.ToString();
+                txtSenha.Text = row.Cells["Senha"].Value.ToString();
+
+                decimal salario = Convert.ToDecimal(row.Cells["salario"].Value);
+                txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+
+                bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
+                chbAdm.Checked = adm;
+
+
+
+                // Dados Contato
+                cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
+                txtEmail.Text = row.Cells["email"].Value.ToString();
+                txtDDD.Text = row.Cells["DDD"].Value.ToString();
+                txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
+
+                // Dados endereço
+                cbLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                txtRua.Text = row.Cells["rua"].Value.ToString();
+                txtComplemento.Text = row.Cells["complemento"].Value.ToString();
+                cbEstado.Text = row.Cells["estado"].Value.ToString();
+                txtNum.Text = row.Cells["num_res"].Value.ToString();
+                txtBairro.Text = row.Cells["bairro"].Value.ToString();
+                txtCEP.Text = row.Cells["CEP"].Value.ToString();
+                txtCidade.Text = row.Cells["Cidade"].Value.ToString();
+
+                btnExcluir.Visible = true;
+                btnAlterar.Visible = true;
             }
         }
     }

@@ -296,7 +296,7 @@
             // 
             // btnAlterar
             // 
-            btnAlterar.Location=new Point(552, 689);
+            btnAlterar.Location=new Point(762, 470);
             btnAlterar.Name="btnAlterar";
             btnAlterar.Size=new Size(74, 38);
             btnAlterar.TabIndex=27;
@@ -307,7 +307,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location=new Point(472, 689);
+            btnExcluir.Location=new Point(682, 470);
             btnExcluir.Name="btnExcluir";
             btnExcluir.Size=new Size(74, 38);
             btnExcluir.TabIndex=30;
@@ -318,7 +318,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location=new Point(632, 689);
+            btnAdicionar.Location=new Point(842, 470);
             btnAdicionar.Name="btnAdicionar";
             btnAdicionar.Size=new Size(74, 38);
             btnAdicionar.TabIndex=31;
@@ -387,7 +387,7 @@
             groupBox2.Controls.Add(cbLogr);
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(txtComplemento);
-            groupBox2.Location=new Point(288, 343);
+            groupBox2.Location=new Point(12, 343);
             groupBox2.Name="groupBox2";
             groupBox2.Size=new Size(418, 165);
             groupBox2.TabIndex=47;
@@ -544,7 +544,7 @@
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Location=new Point(369, 220);
             groupBox1.Name="groupBox1";
-            groupBox1.Size=new Size(270, 124);
+            groupBox1.Size=new Size(270, 117);
             groupBox1.TabIndex=46;
             groupBox1.TabStop=false;
             groupBox1.Text="Contato";
@@ -558,7 +558,7 @@
             groupBox8.Controls.Add(txtSalario);
             groupBox8.Controls.Add(txtCargo);
             groupBox8.Controls.Add(label9);
-            groupBox8.Location=new Point(288, 514);
+            groupBox8.Location=new Point(436, 343);
             groupBox8.Name="groupBox8";
             groupBox8.Size=new Size(301, 124);
             groupBox8.TabIndex=35;
@@ -569,7 +569,7 @@
             // 
             groupBox7.Controls.Add(chbConv_odon);
             groupBox7.Controls.Add(chbConv_med);
-            groupBox7.Location=new Point(595, 525);
+            groupBox7.Location=new Point(743, 264);
             groupBox7.Name="groupBox7";
             groupBox7.Size=new Size(111, 113);
             groupBox7.TabIndex=34;
@@ -601,7 +601,7 @@
             groupBox6.Controls.Add(txtLogin);
             groupBox6.Controls.Add(txtSenha);
             groupBox6.Controls.Add(chbAdm);
-            groupBox6.Location=new Point(12, 644);
+            groupBox6.Location=new Point(646, 175);
             groupBox6.Name="groupBox6";
             groupBox6.Size=new Size(270, 83);
             groupBox6.TabIndex=33;
@@ -627,7 +627,7 @@
             // 
             // txtMatricula
             // 
-            txtMatricula.Location=new Point(306, 666);
+            txtMatricula.Location=new Point(445, 473);
             txtMatricula.Name="txtMatricula";
             txtMatricula.PlaceholderText="MATRICULA";
             txtMatricula.Size=new Size(83, 23);
@@ -668,6 +668,7 @@
             dgUsuarios.RowTemplate.Height=25;
             dgUsuarios.Size=new Size(351, 287);
             dgUsuarios.TabIndex=48;
+            dgUsuarios.CellClick+=dgUsuarios_CellClick_1;
             // 
             // pbImagemFuncionario
             // 
@@ -698,7 +699,7 @@
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             BackColor=Color.White;
-            ClientSize=new Size(953, 749);
+            ClientSize=new Size(953, 544);
             ControlBox=false;
             Controls.Add(lblImagemFuncionario);
             Controls.Add(pbImagemFuncionario);
