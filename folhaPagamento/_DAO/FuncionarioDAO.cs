@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Security.Cryptography;
 using System.Diagnostics.Eventing.Reader;
 using folhaPagamento._Classes;
+using System.Configuration;
 
 namespace folhaPagamento._DAO
 {
@@ -300,7 +301,7 @@ namespace folhaPagamento._DAO
         }
 
 
-        public void DeleteFuncionario(int id_func)
+        public void DeleteFuncionario(int id_func, string cpf)
         {
             using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
@@ -310,17 +311,23 @@ namespace folhaPagamento._DAO
                 {
                     try
                     {
-                        NpgsqlCommand command = new NpgsqlCommand(FuncionarioSQL.DeletarEnderecoFuncionario, conn, transaction);
-                        command.Parameters.AddWithValue("@id_func", id_func);
-                        command.ExecuteNonQuery();
 
-                        command = new NpgsqlCommand(FuncionarioSQL.DeletarContatoFuncionario, conn, transaction);
-                        command.Parameters.AddWithValue("@id_func", id_func);
-                        command.ExecuteNonQuery();
+                        NpgsqlCommand cmdPonto = new NpgsqlCommand(FuncionarioSQL.DeletarPontoFuncionario, conn, transaction);
+                        cmdPonto.Parameters.AddWithValue("@cpf_ponto", cpf);
+                        cmdPonto.ExecuteNonQuery();
 
-                        command = new NpgsqlCommand(FuncionarioSQL.DeletarFuncionario, conn, transaction);
-                        command.Parameters.AddWithValue("@id_func", id_func);
-                        command.ExecuteNonQuery();
+                        NpgsqlCommand cmdEndereco = new NpgsqlCommand(FuncionarioSQL.DeletarEnderecoFuncionario, conn, transaction);
+                        cmdEndereco.Parameters.AddWithValue("@id_func", id_func);
+                        cmdEndereco.ExecuteNonQuery();
+
+                        NpgsqlCommand cmdContato = new NpgsqlCommand(FuncionarioSQL.DeletarContatoFuncionario, conn, transaction);
+                        cmdContato.Parameters.AddWithValue("@id_func", id_func);
+                        cmdContato.ExecuteNonQuery();
+
+                        NpgsqlCommand cmdFuncionario = new NpgsqlCommand(FuncionarioSQL.DeletarFuncionario, conn, transaction);
+                        cmdFuncionario.Parameters.AddWithValue("@id_func", id_func);
+                        cmdFuncionario.ExecuteNonQuery();
+
 
                         transaction.Commit();
                     }

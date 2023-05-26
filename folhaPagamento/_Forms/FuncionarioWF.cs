@@ -112,9 +112,9 @@ namespace folhaPagamento
 
                 if (result == DialogResult.Yes)
                 {
-                    Funcionario funcionarioDelete = new Funcionario();
 
-                    connDAO.DeleteFuncionario(id_func);
+                    Funcionario DeleteFuncionario = new Funcionario();
+                    string cpf = txtCPF.ToString();
 
                     MessageBox.Show("Funcionário deletado com sucesso!!");
                 }

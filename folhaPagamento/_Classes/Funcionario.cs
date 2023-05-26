@@ -58,9 +58,10 @@ namespace folhaPagamento._Classes
         public const string AtualizarEnderecoFuncionario = "UPDATE endereco SET logradouro = @logradouro, rua = @rua, num_res = @num_res, complemento = @complemento, " +
                                                            "bairro = @bairro, cep = @cep, cidade = @cidade, estado = @estado;";
 
-        public const string DeletarFuncionario = "DELETE FROM funcionario WHERE id_func = @id_func";
-        public const string DeletarContatoFuncionario = "DELETE FROM contato WHERE id_ctt = @id_func";
-        public const string DeletarEnderecoFuncionario = "DELETE FROM endereco WHERE id_end = @id_func";
+        public const string DeletarFuncionario = "DELETE FROM funcionario WHERE id_func = @id_func;";
+        public const string DeletarContatoFuncionario = "DELETE FROM contato WHERE id_ctt = @id_func;";
+        public const string DeletarEnderecoFuncionario = "DELETE FROM endereco WHERE id_end = @id_func;";
+        public const string DeletarPontoFuncionario = "DELETE FROM ponto WHERE cpf_ponto = @cpf;";
 
         public const string FazerLoginFuncionario = "SELECT id_func, nome, adm, cpf, salario, ativo, conv_med, conv_odon FROM funcionario WHERE login = @login AND senha = @senha";
     }

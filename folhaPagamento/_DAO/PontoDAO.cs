@@ -45,7 +45,6 @@ namespace folhaPagamento._DAO
             finally
             {
                 MessageBox.Show("Inserido com sucesso!!");
-                conn.Close();
             }
         }
     }
