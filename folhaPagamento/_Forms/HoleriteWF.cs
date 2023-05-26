@@ -20,9 +20,9 @@ namespace folhaPagamento
     {
         private User usuarios;
         public Funcionario Usuarios { get; set; }
-        private Holerite HoleriteDAO { get; set; }
+        private HoleriteDAO HoleriteDAO { get; set; }
 
-        private HoleriteDAO holerite;
+        private Holerite holerite;
 
         private NpgsqlConnection conn;
         public HoleriteWF(Funcionario usuarios)
@@ -32,7 +32,7 @@ namespace folhaPagamento
 
             try
             {
-                HoleriteDAO = new Holerite();
+                HoleriteDAO = new HoleriteDAO();
                 //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -49,7 +49,7 @@ namespace folhaPagamento
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            Holerite holerite = new Holerite();
+            HoleriteDAO holerite = new HoleriteDAO();
             decimal descontoINSS = holerite.CalcularDescontoINSS(Usuarios);
             decimal descontoIR = holerite.CalcularDescontoIRPF(Usuarios);
             decimal ConvMed = holerite.AdicionalConvMed(Usuarios);
@@ -58,7 +58,7 @@ namespace folhaPagamento
             decimal SalarioTotal = (decimal)Usuarios.salario - TotalDescontos;
 
             // Cria uma nova instância da classe HoleriteDAO
-            HoleriteDAO novoHolerite = new HoleriteDAO();
+            Holerite novoHolerite = new Holerite();
             novoHolerite.cpf = Usuarios.cpf;
             novoHolerite.salariobruto = (decimal)Usuarios.salario;
             novoHolerite.inss = descontoINSS;
@@ -110,7 +110,7 @@ namespace folhaPagamento
         private void FiltrarDados(string filtro)
         {
             string consulta = "SELECT * FROM folha_pagto WHERE cpf LIKE '%" + filtro + "%'";
-            dgvHolerite.DataSource = Holerite.ExecutarConsulta(consulta);
+            dgvHolerite.DataSource = HoleriteDAO.ExecutarConsulta(consulta);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
