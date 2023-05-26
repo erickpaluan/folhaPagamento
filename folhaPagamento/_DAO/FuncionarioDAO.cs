@@ -329,11 +329,6 @@ namespace folhaPagamento._DAO
 
                         transaction.Commit();
                     }
-                    catch (NpgsqlException ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Erro ao acessar o banco de dados: " + ex.Message);
-                    }
                     catch (Exception ex)
                     {
                         transaction.Rollback();

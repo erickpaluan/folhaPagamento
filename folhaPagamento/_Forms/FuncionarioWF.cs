@@ -312,6 +312,7 @@ namespace folhaPagamento
             {
                 DataGridViewRow row = dgUsuarios.SelectedRows[0];
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+                string cpf = txtCPF.Text;
 
                 DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
                 "excluir o funcionário selecionado?", "Confirmação de exclusão",
@@ -321,7 +322,7 @@ namespace folhaPagamento
                 {
                     Funcionario funcionarioDelete = new Funcionario();
 
-                    connDAO.DeleteFuncionario(id_func);
+                    connDAO.DeleteFuncionario(id_func, cpf);
 
                     MessageBox.Show("Funcionário deletado com sucesso!!");
                 }
