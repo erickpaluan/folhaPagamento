@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.ApplicationServices;
 using folhaPagamento._DAO;
 using folhaPagamento._Classes;
@@ -19,21 +18,19 @@ namespace folhaPagamento
 {
     public partial class PontoWF : Form
     {
-        private User usuarios;
+        private PontoDAO marcacaoPonto { get; set; }
         public Funcionario Usuarios { get; set; }
 
         public PontoWF(Funcionario usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;
+            marcacaoPonto = new PontoDAO();
         }
 
         private void ponto_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 1000;
-            timer1.Start();
             bool isAdm = Usuarios.adm;
-            txtCPF.Focus();
 
             if (!isAdm)
             {
@@ -44,65 +41,36 @@ namespace folhaPagamento
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //lblHora.Text = DateTime.Now.ToString("HH:mm");
-            lblHora.Text = DateTime.Now.ToString();
-            //lblData.Text = DateTime.Now.ToShortDateString();
-        }
+
 
         private void txtCPF_TextChanged(object sender, EventArgs e)
         {
-            // Recupera o valor do TextBox com o CPF
-            string cpf = txtCPF.Text.Trim();
 
-            // Cria a conexão com o banco de dados
-            using (NpgsqlConnection connection = new NpgsqlConnection(ConexaoDB.stringConexao()))
-            {
-                // Abre a conexão
-                connection.Open();
+            FiltrarRegistros(txtCPF.Text.Trim());
+            PopularDataGrid();
+            txtNome.Text = Usuarios.nome;
 
-                // Define a consulta SQL
-                string query = RegistroSQL.carregaRegistro;
-
-                // Cria um objeto NpgsqlCommand com a consulta e os parâmetros
-                NpgsqlCommand command = new NpgsqlCommand(query, connection);
-                command.Parameters.AddWithValue("@cpf", cpf);
-
-                // Executa a consulta e recupera o nome do funcionário correspondente
-                string nome = (string)command.ExecuteScalar();
-
-                // Define o nome do funcionário no TextBox correspondente
-                txtNome.Text = nome;
-            }
         }
 
-        private void btnSalvarPonto_Click(object sender, EventArgs e)
+        private void FiltrarRegistros(string filtroRegistro)
         {
-            string cpf = txtCPF.Text.Trim();
-            if (string.IsNullOrEmpty(cpf))
-            {
-                MessageBox.Show("Informe um CPF para registrar o ponto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            Registro novoRegistro = new Registro()
-            {
-                cpf_ponto = cpf,
-                data = DateTime.Parse(lblData.Text),
-                hora = DateTime.Parse(lblHora.Text),
-            };
-
-            string mensagemConfirmacao = $"Deseja registrar o ponto para o CPF: {novoRegistro.cpf_ponto}?\nData: {novoRegistro.data}\nHora: {novoRegistro.hora}";
-            DialogResult resultado = MessageBox.Show(mensagemConfirmacao, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                PontoDAO pontoDAO = new PontoDAO();
-                pontoDAO.RegistrarPonto(novoRegistro.cpf_ponto, novoRegistro.data, novoRegistro.hora);
-            }
-
+            string consultaRegistro = "SELECT * FROM ponto WHERE cpf_ponto LIKE '%" + filtroRegistro + "%'";
+            dgRegistro.DataSource = PontoDAO.ExecutarConsulta(consultaRegistro);
         }
+
+        private void PopularDataGrid()
+        {
+            //dgRegistro.DataSource = marcacaoPonto.GetRegistros();
+
+            dgRegistro.Columns["id_ponto"].HeaderText = "ID";
+            dgRegistro.Columns["cpf_ponto"].HeaderText = "CPF";
+            dgRegistro.Columns["data"].HeaderText = "Data";
+            dgRegistro.Columns["hora"].HeaderText = "Hora";
+
+            dgRegistro.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -120,7 +88,7 @@ namespace folhaPagamento
             }
         }
 
-        private void btnEU_Click(object sender, EventArgs e)
+        private void btnCarregarInfos_Click(object sender, EventArgs e)
         {
             string CPF = Usuarios.cpf;
 

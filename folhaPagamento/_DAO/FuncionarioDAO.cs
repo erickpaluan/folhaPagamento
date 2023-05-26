@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Npgsql;
 using System.Data;
 using Microsoft.Win32;
 using System.Drawing;
@@ -14,10 +13,9 @@ using folhaPagamento._Classes;
 
 namespace folhaPagamento._DAO
 {
-    public class FuncionarioDAO : ConexaoDB
+    public class FuncionarioDAO
     {
         private List<Funcionario> funcionarios;
-
 
         public FuncionarioDAO()
         {

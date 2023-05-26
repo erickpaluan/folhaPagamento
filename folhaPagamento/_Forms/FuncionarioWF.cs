@@ -42,9 +42,10 @@ namespace folhaPagamento
         private void cadUsuario_Load(object sender, EventArgs e)
         {
             PopularDataGrid();
-            btnExcluir.Visible = false;
-            btnAlterar.Visible = false;
+            btnExcluirFuncionario.Visible = false;
+            btnAlterarFuncionario.Visible = false;
             txtMatricula.Visible = false;
+            gbinfoFuncionarios.Enabled = false;
         }
 
         private void PopularDataGrid()
@@ -94,38 +95,6 @@ namespace folhaPagamento
             dgUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e) //Joga dados textbox
-        {
-
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e) //Excluir Funcionário
-        {
-            if (dgUsuarios.SelectedRows.Count > 0) // verifica se uma linha foi selecionada
-            {
-                DataGridViewRow row = dgUsuarios.SelectedRows[0];
-                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
-
-                DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
-                "excluir o funcionário selecionado?", "Confirmação de exclusão",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    Funcionario funcionarioDelete = new Funcionario();
-
-                    connDAO.DeleteFuncionario(id_func);
-
-                    MessageBox.Show("Funcionário deletado com sucesso!!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, selecione um funcionário para excluir.",
-                "Exclusão de funcionário", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-        }
         private void button5_Click(object sender, EventArgs e) //Criar Funcionário + Contato + Endereço
         {
             DateTime dataNascimento = dtpDataNasc.Value;
@@ -237,7 +206,135 @@ namespace folhaPagamento
             }
 
         }
-        private void btnAlterar_Click_1(object sender, EventArgs e) //Update Funcionario
+
+        public void AtualizaTabela()
+        {
+
+            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            dgUsuarios.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AtualizaTabela();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Resources.arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN;
+        }
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
+        }
+
+        private void lblImagemFuncionario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Arquivos de Imagem (*.jpg, *.png)|*.jpg;*.png";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    pbImagemFuncionario.Image = System.Drawing.Image.FromFile(imagePath);
+                    pbImagemFuncionario.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+            }
+        }
+
+        private void dgUsuarios_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
+            {
+                CultureInfo cultura = new CultureInfo("pt-BR");
+                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
+                // Dados funcionario
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+                bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
+                chbAtivo.Checked = ativo;
+                txtNome.Text = row.Cells["nome"].Value.ToString();
+                txtCPF.Text = row.Cells["cpf"].Value.ToString();
+                dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
+                cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
+                cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
+                dtpDtAdm.Text = ((DateTime)row.Cells["dt_adm"].Value).ToString();
+                txtCargo.Text = row.Cells["cargo"].Value.ToString();
+                txtMatricula.Text = row.Cells["matricula"].Value.ToString();
+                bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
+                chbConv_med.Checked = conv_med;
+                bool conv_odon = row.Cells["conv_odon"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_odon"].Value) : false;
+                chbConv_odon.Checked = conv_odon;
+                txtLogin.Text = row.Cells["Login"].Value.ToString();
+                txtSenha.Text = row.Cells["Senha"].Value.ToString();
+
+                decimal salario = Convert.ToDecimal(row.Cells["salario"].Value);
+                txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+
+                bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
+                chbAdm.Checked = adm;
+
+
+
+                // Dados Contato
+                cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
+                txtEmail.Text = row.Cells["email"].Value.ToString();
+                txtDDD.Text = row.Cells["DDD"].Value.ToString();
+                txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
+
+                // Dados endereço
+                cbLogr.Text = row.Cells["Logradouro"].Value.ToString();
+                txtRua.Text = row.Cells["rua"].Value.ToString();
+                txtComplemento.Text = row.Cells["complemento"].Value.ToString();
+                cbEstado.Text = row.Cells["estado"].Value.ToString();
+                txtNum.Text = row.Cells["num_res"].Value.ToString();
+                txtBairro.Text = row.Cells["bairro"].Value.ToString();
+                txtCEP.Text = row.Cells["CEP"].Value.ToString();
+                txtCidade.Text = row.Cells["Cidade"].Value.ToString();
+
+                btnExcluirFuncionario.Visible = true;
+                btnAlterarFuncionario.Visible = true;
+            }
+        }
+
+        private void btnNovoFuncionario_Click(object sender, EventArgs e)
+        {
+            gbinfoFuncionarios.Enabled = true;
+        }
+
+        private void btnExcluirFuncionario_Click(object sender, EventArgs e)
+        {
+            if (dgUsuarios.SelectedRows.Count > 0) // verifica se uma linha foi selecionada
+            {
+                DataGridViewRow row = dgUsuarios.SelectedRows[0];
+                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+
+                DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
+                "excluir o funcionário selecionado?", "Confirmação de exclusão",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    Funcionario funcionarioDelete = new Funcionario();
+
+                    connDAO.DeleteFuncionario(id_func);
+
+                    MessageBox.Show("Funcionário deletado com sucesso!!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um funcionário para excluir.",
+                "Exclusão de funcionário", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnAlterarFuncionario_Click(object sender, EventArgs e)
         {
             if (dgUsuarios.SelectedRows.Count > 0)
             {
@@ -349,113 +446,6 @@ namespace folhaPagamento
             else
             {
                 MessageBox.Show("Erro!");
-            }
-        }
-        public void AtualizaTabela()
-        {
-
-            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
-            dgUsuarios.Refresh();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AtualizaTabela();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void pictureBox2_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Resources.arrow_back_ios_new_FILL0_wght0_GRAD0_opszNaN;
-        }
-        private void pictureBox2_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox2.Image = Resources.arrow_back_FILL0_wght400_GRAD0_opsz48;
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtCEP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblImagemFuncionario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Arquivos de Imagem (*.jpg, *.png)|*.jpg;*.png";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string imagePath = openFileDialog.FileName;
-                    pbImagemFuncionario.Image = System.Drawing.Image.FromFile(imagePath);
-                    pbImagemFuncionario.BackgroundImageLayout = ImageLayout.Stretch;
-                }
-            }
-        }
-
-        private void dgUsuarios_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // verifica se a linha selecionada é válida
-            {
-                CultureInfo cultura = new CultureInfo("pt-BR");
-                DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
-                // Dados funcionario
-                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
-                bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
-                chbAtivo.Checked = ativo;
-                txtNome.Text = row.Cells["nome"].Value.ToString();
-                txtCPF.Text = row.Cells["cpf"].Value.ToString();
-                dtpDataNasc.Text = ((DateTime)row.Cells["dt_nasc"].Value).ToString("dd/MM/yyyy");
-                cbSexo.SelectedItem = row.Cells["Sexo"].Value.ToString();
-                cbEstado_civil.SelectedItem = row.Cells["estado_civil"].Value.ToString();
-                dtpDtAdm.Text = ((DateTime)row.Cells["dt_adm"].Value).ToString();
-                txtCargo.Text = row.Cells["cargo"].Value.ToString();
-                txtMatricula.Text = row.Cells["matricula"].Value.ToString();
-                bool conv_med = row.Cells["conv_med"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_med"].Value) : false;
-                chbConv_med.Checked = conv_med;
-                bool conv_odon = row.Cells["conv_odon"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["conv_odon"].Value) : false;
-                chbConv_odon.Checked = conv_odon;
-                txtLogin.Text = row.Cells["Login"].Value.ToString();
-                txtSenha.Text = row.Cells["Senha"].Value.ToString();
-
-                decimal salario = Convert.ToDecimal(row.Cells["salario"].Value);
-                txtSalario.Text = salario.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
-
-                bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
-                chbAdm.Checked = adm;
-
-
-
-                // Dados Contato
-                cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
-                txtEmail.Text = row.Cells["email"].Value.ToString();
-                txtDDD.Text = row.Cells["DDD"].Value.ToString();
-                txtTelefone.Text = row.Cells["num_tel"].Value.ToString();
-
-                // Dados endereço
-                cbLogr.Text = row.Cells["Logradouro"].Value.ToString();
-                txtRua.Text = row.Cells["rua"].Value.ToString();
-                txtComplemento.Text = row.Cells["complemento"].Value.ToString();
-                cbEstado.Text = row.Cells["estado"].Value.ToString();
-                txtNum.Text = row.Cells["num_res"].Value.ToString();
-                txtBairro.Text = row.Cells["bairro"].Value.ToString();
-                txtCEP.Text = row.Cells["CEP"].Value.ToString();
-                txtCidade.Text = row.Cells["Cidade"].Value.ToString();
-
-                btnExcluir.Visible = true;
-                btnAlterar.Visible = true;
             }
         }
     }

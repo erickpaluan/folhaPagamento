@@ -1,4 +1,5 @@
 using folhaPagamento._Classes;
+using folhaPagamento._DAO;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
 using System.Windows.Forms;
@@ -27,18 +28,14 @@ namespace folhaPagamento
 
         private void main_Load(object sender, EventArgs e)
         {
-
             if (!Usuarios.adm)
             {
                 btnFuncionarios.Visible = false;
                 btnEmpresa.Visible = false;
+                btnMinhasConfig.Visible = false;
             }
 
             lblSaudacao.Text = Saudacao(Usuarios.nome);
-
-
-
-
         }
 
         string Saudacao(string nome)
@@ -64,11 +61,6 @@ namespace folhaPagamento
             cadEmpresa.ShowDialog();
         }
 
-        private void btnMarcarPonto_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnHolerite_Click_1(object sender, EventArgs e)
         {
             HoleriteWF fHolerite = new HoleriteWF(Usuarios);
@@ -83,15 +75,7 @@ namespace folhaPagamento
 
         private void fazerLogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Você tem certeza que deseja sair da sua conta?", "Deslogar",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                LoginWF login = new LoginWF();
-                login.Show();
-            }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -122,6 +106,50 @@ namespace folhaPagamento
         {
             PontoWF form = new PontoWF(Usuarios);
             form.ShowDialog();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFazerMarcacao_Click(object sender, EventArgs e)
+        {
+            Registro novoRegistro = new Registro()
+            {
+                cpf_ponto = Usuarios.cpf,
+                data = DateTime.Now,
+                hora = DateTime.Now,
+            };
+
+            string mensagemConfirmacao = $"Efetuar marcação para:\nNome: {Usuarios.nome}\nCPF: {novoRegistro.cpf_ponto}\nData: {novoRegistro.data}\nHora: {novoRegistro.hora}";
+            DialogResult resultado = MessageBox.Show(mensagemConfirmacao, "Revise as informações", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                PontoDAO pontoDAO = new PontoDAO();
+                pontoDAO.RegistrarPonto(novoRegistro.cpf_ponto, novoRegistro.data, novoRegistro.hora);
+            }
+
+        }
+
+        private void btnMinhasConfig_Click(object sender, EventArgs e)
+        {
+            ConfigWF configWF = new ConfigWF();
+            configWF.ShowDialog();
+        }
+
+        private void linkFazerLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja sair da sua conta?", "Deslogar",
+MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                LoginWF login = new LoginWF();
+                login.Show();
+            }
         }
     }
 }
