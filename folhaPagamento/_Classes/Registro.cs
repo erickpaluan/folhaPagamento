@@ -11,7 +11,7 @@ namespace folhaPagamento._Classes
         public int id_ponto { get; set; }
         public string cpf_ponto { get; set; }
         public DateTime data { get; set; }
-        public DateTime hora { get; set; }
+        public TimeSpan hora { get; set; }
     }
 
     public static class RegistroSQL

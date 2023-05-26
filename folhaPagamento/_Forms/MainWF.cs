@@ -118,11 +118,11 @@ namespace folhaPagamento
             Registro novoRegistro = new Registro()
             {
                 cpf_ponto = Usuarios.cpf,
-                data = DateTime.Now,
-                hora = DateTime.Now,
-            };
+                data = DateTime.Now.Date,
+                hora = TimeSpan.FromSeconds(Math.Floor(DateTime.Now.TimeOfDay.TotalSeconds))
+        };
 
-            string mensagemConfirmacao = $"Efetuar marcação para:\nNome: {Usuarios.nome}\nCPF: {novoRegistro.cpf_ponto}\nData: {novoRegistro.data}\nHora: {novoRegistro.hora}";
+            string mensagemConfirmacao = $"Efetuar marcação para:\nNome: {Usuarios.nome}\nCPF: {novoRegistro.cpf_ponto}\nData: {novoRegistro.data.ToString("dd/MM/yyyy")}\nHora: {novoRegistro.hora.ToString(@"hh\:mm\:ss")}";
             DialogResult resultado = MessageBox.Show(mensagemConfirmacao, "Revise as informações", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)

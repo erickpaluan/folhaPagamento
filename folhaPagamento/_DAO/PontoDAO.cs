@@ -43,7 +43,7 @@ namespace folhaPagamento._DAO
                                 registro.id_ponto = reader.GetInt32(reader.GetOrdinal("id_ponto"));
                                 registro.cpf_ponto = reader.GetString(reader.GetOrdinal("cpf_ponto"));
                                 registro.data = reader.GetDateTime(reader.GetOrdinal("data"));
-                                registro.hora = reader.GetDateTime(reader.GetOrdinal("hora"));
+                                registro.hora = reader.GetTimeSpan(reader.GetOrdinal("hora"));
 
                                 registroPonto.Add(registro);
                             }
@@ -78,7 +78,7 @@ namespace folhaPagamento._DAO
             }
         }
 
-        public void RegistrarPonto(string cpf_ponto, DateTime data, DateTime hora)
+        public void RegistrarPonto(string cpf_ponto, DateTime data, TimeSpan hora)
         {
             string sql = RegistroSQL.adicionaRegistro;
 
