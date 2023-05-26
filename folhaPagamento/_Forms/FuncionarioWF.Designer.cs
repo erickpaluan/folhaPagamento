@@ -94,6 +94,7 @@
             btnMeuPerfil = new Button();
             label10 = new Label();
             gbinfoFuncionarios = new GroupBox();
+            label21 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -642,6 +643,7 @@
             dgUsuarios.Name = "dgUsuarios";
             dgUsuarios.ReadOnly = true;
             dgUsuarios.RowTemplate.Height = 25;
+            dgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgUsuarios.Size = new Size(372, 537);
             dgUsuarios.TabIndex = 48;
             dgUsuarios.CellClick += dgUsuarios_CellClick_1;
@@ -783,6 +785,7 @@
             // 
             // gbinfoFuncionarios
             // 
+            gbinfoFuncionarios.Controls.Add(label21);
             gbinfoFuncionarios.Controls.Add(pbImagemFuncionario);
             gbinfoFuncionarios.Controls.Add(lblImagemFuncionario);
             gbinfoFuncionarios.Controls.Add(btnAdicionar);
@@ -796,6 +799,15 @@
             gbinfoFuncionarios.Size = new Size(572, 537);
             gbinfoFuncionarios.TabIndex = 52;
             gbinfoFuncionarios.TabStop = false;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(74, 502);
+            label21.Name = "label21";
+            label21.Size = new Size(44, 15);
+            label21.TabIndex = 51;
+            label21.Text = "label21";
             // 
             // FuncionarioWF
             // 
@@ -908,5 +920,6 @@
         private GroupBox gbinfoFuncionarios;
         private Button btnExcluirFuncionario;
         private Button btnAlterarFuncionario;
+        private Label label21;
     }
 }

@@ -45,7 +45,7 @@ namespace folhaPagamento
             btnExcluirFuncionario.Visible = false;
             btnAlterarFuncionario.Visible = false;
             txtMatricula.Visible = false;
-            gbinfoFuncionarios.Enabled = false;
+            //gbinfoFuncionarios.Enabled = false;
         }
 
         private void PopularDataGrid()
@@ -254,6 +254,7 @@ namespace folhaPagamento
                 CultureInfo cultura = new CultureInfo("pt-BR");
                 DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
                 // Dados funcionario
+                label21.Text = row.Cells["id_func"].Value.ToString();
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
                 bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
                 chbAtivo.Checked = ativo;
@@ -303,7 +304,7 @@ namespace folhaPagamento
 
         private void btnNovoFuncionario_Click(object sender, EventArgs e)
         {
-            gbinfoFuncionarios.Enabled = true;
+            //gbinfoFuncionarios.Enabled = true;
         }
 
         private void btnExcluirFuncionario_Click(object sender, EventArgs e)
@@ -450,11 +451,12 @@ namespace folhaPagamento
                 {
                     MessageBox.Show("Erro");
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
         }
     }
 }
