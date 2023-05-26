@@ -337,117 +337,124 @@ namespace folhaPagamento
 
         private void btnAlterarFuncionario_Click(object sender, EventArgs e)
         {
-            if (dgUsuarios.SelectedRows.Count > 0)
+            try
             {
-                // Obtém a primeira linha selecionada
-                DataGridViewRow row = dgUsuarios.SelectedRows[0];
-
-                // Obtém o valor da coluna "id_func" da linha selecionada
-                int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
-
-                DateTime dataNascimento = dtpDataNasc.Value;
-                int idade = DateTime.Now.Year - dataNascimento.Year;
-
-                if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
+                if (dgUsuarios.SelectedRows.Count > 0)
                 {
-                    idade--;
+                    // Obtém a primeira linha selecionada
+                    DataGridViewRow row = dgUsuarios.SelectedRows[0];
 
-                }
-                // Criar um novo objeto Users com os valores dos campos de entrada
-                Funcionario funcionarioEditado = new Funcionario();
-                funcionarioEditado.id_func = id_func;
-                funcionarioEditado.nome = txtNome.Text;
-                funcionarioEditado.ativo = chbAtivo.Checked;
-                funcionarioEditado.cpf = txtCPF.Text;
-                funcionarioEditado.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                funcionarioEditado.idade = idade;
-                funcionarioEditado.sexo = cbSexo.SelectedItem.ToString();
-                funcionarioEditado.estado_civil = cbEstado_civil.SelectedItem.ToString();
-                funcionarioEditado.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                funcionarioEditado.cargo = txtCargo.Text;
-                funcionarioEditado.matricula = txtMatricula.Text;
-                funcionarioEditado.conv_med = chbConv_med.Checked;
-                funcionarioEditado.conv_odon = chbConv_odon.Checked;
-                funcionarioEditado.login = txtLogin.Text;
-                funcionarioEditado.senha = txtSenha.Text;
-                float salario;
-                if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
-                {
-                    funcionarioEditado.salario = salario;
+                    // Obtém o valor da coluna "id_func" da linha selecionada
+                    int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
+
+                    DateTime dataNascimento = dtpDataNasc.Value;
+                    int idade = DateTime.Now.Year - dataNascimento.Year;
+
+                    if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
+                    {
+                        idade--;
+
+                    }
+                    // Criar um novo objeto Users com os valores dos campos de entrada
+                    Funcionario funcionarioEditado = new Funcionario();
+                    funcionarioEditado.id_func = id_func;
+                    funcionarioEditado.nome = txtNome.Text;
+                    funcionarioEditado.ativo = chbAtivo.Checked;
+                    funcionarioEditado.cpf = txtCPF.Text;
+                    funcionarioEditado.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    funcionarioEditado.idade = idade;
+                    funcionarioEditado.sexo = cbSexo.SelectedItem.ToString();
+                    funcionarioEditado.estado_civil = cbEstado_civil.SelectedItem.ToString();
+                    funcionarioEditado.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                    funcionarioEditado.cargo = txtCargo.Text;
+                    funcionarioEditado.matricula = txtMatricula.Text;
+                    funcionarioEditado.conv_med = chbConv_med.Checked;
+                    funcionarioEditado.conv_odon = chbConv_odon.Checked;
+                    funcionarioEditado.login = txtLogin.Text;
+                    funcionarioEditado.senha = txtSenha.Text;
+                    float salario;
+                    if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
+                    {
+                        funcionarioEditado.salario = salario;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    funcionarioEditado.adm = chbAdm.Checked;
+
+                    // Variaveis Contato
+                    funcionarioEditado.email = txtEmail.Text;
+                    funcionarioEditado.tipo = cbTipo.SelectedItem.ToString();
+                    funcionarioEditado.ddd = txtDDD.Text;
+                    funcionarioEditado.num_tel = txtTelefone.Text;
+
+                    // Variaveis Endereço
+                    funcionarioEditado.logradouro = cbLogr.SelectedItem.ToString();
+                    funcionarioEditado.rua = txtRua.Text;
+                    funcionarioEditado.complemento = txtComplemento.Text;
+                    int num_res;
+                    if (Int32.TryParse(txtNum.Text, out num_res))
+                    {
+                        funcionarioEditado.num_res = num_res;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    funcionarioEditado.bairro = txtBairro.Text;
+                    funcionarioEditado.cep = txtCEP.Text;
+                    funcionarioEditado.cidade = txtCidade.Text;
+                    funcionarioEditado.estado = cbEstado.SelectedItem.ToString();
+
+                    connDAO.UpdateFuncionario(
+                    funcionarioEditado.id_func,
+                    funcionarioEditado.ativo,
+                    funcionarioEditado.nome,
+                    funcionarioEditado.cpf,
+                    funcionarioEditado.dt_nasc,
+                    funcionarioEditado.idade,
+                    funcionarioEditado.sexo,
+                    funcionarioEditado.estado_civil,
+                    funcionarioEditado.dt_adm,
+                    funcionarioEditado.cargo,
+                    funcionarioEditado.matricula,
+                    funcionarioEditado.conv_med,
+                    funcionarioEditado.conv_odon,
+                    funcionarioEditado.login,
+                    funcionarioEditado.senha,
+                    funcionarioEditado.salario,
+                    funcionarioEditado.adm,
+                    funcionarioEditado.email,
+                    funcionarioEditado.tipo,
+                    funcionarioEditado.ddd,
+                    funcionarioEditado.num_tel,
+                    funcionarioEditado.logradouro,
+                    funcionarioEditado.rua,
+                    funcionarioEditado.complemento,
+                    funcionarioEditado.bairro,
+                    funcionarioEditado.num_res,
+                    funcionarioEditado.cep,
+                    funcionarioEditado.cidade,
+                    funcionarioEditado.estado);
+
+                    txtNome.Text = "";
+                    txtCPF.Text = "";
+                    dtpDataNasc.Value = DateTime.Now;
+
+                    dgUsuarios.Refresh();
+
+                    MessageBox.Show("Cadastro editado com sucesso!!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
-                    MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro");
                 }
-                funcionarioEditado.adm = chbAdm.Checked;
-
-                // Variaveis Contato
-                funcionarioEditado.email = txtEmail.Text;
-                funcionarioEditado.tipo = cbTipo.SelectedItem.ToString();
-                funcionarioEditado.ddd = txtDDD.Text;
-                funcionarioEditado.num_tel = txtTelefone.Text;
-
-                // Variaveis Endereço
-                funcionarioEditado.logradouro = cbLogr.SelectedItem.ToString();
-                funcionarioEditado.rua = txtRua.Text;
-                funcionarioEditado.complemento = txtComplemento.Text;
-                int num_res;
-                if (Int32.TryParse(txtNum.Text, out num_res))
-                {
-                    funcionarioEditado.num_res = num_res;
-                }
-                else
-                {
-                    MessageBox.Show("Impossível converter", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                funcionarioEditado.bairro = txtBairro.Text;
-                funcionarioEditado.cep = txtCEP.Text;
-                funcionarioEditado.cidade = txtCidade.Text;
-                funcionarioEditado.estado = cbEstado.SelectedItem.ToString();
-
-                connDAO.UpdateFuncionario(
-                funcionarioEditado.id_func,
-                funcionarioEditado.ativo,
-                funcionarioEditado.nome,
-                funcionarioEditado.cpf,
-                funcionarioEditado.dt_nasc,
-                funcionarioEditado.idade,
-                funcionarioEditado.sexo,
-                funcionarioEditado.estado_civil,
-                funcionarioEditado.dt_adm,
-                funcionarioEditado.cargo,
-                funcionarioEditado.matricula,
-                funcionarioEditado.conv_med,
-                funcionarioEditado.conv_odon,
-                funcionarioEditado.login,
-                funcionarioEditado.senha,
-                funcionarioEditado.salario,
-                funcionarioEditado.adm,
-                funcionarioEditado.email,
-                funcionarioEditado.tipo,
-                funcionarioEditado.ddd,
-                funcionarioEditado.num_tel,
-                funcionarioEditado.logradouro,
-                funcionarioEditado.rua,
-                funcionarioEditado.complemento,
-                funcionarioEditado.bairro,
-                funcionarioEditado.num_res,
-                funcionarioEditado.cep,
-                funcionarioEditado.cidade,
-                funcionarioEditado.estado);
-
-                txtNome.Text = "";
-                txtCPF.Text = "";
-                dtpDataNasc.Value = DateTime.Now;
-
-                dgUsuarios.Refresh();
-
-                MessageBox.Show("Cadastro editado com sucesso!!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            else
+            } catch (Exception ex)
             {
-                MessageBox.Show("Erro!");
+                MessageBox.Show(ex.ToString());
             }
+            
         }
     }
 }
