@@ -50,18 +50,18 @@
             groupBox3 = new GroupBox();
             label6 = new Label();
             groupBox4 = new GroupBox();
+            dtpHolerite = new DateTimePicker();
             panel1 = new Panel();
             btnMinhasConfig = new Button();
             btnMeuPerfil = new Button();
             lblSaudacao = new Label();
             groupBox5 = new GroupBox();
-            label8 = new Label();
-            textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
+            label10 = new Label();
             label9 = new Label();
             textBox2 = new TextBox();
-            label10 = new Label();
-            comboBox1 = new ComboBox();
-            dtpHolerite = new DateTimePicker();
+            label8 = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvHolerite).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
@@ -308,6 +308,13 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Data Emissão";
             // 
+            // dtpHolerite
+            // 
+            dtpHolerite.Location = new Point(67, 44);
+            dtpHolerite.Name = "dtpHolerite";
+            dtpHolerite.Size = new Size(200, 23);
+            dtpHolerite.TabIndex = 44;
+            // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -379,25 +386,26 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Dados";
             // 
-            // label8
+            // comboBox1
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(6, 19);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 15);
-            label8.TabIndex = 51;
-            label8.Text = "Empresa";
-            label8.TextAlign = ContentAlignment.MiddleRight;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" });
+            comboBox1.Location = new Point(6, 79);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(214, 23);
+            comboBox1.TabIndex = 53;
             // 
-            // textBox1
+            // label10
             // 
-            textBox1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(6, 37);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Empresa";
-            textBox1.Size = new Size(214, 21);
-            textBox1.TabIndex = 50;
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(6, 61);
+            label10.Name = "label10";
+            label10.Size = new Size(31, 15);
+            label10.TabIndex = 54;
+            label10.Text = "Mês";
+            label10.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
@@ -419,33 +427,25 @@
             textBox2.Size = new Size(214, 21);
             textBox2.TabIndex = 52;
             // 
-            // label10
+            // label8
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(6, 61);
-            label10.Name = "label10";
-            label10.Size = new Size(31, 15);
-            label10.TabIndex = 54;
-            label10.Text = "Mês";
-            label10.TextAlign = ContentAlignment.MiddleRight;
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(6, 19);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 15);
+            label8.TabIndex = 51;
+            label8.Text = "Empresa";
+            label8.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // textBox1
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" });
-            comboBox1.Location = new Point(6, 79);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(214, 23);
-            comboBox1.TabIndex = 53;
-            // 
-            // dtpHolerite
-            // 
-            dtpHolerite.Location = new Point(67, 44);
-            dtpHolerite.Name = "dtpHolerite";
-            dtpHolerite.Size = new Size(200, 23);
-            dtpHolerite.TabIndex = 44;
+            textBox1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(6, 37);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Empresa";
+            textBox1.Size = new Size(214, 21);
+            textBox1.TabIndex = 50;
             // 
             // HoleriteWF
             // 

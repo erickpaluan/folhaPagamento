@@ -70,5 +70,8 @@ namespace folhaPagamento._Classes
         public const string DeletarPontoFuncionario = "DELETE FROM ponto WHERE cpf_ponto = @cpf_ponto;";
 
         public const string FazerLoginFuncionario = "SELECT id_func, nome, adm, cpf, salario, ativo, conv_med, conv_odon FROM funcionario WHERE login = @login AND senha = @senha";
+
+        public const string DadosPagamentoFuncionario = "SELECT nome, cpf, conv_med, conv_odon, salario FROM funcionario " +
+                                                        "WHERE nome = @nome;";
     }
 }

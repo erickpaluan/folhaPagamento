@@ -114,9 +114,7 @@ namespace folhaPagamento._DAO
             DateTime datapagamento)
 
         {
-            string sql = "INSERT INTO folha_pagto (cpf, salariobruto, inss, irpf, convmed, " +
-                         "convodonto, totaldescontos, salarioliquido, datapagamento)" +
-                         "VALUES (@cpf, @salariobruto, @inss, @irpf, @convmed, @convodonto, @totaldescontos, @salarioliquido, @datapagamento);";
+            string sql = HoleriteSQL.AdicionaHolerite;
 
             using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, GetConnection()))
             {

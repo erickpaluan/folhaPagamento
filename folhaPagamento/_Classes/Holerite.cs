@@ -22,6 +22,7 @@ namespace folhaPagamento._Classes
     public static class HoleriteSQL
     {
         public const string CarregaHolerite = "SELECT * FROM folha_pagto";
-        public const string AdicionaHolerite = "";
+        public const string AdicionaHolerite = "INSERT INTO folha_pagto (cpf, salariobruto, inss, irpf, convmed, convodonto, totaldescontos, salarioliquido, datapagamento)" +
+                                               "VALUES (@cpf, @salariobruto, @inss, @irpf, @convmed, @convodonto, @totaldescontos, @salarioliquido, @datapagamento);";
     }
 }
