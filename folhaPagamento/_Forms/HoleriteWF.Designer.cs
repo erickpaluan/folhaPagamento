@@ -38,7 +38,6 @@
             btnCalcular = new Button();
             pictureBox2 = new PictureBox();
             txtTotal = new TextBox();
-            dtpHolerite = new DateTimePicker();
             txtCPFUser = new TextBox();
             txtCPF = new TextBox();
             label1 = new Label();
@@ -55,6 +54,14 @@
             btnMinhasConfig = new Button();
             btnMeuPerfil = new Button();
             lblSaudacao = new Label();
+            groupBox5 = new GroupBox();
+            label8 = new Label();
+            textBox1 = new TextBox();
+            label9 = new Label();
+            textBox2 = new TextBox();
+            label10 = new Label();
+            comboBox1 = new ComboBox();
+            dtpHolerite = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvHolerite).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
@@ -62,6 +69,7 @@
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // label5
@@ -126,12 +134,12 @@
             dgvHolerite.AllowUserToDeleteRows = false;
             dgvHolerite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvHolerite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHolerite.Location = new Point(12, 66);
+            dgvHolerite.Location = new Point(12, 236);
             dgvHolerite.Name = "dgvHolerite";
             dgvHolerite.ReadOnly = true;
             dgvHolerite.RowTemplate.Height = 25;
             dgvHolerite.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHolerite.Size = new Size(696, 234);
+            dgvHolerite.Size = new Size(696, 64);
             dgvHolerite.TabIndex = 14;
             dgvHolerite.CellClick += dgvHolerite_CellClick;
             // 
@@ -169,15 +177,6 @@
             txtTotal.PlaceholderText = "Total";
             txtTotal.Size = new Size(342, 21);
             txtTotal.TabIndex = 40;
-            // 
-            // dtpHolerite
-            // 
-            dtpHolerite.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpHolerite.Format = DateTimePickerFormat.Short;
-            dtpHolerite.Location = new Point(6, 37);
-            dtpHolerite.Name = "dtpHolerite";
-            dtpHolerite.Size = new Size(295, 21);
-            dtpHolerite.TabIndex = 42;
             // 
             // txtCPFUser
             // 
@@ -361,9 +360,92 @@
             lblSaudacao.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             lblSaudacao.Location = new Point(48, 13);
             lblSaudacao.Name = "lblSaudacao";
-            lblSaudacao.Size = new Size(79, 25);
+            lblSaudacao.Size = new Size(136, 25);
             lblSaudacao.TabIndex = 36;
-            lblSaudacao.Text = "Holerite";
+            lblSaudacao.Text = "Meus holerites";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(comboBox1);
+            groupBox5.Controls.Add(label10);
+            groupBox5.Controls.Add(label9);
+            groupBox5.Controls.Add(textBox2);
+            groupBox5.Controls.Add(label8);
+            groupBox5.Controls.Add(textBox1);
+            groupBox5.Location = new Point(12, 57);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(700, 123);
+            groupBox5.TabIndex = 52;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Dados";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(6, 19);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 15);
+            label8.TabIndex = 51;
+            label8.Text = "Empresa";
+            label8.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(6, 37);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Empresa";
+            textBox1.Size = new Size(214, 21);
+            textBox1.TabIndex = 50;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(226, 19);
+            label9.Name = "label9";
+            label9.Size = new Size(72, 15);
+            label9.TabIndex = 53;
+            label9.Text = "Funcionário";
+            label9.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // textBox2
+            // 
+            textBox2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.Location = new Point(226, 37);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Nome do funcionário";
+            textBox2.Size = new Size(214, 21);
+            textBox2.TabIndex = 52;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(6, 61);
+            label10.Name = "label10";
+            label10.Size = new Size(31, 15);
+            label10.TabIndex = 54;
+            label10.Text = "Mês";
+            label10.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" });
+            comboBox1.Location = new Point(6, 79);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(214, 23);
+            comboBox1.TabIndex = 53;
+            // 
+            // dtpHolerite
+            // 
+            dtpHolerite.Location = new Point(67, 44);
+            dtpHolerite.Name = "dtpHolerite";
+            dtpHolerite.Size = new Size(200, 23);
+            dtpHolerite.TabIndex = 44;
             // 
             // HoleriteWF
             // 
@@ -372,6 +454,7 @@
             BackColor = Color.White;
             ClientSize = new Size(724, 562);
             ControlBox = false;
+            Controls.Add(groupBox5);
             Controls.Add(panel1);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -385,7 +468,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "HoleriteWF";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "fHolerite";
+            Text = "Meus holerites";
             Load += fHolerite_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHolerite).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -399,6 +482,8 @@
             groupBox4.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -416,7 +501,6 @@
         private Button btnCalcular;
         private PictureBox pictureBox2;
         private TextBox txtTotal;
-        private DateTimePicker dtpHolerite;
         private TextBox txtCPFUser;
         private TextBox txtCPF;
         private Label label1;
@@ -433,5 +517,13 @@
         private Button btnMinhasConfig;
         private Button btnMeuPerfil;
         private Label lblSaudacao;
+        private GroupBox groupBox5;
+        private ComboBox comboBox1;
+        private Label label10;
+        private Label label9;
+        private TextBox textBox2;
+        private Label label8;
+        private TextBox textBox1;
+        private DateTimePicker dtpHolerite;
     }
 }

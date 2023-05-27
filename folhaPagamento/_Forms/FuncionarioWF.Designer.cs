@@ -311,7 +311,7 @@
             btnAdicionar.Text = "Salvar";
             btnAdicionar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAdicionar.UseVisualStyleBackColor = true;
-            btnAdicionar.Click += button5_Click;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // pictureBox2
             // 

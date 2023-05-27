@@ -45,11 +45,11 @@ namespace folhaPagamento
             btnExcluirFuncionario.Visible = false;
             btnAlterarFuncionario.Visible = false;
             txtMatricula.Visible = false;
-            //gbinfoFuncionarios.Enabled = false;
         }
 
         private void PopularDataGrid()
         {
+            dgUsuarios.DataSource = null;
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
 
             dgUsuarios.Columns["id_func"].HeaderText = "ID";
@@ -93,131 +93,16 @@ namespace folhaPagamento
             dgUsuarios.Columns[28].Visible = false;
 
             dgUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
-
-        private void button5_Click(object sender, EventArgs e) //Criar Funcionário + Contato + Endereço
-        {
-            DateTime dataNascimento = dtpDataNasc.Value;
-            int idade = DateTime.Now.Year - dataNascimento.Year;
-
-            if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
-            {
-                idade--;
-            }
-            try
-            {
-                // Criar um novo objeto Users com os valores dos campos de entrada
-                Funcionario novoFuncionario = new Funcionario();
-                novoFuncionario.nome = txtNome.Text;
-                novoFuncionario.ativo = chbAtivo.Checked;
-                novoFuncionario.cpf = txtCPF.Text;
-                novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                novoFuncionario.idade = idade;
-                novoFuncionario.sexo = cbSexo.SelectedItem.ToString();
-                novoFuncionario.estado_civil = cbEstado_civil.SelectedItem.ToString();
-                novoFuncionario.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                novoFuncionario.cargo = txtCargo.Text;
-                novoFuncionario.matricula = txtMatricula.Text;
-                novoFuncionario.conv_med = chbConv_med.Checked;
-                novoFuncionario.conv_odon = chbConv_odon.Checked;
-                novoFuncionario.login = txtLogin.Text;
-                novoFuncionario.senha = txtSenha.Text;
-                float salario;
-                if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
-                {
-                    novoFuncionario.salario = salario;
-                }
-                else
-                {
-                    MessageBox.Show("Valor de salário inválido.");
-                }
-                novoFuncionario.adm = chbAdm.Checked;
-
-                // Variaveis Contato
-                novoFuncionario.email = txtEmail.Text;
-                novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
-                novoFuncionario.ddd = txtDDD.Text;
-                novoFuncionario.num_tel = txtTelefone.Text;
-
-                // Variaveis Endereço
-                novoFuncionario.logradouro = cbLogr.SelectedItem.ToString();
-                novoFuncionario.rua = txtRua.Text;
-                novoFuncionario.complemento = txtComplemento.Text;
-                int num_res;
-                if (Int32.TryParse(txtNum.Text, out num_res))
-                {
-                    novoFuncionario.num_res = num_res;
-                }
-                else
-                {
-                    MessageBox.Show("Impossível converter");
-                }
-                novoFuncionario.bairro = txtBairro.Text;
-                novoFuncionario.cep = txtCEP.Text;
-                novoFuncionario.cidade = txtCidade.Text;
-                novoFuncionario.estado = cbEstado.SelectedItem.ToString();
-
-
-                // Adicionar o novo funcionário
-                connDAO.AddFuncionarioContatoEndereco(
-                    novoFuncionario.ativo,
-                    novoFuncionario.nome,
-                    novoFuncionario.cpf,
-                    novoFuncionario.dt_nasc,
-                    novoFuncionario.idade,
-                    novoFuncionario.sexo,
-                    novoFuncionario.estado_civil,
-                    novoFuncionario.dt_adm,
-                    novoFuncionario.cargo,
-                    novoFuncionario.matricula,
-                    novoFuncionario.conv_med,
-                    novoFuncionario.conv_odon,
-                    novoFuncionario.login,
-                    novoFuncionario.senha,
-                    novoFuncionario.salario,
-                    novoFuncionario.adm,
-                    novoFuncionario.email,
-                    novoFuncionario.tipo,
-                    novoFuncionario.ddd,
-                    novoFuncionario.num_tel,
-                    novoFuncionario.logradouro,
-                    novoFuncionario.rua,
-                    novoFuncionario.complemento,
-                    novoFuncionario.bairro,
-                    novoFuncionario.num_res,
-                    novoFuncionario.cep,
-                    novoFuncionario.cidade,
-                    novoFuncionario.estado);
-
-                // Limpar os campos de entrada
-                txtNome.Text = "";
-                txtCPF.Text = "";
-                dtpDataNasc.Value = DateTime.Now;
-
-                // Atualizar o DataGridView
-                dgUsuarios.Refresh();
-                //AtualizaTabela();
-
-                MessageBox.Show("Cadastrado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao cadastrar" + ex.Message);
-            }
 
         }
 
-        public void AtualizaTabela()
+        private void AtualizarDataGrid()
         {
-
+            dgUsuarios.DataSource = null;
             dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
-            dgUsuarios.Refresh();
+            PopularDataGrid();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AtualizaTabela();
-        }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -326,6 +211,7 @@ namespace folhaPagamento
                     connDAO.DeleteFuncionario(id_func, cpf);
 
                     MessageBox.Show("Funcionário deletado com sucesso!!");
+                    AtualizarDataGrid();
                 }
             }
             else
@@ -333,6 +219,7 @@ namespace folhaPagamento
                 MessageBox.Show("Por favor, selecione um funcionário para excluir.",
                 "Exclusão de funcionário", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+                AtualizarDataGrid();
             }
         }
 
@@ -439,24 +326,144 @@ namespace folhaPagamento
                     funcionarioEditado.cidade,
                     funcionarioEditado.estado);
 
-                    txtNome.Text = "";
-                    txtCPF.Text = "";
+                    foreach (Control control in Controls)
+                    {
+                        if (control is TextBox textBox)
+                        {
+                            textBox.Text = string.Empty;
+                        }
+                    }
+
                     dtpDataNasc.Value = DateTime.Now;
 
-                    dgUsuarios.Refresh();
-
                     MessageBox.Show("Cadastro editado com sucesso!!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    MessageBox.Show("Erro");
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            finally
+            {
+                AtualizarDataGrid();
+            }
 
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            DateTime dataNascimento = dtpDataNasc.Value;
+            int idade = DateTime.Now.Year - dataNascimento.Year;
+
+            if (DateTime.Now.DayOfYear < dataNascimento.DayOfYear)
+            {
+                idade--;
+            }
+            try
+            {
+                // Criar um novo objeto Users com os valores dos campos de entrada
+                Funcionario novoFuncionario = new Funcionario();
+                novoFuncionario.nome = txtNome.Text;
+                novoFuncionario.ativo = chbAtivo.Checked;
+                novoFuncionario.cpf = txtCPF.Text;
+                novoFuncionario.dt_nasc = DateTime.ParseExact(dtpDataNasc.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                novoFuncionario.idade = idade;
+                novoFuncionario.sexo = cbSexo.SelectedItem.ToString();
+                novoFuncionario.estado_civil = cbEstado_civil.SelectedItem.ToString();
+                novoFuncionario.dt_adm = DateTime.ParseExact(dtpDtAdm.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                novoFuncionario.cargo = txtCargo.Text;
+                novoFuncionario.matricula = txtMatricula.Text;
+                novoFuncionario.conv_med = chbConv_med.Checked;
+                novoFuncionario.conv_odon = chbConv_odon.Checked;
+                novoFuncionario.login = txtLogin.Text;
+                novoFuncionario.senha = txtSenha.Text;
+                float salario;
+                if (float.TryParse(txtSalario.Text, NumberStyles.Currency, CultureInfo.GetCultureInfo("pt-BR"), out salario))
+                {
+                    novoFuncionario.salario = salario;
+                }
+                else
+                {
+                    MessageBox.Show("Valor de salário inválido.");
+                }
+                novoFuncionario.adm = chbAdm.Checked;
+
+                // Variaveis Contato
+                novoFuncionario.email = txtEmail.Text;
+                novoFuncionario.tipo = cbTipo.SelectedItem.ToString();
+                novoFuncionario.ddd = txtDDD.Text;
+                novoFuncionario.num_tel = txtTelefone.Text;
+
+                // Variaveis Endereço
+                novoFuncionario.logradouro = cbLogr.SelectedItem.ToString();
+                novoFuncionario.rua = txtRua.Text;
+                novoFuncionario.complemento = txtComplemento.Text;
+                int num_res;
+                if (Int32.TryParse(txtNum.Text, out num_res))
+                {
+                    novoFuncionario.num_res = num_res;
+                }
+                else
+                {
+                    MessageBox.Show("Impossível converter");
+                }
+                novoFuncionario.bairro = txtBairro.Text;
+                novoFuncionario.cep = txtCEP.Text;
+                novoFuncionario.cidade = txtCidade.Text;
+                novoFuncionario.estado = cbEstado.SelectedItem.ToString();
+
+
+                // Adicionar o novo funcionário
+                connDAO.AddFuncionarioContatoEndereco(
+                    novoFuncionario.ativo,
+                    novoFuncionario.nome,
+                    novoFuncionario.cpf,
+                    novoFuncionario.dt_nasc,
+                    novoFuncionario.idade,
+                    novoFuncionario.sexo,
+                    novoFuncionario.estado_civil,
+                    novoFuncionario.dt_adm,
+                    novoFuncionario.cargo,
+                    novoFuncionario.matricula,
+                    novoFuncionario.conv_med,
+                    novoFuncionario.conv_odon,
+                    novoFuncionario.login,
+                    novoFuncionario.senha,
+                    novoFuncionario.salario,
+                    novoFuncionario.adm,
+                    novoFuncionario.email,
+                    novoFuncionario.tipo,
+                    novoFuncionario.ddd,
+                    novoFuncionario.num_tel,
+                    novoFuncionario.logradouro,
+                    novoFuncionario.rua,
+                    novoFuncionario.complemento,
+                    novoFuncionario.bairro,
+                    novoFuncionario.num_res,
+                    novoFuncionario.cep,
+                    novoFuncionario.cidade,
+                    novoFuncionario.estado);
+
+                // Limpar os campos de entrada
+                txtNome.Text = "";
+                txtCPF.Text = "";
+                dtpDataNasc.Value = DateTime.Now;
+
+                // Atualizar o DataGridView
+                dgUsuarios.Refresh();
+                //AtualizaTabela();
+
+                MessageBox.Show("Cadastrado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao cadastrar" + ex.Message);
+            }
+            finally
+            {
+                AtualizarDataGrid();
+            }
         }
     }
 }
