@@ -17,16 +17,31 @@ namespace folhaPagamento._DAO
     public class FuncionarioDAO
     {
         private List<Funcionario> funcionarios;
+        private List<Funcionario> funcionarioUnico;
 
         public FuncionarioDAO()
         {
             funcionarios = new List<Funcionario>();
         }
 
-        public List<Funcionario> GetAllFuncionarios()
+
+        public List<dynamic> GetAllFuncionarios(string acaoDoUsuario, string cpf)
         {
-            funcionarios.Clear();
-            string sql = FuncionarioSQL.CarregarFuncionario;
+            List<dynamic> funcionarios = new List<dynamic>();
+            string sql = "";
+
+            switch (acaoDoUsuario)
+            {
+                case "UsuarioUnico":
+                    sql = FuncionarioSQL.CarregarFuncionarioUnico;
+                    break;
+                case "TodosFuncionarios":
+                    sql = FuncionarioSQL.CarregarFuncionario;
+                    break;
+                default:
+                    // Ação inválida, tratar o erro
+                    break;
+            }
 
             using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
@@ -34,49 +49,57 @@ namespace folhaPagamento._DAO
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
+                    cmd.Parameters.AddWithValue("cpf", "%" + cpf + "%");
                     try
                     {
                         using (NpgsqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                // Dados funcionario
-                                Funcionario funcionario = new Funcionario();
-                                funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
-                                funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
-                                funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
-                                funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
-                                funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
-                                funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
-                                funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
-                                funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
-                                funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
-                                funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
-                                funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
-                                funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
-                                funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
-                                funcionario.login = reader.GetString(reader.GetOrdinal("login"));
-                                funcionario.senha = reader.GetString(reader.GetOrdinal("senha"));
-                                funcionario.salario = reader.GetFloat(reader.GetOrdinal("salario"));
-                                funcionario.adm = reader.GetBoolean(reader.GetOrdinal("adm"));
+                                if (acaoDoUsuario == "UsuarioUnico")
+                                {
+                                    string nomeFuncionario = reader.GetString(reader.GetOrdinal("nome"));
+                                    funcionarios.Add(nomeFuncionario);
+                                }
+                                else if (acaoDoUsuario == "TodosFuncionarios")
+                                {
+                                    Funcionario funcionario = new Funcionario();
+                                    funcionario.id_func = reader.GetInt32(reader.GetOrdinal("id_func"));
+                                    funcionario.ativo = reader.GetBoolean(reader.GetOrdinal("ativo"));
+                                    funcionario.nome = reader.GetString(reader.GetOrdinal("nome"));
+                                    funcionario.cpf = reader.GetString(reader.GetOrdinal("cpf"));
+                                    funcionario.dt_nasc = reader.GetDateTime(reader.GetOrdinal("dt_nasc"));
+                                    funcionario.idade = reader.GetInt32(reader.GetOrdinal("idade"));
+                                    funcionario.sexo = reader.GetString(reader.GetOrdinal("sexo"));
+                                    funcionario.estado_civil = reader.GetString(reader.GetOrdinal("estado_civil"));
+                                    funcionario.dt_adm = reader.GetDateTime(reader.GetOrdinal("dt_adm"));
+                                    funcionario.cargo = reader.GetString(reader.GetOrdinal("cargo"));
+                                    funcionario.matricula = reader.GetString(reader.GetOrdinal("matricula"));
+                                    funcionario.conv_med = reader.GetBoolean(reader.GetOrdinal("conv_med"));
+                                    funcionario.conv_odon = reader.GetBoolean(reader.GetOrdinal("conv_odon"));
+                                    funcionario.login = reader.GetString(reader.GetOrdinal("login"));
+                                    funcionario.senha = reader.GetString(reader.GetOrdinal("senha"));
+                                    funcionario.salario = reader.GetFloat(reader.GetOrdinal("salario"));
+                                    funcionario.adm = reader.GetBoolean(reader.GetOrdinal("adm"));
 
-                                // Dados contato
-                                funcionario.email = reader.GetString(reader.GetOrdinal("email"));
-                                funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
-                                funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
-                                funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
+                                    // Dados contato
+                                    funcionario.email = reader.GetString(reader.GetOrdinal("email"));
+                                    funcionario.tipo = reader.GetString(reader.GetOrdinal("tipo"));
+                                    funcionario.ddd = reader.GetString(reader.GetOrdinal("ddd"));
+                                    funcionario.num_tel = reader.GetString(reader.GetOrdinal("num_tel"));
 
-                                // Dados endereco
-                                funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
-                                funcionario.rua = reader.GetString(reader.GetOrdinal("rua"));
-                                funcionario.complemento = reader.IsDBNull(reader.GetOrdinal("complemento")) ? string.Empty : reader.GetString(reader.GetOrdinal("complemento"));
-                                funcionario.bairro = reader.GetString(reader.GetOrdinal("bairro"));
-                                funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
-                                funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
-                                funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
-                                funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
+                                    // Dados endereco
+                                    funcionario.logradouro = reader.GetString(reader.GetOrdinal("logradouro"));
+                                    funcionario.rua = reader.GetString(reader.GetOrdinal("rua"));
+                                    funcionario.complemento = reader.IsDBNull(reader.GetOrdinal("complemento")) ? string.Empty : reader.GetString(reader.GetOrdinal("complemento"));
+                                    funcionario.bairro = reader.GetString(reader.GetOrdinal("bairro"));
+                                    funcionario.num_res = reader.GetInt32(reader.GetOrdinal("num_res"));
+                                    funcionario.cep = reader.GetString(reader.GetOrdinal("cep"));
+                                    funcionario.cidade = reader.GetString(reader.GetOrdinal("cidade"));
+                                    funcionario.estado = reader.GetString(reader.GetOrdinal("estado"));
 
-                                funcionarios.Add(funcionario);
+                                    funcionarios.Add(funcionario);
+                                } 
                             }
                         }
 

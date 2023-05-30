@@ -19,19 +19,19 @@ namespace folhaPagamento
     public partial class PontoWF : Form
     {
         public Funcionario Usuarios { get; set; }
+        private FuncionarioDAO funcionarioDAO { get; set; }
 
         public PontoWF(Funcionario usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;
+            funcionarioDAO = new FuncionarioDAO();
 
         }
 
         private void ponto_Load(object sender, EventArgs e)
         {
-            bool isAdm = Usuarios.adm;
-
-            if (!isAdm)
+            if (!Usuarios.adm)
             {
                 string CPF = Usuarios.cpf;
 
@@ -44,17 +44,37 @@ namespace folhaPagamento
 
         private void txtCPF_TextChanged(object sender, EventArgs e)
         {
-
+            string cpf = txtCPF.Text.Trim();
             FiltrarRegistros(txtCPF.Text.Trim());
             PopularDataGrid();
-            txtNome.Text = Usuarios.nome;
 
+            string acaoDoUsuario = "UsuarioUnico";
+            List<dynamic> funcionarios = funcionarioDAO.GetAllFuncionarios(acaoDoUsuario, cpf);
+
+            if (funcionarios.Count > 0)
+            {
+                dynamic primeiroFuncionario = funcionarios[0];
+
+                if (primeiroFuncionario is Funcionario)
+                {
+                    txtNome.Text = primeiroFuncionario.nome.ToString();
+                }
+                else if (primeiroFuncionario is string)
+                {
+                    txtNome.Text = primeiroFuncionario.ToString();
+                }
+                else
+                {
+                    txtNome.Text = string.Empty;
+                }
+            }
         }
+
 
         private void FiltrarRegistros(string filtroRegistro)
         {
-            string consultaRegistro = "SELECT * FROM ponto WHERE cpf_ponto LIKE '%" + filtroRegistro + "%'";
-            dgRegistro.DataSource = PontoDAO.ExecutarConsulta(consultaRegistro);
+            DataTable resultado = FuncionarioSQL.FiltrarRegistros(filtroRegistro);
+            dgRegistro.DataSource = resultado;
         }
 
         private void PopularDataGrid()

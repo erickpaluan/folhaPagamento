@@ -21,6 +21,7 @@ namespace folhaPagamento
         private User usuarios;
         public Funcionario Usuarios { get; set; }
         private HoleriteDAO HoleriteDAO { get; set; }
+        private FuncionarioDAO funcionarioDAO { get; set; }
 
         private Holerite holerite;
 
@@ -30,6 +31,7 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
             HoleriteDAO = new HoleriteDAO();
+            funcionarioDAO = new FuncionarioDAO();
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -78,8 +80,6 @@ namespace folhaPagamento
 
         private void fHolerite_Load(object sender, EventArgs e)
         {
-
-            bool isAdm = Usuarios.adm;
             if (!Usuarios.adm)
             {
                 string CPF = Usuarios.cpf;
@@ -118,22 +118,40 @@ namespace folhaPagamento
 
         private void txtCPFFuncionario_TextChanged(object sender, EventArgs e)
         {
+            string cpf = txtCPFFuncionario.Text.Trim();
             FiltrarRegistros(txtCPFFuncionario.Text.Trim());
             PopularDataGrid();
-            txtNomeFuncionario.Text = Usuarios.nome;
+
+            string acaoDoUsuario = "UsuarioUnico";
+            List<dynamic> funcionarios = funcionarioDAO.GetAllFuncionarios(acaoDoUsuario, cpf);
+
+            if (funcionarios.Count > 0)
+            {
+                dynamic primeiroFuncionario = funcionarios[0];
+
+                if (primeiroFuncionario is Funcionario)
+                {
+                    txtNomeFuncionario.Text = primeiroFuncionario.nome.ToString();
+                }
+                else if (primeiroFuncionario is string)
+                {
+                    txtNomeFuncionario.Text = primeiroFuncionario.ToString();
+                }
+                else
+                {
+                    txtNomeFuncionario.Text = string.Empty;
+                }
+            }
         }
 
-        private void FiltrarRegistros(string filtroRegistro)
+        private void FiltrarRegistros(string filtroHolerites)
         {
-            string consultaRegistro = "SELECT * FROM folha_pagto WHERE cpf LIKE '%" + filtroRegistro + "%'";
-            dgvHolerite.DataSource = HoleriteDAO.ExecutarConsulta(consultaRegistro);
+            DataTable resultadoFiltroHolerite = HoleriteSQL.FiltrarHolerites(filtroHolerites);
+            dgvHolerite.DataSource = resultadoFiltroHolerite;
         }
 
         private void PopularDataGrid()
         {
-            //dgvHolerite.DataSource = null;
-           // dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
-
             //Configura Header do DataGrid
             dgvHolerite.Columns["cpf"].HeaderText = "CPF";
             dgvHolerite.Columns["salariobruto"].HeaderText = "Salário bruto";

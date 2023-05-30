@@ -20,7 +20,7 @@ namespace folhaPagamento
 {
     public partial class FuncionarioWF : Form
     {
-        private FuncionarioDAO connDAO { get; set; }
+        private FuncionarioDAO funcionarioDAO { get; set; }
         CultureInfo cultura = new CultureInfo("pt-BR");
         public FuncionarioWF()
         {
@@ -29,7 +29,7 @@ namespace folhaPagamento
 
             try
             {
-                connDAO = new FuncionarioDAO();
+                funcionarioDAO = new FuncionarioDAO();
             }
             catch (Exception e)
             {
@@ -49,8 +49,10 @@ namespace folhaPagamento
 
         private void PopularDataGrid()
         {
+            string cpf = "";
             dgUsuarios.DataSource = null;
-            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            string acaoDoUsuario = "TodosFuncionarios";
+            dgUsuarios.DataSource = funcionarioDAO.GetAllFuncionarios(acaoDoUsuario, cpf);
 
             dgUsuarios.Columns["id_func"].HeaderText = "ID";
             dgUsuarios.Columns["ativo"].HeaderText = "Ativo";
@@ -81,8 +83,10 @@ namespace folhaPagamento
 
         private void AtualizarDataGrid()
         {
+            string cpf = "";
             dgUsuarios.DataSource = null;
-            dgUsuarios.DataSource = connDAO.GetAllFuncionarios();
+            string acaoDoUsuario = "TodosFuncionarios";
+            dgUsuarios.DataSource = funcionarioDAO.GetAllFuncionarios(acaoDoUsuario, cpf);
             PopularDataGrid();
         }
 
@@ -189,7 +193,7 @@ namespace folhaPagamento
                 {
                     Funcionario funcionarioDelete = new Funcionario();
 
-                    connDAO.DeleteFuncionario(id_func, cpf);
+                    funcionarioDAO.DeleteFuncionario(id_func, cpf);
 
                     MessageBox.Show("Funcionário deletado com sucesso!!");
                     AtualizarDataGrid();
@@ -276,7 +280,7 @@ namespace folhaPagamento
                     funcionarioEditado.cidade = txtCidade.Text;
                     funcionarioEditado.estado = cbEstado.SelectedItem.ToString();
 
-                    connDAO.UpdateFuncionario(
+                    funcionarioDAO.UpdateFuncionario(
                     funcionarioEditado.id_func,
                     funcionarioEditado.ativo,
                     funcionarioEditado.nome,
@@ -396,7 +400,7 @@ namespace folhaPagamento
 
 
                 // Adicionar o novo funcionário
-                connDAO.AddFuncionarioContatoEndereco(
+                funcionarioDAO.AddFuncionarioContatoEndereco(
                     novoFuncionario.ativo,
                     novoFuncionario.nome,
                     novoFuncionario.cpf,

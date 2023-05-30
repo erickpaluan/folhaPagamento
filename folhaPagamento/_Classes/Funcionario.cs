@@ -1,5 +1,7 @@
-﻿using System;
+﻿using folhaPagamento._DAO;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +48,8 @@ namespace folhaPagamento._Classes
     public static class FuncionarioSQL
     {
         public const string CarregarFuncionario = "SELECT funcionario.id_func, funcionario.ativo, funcionario.nome, funcionario.cpf, funcionario.dt_nasc, funcionario.idade, funcionario.sexo, funcionario.estado_civil, funcionario.dt_adm, funcionario.cargo, funcionario.matricula, funcionario.conv_med, funcionario.conv_odon, funcionario.login, funcionario.senha, funcionario.salario, funcionario.adm, contato.email, contato.tipo, contato.ddd, contato.num_tel, endereco.logradouro, endereco.rua, endereco.complemento, endereco.bairro, endereco.num_res, endereco.cep, endereco.cidade, endereco.estado FROM funcionario INNER JOIN contato ON funcionario.id_func = contato.id_ctt INNER JOIN endereco ON funcionario.id_func = endereco.id_end;";
-        
+        public const string CarregarFuncionarioUnico = "SELECT nome FROM funcionario WHERE cpf LIKE @cpf";
+
         public const string AdicionarFuncionario = "ROLLBACK; BEGIN; INSERT INTO funcionario (ativo, nome, cpf, dt_nasc, idade, sexo, estado_civil, dt_adm, cargo, matricula, conv_med, conv_odon, login, senha, salario, adm) " +
                                                    "VALUES (@ativo, @nome, @cpf, @dt_nasc, @idade, @sexo, @estado_civil, @dt_adm, @cargo, @matricula, @conv_med, @conv_odon, @login, @senha, @salario, @adm) " +
                                                    "RETURNING id_func; INSERT INTO contato (id_ctt, email, tipo, ddd, num_tel) " +
@@ -73,5 +76,11 @@ namespace folhaPagamento._Classes
 
         public const string DadosPagamentoFuncionario = "SELECT nome, cpf, conv_med, conv_odon, salario FROM funcionario " +
                                                         "WHERE nome = @nome;";
+
+        public static DataTable FiltrarRegistros(string filtroRegistro)
+        {
+            string consultaRegistro = "SELECT * FROM ponto WHERE cpf_ponto LIKE '%" + filtroRegistro + "%'";
+            return PontoDAO.ExecutarConsulta(consultaRegistro);
+        }
     }
 }
