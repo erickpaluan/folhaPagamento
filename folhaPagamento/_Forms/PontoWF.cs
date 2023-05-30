@@ -18,14 +18,13 @@ namespace folhaPagamento
 {
     public partial class PontoWF : Form
     {
-        private PontoDAO marcacaoPonto { get; set; }
         public Funcionario Usuarios { get; set; }
 
         public PontoWF(Funcionario usuarios)
         {
             InitializeComponent();
             Usuarios = usuarios;
-            marcacaoPonto = new PontoDAO();
+
         }
 
         private void ponto_Load(object sender, EventArgs e)

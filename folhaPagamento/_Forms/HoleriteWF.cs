@@ -82,7 +82,10 @@ namespace folhaPagamento
             bool isAdm = Usuarios.adm;
             if (!Usuarios.adm)
             {
-                FiltrarRegistros(Usuarios.cpf);
+                string CPF = Usuarios.cpf;
+
+                txtCPFFuncionario.Text = CPF;
+                txtCPFFuncionario.ReadOnly = true;
             }
         }
 
@@ -128,8 +131,8 @@ namespace folhaPagamento
 
         private void PopularDataGrid()
         {
-            dgvHolerite.DataSource = null;
-            dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
+            //dgvHolerite.DataSource = null;
+           // dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
 
             //Configura Header do DataGrid
             dgvHolerite.Columns["cpf"].HeaderText = "CPF";
