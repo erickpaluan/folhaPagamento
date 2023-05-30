@@ -29,22 +29,7 @@ namespace folhaPagamento
         {
             InitializeComponent();
             Usuarios = usuarios;
-
-            try
-            {
-                HoleriteDAO = new HoleriteDAO();
-                //MessageBox.Show("Conectado ao DB!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-        }
-
-        public void ImprimirHolerite()
-        {
-
+            HoleriteDAO = new HoleriteDAO();
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -93,24 +78,12 @@ namespace folhaPagamento
 
         private void fHolerite_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
-                if (Usuarios.adm == false)
-                {
-                    FiltrarDados(Usuarios.cpf);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
-        private void FiltrarDados(string filtro)
-        {
-            string consulta = "SELECT * FROM folha_pagto WHERE cpf LIKE '%" + filtro + "%'";
-            dgvHolerite.DataSource = HoleriteDAO.ExecutarConsulta(consulta);
+            bool isAdm = Usuarios.adm;
+            if (!Usuarios.adm)
+            {
+                FiltrarRegistros(Usuarios.cpf);
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -136,5 +109,67 @@ namespace folhaPagamento
 
             }
         }
+
+
+
+
+        private void txtCPFFuncionario_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarRegistros(txtCPFFuncionario.Text.Trim());
+            PopularDataGrid();
+            txtNomeFuncionario.Text = Usuarios.nome;
+        }
+
+        private void FiltrarRegistros(string filtroRegistro)
+        {
+            string consultaRegistro = "SELECT * FROM folha_pagto WHERE cpf LIKE '%" + filtroRegistro + "%'";
+            dgvHolerite.DataSource = HoleriteDAO.ExecutarConsulta(consultaRegistro);
+        }
+
+        private void PopularDataGrid()
+        {
+            dgvHolerite.DataSource = null;
+            dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
+
+            //Configura Header do DataGrid
+            dgvHolerite.Columns["cpf"].HeaderText = "CPF";
+            dgvHolerite.Columns["salariobruto"].HeaderText = "Salário bruto";
+            dgvHolerite.Columns["salarioliquido"].HeaderText = "Salário líquido";
+            dgvHolerite.Columns["datapagamento"].HeaderText = "Data de pagamento";
+
+
+            //Esconde colunas do DataGrid
+            for (int i = 0; i < dgvHolerite.Columns.Count; i++)
+            {
+                if (i == 0 || i == 1 || i == 7 || i == 8)
+                {
+                    dgvHolerite.Columns[i].Visible = true;
+                }
+                else
+                {
+                    dgvHolerite.Columns[i].Visible = false;
+                }
+            }
+
+            dgvHolerite.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+        private void AtualizaDataGrid()
+        {
+            dgvHolerite.DataSource = null;
+            dgvHolerite.DataSource = HoleriteDAO.CarregaHolerite();
+            PopularDataGrid();
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

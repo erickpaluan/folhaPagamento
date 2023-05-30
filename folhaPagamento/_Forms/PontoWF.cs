@@ -60,8 +60,6 @@ namespace folhaPagamento
 
         private void PopularDataGrid()
         {
-            //dgRegistro.DataSource = marcacaoPonto.GetRegistros();
-
             dgRegistro.Columns["id_ponto"].HeaderText = "ID";
             dgRegistro.Columns["cpf_ponto"].HeaderText = "CPF";
             dgRegistro.Columns["data"].HeaderText = "Data";

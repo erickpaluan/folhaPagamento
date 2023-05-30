@@ -58,8 +58,7 @@ namespace folhaPagamento._DAO
 
         public static DataTable ExecutarConsulta(string consulta)
         {
-
-            string connectionString = stringConexao();
+            string connectionString = ConexaoDB.stringConexao();
             using (NpgsqlConnection conexao = new NpgsqlConnection(connectionString))
             {
                 DataTable dataTable = new DataTable();

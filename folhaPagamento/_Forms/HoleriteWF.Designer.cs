@@ -56,12 +56,10 @@
             btnMeuPerfil = new Button();
             lblSaudacao = new Label();
             groupBox5 = new GroupBox();
-            comboBox1 = new ComboBox();
-            label10 = new Label();
-            label9 = new Label();
-            textBox2 = new TextBox();
             label8 = new Label();
-            textBox1 = new TextBox();
+            txtCPFFuncionario = new TextBox();
+            label9 = new Label();
+            txtNomeFuncionario = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvHolerite).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
@@ -134,12 +132,12 @@
             dgvHolerite.AllowUserToDeleteRows = false;
             dgvHolerite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvHolerite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHolerite.Location = new Point(12, 236);
+            dgvHolerite.Location = new Point(18, 141);
             dgvHolerite.Name = "dgvHolerite";
             dgvHolerite.ReadOnly = true;
             dgvHolerite.RowTemplate.Height = 25;
             dgvHolerite.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHolerite.Size = new Size(696, 64);
+            dgvHolerite.Size = new Size(623, 109);
             dgvHolerite.TabIndex = 14;
             dgvHolerite.CellClick += dgvHolerite_CellClick;
             // 
@@ -149,7 +147,7 @@
             btnCalcular.FlatStyle = FlatStyle.Flat;
             btnCalcular.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCalcular.ForeColor = Color.FromArgb(62, 122, 232);
-            btnCalcular.Location = new Point(569, 8);
+            btnCalcular.Location = new Point(318, 14);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(139, 29);
             btnCalcular.TabIndex = 15;
@@ -326,7 +324,7 @@
             panel1.Controls.Add(btnCalcular);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(731, 51);
+            panel1.Size = new Size(463, 51);
             panel1.TabIndex = 51;
             // 
             // btnMinhasConfig
@@ -337,7 +335,7 @@
             btnMinhasConfig.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMinhasConfig.ForeColor = Color.FromArgb(62, 122, 232);
             btnMinhasConfig.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMinhasConfig.Location = new Point(1663, -24);
+            btnMinhasConfig.Location = new Point(1395, -24);
             btnMinhasConfig.Name = "btnMinhasConfig";
             btnMinhasConfig.Size = new Size(139, 29);
             btnMinhasConfig.TabIndex = 19;
@@ -353,7 +351,7 @@
             btnMeuPerfil.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMeuPerfil.ForeColor = Color.White;
             btnMeuPerfil.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMeuPerfil.Location = new Point(1531, -24);
+            btnMeuPerfil.Location = new Point(1263, -24);
             btnMeuPerfil.Name = "btnMeuPerfil";
             btnMeuPerfil.Size = new Size(126, 29);
             btnMeuPerfil.TabIndex = 18;
@@ -373,79 +371,57 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(comboBox1);
-            groupBox5.Controls.Add(label10);
-            groupBox5.Controls.Add(label9);
-            groupBox5.Controls.Add(textBox2);
             groupBox5.Controls.Add(label8);
-            groupBox5.Controls.Add(textBox1);
+            groupBox5.Controls.Add(txtCPFFuncionario);
+            groupBox5.Controls.Add(label9);
+            groupBox5.Controls.Add(txtNomeFuncionario);
             groupBox5.Location = new Point(12, 57);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(700, 123);
+            groupBox5.Size = new Size(451, 78);
             groupBox5.TabIndex = 52;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Dados";
+            groupBox5.Text = "Pesquisar funcionário";
             // 
-            // comboBox1
+            // label8
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" });
-            comboBox1.Location = new Point(6, 79);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(214, 23);
-            comboBox1.TabIndex = 53;
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(6, 22);
+            label8.Name = "label8";
+            label8.Size = new Size(30, 15);
+            label8.TabIndex = 56;
+            label8.Text = "CPF";
+            label8.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label10
+            // txtCPFFuncionario
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(6, 61);
-            label10.Name = "label10";
-            label10.Size = new Size(31, 15);
-            label10.TabIndex = 54;
-            label10.Text = "Mês";
-            label10.TextAlign = ContentAlignment.MiddleRight;
+            txtCPFFuncionario.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCPFFuncionario.Location = new Point(6, 40);
+            txtCPFFuncionario.Name = "txtCPFFuncionario";
+            txtCPFFuncionario.PlaceholderText = "CPF do funcionário";
+            txtCPFFuncionario.Size = new Size(219, 21);
+            txtCPFFuncionario.TabIndex = 55;
+            txtCPFFuncionario.TextChanged += txtCPFFuncionario_TextChanged;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(226, 19);
+            label9.Location = new Point(231, 19);
             label9.Name = "label9";
             label9.Size = new Size(72, 15);
             label9.TabIndex = 53;
             label9.Text = "Funcionário";
             label9.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // textBox2
+            // txtNomeFuncionario
             // 
-            textBox2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(226, 37);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Nome do funcionário";
-            textBox2.Size = new Size(214, 21);
-            textBox2.TabIndex = 52;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(6, 19);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 15);
-            label8.TabIndex = 51;
-            label8.Text = "Empresa";
-            label8.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(6, 37);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Empresa";
-            textBox1.Size = new Size(214, 21);
-            textBox1.TabIndex = 50;
+            txtNomeFuncionario.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNomeFuncionario.Location = new Point(231, 40);
+            txtNomeFuncionario.Name = "txtNomeFuncionario";
+            txtNomeFuncionario.PlaceholderText = "Nome do funcionário";
+            txtNomeFuncionario.Size = new Size(214, 21);
+            txtNomeFuncionario.TabIndex = 52;
             // 
             // HoleriteWF
             // 
@@ -518,12 +494,10 @@
         private Button btnMeuPerfil;
         private Label lblSaudacao;
         private GroupBox groupBox5;
-        private ComboBox comboBox1;
-        private Label label10;
         private Label label9;
-        private TextBox textBox2;
-        private Label label8;
-        private TextBox textBox1;
+        private TextBox txtNomeFuncionario;
         private DateTimePicker dtpHolerite;
+        private Label label8;
+        private TextBox txtCPFFuncionario;
     }
 }

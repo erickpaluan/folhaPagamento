@@ -62,35 +62,18 @@ namespace folhaPagamento
             dgUsuarios.Columns["num_tel"].HeaderText = "Número do Telefone";
 
             //Esconder Colunas da Tabela
-            dgUsuarios.Columns[0].Visible = false;
-            dgUsuarios.Columns[1].Visible = true;
-            dgUsuarios.Columns[2].Visible = true;
-            dgUsuarios.Columns[3].Visible = false;
-            dgUsuarios.Columns[4].Visible = false;
-            dgUsuarios.Columns[5].Visible = false;
-            dgUsuarios.Columns[6].Visible = false;
-            dgUsuarios.Columns[7].Visible = false;
-            dgUsuarios.Columns[8].Visible = false;
-            dgUsuarios.Columns[9].Visible = false;
-            dgUsuarios.Columns[10].Visible = false;
-            dgUsuarios.Columns[11].Visible = false;
-            dgUsuarios.Columns[12].Visible = false;
-            dgUsuarios.Columns[13].Visible = false;
-            dgUsuarios.Columns[14].Visible = false;
-            dgUsuarios.Columns[15].Visible = false;
-            dgUsuarios.Columns[16].Visible = false;
-            dgUsuarios.Columns[17].Visible = false;
-            dgUsuarios.Columns[18].Visible = false;
-            dgUsuarios.Columns[19].Visible = false;
-            dgUsuarios.Columns[20].Visible = false;
-            dgUsuarios.Columns[21].Visible = false;
-            dgUsuarios.Columns[22].Visible = false;
-            dgUsuarios.Columns[23].Visible = false;
-            dgUsuarios.Columns[24].Visible = false;
-            dgUsuarios.Columns[25].Visible = false;
-            dgUsuarios.Columns[26].Visible = false;
-            dgUsuarios.Columns[27].Visible = false;
-            dgUsuarios.Columns[28].Visible = false;
+            for (int i = 0; i < dgUsuarios.Columns.Count; i++)
+            {
+                if (i == 1 || i == 2)
+                {
+                    dgUsuarios.Columns[i].Visible = true;
+                }
+                else
+                {
+                    dgUsuarios.Columns[i].Visible = false;
+                }
+            }
+
 
             dgUsuarios.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
@@ -163,8 +146,6 @@ namespace folhaPagamento
 
                 bool adm = row.Cells["adm"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["adm"].Value) : false;
                 chbAdm.Checked = adm;
-
-
 
                 // Dados Contato
                 cbTipo.SelectedItem = row.Cells["tipo"].Value.ToString();
