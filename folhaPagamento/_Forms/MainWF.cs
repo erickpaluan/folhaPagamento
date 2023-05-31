@@ -2,8 +2,9 @@ using folhaPagamento._Classes;
 using folhaPagamento._DAO;
 using Microsoft.VisualBasic.ApplicationServices;
 using Npgsql;
+using System.Globalization;
 using System.Windows.Forms;
-
+using System;
 
 
 namespace folhaPagamento
@@ -13,13 +14,98 @@ namespace folhaPagamento
         private User usuarios;
         public Funcionario Usuarios { get; set; }
 
+        private Label labelSegunda;
+        private Label labelTerca;
+        private Label labelQuarta;
+        private Label labelQuinta;
+        private Label labelSexta;
+        private Label labelSabado;
+        private Label labelDomingo;
+
         public MainWF(Funcionario usuarios)
         {
-
             InitializeComponent();
             Usuarios = usuarios;
 
+            DateTime dataAtual = DateTime.Today;
+            CultureInfo cultura = CultureInfo.CurrentCulture;
+
+            int diasPassados = (int)dataAtual.DayOfWeek;
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime data = dataAtual.AddDays(i - diasPassados);
+                string nomeDiaSemana = cultura.DateTimeFormat.GetDayName(data.DayOfWeek);
+                string diaMes = data.ToString("dd/MM");
+                string resultado = $"{nomeDiaSemana} ({diaMes})";
+
+                // Exibir o resultado em cada label correspondente
+                SetTextForLabelDayOfWeek(data.DayOfWeek, resultado);
+
+                // Definir o estilo de borda para o painel da data de hoje
+                if (data.Date == dataAtual.Date)
+                {
+                    Panel panel = GetPanelForDayOfWeek(data.DayOfWeek);
+                    //panel.BorderStyle = BorderStyle.FixedSingle;
+                    panel.BackColor = Color.FromArgb(218, 218, 218);
+                }
+            }
+
         }
+
+        private Panel GetPanelForDayOfWeek(DayOfWeek dayOfWeek)
+        {
+            switch (dayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return panelSegunda;
+                case DayOfWeek.Tuesday:
+                    return panelTerca;
+                case DayOfWeek.Wednesday:
+                    return panelQuarta;
+                case DayOfWeek.Thursday:
+                    return panelQuinta;
+                case DayOfWeek.Friday:
+                    return panelSexta;
+                case DayOfWeek.Saturday:
+                    return panelSabado;
+                case DayOfWeek.Sunday:
+                    return panelDomingo;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
+            }
+        }
+
+        private void SetTextForLabelDayOfWeek(DayOfWeek dayOfWeek, string text)
+        {
+            switch (dayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    lblSegunda.Text = text;
+                    break;
+                case DayOfWeek.Tuesday:
+                    lblTerca.Text = text;
+                    break;
+                case DayOfWeek.Wednesday:
+                    lblQuarta.Text = text;
+                    break;
+                case DayOfWeek.Thursday:
+                    lblQuinta.Text = text;
+                    break;
+                case DayOfWeek.Friday:
+                    lblSexta.Text = text;
+                    break;
+                case DayOfWeek.Saturday:
+                    lblSabado.Text = text;
+                    break;
+                case DayOfWeek.Sunday:
+                    lblDomingo.Text = text;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
+            }
+        }
+
+
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
@@ -120,7 +206,7 @@ namespace folhaPagamento
                 cpf_ponto = Usuarios.cpf,
                 data = DateTime.Now.Date,
                 hora = TimeSpan.FromSeconds(Math.Floor(DateTime.Now.TimeOfDay.TotalSeconds))
-        };
+            };
 
             string mensagemConfirmacao = $"Efetuar marcação para:\nNome: {Usuarios.nome}\nCPF: {novoRegistro.cpf_ponto}\nData: {novoRegistro.data.ToString("dd/MM/yyyy")}\nHora: {novoRegistro.hora.ToString(@"hh\:mm\:ss")}";
             DialogResult resultado = MessageBox.Show(mensagemConfirmacao, "Revise as informações", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
