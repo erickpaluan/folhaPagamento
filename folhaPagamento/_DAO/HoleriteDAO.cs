@@ -115,22 +115,26 @@ namespace folhaPagamento._DAO
         {
             string sql = HoleriteSQL.AdicionaHolerite;
 
-            using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, GetConnection()))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
             {
-                cmdHolerite.Parameters.AddWithValue("@cpf", cpf);
-                cmdHolerite.Parameters.AddWithValue("@salariobruto", salariobruto);
-                cmdHolerite.Parameters.AddWithValue("@inss", inss);
-                cmdHolerite.Parameters.AddWithValue("@irpf", irpf);
-                cmdHolerite.Parameters.AddWithValue("@convmed", convmed);
-                cmdHolerite.Parameters.AddWithValue("@convodonto", convodonto);
-                cmdHolerite.Parameters.AddWithValue("@totaldescontos", totaldescontos);
-                cmdHolerite.Parameters.AddWithValue("@salarioliquido", salarioliquido);
-                cmdHolerite.Parameters.AddWithValue("@datapagamento", datapagamento);
+                conn.Open();
 
-                cmdHolerite.ExecuteNonQuery();
+                using (NpgsqlCommand cmdHolerite = new NpgsqlCommand(sql, conn))
+                {
+                    cmdHolerite.Parameters.AddWithValue("@cpf", cpf);
+                    cmdHolerite.Parameters.AddWithValue("@salariobruto", salariobruto);
+                    cmdHolerite.Parameters.AddWithValue("@inss", inss);
+                    cmdHolerite.Parameters.AddWithValue("@irpf", irpf);
+                    cmdHolerite.Parameters.AddWithValue("@convmed", convmed);
+                    cmdHolerite.Parameters.AddWithValue("@convodonto", convodonto);
+                    cmdHolerite.Parameters.AddWithValue("@totaldescontos", totaldescontos);
+                    cmdHolerite.Parameters.AddWithValue("@salarioliquido", salarioliquido);
+                    cmdHolerite.Parameters.AddWithValue("@datapagamento", datapagamento);
+
+                    cmdHolerite.ExecuteNonQuery();
+                }
             }
         }
-
         public decimal CalcularDescontoINSS(Funcionario Usuarios)
         {
             decimal salario = Convert.ToDecimal(Usuarios.salario);

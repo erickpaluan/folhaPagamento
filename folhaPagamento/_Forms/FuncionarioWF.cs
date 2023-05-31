@@ -126,7 +126,7 @@ namespace folhaPagamento
                 CultureInfo cultura = new CultureInfo("pt-BR");
                 DataGridViewRow row = this.dgUsuarios.Rows[e.RowIndex]; // define a linha
                 // Dados funcionario
-                label21.Text = row.Cells["id_func"].Value.ToString();
+                //label21.Text = row.Cells["id_func"].Value.ToString();
                 int id_func = Convert.ToInt32(row.Cells["id_func"].Value);
                 bool ativo = row.Cells["ativo"].Value != DBNull.Value ? Convert.ToBoolean(row.Cells["ativo"].Value) : false;
                 chbAtivo.Checked = ativo;
