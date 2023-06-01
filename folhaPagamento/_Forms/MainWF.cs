@@ -27,8 +27,9 @@ namespace folhaPagamento
             InitializeComponent();
             Usuarios = usuarios;
 
-            DateTime dataAtual = DateTime.Today;
-            CultureInfo cultura = CultureInfo.CurrentCulture;
+            var dataAtual = DateTime.Today;
+            var cultura = CultureInfo.CurrentCulture;
+            const int corPainelDataAtual = 218;
 
             int diasPassados = (int)dataAtual.DayOfWeek;
             for (int i = 0; i < 7; i++)
@@ -42,13 +43,13 @@ namespace folhaPagamento
                 SetTextForLabelDayOfWeek(data.DayOfWeek, resultado);
 
                 // Definir o estilo de borda para o painel da data de hoje
-                if (data.Date == dataAtual.Date)
+                if (data.Date == dataAtual)
                 {
                     Panel panel = GetPanelForDayOfWeek(data.DayOfWeek);
-                    //panel.BorderStyle = BorderStyle.FixedSingle;
-                    panel.BackColor = Color.FromArgb(218, 218, 218);
+                    panel.BackColor = Color.FromArgb(corPainelDataAtual, corPainelDataAtual, corPainelDataAtual);
                 }
             }
+
 
         }
 
@@ -159,11 +160,6 @@ namespace folhaPagamento
             config.ShowDialog();
         }
 
-        private void fazerLogoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Você tem certeza que deseja" +
@@ -194,10 +190,6 @@ namespace folhaPagamento
             form.ShowDialog();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnFazerMarcacao_Click(object sender, EventArgs e)
         {
@@ -227,8 +219,7 @@ namespace folhaPagamento
 
         private void linkFazerLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Você tem certeza que deseja sair da sua conta?", "Deslogar",
-MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Você tem certeza que deseja sair da sua conta?", "Deslogar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
