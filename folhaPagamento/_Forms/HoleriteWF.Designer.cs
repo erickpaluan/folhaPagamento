@@ -38,7 +38,6 @@
             btnCalcular = new Button();
             pictureBox2 = new PictureBox();
             txtTotal = new TextBox();
-            txtCPFUser = new TextBox();
             txtCPF = new TextBox();
             label1 = new Label();
             groupBox1 = new GroupBox();
@@ -153,7 +152,6 @@
             btnCalcular.TabIndex = 15;
             btnCalcular.Text = "Calcular Holerite";
             btnCalcular.UseVisualStyleBackColor = false;
-            btnCalcular.Visible = false;
             btnCalcular.Click += btnCalcular_Click;
             // 
             // pictureBox2
@@ -175,14 +173,6 @@
             txtTotal.PlaceholderText = "Total";
             txtTotal.Size = new Size(342, 21);
             txtTotal.TabIndex = 40;
-            // 
-            // txtCPFUser
-            // 
-            txtCPFUser.Location = new Point(201, 64);
-            txtCPFUser.Name = "txtCPFUser";
-            txtCPFUser.Size = new Size(100, 23);
-            txtCPFUser.TabIndex = 43;
-            txtCPFUser.Visible = false;
             // 
             // txtCPF
             // 
@@ -298,7 +288,6 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(dtpHolerite);
-            groupBox4.Controls.Add(txtCPFUser);
             groupBox4.Location = new Point(12, 439);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(307, 99);
@@ -308,9 +297,9 @@
             // 
             // dtpHolerite
             // 
-            dtpHolerite.Location = new Point(67, 44);
+            dtpHolerite.Location = new Point(6, 35);
             dtpHolerite.Name = "dtpHolerite";
-            dtpHolerite.Size = new Size(200, 23);
+            dtpHolerite.Size = new Size(295, 23);
             dtpHolerite.TabIndex = 44;
             // 
             // panel1
@@ -455,7 +444,6 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -477,7 +465,6 @@
         private Button btnCalcular;
         private PictureBox pictureBox2;
         private TextBox txtTotal;
-        private TextBox txtCPFUser;
         private TextBox txtCPF;
         private Label label1;
         private GroupBox groupBox1;
