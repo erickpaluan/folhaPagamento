@@ -24,7 +24,7 @@ namespace folhaPagamento._DAO
 
         public List<Registro> GetRegistros()
         {
-            registroPonto.Clear();
+            List<Registro> registroPonto = new List<Registro>();
             string sql = RegistroSQL.carregaRegistro;
 
             using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoDB.stringConexao()))
@@ -43,7 +43,9 @@ namespace folhaPagamento._DAO
                                 registro.id_ponto = reader.GetInt32(reader.GetOrdinal("id_ponto"));
                                 registro.cpf_ponto = reader.GetString(reader.GetOrdinal("cpf_ponto"));
                                 registro.data = reader.GetDateTime(reader.GetOrdinal("data"));
-                                registro.hora = reader.GetTimeSpan(reader.GetOrdinal("hora"));
+                                TimeSpan hora;
+                                TimeSpan.TryParse(reader["hora"].ToString(), out hora);
+                                registro.hora = hora;
 
                                 registroPonto.Add(registro);
                             }
@@ -62,6 +64,7 @@ namespace folhaPagamento._DAO
 
             return registroPonto;
         }
+
 
         public static DataTable ExecutarConsulta(string consulta)
         {

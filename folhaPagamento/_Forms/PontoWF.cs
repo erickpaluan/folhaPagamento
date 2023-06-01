@@ -73,7 +73,7 @@ namespace folhaPagamento
 
         private void FiltrarRegistros(string filtroRegistro)
         {
-            DataTable resultado = FuncionarioSQL.FiltrarRegistros(filtroRegistro);
+            DataTable resultado = RegistroSQL.FiltrarRegistros(filtroRegistro);
             dgRegistro.DataSource = resultado;
         }
 

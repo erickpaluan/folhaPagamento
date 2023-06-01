@@ -77,10 +77,6 @@ namespace folhaPagamento._Classes
         public const string DadosPagamentoFuncionario = "SELECT nome, cpf, conv_med, conv_odon, salario FROM funcionario " +
                                                         "WHERE nome = @nome;";
 
-        public static DataTable FiltrarRegistros(string filtroRegistro)
-        {
-            string consultaRegistro = "SELECT * FROM ponto WHERE cpf_ponto LIKE '%" + filtroRegistro + "%'";
-            return PontoDAO.ExecutarConsulta(consultaRegistro);
-        }
+
     }
 }
