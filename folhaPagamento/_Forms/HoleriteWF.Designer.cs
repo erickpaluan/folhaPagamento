@@ -38,8 +38,6 @@
             btnCalcular = new Button();
             pictureBox2 = new PictureBox();
             txtTotal = new TextBox();
-            txtCPF = new TextBox();
-            label1 = new Label();
             groupBox1 = new GroupBox();
             label3 = new Label();
             label2 = new Label();
@@ -73,7 +71,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(347, 315);
+            label5.Location = new Point(13, 61);
             label5.Name = "label5";
             label5.Size = new Size(77, 15);
             label5.TabIndex = 4;
@@ -83,10 +81,10 @@
             // txtSalario
             // 
             txtSalario.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSalario.Location = new Point(347, 333);
+            txtSalario.Location = new Point(13, 79);
             txtSalario.Name = "txtSalario";
             txtSalario.PlaceholderText = "Salário Base";
-            txtSalario.Size = new Size(294, 21);
+            txtSalario.Size = new Size(182, 21);
             txtSalario.TabIndex = 7;
             // 
             // txtConvMed
@@ -104,16 +102,16 @@
             txtConvOdon.Location = new Point(121, 37);
             txtConvOdon.Name = "txtConvOdon";
             txtConvOdon.PlaceholderText = "Odontologico";
-            txtConvOdon.Size = new Size(180, 21);
+            txtConvOdon.Size = new Size(111, 21);
             txtConvOdon.TabIndex = 9;
             // 
             // txtDescINSS
             // 
             txtDescINSS.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDescINSS.Location = new Point(144, 37);
+            txtDescINSS.Location = new Point(98, 37);
             txtDescINSS.Name = "txtDescINSS";
             txtDescINSS.PlaceholderText = "Desconto INSS";
-            txtDescINSS.Size = new Size(211, 21);
+            txtDescINSS.Size = new Size(100, 21);
             txtDescINSS.TabIndex = 11;
             // 
             // txtDescIR
@@ -122,7 +120,7 @@
             txtDescIR.Location = new Point(6, 37);
             txtDescIR.Name = "txtDescIR";
             txtDescIR.PlaceholderText = "IRPF";
-            txtDescIR.Size = new Size(132, 21);
+            txtDescIR.Size = new Size(86, 21);
             txtDescIR.TabIndex = 12;
             // 
             // dgvHolerite
@@ -136,7 +134,7 @@
             dgvHolerite.ReadOnly = true;
             dgvHolerite.RowTemplate.Height = 25;
             dgvHolerite.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHolerite.Size = new Size(623, 109);
+            dgvHolerite.Size = new Size(439, 109);
             dgvHolerite.TabIndex = 14;
             dgvHolerite.CellClick += dgvHolerite_CellClick;
             // 
@@ -150,7 +148,7 @@
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(139, 29);
             btnCalcular.TabIndex = 15;
-            btnCalcular.Text = "Calcular Holerite";
+            btnCalcular.Text = "Gerar meu holerite";
             btnCalcular.UseVisualStyleBackColor = false;
             btnCalcular.Click += btnCalcular_Click;
             // 
@@ -171,28 +169,8 @@
             txtTotal.Location = new Point(13, 37);
             txtTotal.Name = "txtTotal";
             txtTotal.PlaceholderText = "Total";
-            txtTotal.Size = new Size(342, 21);
+            txtTotal.Size = new Size(182, 21);
             txtTotal.TabIndex = 40;
-            // 
-            // txtCPF
-            // 
-            txtCPF.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCPF.Location = new Point(18, 333);
-            txtCPF.Name = "txtCPF";
-            txtCPF.PlaceholderText = "CPF Funcionário";
-            txtCPF.Size = new Size(301, 21);
-            txtCPF.TabIndex = 44;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(18, 315);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 15);
-            label1.TabIndex = 46;
-            label1.Text = "CPF Funcionário";
-            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // groupBox1
             // 
@@ -200,9 +178,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtConvMed);
             groupBox1.Controls.Add(txtConvOdon);
-            groupBox1.Location = new Point(12, 360);
+            groupBox1.Location = new Point(12, 257);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(307, 73);
+            groupBox1.Size = new Size(238, 73);
             groupBox1.TabIndex = 47;
             groupBox1.TabStop = false;
             groupBox1.Text = "Convênios";
@@ -235,9 +213,9 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(txtDescIR);
             groupBox2.Controls.Add(txtDescINSS);
-            groupBox2.Location = new Point(347, 360);
+            groupBox2.Location = new Point(256, 257);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(365, 73);
+            groupBox2.Size = new Size(204, 73);
             groupBox2.TabIndex = 48;
             groupBox2.TabStop = false;
             groupBox2.Text = "Descontos";
@@ -246,7 +224,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(144, 19);
+            label4.Location = new Point(98, 19);
             label4.Name = "label4";
             label4.Size = new Size(35, 15);
             label4.TabIndex = 51;
@@ -268,9 +246,11 @@
             // 
             groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(txtTotal);
-            groupBox3.Location = new Point(347, 439);
+            groupBox3.Controls.Add(label5);
+            groupBox3.Controls.Add(txtSalario);
+            groupBox3.Location = new Point(256, 336);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(365, 99);
+            groupBox3.Size = new Size(201, 117);
             groupBox3.TabIndex = 49;
             groupBox3.TabStop = false;
             // 
@@ -288,18 +268,18 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(dtpHolerite);
-            groupBox4.Location = new Point(12, 439);
+            groupBox4.Location = new Point(12, 336);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(307, 99);
+            groupBox4.Size = new Size(238, 58);
             groupBox4.TabIndex = 50;
             groupBox4.TabStop = false;
             groupBox4.Text = "Data Emissão";
             // 
             // dtpHolerite
             // 
-            dtpHolerite.Location = new Point(6, 35);
+            dtpHolerite.Location = new Point(6, 22);
             dtpHolerite.Name = "dtpHolerite";
-            dtpHolerite.Size = new Size(295, 23);
+            dtpHolerite.Size = new Size(226, 23);
             dtpHolerite.TabIndex = 44;
             // 
             // panel1
@@ -313,7 +293,7 @@
             panel1.Controls.Add(btnCalcular);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(463, 51);
+            panel1.Size = new Size(476, 51);
             panel1.TabIndex = 51;
             // 
             // btnMinhasConfig
@@ -324,7 +304,7 @@
             btnMinhasConfig.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMinhasConfig.ForeColor = Color.FromArgb(62, 122, 232);
             btnMinhasConfig.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMinhasConfig.Location = new Point(1395, -24);
+            btnMinhasConfig.Location = new Point(1408, -24);
             btnMinhasConfig.Name = "btnMinhasConfig";
             btnMinhasConfig.Size = new Size(139, 29);
             btnMinhasConfig.TabIndex = 19;
@@ -340,7 +320,7 @@
             btnMeuPerfil.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMeuPerfil.ForeColor = Color.White;
             btnMeuPerfil.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMeuPerfil.Location = new Point(1263, -24);
+            btnMeuPerfil.Location = new Point(1276, -24);
             btnMeuPerfil.Name = "btnMeuPerfil";
             btnMeuPerfil.Size = new Size(126, 29);
             btnMeuPerfil.TabIndex = 18;
@@ -366,7 +346,7 @@
             groupBox5.Controls.Add(txtNomeFuncionario);
             groupBox5.Location = new Point(12, 57);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(451, 78);
+            groupBox5.Size = new Size(448, 78);
             groupBox5.TabIndex = 52;
             groupBox5.TabStop = false;
             groupBox5.Text = "Pesquisar funcionário";
@@ -409,7 +389,7 @@
             txtNomeFuncionario.Location = new Point(231, 40);
             txtNomeFuncionario.Name = "txtNomeFuncionario";
             txtNomeFuncionario.PlaceholderText = "Nome do funcionário";
-            txtNomeFuncionario.Size = new Size(214, 21);
+            txtNomeFuncionario.Size = new Size(211, 21);
             txtNomeFuncionario.TabIndex = 52;
             // 
             // HoleriteWF
@@ -417,7 +397,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(724, 562);
+            ClientSize = new Size(472, 467);
             ControlBox = false;
             Controls.Add(groupBox5);
             Controls.Add(panel1);
@@ -425,11 +405,7 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(label1);
-            Controls.Add(txtCPF);
             Controls.Add(dgvHolerite);
-            Controls.Add(txtSalario);
-            Controls.Add(label5);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "HoleriteWF";
             StartPosition = FormStartPosition.CenterScreen;
@@ -449,7 +425,6 @@
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -465,8 +440,6 @@
         private Button btnCalcular;
         private PictureBox pictureBox2;
         private TextBox txtTotal;
-        private TextBox txtCPF;
-        private Label label1;
         private GroupBox groupBox1;
         private Label label3;
         private Label label2;

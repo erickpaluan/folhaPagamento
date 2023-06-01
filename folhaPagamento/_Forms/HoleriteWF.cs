@@ -108,7 +108,6 @@ namespace folhaPagamento
                 txtDescIR.Text = row.Cells["irpf"].Value.ToString();
                 txtTotal.Text = row.Cells["salarioliquido"].Value.ToString();
                 dtpHolerite.Text = ((DateTime)row.Cells["datapagamento"].Value).ToString("dd/MM/yyyy");
-                txtCPF.Text = row.Cells["cpf"].Value.ToString();
 
             }
         }
