@@ -14,11 +14,11 @@ namespace folhaPagamento._Classes
 
         public static string stringConexao()
         {
-            string server = "db.slyuvvpzwhypsrvpuojy.supabase.co";
-            string port = "5432";
-            string user = "postgres";
-            string database = "postgres";
-            string senha = "zjqWRmCRjc7URUZD";
+            string server = "";
+            string port = "";
+            string user = "";
+            string database = "";
+            string senha = "";
 
             string connectionString = "Server=" + server +
                 ";Port=" + port +
