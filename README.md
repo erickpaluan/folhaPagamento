@@ -1,35 +1,25 @@
-📁 folhaPagamento
-📌 Overview
+# Payroll System (Academic Project)
 
-Payroll system developed as an academic project, focused on salary calculation rules, discounts and net values.
+## 📌 Overview
+Academic payroll system focused on salary calculations, discounts and net values.
 
-🎯 Purpose
+## 🎯 Purpose
+Simulate a real payroll system by applying business rules, calculations and structured logic.
 
-Simulate a real payroll system, applying business rules, calculations and structured logic.
+## 🛠️ Tech Stack
+- C#
+- .NET
 
-🛠️ Tech Stack
+## 📚 What this project demonstrates
+- Business logic implementation
+- Code organization
+- Data handling and calculations
 
-C#
-
-.NET
-
-📚 What this project demonstrates
-
-Business logic implementation
-
-Code organization
-
-Data handling and calculations
-
-🚧 Status
-
-🟡 Academic / In progress
+## 🚧 Status
+🟡 Academic / In progress  
 Learning-focused project, functional but not production-ready.
 
-🔜 Possible next steps
-
-Refactor calculation rules
-
-Clearer separation of concerns
-
-Additional validations
+## 🔜 Possible next steps
+- Refactor calculation rules
+- Improve separation of concerns
+- Add validations
